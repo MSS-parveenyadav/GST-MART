@@ -1740,6 +1740,46 @@ namespace GST_Mart.Controllers
             var res = adminuser.SearchCycleByDate(StartDate, EndDate, originalConnectionString, Session["CompanyDB"].ToString());
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult ExportDataofCycle(int Id)
+        {
+            Cycle Cycle = adminuser.FindCycleById(Id, originalConnectionString, Session["CompanyDB"].ToString());
+
+
+            var products = new System.Data.DataTable("teste");
+            products.Columns.Add("S.No", typeof(int));
+            products.Columns.Add("CreatedDate", typeof(string));
+            products.Columns.Add("CycleID", typeof(string));
+            products.Columns.Add("Status", typeof(string));
+
+
+            products.Rows.Add(1, Cycle.CreatedDate,Cycle.CycleID, Cycle.Status);
+
+
+            var grid = new GridView();
+            grid.DataSource = products;
+            grid.DataBind();
+
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=CycleRunFile.xls");
+            Response.ContentType = "application/ms-excel";
+
+            Response.Charset = "";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+
+            grid.RenderControl(htw);
+
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
+
+
+            return RedirectToAction("AuditLog");
+
+
+        }
        
     }
 }

@@ -199,7 +199,7 @@
                         <tr>
                             <th>Date & Time</th>
                             <th>Cycle ID</th>
-                            <th>Total Transactions</th>
+                            @*<th>Total Transactions</th>*@
                             <th>Status</th>
                             <th>Action</th>
 
@@ -213,7 +213,7 @@
                                 <tr>
                                     <td>@item.CreatedDate</td>
                                     <td>@item.CycleID</td>
-                                    <td></td>
+                                    @*<td></td>*@
                                     <td>@item.Status</td>
 
                                     <td>
@@ -272,7 +272,7 @@
         </div>
     </div>
 </div>
-<div id="Pageing">
+@*<div id="Pageing">
     <div class="pagination-footer">
         <div class="container-fluid">
             <div class="col-md-4 item-par">
@@ -336,7 +336,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 <script>
 
@@ -509,7 +509,8 @@
 
                     for (var i = 0; i < response.length; i++) {
                         var data = response[i];
-                        target.append("<tr><td>" + data.CreatedDate + "</td><td>"
+                        alert(data.CreatedDate);
+                        target.append("<tr><td>" +data.CreatedDate + "</td><td>"
                         + data.CycleID + "</td><td>" + "" + "</td><td>"
                         + data.Status + "</td><td><ul class='action-button'><li>"
                         + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
