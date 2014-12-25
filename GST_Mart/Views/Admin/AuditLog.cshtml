@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 @using PagedList.Mvc;
 @using PagedList;
 @{
@@ -22,12 +23,12 @@
                                 <div class="col-lg-12 full-blue">Audit Log</div>
                                 <thead>
                                     <tr class="fontlg">
-                                        <td class="sel"><b>User Login</b></td>
-                                        <td  class="text-center"><b>Cycle Run</b></td>
-                                        <td class ="sel"><b>Admin Changes</b></td>
+                                        <td class="sel" onclick="showuserlogin()"><b>User Login</b></td>
+                                        <td class="text-center" onclick="showcyclerun()"><b>Cycle Run</b></td>
+                                        <td class="sel" onclick="showadminchange()"><b>Admin Changes</b></td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="userlogin">
                                     <tr class="hg90">
                                         <td>Search by User Id & IP</td>
                                         <td>Start Period&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Period</td>
@@ -36,50 +37,117 @@
                                     <tr class="hg90">
                                         <td>
                                             <div style="width:auto; display:inline-block; margin-right:5px;">
-                                                <input type="text" id="Txtsearch" /></div>
+                                                <input type="text" id="Txtsearch" />
+                                            </div>
                                             <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByIP()" value="Search" /></div>
-</td>
-                                        <td><div style="width:100%"><div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker", @style = "width:150px;" })</div>
-                                                                    <div style="width: auto; display: inline-block; margin-right: 5px;">@Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker", @style = "width:150px;" })
-                                            </div>
-                                                <div style="display:inline-block;"  class="btn4"><input type="button" onclick="SearchByDate()" value="Search" /></div>
-                                            
-                                            </div>
-</td>
+                                        </td>
                                         <td>
-                                            @Html.DropDownList("FilterUser", new List<SelectListItem>
+                                            <div style="width:100%">
+                                                <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker", @style = "width:150px;" })</div>
+                                                <div style="width: auto; display: inline-block; margin-right: 5px;">
+                                                    @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker", @style = "width:150px;" })
+                                            </div>
+                                            <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByDate()" value="Search" /></div>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("FilterUser", new List<SelectListItem>
 
                  {
                     new SelectListItem{ Text="All", Value = "All" },
                     new SelectListItem{ Text="Success", Value = "Success" },
                     new SelectListItem{ Text="Fail", Value = "Fail" }
                  })
-                                        </td>
+                                    </td>
 
-                                    </tr>
+                                </tr>
 
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
 
+                                <tbody id="cyclerun">
+                                <tr class="hg90">
+                                    <td></td>
+                                    <td>Start Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Date</td>
+                                    <td>Cycle ID</td>
+                                </tr>
+                                <tr class="hg90">
+                                    <td></td>
+                                    <td>
+                                        <div style="width:100%">
+                                            <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker1", @style = "width:150px;" })</div>
+                                            <div style="width: auto; display: inline-block; margin-right: 5px;">
+                                                @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker1", @style = "width:150px;" })
+                                            </div>
+                                            <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchCycleByDate()" value="Search" /></div>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("FilterCycle", ViewBag.CycleIdList as List<SelectListItem>)
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                                <tbody id="adminchange">
+                                <tr class="hg90">
+                                    <td>Search by User Id & IP</td>
+                                    <td>Start Period&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Period</td>
+                                    <td>Login Status</td>
+                                </tr>
+                                <tr class="hg90">
+                                    <td>
+                                        <div style="width:auto; display:inline-block; margin-right:5px;">
+                                            <input type="text" id="Txtsearch" />
+                                        </div>
+                                        <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByIP()" value="Search" /></div>
+                                    </td>
+                                    <td>
+                                        <div style="width:100%">
+                                            <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker2", @style = "width:150px;" })</div>
+                                            <div style="width: auto; display: inline-block; margin-right: 5px;">
+                                                @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker2", @style = "width:150px;" })
+                                            </div>
+                                            <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByDate()" value="Search" /></div>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("FilterUser", new List<SelectListItem>
+
+                 {
+                    new SelectListItem{ Text="All", Value = "All" },
+                    new SelectListItem{ Text="Success", Value = "Success" },
+                    new SelectListItem{ Text="Fail", Value = "Fail" }
+                 })
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
                     </div>
+
                 </div>
             </div>
-            <div class="tab-pane" id="currency"> currency </div>
-            <div class="tab-pane" id="rules"> Rules </div>
-            <div class="tab-pane" id="data"> Data </div>
-            <div class="tab-pane" id="security"> security </div>
         </div>
+        <div class="tab-pane" id="currency"> currency </div>
+        <div class="tab-pane" id="rules"> Rules </div>
+        <div class="tab-pane" id="data"> Data </div>
+        <div class="tab-pane" id="security"> security </div>
     </div>
+</div>
 </div>
 <div class="data-table">
     <div class="container-fluid">
         <div class="tax-code">
             <div class="data-tableconv">
                 <div id="EmptyMessage" style="color:red;text-align:center"></div>
-                <table id="DataTable" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                <table id="UserLoginTable" class="table table-striped table-bordered " width="100%" cellspacing="0">
                     <thead>
-                        
+
                         <tr>
                             <th>Date & Time</th>
                             <th>User ID</th>
@@ -125,7 +193,81 @@
                   </div>
 
                 </div>-->
+                <table id="cycleruntable" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                    <thead>
 
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Cycle ID</th>
+                            <th>Total Transactions</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="cyclesearchtable">
+                        @if (ViewBag.CycleList != null)
+                        {
+                            foreach (var item in ViewBag.CycleList)
+                            {
+                                <tr>
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.CycleID</td>
+                                    <td></td>
+                                    <td>@item.Status</td>
+
+                                    <td>
+                                        <ul class="action-button">
+                                            <li>@Html.ActionLink("Export", "ExportDataofCycle", new { Id = item.Id })</li>
+                                            <li>@Html.ActionLink("Delete", "DeleteCycle", new { Id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this Cycle?');" })</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+
+                </table>
+
+                <table id="AdminChangesTable" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                    <thead>
+
+                        <tr>
+                            <th>123</th>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>IP Address</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="searchtable">
+                        @if (ViewBag.AuditLog != null)
+                        {
+                            foreach (var item in ViewBag.AuditLog)
+                            {
+                                <tr>
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.UserId</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Status</td>
+                                    <td>@item.IpAddress</td>
+                                    <td>@item.Message</td>
+                                    <td>
+                                        <ul class="action-button">
+                                            <li>@Html.ActionLink("Export", "ExportData", new { Id = item.Id })</li>
+                                            <li>@Html.ActionLink("Delete", "DeleteAuditLog", new { Id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this Audit Log?');" })</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+
+                </table>
             </div>
         </div>
     </div>
@@ -139,22 +281,22 @@
                         <tr>
                             <td>
                                 @{
-                                List<SelectListItem> ddPagination = new List<SelectListItem>();
-                                for (int i = 1; i <= 10; i++)
-                                {
-                                    int j = i * 5;
-                                    int pagesize = Convert.ToInt32(TempData["pagesize"]);
-                                    if (pagesize == j)
+                                    List<SelectListItem> ddPagination = new List<SelectListItem>();
+                                    for (int i = 1; i <= 10; i++)
                                     {
-                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                        int j = i * 5;
+                                        int pagesize = Convert.ToInt32(TempData["pagesize"]);
+                                        if (pagesize == j)
+                                        {
+                                            ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                        }
+                                        else
+                                        {
+                                            ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
+                                        }
                                     }
-                                    else
-                                    {
-                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
-                                    }
-                                }
 
-                            @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();" });
+                                    @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();" });
                                 }
                             </td>
                             <td><span>Items Per Page</span></td>
@@ -162,22 +304,43 @@
                     </table>
                 </form>
             </div>
-
-            <div class="col-md-4 item-page">
-                <ul>
-                    @Html.PagedListPager((IPagedList)ViewBag.AuditLog, page => Url.Action("AuditLog", new { page, pagesize = TempData["pagesize"] }))
-                </ul>
+            <div id="UserPageing">
+                <div class="col-md-4 item-page">
+                    <ul>
+                        @Html.PagedListPager((IPagedList)ViewBag.AuditLog, page => Url.Action("AuditLog", new { page, pagesize = TempData["pagesize"] }))
+                    </ul>
+                </div>
+                <div class="col-md-3 item-of-page">
+                    <p>@(ViewBag.AuditLog.PageCount < ViewBag.AuditLog.PageNumber ? 0 : ViewBag.AuditLog.PageNumber) of @ViewBag.AuditLog.PageCount items <a href="/Admin/AuditLog"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+                </div>
             </div>
-            <div class="col-md-3 item-of-page">
-                <p>@(ViewBag.AuditLog.PageCount < ViewBag.AuditLog.PageNumber ? 0 : ViewBag.AuditLog.PageNumber) of @ViewBag.AuditLog.PageCount items <a href="/Admin/AuditLog"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+            <div id="CyclePageing">
+                <div class="col-md-4 item-page">
+                    <ul>
+                        @Html.PagedListPager((IPagedList)ViewBag.AuditLog, page => Url.Action("AuditLog", new { page, pagesize = TempData["pagesize"] }))
+                    </ul>
+                </div>
+                <div class="col-md-3 item-of-page">
+                    <p>@(ViewBag.AuditLog.PageCount < ViewBag.AuditLog.PageNumber ? 0 : ViewBag.AuditLog.PageNumber) of @ViewBag.AuditLog.PageCount items <a href="/Admin/AuditLog"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+                </div>
+            </div>
+            <div id="AdminPageing">
+                <div class="col-md-4 item-page">
+                    <ul>
+                        @Html.PagedListPager((IPagedList)ViewBag.AuditLog, page => Url.Action("AuditLog", new { page, pagesize = TempData["pagesize"] }))
+                    </ul>
+                </div>
+                <div class="col-md-3 item-of-page">
+                    <p>@(ViewBag.AuditLog.PageCount < ViewBag.AuditLog.PageNumber ? 0 : ViewBag.AuditLog.PageNumber) of @ViewBag.AuditLog.PageCount items <a href="/Admin/AuditLog"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    
 
+    //Search Audit
     function SearchByIP() {
         var userid = $("#Txtsearch").val();
         $.ajax({
@@ -206,7 +369,7 @@
                 else {
                     document.getElementById("EmptyMessage").innerHTML = "No Record Found";
                     $("#Pageing").hide();
-                  
+
                 }
             },
             error: function (ex) {
@@ -215,10 +378,6 @@
         });
         return false;
     };
-
-
-
-
     $("#FilterUser").change(function () {
         $.ajax({
             type: 'POST',
@@ -254,7 +413,6 @@
         });
         return false;
     })
-
     function SearchByDate() {
         var StartDate = $("#txtstartdatepicker").val()
         var EndDate = $("#txtenddatepicker").val()
@@ -263,7 +421,7 @@
             url: "/Admin/SearchAuditLogByDate",
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
-            async:false,
+            async: false,
             data: "{'StartDate':'" + StartDate + "','EndDate':'" + EndDate + "'}",
             success: function (response) {
                 var target = $("#searchtable");
@@ -271,7 +429,7 @@
                 if (response.length != 0) {
                     document.getElementById("EmptyMessage").innerHTML = "";
                     $("#Pageing").show();
-                    
+
                     for (var i = 0; i < response.length; i++) {
                         var data = response[i];
                         target.append("<tr><td>" + data.CreatedDate + "</td><td>"
@@ -296,21 +454,145 @@
         });
         return false;
     }
+    //Search Audit End
+    //Search Cycle
+    $("#FilterCycle").change(function () {
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/SearchCycleByCycleId",
+            dataType: 'json',
+            data: { id: $("#FilterCycle").val() },
+            success: function (response) {
+                var target = $("#cyclesearchtable");
+                target.empty();
+                if (response.length != 0) {
+                    $("#Pageing").show();
+                    document.getElementById("EmptyMessage").innerHTML = "";
+                    for (var i = 0; i < response.length; i++) {
+                        var data = response[i];
 
+                        target.append("<tr><td>" + data.CreatedDate + "</td><td>"
+                        + data.CycleID + "</td><td>" + "" + "</td><td>"
+                        + data.Status + "</td><td><ul class='action-button'><li>"
+                        + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
+                         + "</li><li class='confirmation' id=" + data.Id + " onclick='DeleteCycledata(this.id)'>" + "<a href='javascript:void(0)'>Delete</a>"
+                          + "</li></td></tr>");
+                    }
+                }
+                else {
+                    document.getElementById("EmptyMessage").innerHTML = "No Record Found";
+                    $("#Pageing").hide();
+                }
+            },
+            error: function (ex) {
+                $("#systemlist").empty();
+            }
+        });
+        return false;
+    })
+    function SearchCycleByDate() {
+        var StartDate = $("#txtstartdatepicker1").val()
+        var EndDate = $("#txtenddatepicker1").val()
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/SearchCycleByDate",
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            data: "{'StartDate':'" + StartDate + "','EndDate':'" + EndDate + "'}",
+            success: function (response) {
+                var target = $("#cyclesearchtable");
+                target.empty();
+                if (response.length != 0) {
+                    document.getElementById("EmptyMessage").innerHTML = "";
+                    $("#Pageing").show();
 
+                    for (var i = 0; i < response.length; i++) {
+                        var data = response[i];
+                        target.append("<tr><td>" + data.CreatedDate + "</td><td>"
+                        + data.CycleID + "</td><td>" + "" + "</td><td>"
+                        + data.Status + "</td><td><ul class='action-button'><li>"
+                        + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
+                         + "</li><li class='confirmation' id=" + data.Id + " onclick='DeleteCycledata(this.id)'>" + "<a href='javascript:void(0)'>Delete</a>"
+                          + "</li></td></tr>");
+                    }
+                }
+                else {
+                    $("#Pageing").hide();
+                    document.getElementById("EmptyMessage").innerHTML = "No Record Found";
+                    var target = $("#cyclesearchtable");
+                    target.empty();
+                }
+            },
+            error: function (ex) {
+                $("#systemlist").empty();
+            }
+        });
+        return false;
+    }
+    //Search Cycle End
     $(function () {
         $("#txtstartdatepicker").datepicker();
     });
     $(function () {
         $("#txtenddatepicker").datepicker();
     });
-
+    $(function () {
+        $("#txtstartdatepicker1").datepicker();
+    });
+    $(function () {
+        $("#txtenddatepicker1").datepicker();
+    });
+    $(function () {
+        $("#txtstartdatepicker2").datepicker();
+    });
+    $(function () {
+        $("#txtenddatepicker2").datepicker();
+    });
     function getdata(id) {
         if (confirm('Are you sure you wish to delete this Audit Log?')) {
             window.location = "/Admin/DeleteAuditLog/" + id;
         } else {
         }
     }
+    function DeleteCycledata(id) {
+        if (confirm('Are you sure you wish to delete this Cycle?')) {
+            window.location = "/Admin/DeleteCycle/" + id;
+        } else {
+        }
+    }
+
+    function showcyclerun() {
+        document.getElementById("userlogin").hidden = true;
+        document.getElementById("cyclerun").hidden = false;
+        document.getElementById("adminchange").hidden = true;
+        document.getElementById("cycleruntable").hidden = false; 
+        document.getElementById("UserLoginTable").hidden = true;
+        document.getElementById("AdminChangesTable").hidden = true;
+    }
+    function showuserlogin() {
+        document.getElementById("userlogin").hidden = false;
+        document.getElementById("cyclerun").hidden = true;
+        document.getElementById("adminchange").hidden = true;
+        document.getElementById("cycleruntable").hidden = true;
+        document.getElementById("UserLoginTable").hidden = false;
+        document.getElementById("AdminChangesTable").hidden = true;
+    }
+    function showadminchange() {
+        document.getElementById("userlogin").hidden = true;
+        document.getElementById("cyclerun").hidden = true;
+        document.getElementById("adminchange").hidden = false;
+        document.getElementById("cycleruntable").hidden = true;
+        document.getElementById("UserLoginTable").hidden = true;
+        document.getElementById("AdminChangesTable").hidden = false;
+    }
+    $(document).ready(function () {
+        document.getElementById("userlogin").hidden = false;
+        document.getElementById("cyclerun").hidden = true;
+        document.getElementById("adminchange").hidden = true;
+        document.getElementById("cycleruntable").hidden = true;
+        document.getElementById("AdminChangesTable").hidden = true;
+    });
 </script>
 
 

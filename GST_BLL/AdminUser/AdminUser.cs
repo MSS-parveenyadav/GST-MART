@@ -4,8 +4,10 @@ using GST_DB;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Data.EntityClient;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -1539,6 +1541,191 @@ namespace GST_BLL.AdminUser
         {
             var Username = (from p in gstmart.Users where p.AdminID == AdminId select p).FirstOrDefault();
             return Username.Name;
+        }
+
+
+        public List<SelectListItem> CycleIDList(string originalConnectionString, string Db)
+        {
+            var list = new List<SelectListItem>();
+            list.Add(new SelectListItem { Text = "All Cycle Id", Value = "All Cycle Id" });
+            try
+            {
+
+                var ecsBuilder = new EntityConnectionStringBuilder(originalConnectionString);
+                var sqlCsBuilder = new SqlConnectionStringBuilder(ecsBuilder.ProviderConnectionString)
+                {
+                    InitialCatalog = Db
+                };
+
+                var providerConnectionString = sqlCsBuilder.ToString();
+                ecsBuilder.ProviderConnectionString = providerConnectionString;
+
+                string contextConnectionString = ecsBuilder.ToString();
+                using (var db = new DbContext(contextConnectionString))
+                {
+                    var Gstmart = new GSTMARTEntities(contextConnectionString);
+                    var query = (from p in Gstmart.Cycles select p).ToList();
+                    foreach (var item in query)
+                    {
+                        list.Add(new SelectListItem { Text = item.CycleID, Value = item.CycleID });
+                    }
+                    return list;
+
+                }
+            }
+
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public List<Cycle> CycleList(string originalConnectionString, string Db)
+        {
+            var List = new List<Cycle>();
+            try
+            {
+
+                var ecsBuilder = new EntityConnectionStringBuilder(originalConnectionString);
+                var sqlCsBuilder = new SqlConnectionStringBuilder(ecsBuilder.ProviderConnectionString)
+                {
+                    InitialCatalog = Db
+                };
+
+                var providerConnectionString = sqlCsBuilder.ToString();
+                ecsBuilder.ProviderConnectionString = providerConnectionString;
+
+                string contextConnectionString = ecsBuilder.ToString();
+                using (var db = new DbContext(contextConnectionString))
+                {
+                    var Gstmart = new GSTMARTEntities(contextConnectionString);
+                    List = (from p in Gstmart.Cycles select p).ToList();
+                    return List;
+                }
+            }
+
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+
+            return List;
+        }
+
+        public List<Cycle> SearchCycleId(string parameter, string originalConnectionString, string Db)
+        {
+            var Cycles = new List<Cycle>();
+            try
+            {
+
+                var ecsBuilder = new EntityConnectionStringBuilder(originalConnectionString);
+                var sqlCsBuilder = new SqlConnectionStringBuilder(ecsBuilder.ProviderConnectionString)
+                {
+                    InitialCatalog = Db
+                };
+
+                var providerConnectionString = sqlCsBuilder.ToString();
+                ecsBuilder.ProviderConnectionString = providerConnectionString;
+
+                string contextConnectionString = ecsBuilder.ToString();
+                using (var db = new DbContext(contextConnectionString))
+                {
+                    var Gstmart = new GSTMARTEntities(contextConnectionString);
+                    if (parameter != "All Cycle Id")
+                    {
+                        Cycles = (from p in Gstmart.Cycles where p.CycleID.Contains(parameter) select p).ToList();
+                    }
+                    else
+                    {
+                        Cycles = (from p in Gstmart.Cycles select p).ToList();
+                    }
+
+                    return Cycles;
+                }
+            }
+
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+
+            return Cycles;
+
+        }
+
+        public List<Cycle> SearchCycleByDate(string StartDate, string Enddate, string originalConnectionString, string Db)
+        {
+
+
+            var Cycle = new List<Cycle>();
+            try
+            {
+
+                var ecsBuilder = new EntityConnectionStringBuilder(originalConnectionString);
+                var sqlCsBuilder = new SqlConnectionStringBuilder(ecsBuilder.ProviderConnectionString)
+                {
+                    InitialCatalog = Db
+                };
+
+                var providerConnectionString = sqlCsBuilder.ToString();
+                ecsBuilder.ProviderConnectionString = providerConnectionString;
+
+                string contextConnectionString = ecsBuilder.ToString();
+                using (var db = new DbContext(contextConnectionString))
+                {
+                    var Gstmart = new GSTMARTEntities(contextConnectionString);
+                    if (StartDate == "" && Enddate != "")
+                    {
+                        DateTime EDate = Convert.ToDateTime(Enddate);
+                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate <= EDate.Date select p).ToList();
+                    }
+                    else if (StartDate != "" && Enddate == "")
+                    {
+                        DateTime SDate = Convert.ToDateTime(StartDate);
+                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate >= SDate.Date select p).ToList();
+                    }
+                    else
+                    {
+                        DateTime EDate = Convert.ToDateTime(Enddate);
+                        DateTime SDate = Convert.ToDateTime(StartDate);
+                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate >= SDate.Date && p.CreatedDate <= EDate.Date select p).ToList();
+                    }
+                    return Cycle;
+                }
+            }
+
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+
+            return Cycle;
         }
         
 

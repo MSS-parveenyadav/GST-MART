@@ -67,7 +67,7 @@ namespace GST_Mart.Controllers
             IPAddress IP = adminuser.getipaddress();
             TempData["IP"] = IP;
        
-            Session["CompanyDB"] = companylist.Replace(" ", string.Empty);
+            Session["CompanyDB"] ="Gst"+ companylist.Replace(" ", string.Empty);
             Session["Companey"] = companylist;
 
 
@@ -1556,7 +1556,12 @@ namespace GST_Mart.Controllers
                 var List = list.ToPagedList(pageNumber, pagesize);
                 ViewBag.AuditLog = List;
                 //********Pageing End*****//
+                List<SelectListItem> CycleIdList = adminuser.CycleIDList(originalConnectionString, Session["CompanyDB"].ToString());
+                ViewBag.CycleIdList = CycleIdList;
 
+                List<Cycle> CycleList = adminuser.CycleList(originalConnectionString, Session["CompanyDB"].ToString());
+                var ListofCycle = CycleList.ToPagedList(pageNumber, pagesize);
+                ViewBag.CycleList = ListofCycle;
 
                 return View();
             }
@@ -1722,6 +1727,18 @@ namespace GST_Mart.Controllers
         {
             var result = adminuser.SearchDublicateEmail(Email,Id);
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchCycleByCycleId(string id)
+        {
+            var res = adminuser.SearchCycleId(id, originalConnectionString, Session["CompanyDB"].ToString());
+
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchCycleByDate(string StartDate, string EndDate)
+        {
+            var res = adminuser.SearchCycleByDate(StartDate, EndDate, originalConnectionString, Session["CompanyDB"].ToString());
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
        
     }
