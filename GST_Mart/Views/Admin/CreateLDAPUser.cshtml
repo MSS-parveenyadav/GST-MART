@@ -1,17 +1,8 @@
-﻿
-  
-    <title>Gstdatamart</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="~/scripts/jquery.validate.min.js"></script>
-    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
-
-    <!-- Bootstrap -->
-    <link href="~/Content/css/style.css" rel="stylesheet">
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/css/font-awesome.css" rel="stylesheet">
-    <link href="~/Content/css/lessframe.css" rel="stylesheet" />
-
-
+﻿@{
+    
+    ViewBag.Title = "GST MART";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
 @model GST_BLL.DTO.LdapUserModel
 
@@ -20,75 +11,7 @@
     @Html.ValidationSummary(true)
    
         <div id="wrapper" class="clearfix">
-            <!--[header]-->
-            <div id="header">
-                <div class="container-fluid">
-                    <div id="logo">
-                        <a href="#">
-                            <img src="/Content/images/logo.png" alt="logo">
-                        </a>
-                    </div>
-                    <div class="admin-login">
-                        <div class="admin-wel">
-                            <ul>
-                                <li>Welcome <a href="#">Administrator</a> </li>
-                                <li>01 June <strong>2014,</strong> 10:00 AM</li>
-                            </ul>
-                            <!--<span>Company ID </span> -->
-                        </div>
-                        @*  <div class="login">  </div>*@
-
-                        <div class="login">
-
-                            <a href="#" onclick="Logout();">Logout <i class="fa fa-power-off"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!--[nav-bar]-->
-                <nav class="navbar navbar-default" role="navigation">
-
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="/Admin/CreateUser"><i class="glyphicon glyphicon-home"></i>Dashboard</a></li>
-                            @*<li><a href="purchasing Data.html"><i class="fa fa-line-chart"></i>Reports</a></li>
-                                <li><a href="gaf-file.html"><i class="fa fa-file-archive-o"></i>GAF File</a></li>*@
-                            <li><a href="/Admin/IpAddress"><i class="fa fa-cog"></i>Settings</a></li>
-                        </ul>
-                        <div class="form-group">
-
-                            <ol>
-
-
-                                <li>
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </li>
-                            </ol>
-                        </div>
-                        <a href="#" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>
-                    </div>
-                </nav>
-                <!--[/nav-bar]-->
-            </div>
-            <!--[/header]-->
-            <!--[]-->
-
-
-            <div class="data-feed">
-                <ul class="nav nav-tabs">
-                    <li>@Html.ActionLink("Ip Address", "IpAddress", "Admin")</li>
-                    <li>@Html.ActionLink("Admin Path", "AdminPath", "Admin")</li>
-                    <li><a href="/Admin/CreateUser">Create User</a></li>
-                    <li><a href="/Admin/CreateLDAPUser">Create LDAP User</a></li>
-                    <li><a href="/Admin/TAXCODE">TAX CODE</a></li>
-                </ul>
-            </div>
-
-
+           
 
             <form action="" method="get" class="serch">
                 <div id="centre-coloum">
@@ -254,20 +177,7 @@
 
                 return ret;
             }
-            //function vaildateport() {
-
-            //    var Domainname = document.getElementById("Domainname").value;
-            //    if (Domainname.value.c) {
-
-            //        return true;
-            //    }
-            //    else {
-            //        document.getElementById("ValidateDomainname").innerHTML = " Enter valid Domain Name";
-                  
-            //        return false;
-            //    }
-            //}
-
+ 
         </script>
 
 }

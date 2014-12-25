@@ -1,122 +1,32 @@
 ﻿@model GST_BLL.DTO.AdminUserModel
-
-
 @using PagedList.Mvc;
 @using PagedList;
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gst Mart</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="~/scripts/jquery.validate.min.js"></script>
-    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
-
-    <!-- Bootstrap -->
-    <link href="~/Content/css/style.css" rel="stylesheet">
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/css/font-awesome.css" rel="stylesheet">
-    <link href="~/Content/css/lessframe.css" rel="stylesheet" />
-    <style>
-        .validation {
-            color: red !important;
-        }
-    </style>
-</head>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
 
 
-    <body>
+
         <div id="wrapper" class="clearfix">
 @using (Html.BeginForm("CreateUser", "Admin", FormMethod.Post, new { id = "submitForm" }))
 {
+    
+    
+    @section CompanyList
+            {
+
+    @Html.ListBoxFor(m => m.Companies, Model.listcompaney, new { size = 2, @onclick = "ValidationRefresh(this.id)" })
+            <p id="ValidateCompanies" style="color: gray"></p>
+}
+
+
     @*@Html.AntiForgeryToken()*@
     @Html.ValidationSummary(true)
 
-            <!--[header]-->
-            <div id="header">
-                <div class="container-fluid">
-                    <div id="logo">
-                        <a href="#">
-                            <img src="/Content/images/logo.png" alt="logo">
-                        </a>
-                    </div>
-                    <div class="admin-login">
-                        <div class="admin-wel">
-                            <ul>
-                                <li>Welcome <a href="#">@Session["AdminUserName"].ToString()</a> </li>
-                                <li><strong>@Session["LoginTime"].ToString()</strong></li>
-                            </ul>
-                            <!--<span>Company ID </span> -->
-                        </div>
-                        @*  <div class="login">  </div>*@
-                        
-                        <div class="login">
-
-                            <a href="#" onclick="Logout();">Logout <i class="fa fa-power-off"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!--[nav-bar]-->
-                <nav class="navbar navbar-default" role="navigation">
-
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="/Admin/CreateUser"><i class="glyphicon glyphicon-home"></i>Dashboard</a></li>
-                            <li><a href="~/Reports/ReportViewers/13-TVO_SGGR.aspx"><i class="fa fa-line-chart"></i>Reports</a></li>
-                              @*<li><a href="gaf-file.html"><i class="fa fa-file-archive-o"></i>GAF File</a></li>*@
-                            <li><a href="/Admin/IpAddress"><i class="fa fa-cog"></i>Settings</a></li>
-                            @*<li><a href="/Admin/CurrencyExchange"><i class="fa fa-cog"></i>Currency Exchange</a></li>*@
-                        </ul>
-                        <div class="form-group">
-                            <p id="ValidateCompanies" style="color: white"></p>
-                            <ol>
-                               
-                                <li>
-                                       @Html.ListBoxFor(m => m.Companies, Model.listcompaney, new { size = 2, @onclick = "ValidationRefresh(this.id)" })
-                                </li>
-
-                                @*<li>
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </li>*@
-                            </ol>
-                        </div>
-                        <a href="#" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>
-                    </div>
-                </nav>
-                <!--[/nav-bar]-->
-            </div>
-            <!--[/header]-->
-            <!--[]-->
-
-
-            <div class="data-feed">
-                @*<ul class="nav nav-tabs" role="tablist" id="myTab">*@
-                <ul class="nav nav-tabs">
-                    <li>@Html.ActionLink("Ip Address", "IpAddress", "Admin")</li>
-                    <li>@Html.ActionLink("Admin Path", "AdminPath", "Admin")</li>
-                    @*<li><a href="#profile" role="tab" data-toggle="tab"> Data Import</a></li>
-                      <li><a href="#profile" role="tab" data-toggle="tab"> Security</a></li>*@
-                    <li><a href="/Admin/CreateUser">Create User</a></li>
-                    <li><a href="/Admin/CreateLDAPUser">Create LDAP User</a></li>
-                    <li><a href="/Admin/TAXCODE">TAX CODE</a></li>
-                    <li><a href="/Admin/SaveSchedualr">Save scheduler</a></li>
-                    <li><a href="/Admin/CurrencyExchange">Currency Exchange</a></li>
-                
-                    <li><a href="/Admin/AuditLog">Audit Log</a></li>
-                    <li><a href="/Admin/Configuration">Configuration</a></li>
-                </ul>
-            </div>
+        
+     
             <div class="container-fluid">
                 <div class="serch">
                     <div id="ErrorMessages" style="color: red;">@TempData["ErrorMessage"]</div><div id="SuccessMessages" style="color: green; ">@TempData["SuccessMessage"]</div>
@@ -201,7 +111,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
                             <div class=" col-lg-12 sec-login">
-                                <h1>User Premission <span class="glyphicon glyphicon-question-sign"></span></h1>
+                                <h1>User Permission <span class="glyphicon glyphicon-question-sign"></span></h1>
                             </div>
 
 
@@ -321,7 +231,7 @@
                                 <th>Name  </th>
                                 <th>Status </th>
                                 <th>Last Login Date </th>
-                                <th>Premission  </th>
+                                <th>Permission  </th>
                                 <th>Action  </th>
 
                             </tr>
@@ -642,22 +552,11 @@
                     control.classList.remove('validation');
                 }
 
-                function stringlength(id)  
-                {   
-
-                    
-                }
-
-
-              
-
             </script>
 
 
 
-            <div id="footer">
-                <p>copyright 2013.All Right reserved.</p>
-            </div>
+      
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
@@ -806,5 +705,4 @@
 
 
         </script>
-    </body>
-</html>
+ 
