@@ -24,6 +24,7 @@ using GST_BLL.LdapAuthentication;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Web.UI;
+using GST_BLL.AuthorizedUser;
 
 namespace GST_Mart.Controllers
 {
@@ -1643,6 +1644,13 @@ namespace GST_Mart.Controllers
 
         public ActionResult Configuration()
         {
+            List<SelectListItem> DateFormat = new List<SelectListItem>();
+            List<SelectListItem> TimeFormat = new List<SelectListItem>();
+
+            DateFormat = adminuser.getdateformetlist();
+            TimeFormat = adminuser.gettimeformetlist();
+            ViewBag.DateFormat = DateFormat;
+            ViewBag.TimeFormat = TimeFormat;
             return View();
         }
 
@@ -1651,11 +1659,19 @@ namespace GST_Mart.Controllers
         {
             if (Session["AdminLoginStatus"] == "LoggedIn")
             {
+                List<SelectListItem> DateFormat = new List<SelectListItem>();
+                List<SelectListItem> TimeFormat = new List<SelectListItem>();
+
+                DateFormat = adminuser.getdateformetlist();
+                TimeFormat = adminuser.gettimeformetlist();
+                ViewBag.DateFormat = DateFormat;
+                ViewBag.TimeFormat = TimeFormat;
+
                 var filename = fileUpload.FileName;
                
                 string fileext = ".gif;.jpeg;.png";
                 var allowedExtensions = new[] { ".gif", ".jpeg", ".jpg", ".png" };
-                var extension = Path.GetExtension(fileUpload.FileName);
+                var extension = Path.GetExtension(fileUpload.FileName.ToLower());
                 if (allowedExtensions.Contains(extension))
                 {                
                     var filepath = Server.MapPath("/content/logo/" + Session["Companey"].ToString());
@@ -1740,6 +1756,76 @@ namespace GST_Mart.Controllers
             var res = adminuser.SearchCycleByDate(StartDate, EndDate, originalConnectionString, Session["CompanyDB"].ToString());
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult ExportDataofCycle(int Id)
+        {
+            Cycle Cycle = adminuser.FindCycleById(Id, originalConnectionString, Session["CompanyDB"].ToString());
+
+
+            var products = new System.Data.DataTable("teste");
+            products.Columns.Add("S.No", typeof(int));
+            products.Columns.Add("CreatedDate", typeof(string));
+            products.Columns.Add("CycleID", typeof(string));
+            products.Columns.Add("Status", typeof(string));
+
+
+            products.Rows.Add(1, Cycle.CreatedDate,Cycle.CycleID, Cycle.Status);
+
+
+            var grid = new GridView();
+            grid.DataSource = products;
+            grid.DataBind();
+
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=CycleRunFile.xls");
+            Response.ContentType = "application/ms-excel";
+
+            Response.Charset = "";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+
+            grid.RenderControl(htw);
+
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
+
+
+            return RedirectToAction("AuditLog");
+
+
+        }
+
+        [HttpGet]
+        public ActionResult CycleErrors(int Id)
+        {
+            AuthorizedUser user = new AuthorizedUser();
+
+            //To get Data Type Conversion Errors
+            var data = user.ReadRrrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.purchaseError = user.ReadPurchaseRrrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.supplyError = user.ReadSupplyRrrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.companyError = user.ReadCompanyRrrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.footerError = user.ReadFooterRrrors(Id.ToString(), Session["Companey"].ToString());
+            //To get duplicate records
+            ViewBag.purchase = user.ReadPurchaseDuplicateErrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.supply = user.ReadSupplyDuplicateErrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.ledger = user.ReadDuplicateLedgerErrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.comopany = user.ReadCompanyDuplicateErrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.footer = user.ReadFooterDuplicateErrors(Id.ToString(), Session["Companey"].ToString());
+            //To get missing(Required Filed Validation Failed) records
+            ViewBag.MissingPurchase = user.ReadPurchaseMissingErrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.MissingLedger = user.ReadMissingLedgerErrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.MissingSupply = user.ReadSupplyMissingErrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.MissingCompany = user.ReadCompanyMissingErrors(Id.ToString(), Session["Companey"].ToString());
+            ViewBag.MissingFooter = user.ReadFooterMissingErrors(Id.ToString(), Session["Companey"].ToString());
+
+
+            return View(data);
+
+        }
+
        
     }
 }

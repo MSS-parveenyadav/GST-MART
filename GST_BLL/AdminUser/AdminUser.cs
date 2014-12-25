@@ -38,6 +38,18 @@ namespace GST_BLL.AdminUser
             return list;
 
         }
+        public List<SelectListItem> gettimeformetlist()
+        {
+
+            var list = new List<SelectListItem>();
+            list.Add(new SelectListItem { Text = "Please Select", Value = "" });
+            list.Add(new SelectListItem { Text = "hh:mm:ss tt", Value = "hh:mm:ss tt" });
+            list.Add(new SelectListItem { Text = "HH:mm:ss tt", Value = "HH:mm:ss tt" });
+            list.Add(new SelectListItem { Text = "hh:mm tt", Value = "hh:mm tt" });
+            list.Add(new SelectListItem { Text = "HH:mm tt", Value = "HH:mm tt" });
+            return list;
+
+        }
 
         public string SearchDublicateEmail(string Email,int Id)
         {
@@ -1726,6 +1738,46 @@ namespace GST_BLL.AdminUser
             }
 
             return Cycle;
+        }
+
+        public Cycle FindCycleById(int Id, string originalConnectionString, string Db)
+        {
+            var Cycles = new Cycle();
+            try
+            {
+
+                var ecsBuilder = new EntityConnectionStringBuilder(originalConnectionString);
+                var sqlCsBuilder = new SqlConnectionStringBuilder(ecsBuilder.ProviderConnectionString)
+                {
+                    InitialCatalog = Db
+                };
+
+                var providerConnectionString = sqlCsBuilder.ToString();
+                ecsBuilder.ProviderConnectionString = providerConnectionString;
+
+                string contextConnectionString = ecsBuilder.ToString();
+                using (var db = new DbContext(contextConnectionString))
+                {
+                    var Gstmart = new GSTMARTEntities(contextConnectionString);
+                    Cycles = (from p in Gstmart.Cycles where p.Id == Id select p).FirstOrDefault();
+
+                    return Cycles;
+                }
+            }
+
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+
+            return Cycles;
+
         }
         
 
