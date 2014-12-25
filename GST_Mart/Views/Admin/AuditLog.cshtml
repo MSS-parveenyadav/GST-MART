@@ -23,9 +23,9 @@
                                 <div class="col-lg-12 full-blue">Audit Log</div>
                                 <thead>
                                     <tr class="fontlg">
-                                        <td class="sel" onclick="showuserlogin()"><b>User Login</b></td>
-                                        <td class="text-center" onclick="showcyclerun()"><b>Cycle Run</b></td>
-                                        <td class="sel" onclick="showadminchange()"><b>Admin Changes</b></td>
+                                        <td class="sel" id="User" onclick="showuserlogin()"><b>User Login</b></td>
+                                        <td class="text-center" id="Cycle" onclick="showcyclerun()"><b>Cycle Run</b></td>
+                                        <td class="sel" id="Admin" onclick="showadminchange()"><b>Admin Changes</b></td>
                                     </tr>
                                 </thead>
                                 <tbody id="userlogin">
@@ -220,6 +220,7 @@
                                         <ul class="action-button">
                                             <li>@Html.ActionLink("Export", "ExportDataofCycle", new { Id = item.Id })</li>
                                             <li>@Html.ActionLink("Delete", "DeleteCycle", new { Id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this Cycle?');" })</li>
+                                            <li>@Html.ActionLink("View", "CycleErrors", new { Id = item.CycleID })</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -470,13 +471,15 @@
                     document.getElementById("EmptyMessage").innerHTML = "";
                     for (var i = 0; i < response.length; i++) {
                         var data = response[i];
-
+                        var Id = data.CycleID;
                         target.append("<tr><td>" + data.CreatedDate + "</td><td>"
-                        + data.CycleID + "</td><td>" + "" + "</td><td>"
+                        + data.CycleID + "</td><td>"
                         + data.Status + "</td><td><ul class='action-button'><li>"
                         + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
                          + "</li><li class='confirmation' id=" + data.Id + " onclick='DeleteCycledata(this.id)'>" + "<a href='javascript:void(0)'>Delete</a>"
-                          + "</li></td></tr>");
+                          + "</li><li>"
+                        + "<a href='/Admin/CycleErrors/" + Id + "'>View</a>"
+                         + "</li></td></tr>");
                     }
                 }
                 else {
@@ -509,13 +512,15 @@
 
                     for (var i = 0; i < response.length; i++) {
                         var data = response[i];
-                        alert(data.CreatedDate);
+                        var Id = data.CycleID;
                         target.append("<tr><td>" +data.CreatedDate + "</td><td>"
-                        + data.CycleID + "</td><td>" + "" + "</td><td>"
+                        + data.CycleID + "</td><td>"
                         + data.Status + "</td><td><ul class='action-button'><li>"
                         + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
                          + "</li><li class='confirmation' id=" + data.Id + " onclick='DeleteCycledata(this.id)'>" + "<a href='javascript:void(0)'>Delete</a>"
-                          + "</li></td></tr>");
+                          + "</li><li>"
+                        + "<a href='/Admin/CycleErrors/" + Id + "'>View</a>"
+                         + "</li></td></tr>");
                     }
                 }
                 else {
@@ -589,11 +594,18 @@
     }
     $(document).ready(function () {
         document.getElementById("userlogin").hidden = false;
+        $("#User").addClass("activeclass");
         document.getElementById("cyclerun").hidden = true;
         document.getElementById("adminchange").hidden = true;
         document.getElementById("cycleruntable").hidden = true;
         document.getElementById("AdminChangesTable").hidden = true;
     });
 </script>
+<style>
+    .activeclass {
+        background: url("/Content/images/hover.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+        color: #f8faff;
+    }
+</style>
 
 

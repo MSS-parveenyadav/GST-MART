@@ -66,22 +66,23 @@
                           <p id="Validatelogoupload" style="color:red"></p>
                         </td>
                     </tr>
-                    <tr>
-                      <td class="add-tax">Date Format </td>
-                      <td>
-                          
-                          @Html.TextBoxFor(model => model.Dateformat, "", new { placeholder = "Date Format", @onchange = "ValidationRefresh(this.id)" })
-                          <p id="ValidateDateformat" style="color:red"></p>
-                          
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="add-tax">Time Format </td>
-                      <td>@Html.TextBoxFor(model => model.Timeformat, "", new { placeholder = "Time Format", @onchange = "ValidationRefresh(this.id)" })
-                          <p id="ValidateTimeformat" style="color:red"></p>
+                      <tr>
+                          <td class="add-tax">Date Format </td>
+                          <td>
+
+                              @Html.DropDownListFor(model => model.Dateformat, ViewBag.DateFormat as List<SelectListItem>, new { @onchange = "ValidationRefresh(this.id)" })
+                              <p id="ValidateDateformat" style="color:red"></p>
 
                           </td>
-                    </tr>
+                      </tr>
+                      <tr>
+                          <td class="add-tax">Time Format </td>
+                          <td>
+                              @Html.DropDownListFor(model => model.Timeformat, ViewBag.TimeFormat as List<SelectListItem>, new { @onchange = "ValidationRefresh(this.id)" })
+                          <p id="ValidateTimeformat" style="color:red"></p>
+
+                      </td>
+                  </tr>
                     <tr>
                       <td class="add-tax">Database Address </td>
                       <td>@Html.TextBoxFor(model => model.databaseaddress, "", new { placeholder = "Database Address", @onchange = "ValidationRefresh(this.id)" })

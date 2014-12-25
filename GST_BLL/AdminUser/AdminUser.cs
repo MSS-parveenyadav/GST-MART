@@ -38,6 +38,18 @@ namespace GST_BLL.AdminUser
             return list;
 
         }
+        public List<SelectListItem> gettimeformetlist()
+        {
+
+            var list = new List<SelectListItem>();
+            list.Add(new SelectListItem { Text = "Please Select", Value = "" });
+            list.Add(new SelectListItem { Text = "hh:mm:ss tt", Value = "hh:mm:ss tt" });
+            list.Add(new SelectListItem { Text = "HH:mm:ss tt", Value = "HH:mm:ss tt" });
+            list.Add(new SelectListItem { Text = "hh:mm tt", Value = "hh:mm tt" });
+            list.Add(new SelectListItem { Text = "HH:mm tt", Value = "HH:mm tt" });
+            return list;
+
+        }
 
         public string SearchDublicateEmail(string Email,int Id)
         {
