@@ -318,7 +318,7 @@ namespace GST_BLL.AdminUser
         public void UpdateAdminUser(AdminUserModel model, string Createcycle, string Accesssetting, string Downloaddata, string Printreport, int id,IEnumerable<string> Companies, string originalConnectionString, string DbName)
         {
 
-
+            string status = "";
             //var ecsBuilder = new EntityConnectionStringBuilder(originalConnectionString);
             //var sqlCsBuilder = new SqlConnectionStringBuilder(ecsBuilder.ProviderConnectionString)
             //{
@@ -333,6 +333,17 @@ namespace GST_BLL.AdminUser
             //{
             //    var Gstmart = new GSTMARTEntities(contextConnectionString);
                 var Gstmart = new GSTMARTEntities();
+
+                status = (from p in gstmart.Users where p.UserId == model.UserId select p.Status).SingleOrDefault();
+                if(status=="Active")
+                {
+                    status = "Active";
+                }
+                 else
+                {
+                    status = "suspend";
+                }
+
 
                 var query = (from p in gstmart.CompanyUsers where p.UID == model.UserId select p).ToList();
                 foreach(var item in query)
@@ -351,7 +362,7 @@ namespace GST_BLL.AdminUser
                 user.Mobilenumber = model.MobileNumber;
                 user.Usertype = "Normal User";
                 user.Createdate = DateTime.Now.ToString();
-                user.Status = "Active";
+                user.Status = status;
                 user.AdminID = "NA";
 
                 foreach (var item in Companies)
@@ -1462,6 +1473,8 @@ namespace GST_BLL.AdminUser
             
             
             var Audits =new List<AuditLog>();
+         
+
             if(StartDate=="" && Enddate!="")
             {
                 DateTime EDate = Convert.ToDateTime(Enddate);
@@ -1475,7 +1488,9 @@ namespace GST_BLL.AdminUser
             else
             {
                 DateTime EDate = Convert.ToDateTime(Enddate);
+                EDate = EDate.AddHours(24);
                 DateTime SDate = Convert.ToDateTime(StartDate);
+            
                 Audits = (from p in gstmart.AuditLogs where p.CreatedDate >= SDate.Date && p.CreatedDate <= EDate.Date select p).ToList();
             }
             var AuditmodelList = new List<AuditLogModel>();
@@ -1719,6 +1734,7 @@ namespace GST_BLL.AdminUser
                     else
                     {
                         DateTime EDate = Convert.ToDateTime(Enddate);
+                        EDate = EDate.AddHours(24);
                         DateTime SDate = Convert.ToDateTime(StartDate);
                         Cycle = (from p in Gstmart.Cycles where p.CreatedDate >= SDate.Date && p.CreatedDate <= EDate.Date select p).ToList();
                     }
