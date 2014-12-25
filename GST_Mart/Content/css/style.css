@@ -1338,3 +1338,18 @@ color: white;
 } 
 
 }
+#imgtransactiontype
+{
+    width:47px !important;
+   cursor:pointer;
+}
+
+#imgcustomcode
+{
+ cursor:pointer;
+}
+
+/*fieldset, img {
+
+    width:47px;
+}*/

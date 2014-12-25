@@ -109,8 +109,9 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/Admin/CreateUser"><i class="glyphicon glyphicon-home"></i>Dashboard</a></li>
                         <li><a href="~/Reports/ReportViewers/13-TVO_SGGR.aspx"><i class="fa fa-line-chart"></i>Reports</a></li>
+                        <li><a href="/Admin/CurrencyExchange"><i class="fa fa-dollar"></i>Currency</a></li>
+                        <li><a href="/Admin/TAXCODE"><i class="fa fa-tags"></i>Tax Code</a></li>
                         <li><a href="/Admin/IpAddress"><i class="fa fa-cog"></i>Settings</a></li>
-                        @*<li><a href="/Admin/CurrencyExchange"><i class="fa fa-cog"></i>Currency Exchange</a></li>*@
                     </ul>
                 </div>
 
@@ -150,11 +151,12 @@
         <!--[/header]-->
         <!--[]-->
         <div class="data-feed">
-            <ul class="nav nav-tabs">
+            @RenderSection("Submenu",false)
+
+            @*<ul class="nav nav-tabs">
+
                 <li>@Html.ActionLink("Ip Address", "IpAddress", "Admin")</li>
                 <li>@Html.ActionLink("File Location", "AdminPath", "Admin")</li>
-                @*<li><a href="#profile" role="tab" data-toggle="tab"> Data Import</a></li>
-                <li><a href="#profile" role="tab" data-toggle="tab"> Security</a></li>*@
                 <li><a href="/Admin/CreateUser">Create User</a></li>
                 <li><a href="/Admin/CreateLDAPUser">Create LDAP User</a></li>
                 <li><a href="/Admin/TAXCODE">TAX CODE</a></li>
@@ -163,7 +165,7 @@
                 <li><a href="/Admin/AuditLog">Audit Log</a></li>
                 <li><a href="/Admin/Configuration">Configuration</a></li>
                
-            </ul>
+            </ul>*@
         </div>
 
       

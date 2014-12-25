@@ -6,6 +6,13 @@
 @using (Html.BeginForm("AdminPath", "Admin", FormMethod.Post))
 {
     @*@Html.AntiForgeryToken()*@
+    
+    @section Submenu
+{
+
+        @Html.Partial("~/Views/_Partial/_Setting.cshtml")
+    }
+
     @Html.ValidationSummary(true)
     <div class="container-fluid">
         <div class="tab-pane active" id="home">

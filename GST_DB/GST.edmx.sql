@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/24/2014 18:12:17
--- Generated from EDMX file: D:\Code\GST_Mart\dev\GST_DB\GST.edmx
+-- Date Created: 12/25/2014 17:39:07
+-- Generated from EDMX file: D:\Code\Git\gst-mart\GST_DB\GST.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -26,8 +26,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CompanyIndustry]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Industries] DROP CONSTRAINT [FK_CompanyIndustry];
 GO
-IF OBJECT_ID(N'[dbo].[FK_CurrencySchedularCompany]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Companies] DROP CONSTRAINT [FK_CurrencySchedularCompany];
+IF OBJECT_ID(N'[dbo].[FK_CompanyCurrencySchedular]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CurrencySchedulars] DROP CONSTRAINT [FK_CompanyCurrencySchedular];
 GO
 
 -- --------------------------------------------------
@@ -163,7 +163,8 @@ CREATE TABLE [dbo].[LDAPs] (
     [PortNumber] nvarchar(max)  NOT NULL,
     [UserId] nvarchar(max)  NOT NULL,
     [Password] nvarchar(max)  NOT NULL,
-    [CompanyId] nvarchar(max)  NOT NULL
+    [CompanyId] nvarchar(max)  NOT NULL,
+    [CNBN] nvarchar(max)  NOT NULL
 );
 GO
 

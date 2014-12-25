@@ -645,7 +645,9 @@ namespace GST_BLL.AdminUser
             ldap.PortNumber = model.Portnumber;
             ldap.UserId = model.UserId;
             ldap.Password = model.password;
+            ldap.CNBN = model.cnbn;
             gstmart.LDAPs.Add(ldap);
+
            int res= gstmart.SaveChanges();
             if(res==1)
             {
@@ -662,7 +664,7 @@ namespace GST_BLL.AdminUser
         {
             var Gstmart = new GSTMARTEntities();
 
-            var query = (from p in Gstmart.LDAPs select new { Id = p.Id, CompanyId = p.CompanyId, DomainName = p.DomianName, PortNmber = p.PortNumber, UserId = p.UserId, Password = p.Password }).OrderByDescending(m=>m.Id).ToList();
+            var query = (from p in Gstmart.LDAPs select new { Id = p.Id,CNBN=p.CNBN, CompanyId = p.CompanyId, DomainName = p.DomianName, PortNmber = p.PortNumber, UserId = p.UserId, Password = p.Password }).OrderByDescending(m=>m.Id).ToList();
             var list = new List<LdapUserModel>();
             foreach (var item in query)
             {
@@ -673,6 +675,7 @@ namespace GST_BLL.AdminUser
                 model.Portnumber = item.PortNmber;
                 model.UserId = item.UserId;
                 model.password = item.Password;
+                model.cnbn = item.CNBN;
                 list.Add(model);
             }
             return list;
@@ -683,7 +686,7 @@ namespace GST_BLL.AdminUser
         {
             var Gstmart = new GSTMARTEntities();
 
-            var query = (from p in Gstmart.LDAPs where p.Id == id select new { Id = p.Id, CompanyId = p.CompanyId, DomainName = p.DomianName, PortNmber = p.PortNumber, UserId = p.UserId, Password = p.Password }).ToList();
+            var query = (from p in Gstmart.LDAPs where p.Id == id select new { Id = p.Id,cnbn=p.CNBN, CompanyId = p.CompanyId, DomainName = p.DomianName, PortNmber = p.PortNumber, UserId = p.UserId, Password = p.Password }).ToList();
             var list = new List<LdapUserModel>();
             foreach (var item in query)
             {
@@ -694,6 +697,7 @@ namespace GST_BLL.AdminUser
                 model.Portnumber = item.PortNmber;
                 model.UserId = item.UserId;
                 model.password = item.Password;
+                model.cnbn = item.cnbn;
                 list.Add(model);
             }
             return list;
@@ -707,6 +711,9 @@ namespace GST_BLL.AdminUser
             ldap.Password = model.password;
             ldap.PortNumber = model.Portnumber;
             ldap.DomianName = model.Domainname;
+            ldap.CNBN = model.cnbn;
+
+
             Gstmart.Entry(ldap).State = System.Data.EntityState.Modified;
            int res= Gstmart.SaveChanges();
             if(res==1)

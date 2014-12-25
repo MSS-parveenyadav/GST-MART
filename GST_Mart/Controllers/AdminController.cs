@@ -973,16 +973,11 @@ namespace GST_Mart.Controllers
                 int id = model.Id;
                 if (id != null && id != 0)
                 {
-                    ldapuser.Id = model.Id;
-                    ldapuser.UserId = model.UserId;
-                    ldapuser.Domainname = model.Domainname;
-                    ldapuser.ComapanyId = model.ComapanyId;
-                    ldapuser.password = model.password;
-                    ldapuser.Portnumber = model.Portnumber;
-                 var res=adminuser.UpdateLDAPUser(ldapuser);
+
+                    var res = adminuser.UpdateLDAPUser(model);
                  if (res == true)
                  {
-                     TempData["Sucess"] = "User Updated Sucessfully";
+                     TempData["Sucess"] = "User Updated Successfully";
                      return RedirectToAction("CreateLDAPUser");
                  }
                     else
@@ -994,16 +989,11 @@ namespace GST_Mart.Controllers
                 }
                 else
                 {
-                    LdapUserModel ldapusermodel = new LdapUserModel();
-                    ldapusermodel.ComapanyId = model.ComapanyId;
-                    ldapusermodel.Domainname = model.Domainname;
-                    ldapusermodel.Portnumber = model.Portnumber;
-                    ldapusermodel.UserId = model.UserId;
-                    ldapusermodel.password = model.password;
-                   var res= adminuser.CreateLdapUser(ldapusermodel);
+
+                    var res = adminuser.CreateLdapUser(model);
                    if (res == true)
                    {
-                       TempData["Sucess"] = "User Created Sucessfully";
+                       TempData["Sucess"] = "User Created Successfully";
                        return RedirectToAction("CreateLDAPUser");
                    }
                    else
@@ -1036,10 +1026,11 @@ namespace GST_Mart.Controllers
                         model.password = item.password;
                         model.Portnumber = item.Portnumber;
                         model.UserId = item.UserId;
-
+                        model.cnbn = item.cnbn;
                     }
                 }
-
+                var ldapuserlist = adminuser.GetLDAPUserList();
+                ViewBag.LDAPUSERS = ldapuserlist;
                 return View("CreateLDAPUser", model);
             }
             else
@@ -1055,7 +1046,7 @@ namespace GST_Mart.Controllers
                 var result = adminuser.DeleteLDAPUser(id);
                 if (result == true)
                 {
-                    TempData["Sucess"] = "User Deleted Sucessfully";
+                    TempData["Sucess"] = "User Deleted Successfully";
                     return RedirectToAction("CreateLDAPUser");
                 }
                 else
@@ -1118,7 +1109,7 @@ namespace GST_Mart.Controllers
 
                     if (res == true)
                     {
-                        TempData["Sucess"] = "Tax Code Update Sucessfully.";
+                        TempData["Sucess"] = "Tax Code Update Successfully.";
                         return RedirectToAction("TAXCODE");
                     }
                     else
@@ -1133,7 +1124,7 @@ namespace GST_Mart.Controllers
                     var res = adminuser.CreateTaxcode(model, systemlist);
                     if (res == true)
                     {
-                        TempData["Sucess"] = "Tax Code created Sucessfully.";
+                        TempData["Sucess"] = "Tax Code created Successfully.";
                         return RedirectToAction("TAXCODE");
                     }
 
@@ -1274,7 +1265,7 @@ namespace GST_Mart.Controllers
                 var res = adminuser.DeleteTaxModel(id);
                 if (res == true)
                 {
-                    TempData["Sucess"] = "Tax Code Delete Sucessfully.";
+                    TempData["Sucess"] = "Tax Code Delete Successfully.";
                     return RedirectToAction("TAXCODE");
                 }
                 else
@@ -1698,7 +1689,7 @@ namespace GST_Mart.Controllers
                     if (res == true)
                     {
                         ModelState.Clear();
-                        TempData["Sucess"] = "Configuration Details insert sucessfully.";
+                        TempData["Sucess"] = "Configuration Details insert Successfully.";
                         return View("Configuration");
                     }
                     else

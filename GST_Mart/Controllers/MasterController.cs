@@ -68,7 +68,7 @@ namespace GST_Mart.Controllers
 
                     Session["MasterLoginStatus"] = "LoggedIn";
 
-                    ViewData["Sucess"] = "Login Sucessfully";
+                    ViewData["Sucess"] = "Login Successfully";
 
                     return RedirectToAction("CreateCompany");
                 }
@@ -112,7 +112,7 @@ namespace GST_Mart.Controllers
                 }
                 if (DataStatus != "")
                 {
-                    if (DataStatus == "Company Deleted Sucessfully")
+                    if (DataStatus == "Company Deleted Successfully")
                     {
                         TempData["DeleteSucess"] = DataStatus;
                     }
@@ -209,7 +209,7 @@ namespace GST_Mart.Controllers
                 var result = masteradmin.DeleteCompany(Companyid);
                 if (result == true)
                 {
-                    DataStatus = "Company Deleted Sucessfully";
+                    DataStatus = "Company Deleted Successfully";
                 }
                 return RedirectToAction("CreateCompany", new { page });
             }
@@ -257,7 +257,7 @@ namespace GST_Mart.Controllers
                 if (compid != "")
                 {
                     result = masteradmin.UpdateCompany(CompaneyId, CompneyName, compid, Description, Remarks);
-                    DataStatus = "Data Updated Succesfully";
+                    DataStatus = "Data Updated Successfully";
                 }
                 else
                 {
@@ -284,7 +284,7 @@ namespace GST_Mart.Controllers
                                 {
                                     return Json(Exception, JsonRequestBehavior.AllowGet);
                                 }
-                                DataStatus = "Data Inserted Succesfully";
+                                DataStatus = "Data Inserted Successfully";
                             }
                         }
                         else
@@ -463,7 +463,7 @@ namespace GST_Mart.Controllers
                 {
                     result = masteradmin.UpdateAdmin(AdminID, AdminName, Password, Email, Mobile, query.Id);
                     DataStatus = result;
-                    if(DataStatus=="Admin Data Updated Succesfully")
+                    if(DataStatus=="Admin Data Updated Successfully")
                     {
                         Mail Mailmessage = new Mail();
                         string body = "Dear : " + AdminName + "<br/><br/>Your Updated Password is : " + Password + "";
@@ -486,7 +486,7 @@ namespace GST_Mart.Controllers
                             {
                                 result = masteradmin.CreateAdmin(AdminID, AdminName, Password, Email, Mobile);
                                 DataStatus = result;
-                                if (DataStatus == "Admin Data Inserted Succesfully")
+                                if (DataStatus == "Admin Data Inserted Successfully")
                                 {
                                     Mail Mailmessage = new Mail();
                                     string body = "Dear : " + AdminName + "<br/><br/>Your Updated Password is : " + Password + "";

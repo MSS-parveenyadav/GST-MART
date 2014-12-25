@@ -851,6 +851,10 @@
     <Content Include="STAGEDBGSTMASRTDataSet.xss">
       <DependentUpon>STAGEDBGSTMASRTDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Views\_Partial\_Setting.cshtml" />
+    <Content Include="Views\_Partial\_dashboard.cshtml" />
+    <Content Include="Views\_Partial\_TaxCode.cshtml" />
+    <Content Include="Views\_Partial\_Currency.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
