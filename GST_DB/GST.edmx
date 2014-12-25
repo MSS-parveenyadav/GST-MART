@@ -108,6 +108,7 @@
     <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CompanyId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CNBN" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Permissions">
     <Key>
@@ -435,6 +436,7 @@
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CompanyId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CNBN" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
@@ -720,6 +722,7 @@
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CNBN" ColumnName="CNBN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

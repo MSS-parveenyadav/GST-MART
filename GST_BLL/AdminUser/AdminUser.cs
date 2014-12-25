@@ -656,7 +656,9 @@ namespace GST_BLL.AdminUser
             ldap.PortNumber = model.Portnumber;
             ldap.UserId = model.UserId;
             ldap.Password = model.password;
+            ldap.CNBN = model.cnbn;
             gstmart.LDAPs.Add(ldap);
+
            int res= gstmart.SaveChanges();
             if(res==1)
             {
@@ -673,7 +675,7 @@ namespace GST_BLL.AdminUser
         {
             var Gstmart = new GSTMARTEntities();
 
-            var query = (from p in Gstmart.LDAPs select new { Id = p.Id, CompanyId = p.CompanyId, DomainName = p.DomianName, PortNmber = p.PortNumber, UserId = p.UserId, Password = p.Password }).OrderByDescending(m=>m.Id).ToList();
+            var query = (from p in Gstmart.LDAPs select new { Id = p.Id,CNBN=p.CNBN, CompanyId = p.CompanyId, DomainName = p.DomianName, PortNmber = p.PortNumber, UserId = p.UserId, Password = p.Password }).OrderByDescending(m=>m.Id).ToList();
             var list = new List<LdapUserModel>();
             foreach (var item in query)
             {
@@ -684,6 +686,7 @@ namespace GST_BLL.AdminUser
                 model.Portnumber = item.PortNmber;
                 model.UserId = item.UserId;
                 model.password = item.Password;
+                model.cnbn = item.CNBN;
                 list.Add(model);
             }
             return list;
@@ -694,7 +697,7 @@ namespace GST_BLL.AdminUser
         {
             var Gstmart = new GSTMARTEntities();
 
-            var query = (from p in Gstmart.LDAPs where p.Id == id select new { Id = p.Id, CompanyId = p.CompanyId, DomainName = p.DomianName, PortNmber = p.PortNumber, UserId = p.UserId, Password = p.Password }).ToList();
+            var query = (from p in Gstmart.LDAPs where p.Id == id select new { Id = p.Id,cnbn=p.CNBN, CompanyId = p.CompanyId, DomainName = p.DomianName, PortNmber = p.PortNumber, UserId = p.UserId, Password = p.Password }).ToList();
             var list = new List<LdapUserModel>();
             foreach (var item in query)
             {
@@ -705,6 +708,7 @@ namespace GST_BLL.AdminUser
                 model.Portnumber = item.PortNmber;
                 model.UserId = item.UserId;
                 model.password = item.Password;
+                model.cnbn = item.cnbn;
                 list.Add(model);
             }
             return list;
@@ -718,6 +722,9 @@ namespace GST_BLL.AdminUser
             ldap.Password = model.password;
             ldap.PortNumber = model.Portnumber;
             ldap.DomianName = model.Domainname;
+            ldap.CNBN = model.cnbn;
+
+
             Gstmart.Entry(ldap).State = System.Data.EntityState.Modified;
            int res= Gstmart.SaveChanges();
             if(res==1)
@@ -1591,7 +1598,7 @@ namespace GST_BLL.AdminUser
                 using (var db = new DbContext(contextConnectionString))
                 {
                     var Gstmart = new GSTMARTEntities(contextConnectionString);
-                    var query = (from p in Gstmart.Cycles select p).ToList();
+                    var query = (from p in Gstmart.Cycles where p.Status != "Audit Deleted" || p.Status ==null select p).ToList();
                     foreach (var item in query)
                     {
                         list.Add(new SelectListItem { Text = item.CycleID, Value = item.CycleID });
@@ -1634,7 +1641,7 @@ namespace GST_BLL.AdminUser
                 using (var db = new DbContext(contextConnectionString))
                 {
                     var Gstmart = new GSTMARTEntities(contextConnectionString);
-                    List = (from p in Gstmart.Cycles select p).ToList();
+                    List = (from p in Gstmart.Cycles where p.Status != "Audit Deleted" || p.Status == null select p).ToList();
                     return List;
                 }
             }
@@ -1674,11 +1681,11 @@ namespace GST_BLL.AdminUser
                     var Gstmart = new GSTMARTEntities(contextConnectionString);
                     if (parameter != "All Cycle Id")
                     {
-                        Cycles = (from p in Gstmart.Cycles where p.CycleID.Contains(parameter) select p).ToList();
+                        Cycles = (from p in Gstmart.Cycles where p.CycleID.Contains(parameter) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
                     else
                     {
-                        Cycles = (from p in Gstmart.Cycles select p).ToList();
+                        Cycles = (from p in Gstmart.Cycles where p.Status != "Audit Deleted" || p.Status == null select p).ToList();
                     }
 
                     return Cycles;
@@ -1724,19 +1731,19 @@ namespace GST_BLL.AdminUser
                     if (StartDate == "" && Enddate != "")
                     {
                         DateTime EDate = Convert.ToDateTime(Enddate);
-                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate <= EDate.Date select p).ToList();
+                        Cycle = (from p in Gstmart.Cycles where (p.CreatedDate <= EDate.Date) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
                     else if (StartDate != "" && Enddate == "")
                     {
                         DateTime SDate = Convert.ToDateTime(StartDate);
-                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate >= SDate.Date select p).ToList();
+                        Cycle = (from p in Gstmart.Cycles where (p.CreatedDate >= SDate.Date) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
                     else
                     {
                         DateTime EDate = Convert.ToDateTime(Enddate);
                         EDate = EDate.AddHours(24);
                         DateTime SDate = Convert.ToDateTime(StartDate);
-                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate >= SDate.Date && p.CreatedDate <= EDate.Date select p).ToList();
+                        Cycle = (from p in Gstmart.Cycles where (p.CreatedDate >= SDate.Date && p.CreatedDate <= EDate.Date) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
                     return Cycle;
                 }
@@ -1796,7 +1803,16 @@ namespace GST_BLL.AdminUser
 
         }
         
-
+        public User FindAdminEmail()
+        {
+            var Adminuser = new User();
+            Adminuser = (from p in gstmart.Users where p.Usertype == "Admin" select p).FirstOrDefault();
+            if (Adminuser != null)
+            {
+                return Adminuser;
+            }
+            return Adminuser;
+        }
        
 
     }

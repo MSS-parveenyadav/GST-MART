@@ -29,5 +29,12 @@ namespace GST_BLL.Enum
             Pause
         
         }
+
+        public enum AuditFamily
+        {
+            Success,
+            Error
+        }
+
     }
 }

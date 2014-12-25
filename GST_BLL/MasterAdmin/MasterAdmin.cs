@@ -585,7 +585,7 @@ namespace GST_BLL.MasterAdmin
                     Gstmart.Entry(UserData).State = System.Data.EntityState.Modified;
                     Gstmart.SaveChanges();
                 }
-                return "Admin Data Updated Succesfully";
+                return "Admin Data Updated Successfully";
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -618,7 +618,7 @@ namespace GST_BLL.MasterAdmin
                 Gstmart.Users.Add(user);
                 Gstmart.SaveChanges();
 
-                return "Admin Data Inserted Succesfully";
+                return "Admin Data Inserted Successfully";
             }
             catch (DbEntityValidationException dbEx)
             {

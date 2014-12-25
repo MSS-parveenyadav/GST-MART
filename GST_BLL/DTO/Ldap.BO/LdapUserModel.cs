@@ -41,6 +41,11 @@ namespace GST_BLL.DTO
             get;
             set;
         }
+        public string cnbn
+        {
 
+            get;
+            set;
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace GST_Mart.Controllers
     {
         string originalConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["GSTMARTEntities"].ConnectionString;
         AdminUser adminuser = new AdminUser();
+        AuthorizedUser user = new AuthorizedUser();
         AdminUserModel adminusermodel = new AdminUserModel();
         Mail MailMessage = new Mail();
         string ms_email = ConfigurationManager.AppSettings["master_email"].ToString();
@@ -40,6 +41,7 @@ namespace GST_Mart.Controllers
         string Smtp_Password = ConfigurationManager.AppSettings["Smtp_Password"].ToString();
         string Smtp_Host = ConfigurationManager.AppSettings["SMTP_HOST"].ToString();
         string URL = ConfigurationManager.AppSettings["URL"].ToString();
+        Random random = new Random();
 
 
         DataSchedular schedularObj = new DataSchedular();
@@ -971,16 +973,11 @@ namespace GST_Mart.Controllers
                 int id = model.Id;
                 if (id != null && id != 0)
                 {
-                    ldapuser.Id = model.Id;
-                    ldapuser.UserId = model.UserId;
-                    ldapuser.Domainname = model.Domainname;
-                    ldapuser.ComapanyId = model.ComapanyId;
-                    ldapuser.password = model.password;
-                    ldapuser.Portnumber = model.Portnumber;
-                 var res=adminuser.UpdateLDAPUser(ldapuser);
+
+                    var res = adminuser.UpdateLDAPUser(model);
                  if (res == true)
                  {
-                     TempData["Sucess"] = "User Updated Sucessfully";
+                     TempData["Sucess"] = "User Updated Successfully";
                      return RedirectToAction("CreateLDAPUser");
                  }
                     else
@@ -992,16 +989,11 @@ namespace GST_Mart.Controllers
                 }
                 else
                 {
-                    LdapUserModel ldapusermodel = new LdapUserModel();
-                    ldapusermodel.ComapanyId = model.ComapanyId;
-                    ldapusermodel.Domainname = model.Domainname;
-                    ldapusermodel.Portnumber = model.Portnumber;
-                    ldapusermodel.UserId = model.UserId;
-                    ldapusermodel.password = model.password;
-                   var res= adminuser.CreateLdapUser(ldapusermodel);
+
+                    var res = adminuser.CreateLdapUser(model);
                    if (res == true)
                    {
-                       TempData["Sucess"] = "User Created Sucessfully";
+                       TempData["Sucess"] = "User Created Successfully";
                        return RedirectToAction("CreateLDAPUser");
                    }
                    else
@@ -1034,10 +1026,11 @@ namespace GST_Mart.Controllers
                         model.password = item.password;
                         model.Portnumber = item.Portnumber;
                         model.UserId = item.UserId;
-
+                        model.cnbn = item.cnbn;
                     }
                 }
-
+                var ldapuserlist = adminuser.GetLDAPUserList();
+                ViewBag.LDAPUSERS = ldapuserlist;
                 return View("CreateLDAPUser", model);
             }
             else
@@ -1053,7 +1046,7 @@ namespace GST_Mart.Controllers
                 var result = adminuser.DeleteLDAPUser(id);
                 if (result == true)
                 {
-                    TempData["Sucess"] = "User Deleted Sucessfully";
+                    TempData["Sucess"] = "User Deleted Successfully";
                     return RedirectToAction("CreateLDAPUser");
                 }
                 else
@@ -1116,7 +1109,7 @@ namespace GST_Mart.Controllers
 
                     if (res == true)
                     {
-                        TempData["Sucess"] = "Tax Code Update Sucessfully.";
+                        TempData["Sucess"] = "Tax Code Update Successfully.";
                         return RedirectToAction("TAXCODE");
                     }
                     else
@@ -1131,7 +1124,7 @@ namespace GST_Mart.Controllers
                     var res = adminuser.CreateTaxcode(model, systemlist);
                     if (res == true)
                     {
-                        TempData["Sucess"] = "Tax Code created Sucessfully.";
+                        TempData["Sucess"] = "Tax Code created Successfully.";
                         return RedirectToAction("TAXCODE");
                     }
 
@@ -1272,7 +1265,7 @@ namespace GST_Mart.Controllers
                 var res = adminuser.DeleteTaxModel(id);
                 if (res == true)
                 {
-                    TempData["Sucess"] = "Tax Code Delete Sucessfully.";
+                    TempData["Sucess"] = "Tax Code Delete Successfully.";
                     return RedirectToAction("TAXCODE");
                 }
                 else
@@ -1696,7 +1689,7 @@ namespace GST_Mart.Controllers
                     if (res == true)
                     {
                         ModelState.Clear();
-                        TempData["Sucess"] = "Configuration Details insert sucessfully.";
+                        TempData["Sucess"] = "Configuration Details insert Successfully.";
                         return View("Configuration");
                     }
                     else
@@ -1800,7 +1793,6 @@ namespace GST_Mart.Controllers
         [HttpGet]
         public ActionResult CycleErrors(int Id)
         {
-            AuthorizedUser user = new AuthorizedUser();
 
             //To get Data Type Conversion Errors
             var data = user.ReadRrrors(Id.ToString(), Session["Companey"].ToString());
@@ -1826,6 +1818,60 @@ namespace GST_Mart.Controllers
 
         }
 
-       
+        public string Alphanumrical(int length, Random random)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var result = new string(
+                Enumerable.Repeat(chars, length)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+
+            return result;
+        }
+
+
+        public ActionResult DeleteData(int Id=0,string Page="")
+        {
+            Session["Id"] = Id.ToString();
+            Session["Page"] = Page;
+            var AdminUser = adminuser.FindAdminEmail();
+            string securitycode = Alphanumrical(6, random);
+            Session["Securitycode"] = securitycode;
+            MailMessage.Sendsecuritycode(AdminUser.Email, securitycode, AdminUser.Name, ms_email, smtp_port, Smtp_Password, Smtp_Host, "Security Code for Delete Data");
+            return View("Securitycodeaccess");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteData(string SecurityCode)
+        {
+            String securitycode = Session["Securitycode"].ToString();
+
+            if (securitycode == SecurityCode)
+            {
+                string Page = Session["Page"].ToString();
+                int Id = Convert.ToInt32(Session["Id"].ToString());
+                return RedirectToAction(Page, new {Id=Id});
+            }
+            else
+            {
+                TempData["CodeError"] = "Invalid Code";
+                return View("Securitycodeaccess");
+            }
+        }
+
+        public ActionResult DeleteCycle(int Id)
+        {
+            if (Session["AdminLoginStatus"] == "LoggedIn")
+            {
+                var result = user.TempDeleteCycle(originalConnectionString, Session["CompanyDB"].ToString(), Id, "Audit Deleted");
+                TempData["Message"] = "Cycle Deleted";
+                return RedirectToAction("AuditLog");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
     }
 }

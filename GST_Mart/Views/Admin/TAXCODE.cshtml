@@ -46,6 +46,11 @@
 {
     @*@Html.AntiForgeryToken()*@
     @Html.ValidationSummary(true)
+    @section  Submenu
+                 {
+    @Html.Partial("~/Views/_Partial/_TaxCode.cshtml")
+    }
+    
 
     <div class="container-fluid" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
         <div class="container-fluid">
@@ -80,7 +85,7 @@
                                             <td class="add-tax">Select Customs Code : </td>
                                             <td>
                                                 @Html.DropDownListFor(m => m.CustomCode, ViewBag.customcodelist as List<SelectListItem>, new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
-                                                <img id="imgcustomcode" data-toggle="modal" data-target="#reqmod" onclick="showCodeModal();" src="~/Content/images/add.png" />
+                                                <img id="imgcustomcode" data-toggle="modal" data-target="#reqmod" onclick="showCodeModal();" style="width:46px;" src="~/Content/images/add.png" />
                                                 <p id="ValidateCustomCode" style="color: red"></p>
                                             </td>
                                         </tr>
@@ -327,7 +332,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {                 
                     $('#customcode').val("");
-                    document.getElementById("Error1").innerHTML = "Custom Code Save Sucessfully.";
+                    document.getElementById("Error1").innerHTML = "Custom Code Save Successfully.";
                     $("#CustomCode").empty();
                     $.each(response, function (i, systemid) {
                         $("#CustomCode").append('<option value="' + systemid.Text + '">' +
@@ -363,7 +368,7 @@
                 success: function (response) {
                     console.log(response);
                     $('#transactiontype').val("");
-                     document.getElementById("error2").innerHTML = "Transaction type Save Sucessfully.";
+                     document.getElementById("error2").innerHTML = "Transaction type Save Successfully.";
                      $("#TransactionType").empty();
                     $.each(response, function (i, systemid) {
                         $("#TransactionType").append('<option value="' + systemid.Text + '">' +
