@@ -85,7 +85,7 @@
                                             <td class="add-tax">Select Customs Code : </td>
                                             <td>
                                                 @Html.DropDownListFor(m => m.CustomCode, ViewBag.customcodelist as List<SelectListItem>, new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
-                                                <img id="imgcustomcode" data-toggle="modal" data-target="#reqmod" onclick="showCodeModal();" src="~/Content/images/add.png" />
+                                                <img id="imgcustomcode" data-toggle="modal" data-target="#reqmod" onclick="showCodeModal();" style="width:46px;" src="~/Content/images/add.png" />
                                                 <p id="ValidateCustomCode" style="color: red"></p>
                                             </td>
                                         </tr>

@@ -1353,3 +1353,8 @@ color: white;
 
     width:47px;
 }*/
+
+.w-bg .button {
+    float: none;
+    width: 388px;
+}
