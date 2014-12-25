@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="STAGEDBGSTMASRTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ErrorLogger">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Flat_File_Source_Error_Output_Column" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorCode" Type="Int32" />
+    <Property Name="ErrorColumn" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CycleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Error_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Error_ColumnName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_DupLedger">
+    <Key>
+      <PropertyRef Name="Ledger_ID" />
+    </Key>
+    <Property Name="Ledger_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Transaction_Date" Type="DateTime" Precision="3" />
+    <Property Name="Account_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Account_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Source_Document_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Source_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Debit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Credit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_GSTCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Company_GST_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Period_Start" Type="DateTime" Precision="3" />
+    <Property Name="Period_End" Type="DateTime" Precision="3" />
+    <Property Name="File_Creation_Date" Type="DateTime" Precision="3" />
+    <Property Name="Product_Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GAF_Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_GSTDupCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Company_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Company_GST_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Period_Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Period_End" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="File_Creation_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Product_Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GAF_Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CycleID" Type="Int64" Nullable="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_GSTDupPurchase">
+    <Key>
+      <PropertyRef Name="Purchase_ID" />
+    </Key>
+    <Property Name="Purchase_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Date" Type="DateTime" Precision="3" />
+    <Property Name="Invoice_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Import_Declaration_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Line_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Purchase_Value_MYR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Purchase_Value_GST_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Foreign_Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Purchase_Foreign_Currency_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Purchase_Currency_Purchase_Amount_GST" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="YR" Type="Int32" />
+    <Property Name="MTH" Type="Int32" />
+    <Property Name="Cycle_ID" Type="Int64" />
+    <Property Name="Value_Exempt_Supplies" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Supplier_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Product_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbl_GSTErrorCompany">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Flat_File_Source_Error_Output_Column" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorCode" Type="Int32" />
+    <Property Name="ErrorColumn" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Error_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Error_ColumnName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_GSTErrorFooter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Flat_File_Source_Error_Output_Column" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorCode" Type="Int32" />
+    <Property Name="ErrorColumn" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Error_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Error_ColumnName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_GSTFooter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Purchase_Count" Type="Decimal" Precision="11" Scale="0" />
+    <Property Name="Purchase_Amount_Sum" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Purchase_GST_Amount_GST" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Supply_Count" Type="Decimal" Precision="11" Scale="0" />
+    <Property Name="Supply_Amount_Sum" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Supply_GST_Amount_Sum" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Ledger_Count" Type="Decimal" Precision="11" Scale="0" />
+    <Property Name="Debit_Sum" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Credit_Sum" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Balance_Sum" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_GSTMissingCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Company_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Company_GST_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Period_Start" Type="DateTime" Precision="3" />
+    <Property Name="Period_End" Type="DateTime" Precision="3" />
+    <Property Name="File_Creation_Date" Type="DateTime" Precision="3" />
+    <Property Name="Product_Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GAF_Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_GSTMissingFooter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Purchase_Count" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+    <Property Name="Purchase_Amount_Sum" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="Purchase_GST_Amount_GST" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="Supply_Count" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+    <Property Name="Supply_Amount_Sum" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="Supply_GST_Amount_Sum" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="Ledger_Count" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+    <Property Name="Debit_Sum" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="Credit_Sum" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="Balance_Sum" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <Property Name="CycleID" Type="Int64" Nullable="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_GSTMissingPurchase">
+    <Key>
+      <PropertyRef Name="Purchase_ID" />
+    </Key>
+    <Property Name="Purchase_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Date" Type="DateTime" Precision="3" />
+    <Property Name="Invoice_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Import_Declaration_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Line_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Purchase_Value_MYR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Purchase_Value_GST_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Foreign_Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Purchase_Foreign_Currency_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Purchase_Currency_Purchase_Amount_GST" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="YR" Type="Int32" />
+    <Property Name="MTH" Type="Int32" />
+    <Property Name="Cycle_ID" Type="Int64" />
+    <Property Name="Value_Exempt_Supplies" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbl_GSTPurchase">
+    <Key>
+      <PropertyRef Name="Purchase_ID" />
+    </Key>
+    <Property Name="Purchase_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Date" Type="DateTime" Precision="3" />
+    <Property Name="Invoice_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Import_Declaration_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Line_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Purchase_Value_MYR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Purchase_Value_GST_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Foreign_Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Purchase_Foreign_Currency_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Purchase_Currency_Purchase_Amount_GST" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="YR" Type="Int32" />
+    <Property Name="MTH" Type="Int32" />
+    <Property Name="Cycle_ID" Type="Int64" />
+    <Property Name="Value_Exempt_Supplies" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbl_GSTPurchaseError">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Flat_File_Source_Error_Output_Column" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorCode" Type="Int32" />
+    <Property Name="ErrorColumn" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Error_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Error_ColumnName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_GSTSupply">
+    <Key>
+      <PropertyRef Name="Supply_ID" />
+    </Key>
+    <Property Name="Supply_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Date" Type="DateTime" Precision="3" />
+    <Property Name="Invoice_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Line_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Sales_Value_MYR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sales_Value_GST_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Foreign_Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sales_Foreign_Currency_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sales_Currency_Sales_Amount_GST" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="YR" Type="Int32" />
+    <Property Name="MTH" Type="Int32" />
+    <Property Name="Cycle_ID" Type="Int64" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Destination_Export" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_GSTSupplyError">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Flat_File_Source_Error_Output_Column" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ErrorCode" Type="Int32" />
+    <Property Name="ErrorColumn" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Error_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Error_ColumnName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Ledger">
+    <Key>
+      <PropertyRef Name="Ledger_ID" />
+    </Key>
+    <Property Name="Ledger_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Transaction_Date" Type="DateTime" Precision="3" />
+    <Property Name="Account_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Account_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Source_Document_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Source_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Debit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Credit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompanyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_MissingLedger">
+    <Key>
+      <PropertyRef Name="Ledger_ID" />
+    </Key>
+    <Property Name="Ledger_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Transaction_Date" Type="DateTime" Precision="3" />
+    <Property Name="Account_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Account_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Source_Document_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Source_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Debit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Credit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CycleID" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_GSTDupSupply">
+    <Key>
+      <PropertyRef Name="Supply_ID" />
+    </Key>
+    <Property Name="Supply_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Date" Type="DateTime" Precision="3" />
+    <Property Name="Invoice_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Line_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Sales_Value_MYR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sales_Value_GST_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Foreign_Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sales_Foreign_Currency_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sales_Currency_Sales_Amount_GST" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="YR" Type="Int32" />
+    <Property Name="MTH" Type="Int32" />
+    <Property Name="Cycle_ID" Type="Int64" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Destination_Export" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_GSTMissingSuplly">
+    <Key>
+      <PropertyRef Name="Supply_ID" />
+    </Key>
+    <Property Name="Supply_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Company_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_BRN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Date" Type="DateTime" Precision="3" />
+    <Property Name="Invoice_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Line_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Sales_Value_MYR" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sales_Value_GST_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Foreign_Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sales_Foreign_Currency_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sales_Currency_Sales_Amount_GST" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="YR" Type="Int32" />
+    <Property Name="MTH" Type="Int32" />
+    <Property Name="Cycle_ID" Type="Int64" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Destination_Export" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ErrorLoggers" EntityType="Self.ErrorLogger" />
+    <EntitySet Name="tbl_DupLedger" EntityType="Self.tbl_DupLedger" />
+    <EntitySet Name="tbl_GSTCompany" EntityType="Self.tbl_GSTCompany" />
+    <EntitySet Name="tbl_GSTDupCompany" EntityType="Self.tbl_GSTDupCompany" />
+    <EntitySet Name="tbl_GSTDupPurchase" EntityType="Self.tbl_GSTDupPurchase" />
+    <EntitySet Name="tbl_GSTErrorCompany" EntityType="Self.tbl_GSTErrorCompany" />
+    <EntitySet Name="tbl_GSTErrorFooter" EntityType="Self.tbl_GSTErrorFooter" />
+    <EntitySet Name="tbl_GSTFooter" EntityType="Self.tbl_GSTFooter" />
+    <EntitySet Name="tbl_GSTMissingCompany" EntityType="Self.tbl_GSTMissingCompany" />
+    <EntitySet Name="tbl_GSTMissingFooter" EntityType="Self.tbl_GSTMissingFooter" />
+    <EntitySet Name="tbl_GSTMissingPurchase" EntityType="Self.tbl_GSTMissingPurchase" />
+    <EntitySet Name="tbl_GSTPurchase" EntityType="Self.tbl_GSTPurchase" />
+    <EntitySet Name="tbl_GSTPurchaseError" EntityType="Self.tbl_GSTPurchaseError" />
+    <EntitySet Name="tbl_GSTSupply" EntityType="Self.tbl_GSTSupply" />
+    <EntitySet Name="tbl_GSTSupplyError" EntityType="Self.tbl_GSTSupplyError" />
+    <EntitySet Name="tbl_Ledger" EntityType="Self.tbl_Ledger" />
+    <EntitySet Name="tbl_MissingLedger" EntityType="Self.tbl_MissingLedger" />
+    <EntitySet Name="tbl_GSTDupSupply" EntityType="Self.tbl_GSTDupSupply" />
+    <EntitySet Name="tbl_GSTMissingSuplly" EntityType="Self.tbl_GSTMissingSuplly" />
+  </EntityContainer>
+</Schema>

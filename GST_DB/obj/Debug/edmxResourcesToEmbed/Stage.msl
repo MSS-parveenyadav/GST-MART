@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="STAGEDBGSTMASRTModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ErrorLoggers">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.ErrorLogger">
+        <MappingFragment StoreEntitySet="ErrorLoggers">
+          <ScalarProperty Name="Flat_File_Source_Error_Output_Column" ColumnName="Flat_File_Source_Error_Output_Column" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="ErrorColumn" ColumnName="ErrorColumn" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Error_Description" ColumnName="Error_Description" />
+          <ScalarProperty Name="Error_ColumnName" ColumnName="Error_ColumnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_DupLedger">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_DupLedger">
+        <MappingFragment StoreEntitySet="tbl_DupLedger">
+          <ScalarProperty Name="Ledger_ID" ColumnName="Ledger_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Transaction_Date" ColumnName="Transaction_Date" />
+          <ScalarProperty Name="Account_ID" ColumnName="Account_ID" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Transaction_Description" ColumnName="Transaction_Description" />
+          <ScalarProperty Name="Transaction_ID" ColumnName="Transaction_ID" />
+          <ScalarProperty Name="Source_Document_ID" ColumnName="Source_Document_ID" />
+          <ScalarProperty Name="Source_Type" ColumnName="Source_Type" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTCompany">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTCompany">
+        <MappingFragment StoreEntitySet="tbl_GSTCompany">
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+          <ScalarProperty Name="Company_BRN" ColumnName="Company_BRN" />
+          <ScalarProperty Name="Company_GST_No" ColumnName="Company_GST_No" />
+          <ScalarProperty Name="Period_Start" ColumnName="Period_Start" />
+          <ScalarProperty Name="Period_End" ColumnName="Period_End" />
+          <ScalarProperty Name="File_Creation_Date" ColumnName="File_Creation_Date" />
+          <ScalarProperty Name="Product_Version" ColumnName="Product_Version" />
+          <ScalarProperty Name="GAF_Version" ColumnName="GAF_Version" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTDupCompany">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTDupCompany">
+        <MappingFragment StoreEntitySet="tbl_GSTDupCompany">
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+          <ScalarProperty Name="Company_BRN" ColumnName="Company_BRN" />
+          <ScalarProperty Name="Company_GST_No" ColumnName="Company_GST_No" />
+          <ScalarProperty Name="Period_Start" ColumnName="Period_Start" />
+          <ScalarProperty Name="Period_End" ColumnName="Period_End" />
+          <ScalarProperty Name="File_Creation_Date" ColumnName="File_Creation_Date" />
+          <ScalarProperty Name="Product_Version" ColumnName="Product_Version" />
+          <ScalarProperty Name="GAF_Version" ColumnName="GAF_Version" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTDupPurchase">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTDupPurchase">
+        <MappingFragment StoreEntitySet="tbl_GSTDupPurchase">
+          <ScalarProperty Name="Purchase_ID" ColumnName="Purchase_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Supplier_BRN" ColumnName="Supplier_BRN" />
+          <ScalarProperty Name="Supplier_Name" ColumnName="Supplier_Name" />
+          <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+          <ScalarProperty Name="Invoice_No" ColumnName="Invoice_No" />
+          <ScalarProperty Name="Import_Declaration_No" ColumnName="Import_Declaration_No" />
+          <ScalarProperty Name="Line_No" ColumnName="Line_No" />
+          <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+          <ScalarProperty Name="Purchase_Value_MYR" ColumnName="Purchase_Value_MYR" />
+          <ScalarProperty Name="Purchase_Value_GST_Amount" ColumnName="Purchase_Value_GST_Amount" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="Foreign_Currency_Code" ColumnName="Foreign_Currency_Code" />
+          <ScalarProperty Name="Purchase_Foreign_Currency_Amount" ColumnName="Purchase_Foreign_Currency_Amount" />
+          <ScalarProperty Name="Purchase_Currency_Purchase_Amount_GST" ColumnName="Purchase_Currency_Purchase_Amount_GST" />
+          <ScalarProperty Name="YR" ColumnName="YR" />
+          <ScalarProperty Name="MTH" ColumnName="MTH" />
+          <ScalarProperty Name="Cycle_ID" ColumnName="Cycle_ID" />
+          <ScalarProperty Name="Value_Exempt_Supplies" ColumnName="Value_Exempt_Supplies" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Supplier_Number" ColumnName="Supplier_Number" />
+          <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTErrorCompany">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTErrorCompany">
+        <MappingFragment StoreEntitySet="tbl_GSTErrorCompany">
+          <ScalarProperty Name="Flat_File_Source_Error_Output_Column" ColumnName="Flat_File_Source_Error_Output_Column" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="ErrorColumn" ColumnName="ErrorColumn" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Error_Description" ColumnName="Error_Description" />
+          <ScalarProperty Name="Error_ColumnName" ColumnName="Error_ColumnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTErrorFooter">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTErrorFooter">
+        <MappingFragment StoreEntitySet="tbl_GSTErrorFooter">
+          <ScalarProperty Name="Flat_File_Source_Error_Output_Column" ColumnName="Flat_File_Source_Error_Output_Column" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="ErrorColumn" ColumnName="ErrorColumn" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Error_Description" ColumnName="Error_Description" />
+          <ScalarProperty Name="Error_ColumnName" ColumnName="Error_ColumnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTFooter">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTFooter">
+        <MappingFragment StoreEntitySet="tbl_GSTFooter">
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Purchase_Count" ColumnName="Purchase_Count" />
+          <ScalarProperty Name="Purchase_Amount_Sum" ColumnName="Purchase_Amount_Sum" />
+          <ScalarProperty Name="Purchase_GST_Amount_GST" ColumnName="Purchase_GST_Amount_GST" />
+          <ScalarProperty Name="Supply_Count" ColumnName="Supply_Count" />
+          <ScalarProperty Name="Supply_Amount_Sum" ColumnName="Supply_Amount_Sum" />
+          <ScalarProperty Name="Supply_GST_Amount_Sum" ColumnName="Supply_GST_Amount_Sum" />
+          <ScalarProperty Name="Ledger_Count" ColumnName="Ledger_Count" />
+          <ScalarProperty Name="Debit_Sum" ColumnName="Debit_Sum" />
+          <ScalarProperty Name="Credit_Sum" ColumnName="Credit_Sum" />
+          <ScalarProperty Name="Balance_Sum" ColumnName="Balance_Sum" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTMissingCompany">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTMissingCompany">
+        <MappingFragment StoreEntitySet="tbl_GSTMissingCompany">
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+          <ScalarProperty Name="Company_BRN" ColumnName="Company_BRN" />
+          <ScalarProperty Name="Company_GST_No" ColumnName="Company_GST_No" />
+          <ScalarProperty Name="Period_Start" ColumnName="Period_Start" />
+          <ScalarProperty Name="Period_End" ColumnName="Period_End" />
+          <ScalarProperty Name="File_Creation_Date" ColumnName="File_Creation_Date" />
+          <ScalarProperty Name="Product_Version" ColumnName="Product_Version" />
+          <ScalarProperty Name="GAF_Version" ColumnName="GAF_Version" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTMissingFooter">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTMissingFooter">
+        <MappingFragment StoreEntitySet="tbl_GSTMissingFooter">
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Purchase_Count" ColumnName="Purchase_Count" />
+          <ScalarProperty Name="Purchase_Amount_Sum" ColumnName="Purchase_Amount_Sum" />
+          <ScalarProperty Name="Purchase_GST_Amount_GST" ColumnName="Purchase_GST_Amount_GST" />
+          <ScalarProperty Name="Supply_Count" ColumnName="Supply_Count" />
+          <ScalarProperty Name="Supply_Amount_Sum" ColumnName="Supply_Amount_Sum" />
+          <ScalarProperty Name="Supply_GST_Amount_Sum" ColumnName="Supply_GST_Amount_Sum" />
+          <ScalarProperty Name="Ledger_Count" ColumnName="Ledger_Count" />
+          <ScalarProperty Name="Debit_Sum" ColumnName="Debit_Sum" />
+          <ScalarProperty Name="Credit_Sum" ColumnName="Credit_Sum" />
+          <ScalarProperty Name="Balance_Sum" ColumnName="Balance_Sum" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTMissingPurchase">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTMissingPurchase">
+        <MappingFragment StoreEntitySet="tbl_GSTMissingPurchase">
+          <ScalarProperty Name="Purchase_ID" ColumnName="Purchase_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Supplier_BRN" ColumnName="Supplier_BRN" />
+          <ScalarProperty Name="Supplier_Name" ColumnName="Supplier_Name" />
+          <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+          <ScalarProperty Name="Invoice_No" ColumnName="Invoice_No" />
+          <ScalarProperty Name="Import_Declaration_No" ColumnName="Import_Declaration_No" />
+          <ScalarProperty Name="Line_No" ColumnName="Line_No" />
+          <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+          <ScalarProperty Name="Purchase_Value_MYR" ColumnName="Purchase_Value_MYR" />
+          <ScalarProperty Name="Purchase_Value_GST_Amount" ColumnName="Purchase_Value_GST_Amount" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="Foreign_Currency_Code" ColumnName="Foreign_Currency_Code" />
+          <ScalarProperty Name="Purchase_Foreign_Currency_Amount" ColumnName="Purchase_Foreign_Currency_Amount" />
+          <ScalarProperty Name="Purchase_Currency_Purchase_Amount_GST" ColumnName="Purchase_Currency_Purchase_Amount_GST" />
+          <ScalarProperty Name="YR" ColumnName="YR" />
+          <ScalarProperty Name="MTH" ColumnName="MTH" />
+          <ScalarProperty Name="Cycle_ID" ColumnName="Cycle_ID" />
+          <ScalarProperty Name="Value_Exempt_Supplies" ColumnName="Value_Exempt_Supplies" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Supplier_Number" ColumnName="Supplier_Number" />
+          <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTPurchase">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTPurchase">
+        <MappingFragment StoreEntitySet="tbl_GSTPurchase">
+          <ScalarProperty Name="Purchase_ID" ColumnName="Purchase_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Supplier_BRN" ColumnName="Supplier_BRN" />
+          <ScalarProperty Name="Supplier_Name" ColumnName="Supplier_Name" />
+          <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+          <ScalarProperty Name="Invoice_No" ColumnName="Invoice_No" />
+          <ScalarProperty Name="Import_Declaration_No" ColumnName="Import_Declaration_No" />
+          <ScalarProperty Name="Line_No" ColumnName="Line_No" />
+          <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+          <ScalarProperty Name="Purchase_Value_MYR" ColumnName="Purchase_Value_MYR" />
+          <ScalarProperty Name="Purchase_Value_GST_Amount" ColumnName="Purchase_Value_GST_Amount" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="Foreign_Currency_Code" ColumnName="Foreign_Currency_Code" />
+          <ScalarProperty Name="Purchase_Foreign_Currency_Amount" ColumnName="Purchase_Foreign_Currency_Amount" />
+          <ScalarProperty Name="Purchase_Currency_Purchase_Amount_GST" ColumnName="Purchase_Currency_Purchase_Amount_GST" />
+          <ScalarProperty Name="YR" ColumnName="YR" />
+          <ScalarProperty Name="MTH" ColumnName="MTH" />
+          <ScalarProperty Name="Cycle_ID" ColumnName="Cycle_ID" />
+          <ScalarProperty Name="Value_Exempt_Supplies" ColumnName="Value_Exempt_Supplies" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Supplier_Number" ColumnName="Supplier_Number" />
+          <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTPurchaseError">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTPurchaseError">
+        <MappingFragment StoreEntitySet="tbl_GSTPurchaseError">
+          <ScalarProperty Name="Flat_File_Source_Error_Output_Column" ColumnName="Flat_File_Source_Error_Output_Column" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="ErrorColumn" ColumnName="ErrorColumn" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Error_Description" ColumnName="Error_Description" />
+          <ScalarProperty Name="Error_ColumnName" ColumnName="Error_ColumnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTSupply">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTSupply">
+        <MappingFragment StoreEntitySet="tbl_GSTSupply">
+          <ScalarProperty Name="Supply_ID" ColumnName="Supply_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Customer_BRN" ColumnName="Customer_BRN" />
+          <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+          <ScalarProperty Name="Invoice_No" ColumnName="Invoice_No" />
+          <ScalarProperty Name="Line_No" ColumnName="Line_No" />
+          <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+          <ScalarProperty Name="Sales_Value_MYR" ColumnName="Sales_Value_MYR" />
+          <ScalarProperty Name="Sales_Value_GST_Amount" ColumnName="Sales_Value_GST_Amount" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Foreign_Currency_Code" ColumnName="Foreign_Currency_Code" />
+          <ScalarProperty Name="Sales_Foreign_Currency_Amount" ColumnName="Sales_Foreign_Currency_Amount" />
+          <ScalarProperty Name="Sales_Currency_Sales_Amount_GST" ColumnName="Sales_Currency_Sales_Amount_GST" />
+          <ScalarProperty Name="YR" ColumnName="YR" />
+          <ScalarProperty Name="MTH" ColumnName="MTH" />
+          <ScalarProperty Name="Cycle_ID" ColumnName="Cycle_ID" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+          <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+          <ScalarProperty Name="Destination_Export" ColumnName="Destination_Export" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTSupplyError">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTSupplyError">
+        <MappingFragment StoreEntitySet="tbl_GSTSupplyError">
+          <ScalarProperty Name="Flat_File_Source_Error_Output_Column" ColumnName="Flat_File_Source_Error_Output_Column" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="ErrorColumn" ColumnName="ErrorColumn" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Error_Description" ColumnName="Error_Description" />
+          <ScalarProperty Name="Error_ColumnName" ColumnName="Error_ColumnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Ledger">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_Ledger">
+        <MappingFragment StoreEntitySet="tbl_Ledger">
+          <ScalarProperty Name="Ledger_ID" ColumnName="Ledger_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Transaction_Date" ColumnName="Transaction_Date" />
+          <ScalarProperty Name="Account_ID" ColumnName="Account_ID" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Transaction_Description" ColumnName="Transaction_Description" />
+          <ScalarProperty Name="Transaction_ID" ColumnName="Transaction_ID" />
+          <ScalarProperty Name="Source_Document_ID" ColumnName="Source_Document_ID" />
+          <ScalarProperty Name="Source_Type" ColumnName="Source_Type" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_MissingLedger">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_MissingLedger">
+        <MappingFragment StoreEntitySet="tbl_MissingLedger">
+          <ScalarProperty Name="Ledger_ID" ColumnName="Ledger_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Transaction_Date" ColumnName="Transaction_Date" />
+          <ScalarProperty Name="Account_ID" ColumnName="Account_ID" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Transaction_Description" ColumnName="Transaction_Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Transaction_ID" ColumnName="Transaction_ID" />
+          <ScalarProperty Name="Source_Document_ID" ColumnName="Source_Document_ID" />
+          <ScalarProperty Name="Source_Type" ColumnName="Source_Type" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTDupSupply">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTDupSupply">
+        <MappingFragment StoreEntitySet="tbl_GSTDupSupply">
+          <ScalarProperty Name="Supply_ID" ColumnName="Supply_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Customer_BRN" ColumnName="Customer_BRN" />
+          <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+          <ScalarProperty Name="Invoice_No" ColumnName="Invoice_No" />
+          <ScalarProperty Name="Line_No" ColumnName="Line_No" />
+          <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+          <ScalarProperty Name="Sales_Value_MYR" ColumnName="Sales_Value_MYR" />
+          <ScalarProperty Name="Sales_Value_GST_Amount" ColumnName="Sales_Value_GST_Amount" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Foreign_Currency_Code" ColumnName="Foreign_Currency_Code" />
+          <ScalarProperty Name="Sales_Foreign_Currency_Amount" ColumnName="Sales_Foreign_Currency_Amount" />
+          <ScalarProperty Name="Sales_Currency_Sales_Amount_GST" ColumnName="Sales_Currency_Sales_Amount_GST" />
+          <ScalarProperty Name="YR" ColumnName="YR" />
+          <ScalarProperty Name="MTH" ColumnName="MTH" />
+          <ScalarProperty Name="Cycle_ID" ColumnName="Cycle_ID" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+          <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+          <ScalarProperty Name="Destination_Export" ColumnName="Destination_Export" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_GSTMissingSuplly">
+      <EntityTypeMapping TypeName="STAGEDBGSTMASRTModel.tbl_GSTMissingSuplly">
+        <MappingFragment StoreEntitySet="tbl_GSTMissingSuplly">
+          <ScalarProperty Name="Supply_ID" ColumnName="Supply_ID" />
+          <ScalarProperty Name="Company_Code" ColumnName="Company_Code" />
+          <ScalarProperty Name="Record_Identifier" ColumnName="Record_Identifier" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Customer_BRN" ColumnName="Customer_BRN" />
+          <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+          <ScalarProperty Name="Invoice_No" ColumnName="Invoice_No" />
+          <ScalarProperty Name="Line_No" ColumnName="Line_No" />
+          <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+          <ScalarProperty Name="Sales_Value_MYR" ColumnName="Sales_Value_MYR" />
+          <ScalarProperty Name="Sales_Value_GST_Amount" ColumnName="Sales_Value_GST_Amount" />
+          <ScalarProperty Name="Tax_Code" ColumnName="Tax_Code" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Foreign_Currency_Code" ColumnName="Foreign_Currency_Code" />
+          <ScalarProperty Name="Sales_Foreign_Currency_Amount" ColumnName="Sales_Foreign_Currency_Amount" />
+          <ScalarProperty Name="Sales_Currency_Sales_Amount_GST" ColumnName="Sales_Currency_Sales_Amount_GST" />
+          <ScalarProperty Name="YR" ColumnName="YR" />
+          <ScalarProperty Name="MTH" ColumnName="MTH" />
+          <ScalarProperty Name="Cycle_ID" ColumnName="Cycle_ID" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+          <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+          <ScalarProperty Name="Destination_Export" ColumnName="Destination_Export" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

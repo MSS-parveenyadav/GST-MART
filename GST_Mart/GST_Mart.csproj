@@ -1,0 +1,926 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F1A16CF-82FB-4160-908C-FFA8726BEB68}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GST_Mart</RootNamespace>
+    <AssemblyName>GST_Mart</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="GST_DB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GST_DB\bin\Debug\GST_DB.dll</HintPath>
+    </Reference>
+    <Reference Include="jQuery.Validation.Unobtrusive.Native">
+      <HintPath>..\packages\jQuery.Validation.Unobtrusive.Native.MVC4.1.1.0.0\lib\net40\jQuery.Validation.Unobtrusive.Native.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SQLServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="TrackableEntities.EF.5">
+      <HintPath>..\packages\TrackableEntities.EF.5.1.0.2.0\lib\net40\TrackableEntities.EF.5.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Datasets\13-TVO_SGGR_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>13-TVO_SGGR_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\15-TVO_ GS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>15-TVO_ GS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\5A-Total_Value_Of_Stadard_Rated_Supply_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>5A-Total_Value_Of_Stadard_Rated_Supply_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\AllFieldSummery_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllFieldSummery_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\AnnualAdjustMent_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnnualAdjustMent_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\field14_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>field14_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\field5b_Gstclaim.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>field5b_Gstclaim.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\field6a_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>field6a_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\field6B_gst_claim.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>field6B_gst_claim.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\filed5b_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>filed5b_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\GSTReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GSTReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\ReportField5B.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportField5B.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\TVO_exempt_supplies_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TVO_exempt_supplies_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\TVO_Export_Sales_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TVO_Export_Sales_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Datasets\TVO_Standard_Rated_Supply_ds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TVO_Standard_Rated_Supply_ds.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\13-TVO_SGGR.aspx.cs">
+      <DependentUpon>13-TVO_SGGR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\13-TVO_SGGR.aspx.designer.cs">
+      <DependentUpon>13-TVO_SGGR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\14-TV_Goods_Imported.aspx.cs">
+      <DependentUpon>14-TV_Goods_Imported.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\14-TV_Goods_Imported.aspx.designer.cs">
+      <DependentUpon>14-TV_Goods_Imported.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\15-TVO_ GS.aspx.cs">
+      <DependentUpon>15-TVO_ GS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\15-TVO_ GS.aspx.designer.cs">
+      <DependentUpon>15-TVO_ GS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\5a_TVO_SRS.aspx.cs">
+      <DependentUpon>5a_TVO_SRS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\5a_TVO_SRS.aspx.designer.cs">
+      <DependentUpon>5a_TVO_SRS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\5B-TotalOutPutTax.aspx.cs">
+      <DependentUpon>5B-TotalOutPutTax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\5B-TotalOutPutTax.aspx.designer.cs">
+      <DependentUpon>5B-TotalOutPutTax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\6A-TotalValueSRD.aspx.cs">
+      <DependentUpon>6A-TotalValueSRD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\6A-TotalValueSRD.aspx.designer.cs">
+      <DependentUpon>6A-TotalValueSRD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\6B-TotalInputTax.aspx.cs">
+      <DependentUpon>6B-TotalInputTax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\6B-TotalInputTax.aspx.designer.cs">
+      <DependentUpon>6B-TotalInputTax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\8-GST-Amt_Claim.aspx.cs">
+      <DependentUpon>8-GST-Amt_Claim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\8-GST-Amt_Claim.aspx.designer.cs">
+      <DependentUpon>8-GST-Amt_Claim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\All_Field_Summery.aspx.cs">
+      <DependentUpon>All_Field_Summery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\All_Field_Summery.aspx.designer.cs">
+      <DependentUpon>All_Field_Summery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\AnnualAdjustment.aspx.cs">
+      <DependentUpon>AnnualAdjustment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\AnnualAdjustment.aspx.designer.cs">
+      <DependentUpon>AnnualAdjustment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\Reports.Master.cs">
+      <DependentUpon>Reports.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\Reports.Master.designer.cs">
+      <DependentUpon>Reports.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\TVO_exempt_supplies.aspx.cs">
+      <DependentUpon>TVO_exempt_supplies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\TVO_exempt_supplies.aspx.designer.cs">
+      <DependentUpon>TVO_exempt_supplies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\TVO_ExportSales.aspx.cs">
+      <DependentUpon>TVO_ExportSales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\TVO_ExportSales.aspx.designer.cs">
+      <DependentUpon>TVO_ExportSales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\TVO_StandardRatedSupply.aspx.cs">
+      <DependentUpon>TVO_StandardRatedSupply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewers\TVO_StandardRatedSupply.aspx.designer.cs">
+      <DependentUpon>TVO_StandardRatedSupply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="STAGEDBGSTMASRTDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>STAGEDBGSTMASRTDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="bin\GST_Mart.dll" />
+    <Content Include="bin\GST_Mart.pdb" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="Content\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\css\bootstrap-theme.css" />
+    <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\lessframe.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\DateTimePicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\DateTimePicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\opensans-bold.svg" />
+    <Content Include="Content\fonts\opensans-regular.svg" />
+    <Content Include="Content\fonts\opensans-semibold.svg" />
+    <Content Include="Content\gstdata\10-total-value-local-zero-rate.html" />
+    <Content Include="Content\gstdata\11-total-value-export-sales.html" />
+    <Content Include="Content\gstdata\12-total-value-exempt-supplies.html" />
+    <Content Include="Content\gstdata\13-supplies-granted-gst.html" />
+    <Content Include="Content\gstdata\14-goods-imported.html" />
+    <Content Include="Content\gstdata\15-gst-suspend.html" />
+    <Content Include="Content\gstdata\2.html" />
+    <Content Include="Content\gstdata\20-appendix5.html" />
+    <Content Include="Content\gstdata\5a-stnd-rated-supply.html" />
+    <Content Include="Content\gstdata\5a-total-stnd-rated-supply.html" />
+    <Content Include="Content\gstdata\5b-total-output-tax.html" />
+    <Content Include="Content\gstdata\6a-total-value-standred.html" />
+    <Content Include="Content\gstdata\6b-total-input-tax.html" />
+    <Content Include="Content\gstdata\8-gst-amout-claimable.html" />
+    <Content Include="Content\gstdata\acquisition-converted-data.html" />
+    <Content Include="Content\gstdata\acquisitionconverted-data.html" />
+    <Content Include="Content\gstdata\annual-adjustment.html" />
+    <Content Include="Content\gstdata\create-company-new.html" />
+    <Content Include="Content\gstdata\create-company.html" />
+    <Content Include="Content\gstdata\create-rules.html" />
+    <Content Include="Content\gstdata\css\bootstrap-theme.css" />
+    <Content Include="Content\gstdata\css\bootstrap-theme.min.css" />
+    <Content Include="Content\gstdata\css\bootstrap.css" />
+    <Content Include="Content\gstdata\css\bootstrap.min.css" />
+    <Content Include="Content\gstdata\css\font-awesome.css" />
+    <Content Include="Content\gstdata\css\lessframe.css" />
+    <Content Include="Content\gstdata\css\style.css" />
+    <Content Include="Content\gstdata\currency-exchage.html" />
+    <Content Include="Content\gstdata\currency-exchage1.html" />
+    <Content Include="Content\gstdata\currency-exchage2.html" />
+    <Content Include="Content\gstdata\currency-exchage3.html" />
+    <Content Include="Content\gstdata\customer-data.html" />
+    <Content Include="Content\gstdata\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\gstdata\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\gstdata\fonts\opensans-bold.svg" />
+    <Content Include="Content\gstdata\fonts\opensans-regular.svg" />
+    <Content Include="Content\gstdata\fonts\opensans-semibold.svg" />
+    <Content Include="Content\gstdata\gaf-file.html" />
+    <Content Include="Content\gstdata\images\arrow.png" />
+    <Content Include="Content\gstdata\images\arrowleft.png" />
+    <Content Include="Content\gstdata\images\data.png" />
+    <Content Include="Content\gstdata\images\feed.png" />
+    <Content Include="Content\gstdata\images\gaf.png" />
+    <Content Include="Content\gstdata\images\green.png" />
+    <Content Include="Content\gstdata\images\gw.png" />
+    <Content Include="Content\gstdata\images\header-bg.jpg" />
+    <Content Include="Content\gstdata\images\home.png" />
+    <Content Include="Content\gstdata\images\home1.png" />
+    <Content Include="Content\gstdata\images\hover.png" />
+    <Content Include="Content\gstdata\images\input-bg.jpg" />
+    <Content Include="Content\gstdata\images\log-out.png" />
+    <Content Include="Content\gstdata\images\logo.png" />
+    <Content Include="Content\gstdata\images\nav-bg.jpg" />
+    <Content Include="Content\gstdata\images\ref.png" />
+    <Content Include="Content\gstdata\images\rep.png" />
+    <Content Include="Content\gstdata\images\rule-img.png" />
+    <Content Include="Content\gstdata\images\satting.png" />
+    <Content Include="Content\gstdata\images\secdata.jpg" />
+    <Content Include="Content\gstdata\images\ss.png" />
+    <Content Include="Content\gstdata\images\tabelbg.jpg" />
+    <Content Include="Content\gstdata\images\table-icone1.png" />
+    <Content Include="Content\gstdata\images\tb-arrow.png" />
+    <Content Include="Content\gstdata\images\tr.png" />
+    <Content Include="Content\gstdata\images\wifi.png" />
+    <Content Include="Content\gstdata\industry-data.html" />
+    <Content Include="Content\gstdata\ip-address.html" />
+    <Content Include="Content\gstdata\item-data.html" />
+    <Content Include="Content\gstdata\js\bootstrap.js" />
+    <Content Include="Content\gstdata\js\bootstrap.min.js" />
+    <Content Include="Content\gstdata\js\respond.min.js" />
+    <Content Include="Content\gstdata\purchasing-data.html" />
+    <Content Include="Content\gstdata\sales-data.html" />
+    <Content Include="Content\gstdata\schduler-history.html" />
+    <Content Include="Content\gstdata\secure-login.html" />
+    <Content Include="Content\gstdata\security-access-code.html" />
+    <Content Include="Content\gstdata\security-code-access.html" />
+    <Content Include="Content\gstdata\security-code.html" />
+    <Content Include="Content\gstdata\supplier-data.html" />
+    <Content Include="Content\gstdata\system-feed.html" />
+    <Content Include="Content\gstdata\tax-code.html" />
+    <Content Include="Content\images\arrow-img.png" />
+    <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\arrowleft.png" />
+    <Content Include="Content\images\data.png" />
+    <Content Include="Content\images\feed.png" />
+    <Content Include="Content\images\gaf.png" />
+    <Content Include="Content\images\green.png" />
+    <Content Include="Content\images\gw.png" />
+    <Content Include="Content\images\header-bg.jpg" />
+    <Content Include="Content\images\home.png" />
+    <Content Include="Content\images\home1.png" />
+    <Content Include="Content\images\hover.png" />
+    <Content Include="Content\images\input-bg.jpg" />
+    <Content Include="Content\images\log-out.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\nav-bg.jpg" />
+    <Content Include="Content\images\ref.png" />
+    <Content Include="Content\images\rep.png" />
+    <Content Include="Content\images\rule-img.png" />
+    <Content Include="Content\images\satting.png" />
+    <Content Include="Content\images\secdata.jpg" />
+    <Content Include="Content\images\ss.png" />
+    <Content Include="Content\images\tabelbg.jpg" />
+    <Content Include="Content\images\table-icone1.png" />
+    <Content Include="Content\images\tb-arrow.png" />
+    <Content Include="Content\images\tr.png" />
+    <Content Include="Content\images\wifi.png" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\respond.min.js" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\changes.txt" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\demo.css" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\demo.html" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\demo.png" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\dropdown.png" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\dropdown_hover.png" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\GPL-LICENSE.txt" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\jquery.js" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\MIT-LICENSE.txt" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\ui.core.js" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\ui.dropdownchecklist.css" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\ui.dropdownchecklist.js" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\SpryAssets\SpryMenuBar.js" />
+    <Content Include="Content\SpryAssets\SpryMenuBarDown.gif" />
+    <Content Include="Content\SpryAssets\SpryMenuBarDownHover.gif" />
+    <Content Include="Content\SpryAssets\SpryMenuBarHorizontal.css" />
+    <Content Include="Content\SpryAssets\SpryMenuBarRight.gif" />
+    <Content Include="Content\SpryAssets\SpryMenuBarRightHover.gif" />
+    <Content Include="DBScript\script.sql" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\opensans-bold.eot" />
+    <Content Include="Content\fonts\opensans-bold.ttf" />
+    <Content Include="Content\fonts\opensans-bold.woff" />
+    <Content Include="Content\fonts\opensans-regular.eot" />
+    <Content Include="Content\fonts\opensans-regular.ttf" />
+    <Content Include="Content\fonts\opensans-regular.woff" />
+    <Content Include="Content\fonts\opensans-semibold.eot" />
+    <Content Include="Content\fonts\opensans-semibold.ttf" />
+    <Content Include="Content\fonts\opensans-semibold.woff" />
+    <Content Include="Content\fonts\opensans-semibold.woff2" />
+    <Content Include="Content\gstdata\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\gstdata\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\gstdata\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\gstdata\fonts\FontAwesome.otf" />
+    <Content Include="Content\gstdata\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\gstdata\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\gstdata\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\gstdata\fonts\opensans-bold.eot" />
+    <Content Include="Content\gstdata\fonts\opensans-bold.ttf" />
+    <Content Include="Content\gstdata\fonts\opensans-bold.woff" />
+    <Content Include="Content\gstdata\fonts\opensans-regular.eot" />
+    <Content Include="Content\gstdata\fonts\opensans-regular.ttf" />
+    <Content Include="Content\gstdata\fonts\opensans-regular.woff" />
+    <Content Include="Content\gstdata\fonts\opensans-semibold.eot" />
+    <Content Include="Content\gstdata\fonts\opensans-semibold.ttf" />
+    <Content Include="Content\gstdata\fonts\opensans-semibold.woff" />
+    <Content Include="Content\gstdata\fonts\opensans-semibold.woff2" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\GST_Mart.csprojResolveAssemblyReference.cache" />
+    <Content Include="Reports\ReportViewers\13-TVO_SGGR.aspx" />
+    <Content Include="Reports\ReportViewers\14-TV_Goods_Imported.aspx" />
+    <Content Include="Reports\ReportViewers\15-TVO_ GS.aspx" />
+    <Content Include="Reports\ReportViewers\5a_TVO_SRS.aspx" />
+    <Content Include="Reports\ReportViewers\5B-TotalOutPutTax.aspx" />
+    <Content Include="Reports\ReportViewers\6A-TotalValueSRD.aspx" />
+    <Content Include="Reports\ReportViewers\6B-TotalInputTax.aspx" />
+    <Content Include="Reports\ReportViewers\8-GST-Amt_Claim.aspx" />
+    <Content Include="Reports\ReportViewers\All_Field_Summery.aspx" />
+    <Content Include="Reports\ReportViewers\AnnualAdjustment.aspx" />
+    <Content Include="Reports\ReportViewers\TVO_exempt_supplies.aspx" />
+    <Content Include="Reports\ReportViewers\TVO_ExportSales.aspx" />
+    <Content Include="Reports\ReportViewers\TVO_StandardRatedSupply.aspx" />
+    <Content Include="Scripts.rar" />
+    <Content Include="Content\MultiSelest DropDown\jquery.ui.dropdownchecklist-master\README.md" />
+    <Content Include="Import\FilestoImport\BACD\1\Company-20141129" />
+    <Content Include="Import\FilestoImport\BACD\1\Company-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\1\Footer-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\1\Ledger-20141129" />
+    <Content Include="Import\FilestoImport\BACD\1\Ledger-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\1\Purchase-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\1\Supply-20141129" />
+    <Content Include="Import\FilestoImport\BACD\1\Supply-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\2\Company-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\2\Footer-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\2\Ledger-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\2\Purchase-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\2\Supply-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\3\Company-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\3\Footer-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\3\Ledger-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\3\Purchase-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\3\Supply-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\4\Company-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\4\Footer-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\4\Ledger-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\4\Purchase-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\4\Supply-20141129.xlsx" />
+    <Content Include="Import\FilestoImport\BACD\5\Company-20141129" />
+    <Content Include="Import\FilestoImport\MssGST\1\Company-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\1\Footer-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\1\Ledger-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\1\Purchase-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\1\Supply-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\2\Company-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\2\Footer-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\2\Ledger-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\2\Purchase-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\2\Supply-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\3\Company-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\3\Footer-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\3\Ledger-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\3\Purchase-20141128" />
+    <Content Include="Import\FilestoImport\MssGST\3\Supply-20141128" />
+    <Content Include="Reports\Datasets\13-TVO_SGGR_ds.xsc">
+      <DependentUpon>13-TVO_SGGR_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\13-TVO_SGGR_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>13-TVO_SGGR_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\13-TVO_SGGR_ds.xss">
+      <DependentUpon>13-TVO_SGGR_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\ReportViewers\Reports.Master" />
+    <Content Include="Reports\Datasets\15-TVO_ GS.xsc">
+      <DependentUpon>15-TVO_ GS.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\15-TVO_ GS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>15-TVO_ GS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\15-TVO_ GS.xss">
+      <DependentUpon>15-TVO_ GS.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\5A-Total_Value_Of_Stadard_Rated_Supply_ds.xsc">
+      <DependentUpon>5A-Total_Value_Of_Stadard_Rated_Supply_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\5A-Total_Value_Of_Stadard_Rated_Supply_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>5A-Total_Value_Of_Stadard_Rated_Supply_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\5A-Total_Value_Of_Stadard_Rated_Supply_ds.xss">
+      <DependentUpon>5A-Total_Value_Of_Stadard_Rated_Supply_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\AnnualAdjustMent_ds.xsc">
+      <DependentUpon>AnnualAdjustMent_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\AllFieldSummery_ds.xsc">
+      <DependentUpon>AllFieldSummery_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\AllFieldSummery_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AllFieldSummery_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\AllFieldSummery_ds.xss">
+      <DependentUpon>AllFieldSummery_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\AnnualAdjustMent_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AnnualAdjustMent_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\AnnualAdjustMent_ds.xss">
+      <DependentUpon>AnnualAdjustMent_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\field14_ds.xsc">
+      <DependentUpon>field14_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\field14_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>field14_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\field14_ds.xss">
+      <DependentUpon>field14_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\field5b_Gstclaim.xsc">
+      <DependentUpon>field5b_Gstclaim.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\field5b_Gstclaim.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>field5b_Gstclaim.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\field5b_Gstclaim.xss">
+      <DependentUpon>field5b_Gstclaim.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\field6a_ds.xsc">
+      <DependentUpon>field6a_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\field6a_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>field6a_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\field6a_ds.xss">
+      <DependentUpon>field6a_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\field6B_gst_claim.xsc">
+      <DependentUpon>field6B_gst_claim.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\field6B_gst_claim.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>field6B_gst_claim.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\field6B_gst_claim.xss">
+      <DependentUpon>field6B_gst_claim.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\filed5b_ds.xsc">
+      <DependentUpon>filed5b_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\filed5b_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>filed5b_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\filed5b_ds.xss">
+      <DependentUpon>filed5b_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\GSTReportDataSet.xsc">
+      <DependentUpon>GSTReportDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\GSTReportDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GSTReportDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\GSTReportDataSet.xss">
+      <DependentUpon>GSTReportDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\ReportField5B.xsc">
+      <DependentUpon>ReportField5B.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\ReportField5B.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportField5B.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\ReportField5B.xss">
+      <DependentUpon>ReportField5B.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\TVO_exempt_supplies_ds.xsc">
+      <DependentUpon>TVO_exempt_supplies_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\TVO_exempt_supplies_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TVO_exempt_supplies_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\TVO_exempt_supplies_ds.xss">
+      <DependentUpon>TVO_exempt_supplies_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\TVO_Export_Sales_ds.xsc">
+      <DependentUpon>TVO_Export_Sales_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\TVO_Export_Sales_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TVO_Export_Sales_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\TVO_Export_Sales_ds.xss">
+      <DependentUpon>TVO_Export_Sales_ds.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Datasets\TVO_Standard_Rated_Supply_ds.xsc">
+      <DependentUpon>TVO_Standard_Rated_Supply_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Datasets\TVO_Standard_Rated_Supply_ds.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TVO_Standard_Rated_Supply_ds.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Datasets\TVO_Standard_Rated_Supply_ds.xss">
+      <DependentUpon>TVO_Standard_Rated_Supply_ds.xsd</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="LoderPlugin\index.html" />
+    <Content Include="LoderPlugin\waitMe.css" />
+    <Content Include="LoderPlugin\waitMe.js" />
+    <Content Include="LoderPlugin\waitMe.min.css" />
+    <Content Include="LoderPlugin\waitMe.min.js" />
+    <Content Include="obj\Debug\GST_Mart.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\GST_Mart.dll" />
+    <Content Include="obj\Debug\GST_Mart.pdb" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Master\CreateCompany.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_Container.cshtml" />
+    <Content Include="Views\Admin\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\CreateUser1.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\SecureLogin.cshtml" />
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\CreateCycle.cshtml" />
+    <Content Include="Views\Admin\RecoverPassword.cshtml" />
+    <Content Include="Views\Admin\IpAddress.cshtml" />
+    <Content Include="Views\User\RecoverPassword.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\AdminPath.cshtml" />
+    <Content Include="Views\Admin\CreateUser.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\SaveSchedualr.cshtml" />
+    <Content Include="Views\User\ValidateImport.cshtml" />
+    <Content Include="Views\Admin\CurrencyExchange.cshtml" />
+    <Content Include="Views\Admin\TAXCODE.cshtml" />
+    <Content Include="Views\Admin\CurrencyGroup.cshtml" />
+    <Content Include="Views\Admin\ManualCurrencyExchange.cshtml" />
+    <Content Include="Views\Admin\CreateLDAPUser.cshtml" />
+    <Content Include="Views\User\Securitycodeaccess.cshtml" />
+    <Content Include="Views\Admin\AuditLog.cshtml" />
+    <Content Include="Views\Admin\CreateLDAPUser.cshtml" />
+    <Content Include="Views\User\CycleErrors.cshtml" />
+    <Content Include="Views\Admin\Configuration.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="STAGEDBGSTMASRTDataSet.xsc">
+      <DependentUpon>STAGEDBGSTMASRTDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="STAGEDBGSTMASRTDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>STAGEDBGSTMASRTDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="STAGEDBGSTMASRTDataSet.xss">
+      <DependentUpon>STAGEDBGSTMASRTDataSet.xsd</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Master\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GST_BLL\GST_BLL.csproj">
+      <Project>{685c356a-f304-4f99-a354-70680e056741}</Project>
+      <Name>GST_BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\Reports\rpt13-TVO_SGGR.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rpt14-TVGoodsImported.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rpt15-TVO_ GS.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rpt5A_TVO_SRA.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rpt5B-TotalOutputTax.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rpt5B-TotalOutputText.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rpt6A-TotalValueSRD.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rpt6B-TotalInputTax.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rpt8-GST-Amt-Claim.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rptAllFieldSummery.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rptAnnualAdjustment.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rptTVO_exempt_supplies.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rptTVO_ExportSales.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\rptTVO_StandardRatedSupply.rdlc" />
+    <EmbeddedResource Include="Reports\Reports\Source Report\CompanyReport.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>41317</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:41317/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

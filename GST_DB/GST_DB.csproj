@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DCF1F0B3-00A9-4041-8997-C2D571CF701E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GST_DB</RootNamespace>
+    <AssemblyName>GST_DB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TrackableEntities.EF.5">
+      <HintPath>..\packages\TrackableEntities.EF.5.1.0.2.0\lib\net40\TrackableEntities.EF.5.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminPath.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLog.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyUser.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyExchange.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyGroup.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencySchedular.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyType.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCode.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cycle.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLogger.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GST.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GST.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GST.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GST.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GST.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="GstSystem.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Industry.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IpAddress.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LDAP.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OriginalCodeTax.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Permission.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedular.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stage.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stage.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stage.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stage.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TaxCode.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DupLedger.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTCompany.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTDupCompany.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTDupPurchase.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTDupSupply.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTErrorCompany.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTErrorFooter.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTFooter.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTMissingCompany.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTMissingFooter.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTMissingPurchase.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTMissingSuplly.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTPurchase.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTPurchaseError.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTSupply.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GSTSupplyError.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Ledger.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_MissingLedger.cs">
+      <DependentUpon>Stage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionType.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>GST.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="GST.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GST.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="GST.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GST.edmx</DependentUpon>
+      <LastGenOutput>GST.Context.cs</LastGenOutput>
+    </None>
+    <None Include="GST.edmx.diagram">
+      <DependentUpon>GST.edmx</DependentUpon>
+    </None>
+    <None Include="GST.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GST.edmx</DependentUpon>
+      <LastGenOutput>GST.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Stage.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Stage.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Stage.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Stage.edmx</DependentUpon>
+      <LastGenOutput>Stage.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Stage.edmx.diagram">
+      <DependentUpon>Stage.edmx</DependentUpon>
+    </None>
+    <None Include="Stage.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Stage.edmx</DependentUpon>
+      <LastGenOutput>Stage.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GST.edmx.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{685C356A-F304-4F99-A354-70680E056741}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GST_BLL</RootNamespace>
+    <AssemblyName>GST_BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GST_Mart\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TrackableEntities.Common">
+      <HintPath>..\packages\TrackableEntities.Common.1.0.4.1\lib\portable-net40+sl5+win8+windowsphone8\TrackableEntities.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminUser\AdminUser.cs" />
+    <Compile Include="AuthorizedUser\AuthorizedUser.cs" />
+    <Compile Include="CsvConvertor.cs" />
+    <Compile Include="DTO\Admin.BO\AdminPathModel.cs" />
+    <Compile Include="DTO\Admin.BO\AdminUserModel.cs" />
+    <Compile Include="DTO\Admin.BO\AuditLogModel.cs" />
+    <Compile Include="DTO\Company.BO\CompanyErrorModel.cs" />
+    <Compile Include="DTO\Company.BO\CompanyForUserModel.cs" />
+    <Compile Include="DTO\Company.BO\CompanyModel.cs" />
+    <Compile Include="DTO\Company.BO\CompanyUserModel.cs" />
+    <Compile Include="DTO\Currency.BO\CurrencySchedularModel.cs" />
+    <Compile Include="DTO\Settingd.BO\ConfigurationModel.cs" />
+    <Compile Include="DTO\Company.BO\CreateCompaneyModel.cs" />
+    <Compile Include="DTO\Currency.BO\CurrencyCodeModel.cs" />
+    <Compile Include="DTO\Currency.BO\CurrencyExchangeModel.cs" />
+    <Compile Include="DTO\Currency.BO\CurrencyGroupModel.cs" />
+    <Compile Include="DTO\Settingd.BO\CustomCodeModel.cs" />
+    <Compile Include="DTO\Settingd.BO\CycleModel.cs" />
+    <Compile Include="DTO\Settingd.BO\DfaultModulForSchedular.cs" />
+    <Compile Include="DTO\Stage.BO\FooterModel.cs" />
+    <Compile Include="DTO\Settingd.BO\IndustryModel.cs" />
+    <Compile Include="DTO\Settingd.BO\IpAddressModel.cs" />
+    <Compile Include="DTO\Ldap.BO\LdapUserModel.cs" />
+    <Compile Include="DTO\Stage.BO\LedgerModel.cs" />
+    <Compile Include="DTO\Stage.BO\LoogerModel.cs" />
+    <Compile Include="DTO\Stage.BO\PurchaseModel.cs" />
+    <Compile Include="DTO\Settingd.BO\SchedularModel.cs" />
+    <Compile Include="DTO\Stage.BO\SupplyModel.cs" />
+    <Compile Include="DTO\Settingd.BO\SystemModel.cs" />
+    <Compile Include="DTO\Tax.BO\TaxCodeModel.cs" />
+    <Compile Include="DTO\Currency.BO\TransactionTypeModel.cs" />
+    <Compile Include="DTO\User.BO\UserModel.cs" />
+    <Compile Include="DTO\User.BO\UserPermission.cs" />
+    <Compile Include="DTO\User.BO\UserPermissionModel.cs" />
+    <Compile Include="Enum\EnumClass.cs" />
+    <Compile Include="Factory\CuurencySchedular.cs" />
+    <Compile Include="Factory\DropTable.cs" />
+    <Compile Include="Factory\Schedular.cs" />
+    <Compile Include="LdapAuthentication\LdapAuthentication.cs" />
+    <Compile Include="MasterAdmin\MasterAdmin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Factory\Mail.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GST_DB\GST_DB.csproj">
+      <Project>{dcf1f0b3-00a9-4041-8997-c2d571cf701e}</Project>
+      <Name>GST_DB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="obj\Debug\build.force" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\GST_BLL.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\GST_BLL.dll" />
+    <Content Include="bin\Debug\GST_BLL.pdb" />
+    <Content Include="bin\Debug\GST_DB.dll" />
+    <Content Include="bin\Debug\GST_DB.pdb" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="bin\Debug\System.Web.Mvc.xml" />
+    <Content Include="bin\Debug\TrackableEntities.Common.dll" />
+    <Content Include="bin\Debug\TrackableEntities.Common.pdb" />
+    <Content Include="bin\Debug\TrackableEntities.Common.xml" />
+    <Content Include="obj\Debug\GST_BLL.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\GST_BLL.dll" />
+    <Content Include="obj\Debug\GST_BLL.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

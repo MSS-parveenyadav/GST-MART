@@ -1,0 +1,66 @@
+User Module
+
+1) Login & logout
+2) Registration 
+3) Email Sending confirmation link
+4) User Result 
+5) Category wise exam
+6) Clock Features
+
+SCORE: 6*10=60
+
+
+
+Admin Module
+
+1) Users Result in Admin section
+2) direct Mail sending to user 
+3) Add category
+4) Add multiple answer
+5) Instruction panel
+6) Add Question
+7) Dynamic Time for Questions
+
+
+SCORE: 7*10=70
+bugs:-
+
+1) Password box field
+2) phone number is accepting string value
+3) Confirmation link  message shows if enter wrong email id but did not get any email
+4) Clock refresh
+5) user can give exam in two tabs at same time
+6) Exam submission is confusing from same button
+7) Result is Fail without giving Exams
+8) Exam should not redirect on login page again once exam start
+9) Exam can be given without Login ,link save and run direct page on any browser
+10) user cannot understand the result in % or marks
+11) Message is sending to wrong email in User view
+12) Duplicate entry in add category
+13) Empty answer is geting visible in test
+14) Empty answer is added in Admin panel
+15) Selected answer is not coming on Edit questions
+16) question limitation and exam time in minus
+17) Admin logout is not working.
+18) Disable backword not properly working.
+
+
+Negative Marking : 18
+
+
+
+================================================================================
+Admin Module Score : 60
+
+User Module  Score  :70
+
+            total   :130
+
+Negative Marking    :18
+
+                 =========
+Final Score         112 
+ 		 =========
+
+        
+================================================================================

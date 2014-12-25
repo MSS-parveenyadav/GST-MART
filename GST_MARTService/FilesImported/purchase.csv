@@ -1,0 +1,6 @@
+Company Code,Transaction Type,Supplier number,Supplier Name,Supplier BRN,Invoice Date,Invoice number,Import Declaration No,Number of invoice line,Item Code,Item Description,Value of Purchase excluding GST (MYR),Value of GST in MYR,Currency Code,Value of Purchase Excluding GST in Forex,Value of GST in Forex,Tax Code
+MSS,credit,ABC Ladang Sawit Bhd,Parveen,ABC Ladang Sawit Bhd,25-01-2017,1,23,123,sdf32,sdf,234,234,23,234,234,dfds23
+Parveen,credit,ABC Ladang Sawit Bhd,Parveen,ABC Ladang Sawit Bhd,25-01-2017,1,23,123,sdf32,sdf,234,234,23,234,234,dfds23
+Vikas,credit,ABC Ladang Sawit Bhd,Parveen,ABC Ladang Sawit Bhd,25-01-2017,1,23,123,sdf32,sdf,234,234,23,234,234,dfds23
+Chandan,credit,ABC Ladang Sawit Bhd,Parveen,ABC Ladang Sawit Bhd,25-01-2017,1,23,123,sdf32,sdf,234,234,23,234,234,dfds23
+Avnish,credit,ABC Ladang Sawit Bhd,Parveen,ABC Ladang Sawit Bhd,25-01-2017,1,23,123,sdf32,sdf,234,234,23,234,234,dfds23

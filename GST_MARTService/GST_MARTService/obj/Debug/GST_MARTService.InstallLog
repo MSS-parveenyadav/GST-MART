@@ -1,0 +1,87 @@
+﻿Installing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Rolling back assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Installing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Rolling back assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Installing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Installing service Service1...
+Creating EventLog source Service1 in log Application...
+Rolling back assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Restoring event log to previous state for source Service1.
+Installing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Rolling back assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Installing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Installing service Service1...
+Creating EventLog source Service1 in log Application...
+Rolling back assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Restoring event log to previous state for source Service1.
+Installing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Installing service Service1...
+Creating EventLog source Service1 in log Application...
+Rolling back assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Restoring event log to previous state for source Service1.
+Installing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Installing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe
+Installing service Service1...
+Service Service1 has been successfully installed.
+Creating EventLog source Service1 in log Application...
+Committing assembly 'D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.InstallLog
+   assemblypath = D:\Code\SSIS\GST_MARTService\GST_MARTService\obj\Debug\GST_MARTService.exe

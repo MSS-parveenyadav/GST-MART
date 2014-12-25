@@ -1,0 +1,132 @@
+12/6/2014 1:33:38 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 3:05:00 PM: success
+12/6/2014 3:08:49 PM: success
+12/6/2014 3:12:33 PM: success
+12/6/2014 3:13:33 PM: success
+12/6/2014 3:14:00 PM: success
+12/6/2014 3:14:03 PM: success
+12/6/2014 3:23:53 PM: success
+12/6/2014 3:23:59 PM: success
+12/6/2014 3:27:05 PM: success
+12/6/2014 3:27:31 PM: success
+12/6/2014 3:27:31 PM: success
+12/6/2014 3:27:54 PM: success
+12/6/2014 3:27:54 PM: success
+12/6/2014 3:28:14 PM: success
+12/6/2014 3:28:14 PM: success
+12/6/2014 3:49:15 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 3:49:15 PM: success
+12/6/2014 3:54:38 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 3:54:38 PM: success
+12/6/2014 3:54:38 PM: success
+12/6/2014 3:54:41 PM: success
+12/6/2014 3:54:41 PM: success
+12/6/2014 3:54:42 PM: success
+12/6/2014 4:02:19 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:02:19 PM: success
+12/6/2014 4:02:19 PM: success
+12/6/2014 4:02:34 PM: success
+12/6/2014 4:15:24 PM: Executing the query "CREATE TABLE [dbo].[ledger] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'ledger' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:15:24 PM: success
+12/6/2014 4:15:33 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:15:33 PM: success
+12/6/2014 4:15:33 PM: success
+12/6/2014 4:15:34 PM: success
+12/6/2014 4:15:34 PM: Cannot open the datafile "D:\Code\GST_Mart\dev\GST_MARTService\FilesToImport\supply.csv".
+------
+12/6/2014 4:15:34 PM: success
+12/6/2014 4:17:10 PM: success
+12/6/2014 4:17:13 PM: Executing the query "CREATE TABLE [dbo].[ledger] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'ledger' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:17:14 PM: Executing the query "CREATE TABLE [dbo].[ledger] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'ledger' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:17:14 PM: success
+12/6/2014 4:17:14 PM: success
+12/6/2014 4:17:14 PM: Executing the query "CREATE TABLE [dbo].[ledger] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'ledger' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:17:14 PM: The process cannot access the file 'D:\Code\GST_Mart\dev\SSIS\GST-mart\Logs\Error.txt' because it is being used by another process.------
+12/6/2014 4:17:14 PM: success
+12/6/2014 4:17:31 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:17:31 PM: success
+12/6/2014 4:17:31 PM: success
+12/6/2014 4:17:34 PM: success
+12/6/2014 4:17:40 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:17:40 PM: success
+12/6/2014 4:17:40 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:17:40 PM: success
+12/6/2014 4:17:40 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:17:40 PM: success
+12/6/2014 4:17:41 PM: Executing the query "CREATE TABLE [dbo].[purchase] (
+[No this is entere..." failed with the following error: "There is already an object named 'purchase' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:17:41 PM: success
+12/6/2014 4:19:32 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:32 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:32 PM: The process cannot access the file 'D:\Code\GST_Mart\dev\SSIS\GST-mart\Logs\Error.txt' because it is being used by another process.------
+12/6/2014 4:19:32 PM: success
+12/6/2014 4:19:38 PM: The process cannot access the file 'D:\Code\GST_Mart\dev\SSIS\GST-mart\Logs\Error.txt' because it is being used by another process.------
+12/6/2014 4:19:38 PM: success
+12/6/2014 4:19:38 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:38 PM: success
+12/6/2014 4:19:39 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:39 PM: success
+12/6/2014 4:19:39 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:39 PM: success
+12/6/2014 4:19:39 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:39 PM: success
+12/6/2014 4:19:40 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:40 PM: success
+12/6/2014 4:19:40 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:40 PM: success
+12/6/2014 4:19:41 PM: Executing the query "CREATE TABLE [dbo].[supply] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'supply' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 4:19:41 PM: success
+12/6/2014 5:04:41 PM: Executing the query "CREATE TABLE [dbo].[ledger] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'ledger' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 5:04:41 PM: Executing the query "CREATE TABLE [dbo].[ledger] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'ledger' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------
+12/6/2014 5:04:42 PM: Executing the query "CREATE TABLE [dbo].[ledger] (
+[Company Code] varch..." failed with the following error: "There is already an object named 'ledger' in the database.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+------

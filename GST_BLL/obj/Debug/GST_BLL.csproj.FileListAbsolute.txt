@@ -1,0 +1,40 @@
+D:\New folder\dev\GST_BLL\obj\Debug\GST_BLL.csprojResolveAssemblyReference.cache
+D:\New folder\dev\GST_BLL\bin\Debug\GST_BLL.dll.config
+D:\New folder\dev\GST_BLL\bin\Debug\GST_BLL.dll
+D:\New folder\dev\GST_BLL\bin\Debug\GST_BLL.pdb
+D:\New folder\dev\GST_BLL\bin\Debug\GST_DB.dll
+D:\New folder\dev\GST_BLL\bin\Debug\GST_DB.pdb
+D:\New folder\dev\GST_BLL\obj\Debug\GST_BLL.dll
+D:\New folder\dev\GST_BLL\obj\Debug\GST_BLL.pdb
+D:\GSt\GST_BLL\bin\Debug\GST_BLL.dll.config
+D:\GSt\GST_BLL\bin\Debug\GST_BLL.dll
+D:\GSt\GST_BLL\bin\Debug\GST_BLL.pdb
+D:\GSt\GST_BLL\bin\Debug\GST_DB.dll
+D:\GSt\GST_BLL\bin\Debug\GST_DB.pdb
+D:\GSt\GST_BLL\obj\Debug\GST_BLL.csprojResolveAssemblyReference.cache
+D:\GSt\GST_BLL\obj\Debug\GST_BLL.dll
+D:\GSt\GST_BLL\obj\Debug\GST_BLL.pdb
+D:\Newfolder\dev\GST_BLL\bin\Debug\GST_BLL.dll.config
+D:\Newfolder\dev\GST_BLL\bin\Debug\GST_BLL.dll
+D:\Newfolder\dev\GST_BLL\bin\Debug\GST_BLL.pdb
+D:\Newfolder\dev\GST_BLL\bin\Debug\GST_DB.dll
+D:\Newfolder\dev\GST_BLL\bin\Debug\GST_DB.pdb
+D:\Newfolder\dev\GST_BLL\obj\Debug\GST_BLL.csprojResolveAssemblyReference.cache
+D:\Newfolder\dev\GST_BLL\obj\Debug\GST_BLL.dll
+D:\Newfolder\dev\GST_BLL\obj\Debug\GST_BLL.pdb
+D:\dev\GST_BLL\bin\Debug\GST_BLL.dll.config
+D:\dev\GST_BLL\bin\Debug\GST_BLL.dll
+D:\dev\GST_BLL\bin\Debug\GST_BLL.pdb
+D:\dev\GST_BLL\bin\Debug\GST_DB.dll
+D:\dev\GST_BLL\bin\Debug\GST_DB.pdb
+D:\dev\GST_BLL\obj\Debug\GST_BLL.csprojResolveAssemblyReference.cache
+D:\dev\GST_BLL\obj\Debug\GST_BLL.dll
+D:\dev\GST_BLL\obj\Debug\GST_BLL.pdb
+D:\Code\GST_Mart\dev\GST_BLL\obj\Debug\GST_BLL.csprojResolveAssemblyReference.cache
+D:\Code\GST_Mart\dev\GST_BLL\bin\Debug\GST_BLL.dll.config
+D:\Code\GST_Mart\dev\GST_BLL\bin\Debug\GST_BLL.dll
+D:\Code\GST_Mart\dev\GST_BLL\bin\Debug\GST_BLL.pdb
+D:\Code\GST_Mart\dev\GST_BLL\bin\Debug\GST_DB.dll
+D:\Code\GST_Mart\dev\GST_BLL\bin\Debug\GST_DB.pdb
+D:\Code\GST_Mart\dev\GST_BLL\obj\Debug\GST_BLL.dll
+D:\Code\GST_Mart\dev\GST_BLL\obj\Debug\GST_BLL.pdb

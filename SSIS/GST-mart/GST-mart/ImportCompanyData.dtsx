@@ -1,0 +1,1450 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/19/2014 10:22:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VIMALSHARMA"
+  DTS:CreatorName="VIMALSHARMA\Vimal"
+  DTS:Description="DTS Wizard-generated package"
+  DTS:DTSID="{0DC9BAC0-401B-4ECB-84EF-A32776661EF4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="ImportCompanyData"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{ED7A9741-427E-4A8A-91F9-3419C8A8072E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BE62E869-277B-4D1D-9257-E418CF1C0805}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC+rKFKezq0eerm8RExFWWXpyjOAAEIyaoeyRQ9LPjDsgAAAAAOgAAAAAIAACAAAAAAujjN57uHMsNH0sUZUYVylPCLC3f0SYmyx9/+0NLlvCAAAAAMkoXv7qBzaP5Cor+KoaprW5OMM/Svw/tbsg4sffOsAkAAAABE+0r6J/HXj9BTbryiGuQj/fSaEiZG8/7nrmLDOWJ8ZLKbiHw54nrHkDjnZqLewtmJpAVb4uGw4xU5GhJcyYS1</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{14256083-DE6D-41D7-A6C3-E1EB6884ECEB}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADrsL0wiD5Wyi86bYzXEa64GMyFSuxRh1XzqJSdZImcCAAAAAAOgAAAAAIAACAAAACYUDT6Gm/0pe4FTsxjinO5ex1tg3u3hMlRXA7XWCY8dSAAAADDcx4hTavQt15EKlDb7gwnHeBFKINDakecWxQF2QKMS0AAAADUCUExKPzxutb3k1Km6KV9gOkeYml+MZnvaAhQ/+Yd9Td53c/bmm6QLG4hA19pQXm8YOXpKeUJQnCFyMFIBn2C</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5427F57D-E4D4-453A-AC2E-0922BDD0D722}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CycleID">
+      <DTS:VariableValue
+        DTS:DataType="3">6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D0855AA-F481-42A8-B5DD-2C658535AF3A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CycleIDDelete">
+      <DTS:VariableValue
+        DTS:DataType="3">6</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{2B0A8728-56A3-47A5-9BFB-B2492105CD92}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Data Conversion 0 - 0"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 0 - 0"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Company_Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Company_Code"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_Code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Record_Identifier]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Record_Identifier"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Record_Identifier]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Company_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Company_Name"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Company_BRN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Company_BRN"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_BRN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Company_GST_No]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Company_GST_No"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_GST_No]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Product_Version]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Product_Version"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Product_Version]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[GAF_Version]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="GAF_Version"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[GAF_Version]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Period_Start]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Period_Start"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Period_Start]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Period_End]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Period_End"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Period_End]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[File_Creation_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="File_Creation_Date"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[File_Creation_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_Code]"
+                      name="Company_Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_Code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Record_Identifier]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Record_Identifier]"
+                      name="Record_Identifier"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Record_Identifier]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="40"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_Name]"
+                      name="Company_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_BRN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="40"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_BRN]"
+                      name="Company_BRN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_BRN]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_GST_No]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="40"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_GST_No]"
+                      name="Company_GST_No"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_GST_No]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Product_Version]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="40"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Product_Version]"
+                      name="Product_Version"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Product_Version]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[GAF_Version]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="40"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[GAF_Version]"
+                      name="GAF_Version"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[GAF_Version]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Period_Start]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Period_Start]"
+                      name="Period_Start"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Period_Start]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Period_End]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Period_End]"
+                      name="Period_End"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Period_End]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[File_Creation_Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[File_Creation_Date]"
+                      name="File_Creation_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[File_Creation_Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[CycleID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[CycleID]"
+                      name="CycleID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::CycleID]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::CycleID]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[CycleIDDelete]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[CycleIDDelete]"
+                      name="CycleIDDelete"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::CycleIDDelete]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::CycleIDDelete]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination - GAF_COMPANY"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - GAF_COMPANY"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[GAF_COMPANY]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[Company_Code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Company_Code"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Company_Code]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_Code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[Record_Identifier]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Record_Identifier"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Record_Identifier]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Record_Identifier]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[Company_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Company_Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Company_Name]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[Company_BRN]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Company_BRN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Company_BRN]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_BRN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[Company_GST_No]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Company_GST_No"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Company_GST_No]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Company_GST_No]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[Product_Version]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Product_Version"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Product_Version]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Product_Version]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[GAF_Version]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="GAF_Version"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[GAF_Version]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[GAF_Version]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[Period_End]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Period_End"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Period_End]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Period_End]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[Period_Start]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Period_Start"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Period_Start]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Period_Start]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[File_Creation_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="File_Creation_Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[File_Creation_Date]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[File_Creation_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].Columns[CycleID]"
+                      cachedDataType="i8"
+                      cachedName="CycleID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Cycle_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[CycleID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Company_Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Company_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Record_Identifier]"
+                      dataType="wstr"
+                      length="1"
+                      name="Record_Identifier" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Company_Name]"
+                      dataType="wstr"
+                      length="40"
+                      name="Company_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Company_BRN]"
+                      dataType="wstr"
+                      length="40"
+                      name="Company_BRN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Company_GST_No]"
+                      dataType="wstr"
+                      length="40"
+                      name="Company_GST_No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Period_Start]"
+                      dataType="dbTimeStamp"
+                      name="Period_Start" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Period_End]"
+                      dataType="dbTimeStamp"
+                      name="Period_End" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[File_Creation_Date]"
+                      dataType="dbTimeStamp"
+                      name="File_Creation_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Product_Version]"
+                      dataType="wstr"
+                      length="40"
+                      name="Product_Version" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[GAF_Version]"
+                      dataType="wstr"
+                      length="40"
+                      name="GAF_Version" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input].ExternalColumns[Cycle_ID]"
+                      dataType="i8"
+                      name="Cycle_ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+
+select  *  from tbl_GSTCompany where CycleID=? 
+
+delete  tbl_GSTCompany where CycleID=? </property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input].Columns[CycleID]"
+                      cachedDataType="i4"
+                      cachedName="CycleID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[CycleID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input].Columns[CycleIDDelete]"
+                      cachedDataType="i4"
+                      cachedName="CycleIDDelete"
+                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[CycleIDDelete]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i8"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i8"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - tbl_GSTCompany"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - tbl_GSTCompany"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[tbl_GSTCompany]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Company_Code]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_Code]"
+                      name="Company_Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Record_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Record_Identifier]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Record_Identifier]"
+                      name="Record_Identifier"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Company_Name]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_Name]"
+                      name="Company_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_BRN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Company_BRN]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_BRN]"
+                      name="Company_BRN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_GST_No]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Company_GST_No]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Company_GST_No]"
+                      name="Company_GST_No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Period_Start]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Period_Start]"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Period_Start]"
+                      name="Period_Start"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Period_End]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Period_End]"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Period_End]"
+                      name="Period_End"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[File_Creation_Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[File_Creation_Date]"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[File_Creation_Date]"
+                      name="File_Creation_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Product_Version]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Product_Version]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Product_Version]"
+                      name="Product_Version"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[GAF_Version]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[GAF_Version]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[GAF_Version]"
+                      name="GAF_Version"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[CycleID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[CycleID]"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[CycleID]"
+                      name="CycleID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[CompanyID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[CompanyID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[CompanyID]"
+                      name="CompanyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Company_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Company_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Record_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Record_Identifier" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Company_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Company_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Company_BRN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Company_BRN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Company_GST_No]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Company_GST_No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Period_Start]"
+                      dataType="dbTimeStamp"
+                      name="Period_Start" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Period_End]"
+                      dataType="dbTimeStamp"
+                      name="Period_End" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[File_Creation_Date]"
+                      dataType="dbTimeStamp"
+                      name="File_Creation_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Product_Version]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Product_Version" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[GAF_Version]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="GAF_Version" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[CycleID]"
+                      dataType="i8"
+                      name="CycleID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[CompanyID]"
+                      dataType="wstr"
+                      length="50"
+                      name="CompanyID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Company_Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Company_Code]"
+                      name="Company_Code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Record_Identifier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Record_Identifier]"
+                      name="Record_Identifier" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Company_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Company_Name]"
+                      name="Company_Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Company_BRN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Company_BRN]"
+                      name="Company_BRN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Company_GST_No]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Company_GST_No]"
+                      name="Company_GST_No" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Period_Start]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Period_Start]"
+                      name="Period_Start" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Period_End]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Period_End]"
+                      name="Period_End" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[File_Creation_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[File_Creation_Date]"
+                      name="File_Creation_Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Product_Version]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Product_Version]"
+                      name="Product_Version" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[GAF_Version]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[GAF_Version]"
+                      name="GAF_Version" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[CycleID]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[CycleID]"
+                      name="CycleID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[CompanyID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[CompanyID]"
+                      name="CompanyID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task 1\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Command Output]"
+              endId="Package\Data Flow Task 1\Destination - GAF_COMPANY.Inputs[Destination Input]"
+              name="OLE DB Command Output"
+              startId="Package\Data Flow Task 1\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - tbl_GSTCompany.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Data Flow Task 1\Destination - GAF_COMPANY"
+          TopLeft="301.5,332.5" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Data Flow Task 1\Source - tbl_GSTCompany"
+          TopLeft="311.5,26.5" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Data Flow Task 1\Data Conversion 0 - 0"
+          TopLeft="464,109.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="413,68.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="142,41"
+              Start="0,0"
+              End="142,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="138,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="138,20.5"
+                    Point2="142,20.5"
+                    Point3="142,24.5" />
+                  <mssgle:LineSegment
+                    End="142,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task 1\Derived Column"
+          TopLeft="526,183" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Data Conversion Output]"
+          TopLeft="555,151.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48,31.5"
+              Start="0,0"
+              End="48,24">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.75"
+                    Point2="0,15.75"
+                    Point3="4,15.75" />
+                  <mssgle:LineSegment
+                    End="44,15.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44,15.75"
+                    Point2="48,15.75"
+                    Point3="48,19.75" />
+                  <mssgle:LineSegment
+                    End="48,24" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Data Flow Task 1\OLE DB Command"
+          TopLeft="552,259" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Derived Column Output]"
+          TopLeft="603,225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,34"
+              Start="0,0"
+              End="32,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="28,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28,17"
+                    Point2="32,17"
+                    Point3="32,21" />
+                  <mssgle:LineSegment
+                    End="32,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Command Output]"
+          TopLeft="635,301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-226,31.5"
+              Start="0,0"
+              End="-226,24">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.75"
+                    Point2="0,15.75"
+                    Point3="-4,15.75" />
+                  <mssgle:LineSegment
+                    End="-222,15.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-222,15.75"
+                    Point2="-226,15.75"
+                    Point3="-226,19.75" />
+                  <mssgle:LineSegment
+                    End="-226,24" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Destination - GAF_COMPANY">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Source - tbl_GSTCompany">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,163 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Reports.master.cs" Inherits="Gst_RPT.ReportViewers.Reports" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+    <script src="../Content/js/bootstrap.js"></script>
+    <link href="../Content/css/style.css" rel="stylesheet" />
+    <link href="../Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/css/font-awesome.css" rel="stylesheet" />
+    <link href="../Content/css/lessframe.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+         .tab_dropdown{
+             position:relative;
+         }
+        .tab_dropdown ul{
+            display:none;
+            background:#fff;
+            position:absolute;
+            min-width:400px;
+            z-index:111;
+            padding:10px;
+            border:1px solid #ddd;
+        }
+         .tab_dropdown ul li{
+             border:none;
+         }
+        .tab_dropdown:hover ul{
+            display:block;
+        }
+
+    </style>
+</head>
+<body>
+   <form runat="server">     
+
+<div id="wrapper" class="clearfix"> 
+  <!--[header]-->
+  <div id="header">
+    <div class="container-fluid">
+      <div id="logo"><a href="#"><img src="../Content/images/logo.png" alt="logo"/></a></div>
+      <div class="admin-login">
+        <div class="admin-wel">
+          <ul>
+            <li>Welcome <a href="#">Administrator</a> </li>
+            <li>01 June <strong>2014,</strong> 10:00 AM</li>
+          </ul>
+          <span>Company ID </span> </div>
+        <div class="login"> <a href="#">Logout <i class="fa fa-power-off"></i> </a> </div>
+      </div>
+    </div>
+    
+    <!--[nav-bar]-->
+    <nav class="navbar navbar-default" role="navigation"> 
+      
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li ><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+          <li class="active"><a href="#"><i class="fa fa-line-chart"></i> Reports</a></li>
+          <li><a href="#"><i class="fa fa-file-archive-o"></i> GAF File</a></li>
+          <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
+        </ul>
+        <div class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+          <ol>
+          <li>
+            <select class="selectpicker">
+              <option>Select One</option>
+             </select>
+          </li>
+          <li>
+            <input type="text" class="form-control" placeholder="Search"/>
+          </li>
+              </ol>
+          </div>
+          <a href="#" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>
+       </div>
+      </div>
+    </nav>
+    <!--[/nav-bar]--> 
+    
+  </div>
+  <!--[/header]--> 
+  
+  <!--[]-->
+  
+  <div class="data-feed">
+    <ul class="nav nav-tabs" role="tablist" id="myTab">
+      <li class="active"><a href="#home" role="tab" data-toggle="tab">Data Source</a></li>
+     <li class="tab_dropdown"><a class="MenuBarItemSubmenu current"  href="#">GST Reports</a>
+        <ul>
+          <li><a   onclick="window.location='5a_TVO_SRS.aspx'" style="cursor:pointer">5a-Total Value of Standard Rated Supply</a></li>
+          <li><a  onclick="window.location='5B-TotalOutPutTax.aspx'" style="cursor:pointer">5b-Total Output Tax</a></li>
+          <li><a  onclick="window.location='6A-TotalValueSRD.aspx'" style="cursor:pointer">6a-Total Value of Standard Rated Acquisition</a></li>
+          <li><a  onclick="window.location='6B-TotalInputTax.aspx'" style="cursor:pointer">6b-Total Input Tax </a></li>
+          <li><a  onclick="window.location='8-GST-Amt_Claim.aspx'" style="cursor:pointer">8-GST Amount Claimable </a></li>
+          <li><a  onclick="window.location='TVO_StandardRatedSupply.aspx'" style="cursor:pointer">10-Total Value of Local Zero-Rate Supplies </a></li>
+           <li><a onclick="window.location='TVO_ExportSales.aspx'" style="cursor:pointer">11-Total Value of Export Sales </a></li>
+          <li><a  onclick="window.location='TVO_exempt_supplies.aspx'" style="cursor:pointer">12-Total Value of Exempt Supplies </a></li>
+          <li><a  onclick="window.location='13-TVO_SGGR.aspx'" style="cursor:pointer"> 13-Total Value of Supplies Granted GST Relief </a></li>
+          <li><a  onclick="window.location='14-TV_Goods_Imported.aspx'" style="cursor:pointer">14-Total Value of Goods Imported </a></li>
+          <li><a  onclick="window.location='15-TVO_ GS.aspx'" style="cursor:pointer">15-Total Value of GST Suspended </a></li>  
+          <li><a  onclick="window.location='AnnualAdjustment.aspx'" style="cursor:pointer">Annual Adjustment </a></li>   
+          <li><a  onclick="window.location='All_Field_Summery.aspx'" style="cursor:pointer">All Field Summery</a></li>      
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="container-fluid">
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+      <asp:ContentPlaceHolder ID="CPH_For_InputControls" runat="server"></asp:ContentPlaceHolder>
+  </div>
+  <div class="system-feed">
+    <div class="container-fluid">
+      <div class="col-lg-6 Feed" style="text-align:center;margin-left:250px">
+        <h1> <i><img src="../Content/images/data.png" alt="#"/></i><asp:ContentPlaceHolder ID="CPH_For_RptLable" runat="server"></asp:ContentPlaceHolder>
+        </h1>
+      </div>
+      <%--<div class="col-lg-5 print">
+        <ul>
+          <li><a href="#"><span class="glyphicon glyphicon-save"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-print"></span></a></li>
+        </ul>
+      </div>--%>
+    </div>
+  </div>
+  <div class="data-table">
+    <div class="container-fluid">
+        <asp:ContentPlaceHolder ID="CPH_For_ForReport" runat="server"></asp:ContentPlaceHolder>
+    </div>
+  </div>
+  
+  <!--[]--> 
+  
+  <!--[pagination]-->
+  <!--[pagenaton]-->
+  
+  <div id="footer">
+    <p>copyright 2013. All Right reserved.</p>
+  </div>
+</div>
+ </form>
+<script>
+    $('#myTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>
+</body>
+</html>

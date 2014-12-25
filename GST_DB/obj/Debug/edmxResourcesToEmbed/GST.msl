@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GSTMARTModelStoreContainer" CdmEntityContainer="GSTMARTEntities">
+    <EntitySetMapping Name="AdminPaths">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.AdminPath)">
+        <MappingFragment StoreEntitySet="AdminPaths">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="adminpath1" ColumnName="adminpath1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.Company)">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Permission" ColumnName="Permission" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="CurrencySchedularId" ColumnName="CurrencySchedularId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cycles">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.Cycle)">
+        <MappingFragment StoreEntitySet="Cycles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Supply" ColumnName="Supply" />
+          <ScalarProperty Name="Purchase" ColumnName="Purchase" />
+          <ScalarProperty Name="Ledger" ColumnName="Ledger" />
+          <ScalarProperty Name="Footer" ColumnName="Footer" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="CycleID" ColumnName="CycleID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GstSystems">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.GstSystem)">
+        <MappingFragment StoreEntitySet="GstSystems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+          <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IpAddresses">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.IpAddress)">
+        <MappingFragment StoreEntitySet="IpAddresses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LDAPs">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.LDAP)">
+        <MappingFragment StoreEntitySet="LDAPs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DomianName" ColumnName="DomianName" />
+          <ScalarProperty Name="PortNumber" ColumnName="PortNumber" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.Permission)">
+        <MappingFragment StoreEntitySet="Permissions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreateCycle" ColumnName="CreateCycle" />
+          <ScalarProperty Name="AccessSetting" ColumnName="AccessSetting" />
+          <ScalarProperty Name="DownloadData" ColumnName="DownloadData" />
+          <ScalarProperty Name="PrintReport" ColumnName="PrintReport" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Mobilenumber" ColumnName="Mobilenumber" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.CompanyUser)">
+        <MappingFragment StoreEntitySet="CompanyUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedulars">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.Schedular)">
+        <MappingFragment StoreEntitySet="Schedulars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="STime" ColumnName="STime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+          <ScalarProperty Name="NextRun" ColumnName="NextRun" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Industries">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.Industry)">
+        <MappingFragment StoreEntitySet="Industries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaxCodes">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.TaxCode)">
+        <MappingFragment StoreEntitySet="TaxCodes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="CustomCode" ColumnName="CustomCode" />
+          <ScalarProperty Name="OriginalCode" ColumnName="OriginalCode" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="GST03Fields" ColumnName="GST03Fields" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomCodes">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.CustomCode)">
+        <MappingFragment StoreEntitySet="CustomCodes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Customcode" ColumnName="Customcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.TransactionType)">
+        <MappingFragment StoreEntitySet="TransactionTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Transactiontype" ColumnName="Transactiontype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyExchanges">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.CurrencyExchange)">
+        <MappingFragment StoreEntitySet="CurrencyExchanges">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Discription" ColumnName="Discription" />
+          <ScalarProperty Name="ConversionRate" ColumnName="ConversionRate" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CurrencyDate" ColumnName="CurrencyDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OriginalCodeTaxes">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.OriginalCodeTax)">
+        <MappingFragment StoreEntitySet="OriginalCodeTaxes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OriginalCode" ColumnName="OriginalCode" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.CurrencyType)">
+        <MappingFragment StoreEntitySet="CurrencyTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="currencytype" ColumnName="currencytype" />
+          <ScalarProperty Name="currencycode" ColumnName="currencycode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.CurrencyGroup)">
+        <MappingFragment StoreEntitySet="CurrencyGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CurrencyGroupName" ColumnName="CurrencyGroupName" />
+          <ScalarProperty Name="CurrencyType" ColumnName="CurrencyType" />
+          <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.AuditLog)">
+        <MappingFragment StoreEntitySet="AuditLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configurations">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.Configuration)">
+        <MappingFragment StoreEntitySet="Configurations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="logoname" ColumnName="logoname" />
+          <ScalarProperty Name="dateformat" ColumnName="dateformat" />
+          <ScalarProperty Name="timeformat" ColumnName="timeformat" />
+          <ScalarProperty Name="dbaddress" ColumnName="dbaddress" />
+          <ScalarProperty Name="dbname" ColumnName="dbname" />
+          <ScalarProperty Name="dbuserid" ColumnName="dbuserid" />
+          <ScalarProperty Name="dbpwd" ColumnName="dbpwd" />
+          <ScalarProperty Name="directorypath" ColumnName="directorypath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencySchedulars">
+      <EntityTypeMapping TypeName="IsTypeOf(GSTMARTModel.CurrencySchedular)">
+        <MappingFragment StoreEntitySet="CurrencySchedulars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FeedUrl" ColumnName="FeedUrl" />
+          <ScalarProperty Name="FrequencyUnit" ColumnName="FrequencyUnit" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CompanyCurrencySchedular" TypeName="GSTMARTModel.CompanyCurrencySchedular" StoreEntitySet="CurrencySchedulars">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Company_Id" />
+      </EndProperty>
+      <EndProperty Name="CurrencySchedular">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Company_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

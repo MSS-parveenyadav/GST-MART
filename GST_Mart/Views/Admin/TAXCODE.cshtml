@@ -1,0 +1,580 @@
+﻿
+    <!-- Bootstrap -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Content/css/lessframe.css" rel="stylesheet" />
+    <style>
+        .validation {
+            color: red !important;
+        }
+        .modal-dialog {
+            z-index: 99999;
+        }
+        .modal-body .form-group input.form-control {
+            border: 1px solid #ccc !important;
+            height: 37px;
+            width: 100% !important;
+        }
+        .modal-body .form-group {
+            border: medium none;
+        }
+        .modal-title {
+            font-size: 23px;
+            line-height: 1.42857;
+            margin: 0;
+            text-align: left;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script src="~/Scripts/bootstrap.js"></script>
+@*</head>*@
+@model GST_BLL.DTO.TaxCodeModel
+
+@{
+    ViewBag.Title = "TAXCODE";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("TAXCODE", "Admin", FormMethod.Post, new { id = "submitForm" }))
+{
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true)
+
+    <div class="container-fluid" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+        <div class="container-fluid">
+            <div class="tab-content">
+                <div class="tab-pane active tab-conentmain" id="home">
+                    <div class="data-table">
+                        <div class="container-fluid">
+                            <div class="w-bg">
+                                <table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <div class="col-lg-12 full-blue">Add Tax Code</div>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="add-tax">Company id : </td>
+                                            <td>
+                                                @Html.HiddenFor(m => m.Id)
+                                                @Html.DropDownListFor(m => m.CompanyId, ViewBag.companylist as List<SelectListItem>, new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
+                                                <p id="ValidateCompanyId" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">System id : </td>
+                                            <td>
+                                                @Html.DropDownList("systemlist", new SelectList(string.Empty, "Id", "CompanyId"), "Please select", new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
+                                                <p id="Validatesystemlist" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">Select Customs Code : </td>
+                                            <td>
+                                                @Html.DropDownListFor(m => m.CustomCode, ViewBag.customcodelist as List<SelectListItem>, new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
+                                                <img id="imgcustomcode" data-toggle="modal" data-target="#reqmod" onclick="showCodeModal();" src="~/Content/images/add.png" />
+                                                <p id="ValidateCustomCode" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">Original Code :  </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.OriginalCode, "", new { placeholder = "Original Code", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                <p id="ValidateOriginalCode" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">Select Transaction Type : </td>
+                                            <td>
+                                                @Html.DropDownListFor(m => m.TransactionType, ViewBag.transactionlist as List<SelectListItem>, new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
+                                                <img id="imgtransactiontype" data-toggle="modal" data-target="#reqmod1" onclick="ShowtransactionModal();" src="~/Content/images/add1.png" />
+                                                <p id="ValidateTransactionType" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">Tax Rate :  </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.TaxRate, "", new { placeholder = "Tax Rate", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                <p id="ValidateTaxRate" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">Description :  </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Description, "", new { placeholder = "Description", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                <p id="ValidateDescription" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">Reference Number :  </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.RefernceNumber, "", new { placeholder = "RefernceNumber", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                <p id="ValidateRefernceNumber" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">GST03 Fields : </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.GST03Fields, "", new { placeholder = "GST03Fields", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                <p id="ValidateGST03Fields" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">Remarks : </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Remarks, "", new { placeholder = "Remarks", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                <p id="ValidateRemarks" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="add-tax">Date Type : </td>
+                                            <td>
+                                                @Html.DropDownListFor(m => m.DateType, ViewBag.DateFormet as List<SelectListItem>, new { placeholder = "Date Type", @onchange = "ValidationRefresh(this.id)" })
+                                                <p id="ValidateDateType" style="color: red"></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-10 button">
+                                <input type="submit" value="Submit" onclick="return checkallvalidation();" name="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div id="sucess" style="color:green;font:14px arial" align="center"> @TempData["Sucess"]</div>
+                    <div id="error" style="color:red;font:14px arial" align="center"> @TempData["Error"]</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+        <div class="data-table">
+            <div class="container-fluid">
+
+                <table id="tbltaxcode" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Original Code </th>
+                            <th>Custom Codes  </th>
+                            <th>Tax Rate  </th>
+                            <th>Transaction Type </th>
+                            <th>Reference Number </th>
+                            <th>Description  </th>
+                            <th>Date Type  </th>
+                            <th>GST03 Field </th>
+                            <th>Remark </th>
+                            <th>Action </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.taxcodemodel != null)
+                        {
+                            foreach (var item in ViewBag.taxcodemodel)
+                            {
+                                <tr>
+                                    <td>@item.OriginalCode</td>
+                                    <td>@item.CustomCode</td>
+                                    <td>@item.TaxRate </td>
+                                    <td>@item.TransactionType </td>
+                                    <td>@item.RefernceNumber </td>
+                                    <td>
+                                        @item.Description
+                                    </td>
+                                    <td>
+                                        @item.DateType
+                                    </td>
+                                    <td>
+                                        @item.GST03Fields
+                                    </td>
+                                    <td>
+                                        @item.Remarks
+                                    </td>
+
+                                    <td>
+                                        <ul class="action-button">
+                                            <li>
+                                                @Html.ActionLink("Edit", "EditTAXCODE", new { id = item.Id })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Delete", "DeleteTaxcode", new { id = item.Id })
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+
+        </div>
+
+        @* Bootstarp model for Add custom codes *@
+        <div class="modal fade" id="reqmod" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button id="ClosePopup" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <center> <h4 class="modal-title" id="myModalLabel">Add New Customs Code</h4></center>
+                        <asp:Label ID="Success_Msg" runat="server" Text=""></asp:Label>
+
+                        <p id="P1" style="color: green"></p>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" id="formEdit">
+                            <div class="form-group" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+                                <label for="exampleInputEmail1">Add Custom Code :</label>
+                                <input type="text" id="customcode" class="form-control" onkeypress="return IsSpecialcharacter(event)" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" />
+
+                            </div>
+                            <p id="Error1" style="color: red"></p>
+                            <div class="btn">
+                                <input id="btnCustomCode" type="button" onclick="return AddCustomCode();" value="Add Custom Code" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        @* Bootstarp model for Add Transaction type *@
+        <div class="modal fade" id="reqmod1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button id="ClosePopup2" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <center> <h4 class="modal-title" id="myModalLabel">Add New Transaction Type</h4></center>
+                        <asp:Label ID="Success_Msg" runat="server" Text=""></asp:Label>
+
+                        <p id="P1" style="color: green"></p>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" id="formedit1">
+                            <div class="form-group" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+                                <label for="exampleInputEmail1">Add Transaction Type :</label>
+                                <input type="text" id="transactiontype" class="form-control" onkeypress="return IsSpecialcharacter(event)" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" />
+
+                            </div>
+                            <p id="error2" style="color: red"></p>
+                            <div class="btn">
+                                <input id="btnTransactiontype" type="button" value="Add Transaction Type" onclick="return AddTransactionType();"  />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+   <script type="text/javascript">
+
+    /*Function to show modal for custom codes*/
+    function showCodeModal() {
+        $("#reqmod").show();
+        $('#customcode').val("");
+        document.getElementById("Error1").innerHTML = " ";
+    }
+
+    /*Function to show modal for Transaction types*/
+    function ShowtransactionModal() {
+        $("#reqmod1").show();
+        $('#transactiontype').val("");
+        document.getElementById("error2").innerHTML = " ";
+    }
+
+    /*Function to add Custom code into the database*/
+    function AddCustomCode()
+    {
+        var customcode = $('#customcode').val();
+        if(customcode=="")
+        {
+            document.getElementById("Error1").innerHTML = "Custom Code is empty.";
+            return false;
+        }
+        else
+        {
+            document.getElementById("Error1").innerHTML = " ";
+            $.ajax({
+
+                url: "/Admin/Savecustomcode",
+                type: "POST",
+                data: "{'CustomCode':'" + customcode +"'}",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {                 
+                    $('#customcode').val("");
+                    document.getElementById("Error1").innerHTML = "Custom Code Save Sucessfully.";
+                    $("#CustomCode").empty();
+                    $.each(response, function (i, systemid) {
+                        $("#CustomCode").append('<option value="' + systemid.Text + '">' +
+                             systemid.Text + '</option>');
+                    });                  
+                },
+                error: function (error) {
+
+                    alert(JSON.stringify(error));
+                }
+            });
+            $('#ClosePopup').trigger('click');
+        }
+    }
+
+
+    /*Function to add Transaction type into the database*/
+    function AddTransactionType() {
+        var transactiontype = $('#transactiontype').val();
+        if (transactiontype == "") {
+            document.getElementById("error2").innerHTML = "Transaction type is empty.";
+            return false;
+        }
+        else {
+            document.getElementById("error2").innerHTML = " ";
+            $.ajax({
+
+                url: "/Admin/SaveTransactiontype",
+                type: "POST",
+                data: "{'Transactiontype':'" + transactiontype + "'}",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    console.log(response);
+                    $('#transactiontype').val("");
+                     document.getElementById("error2").innerHTML = "Transaction type Save Sucessfully.";
+                     $("#TransactionType").empty();
+                    $.each(response, function (i, systemid) {
+                        $("#TransactionType").append('<option value="' + systemid.Text + '">' +
+                             systemid.Text + '</option>');
+                    });
+                  
+                },
+                error: function (error) {
+
+                    alert(JSON.stringify(error));
+                }
+            });
+            $('#ClosePopup2').trigger('click');
+        }
+    }
+
+    /*Function that will fire on categoryid dropdownlist seleted index change event.*/
+    function CategoryId_indexchange()
+    {
+        $("#CompanyId").change(function () {
+            var value = $("#CompanyId").val();
+            if (value != "Please Select") {
+                $("#systemlist").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: "/Admin/GetStateId",
+                    dataType: 'json',
+                    data: { id: $("#CompanyId").val() },
+                    success: function (systemids) {
+                        $.each(systemids, function (i, systemid) {
+                            $("#systemlist").append('<option value="' + systemid.SystemId + '">' +
+                                 systemid.SystemId + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        $("#systemlist").empty();
+                    }
+                });
+                return false;
+            }
+        })
+    }
+
+
+    /*Function that will fire on Originalcode textbox text change event.*/
+    function OriginalCode_textchange()
+    {
+        $('#OriginalCode').change(function () {
+            var originalcode = this.value;
+            $.ajax({
+                type: 'POST',
+                url: "/Admin/Gettaxratebyoriginalcode",
+                dataType: 'json',
+                data: { id: originalcode },
+                success: function (systemids) {
+                    if (systemids != "Fail") {
+                        $('#TaxRate').val(systemids)
+                    }
+                },
+                error: function (ex) {
+                   // alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        });
+    }
+
+
+   /*function to check all validations*/
+    function checkallvalidation()
+    {
+        var count = 0;
+        var CompanyId = $("#CompanyId").val();
+        var systemlist = $("#systemlist option:selected").text();     
+        var CustomCode = $("#CustomCode").val();
+        var TransactionType = $("#TransactionType").val();
+        var OriginalCode = $("#OriginalCode").val();
+        var TaxRate = $("#TaxRate").val();
+        var Description = $("#Description").val();
+        var RefernceNumber = $("#RefernceNumber").val();
+        var GST03Fields = $("#GST03Fields").val();
+        var Remarks = $("#Remarks").val();
+        var DateType = $("#DateType").val();
+
+        if (CompanyId == "Please Select")
+        {         
+            document.getElementById("ValidateCompanyId").innerHTML = "Please select CompanyId.";
+            $('#CompanyId').focus();
+            count = 1;
+        }
+
+        if (systemlist == "Please select") {
+            document.getElementById("Validatesystemlist").innerHTML = "Please select SystemId.";
+            $('#systemlist').focus();
+            count = 1;
+        }
+        if (CustomCode == "Please Select") {
+            document.getElementById("ValidateCustomCode").innerHTML = "Please Select Custom code.";
+            $('#CustomCode').focus();
+            count = 1;
+        }
+        if (TransactionType == "Please Select") {
+            document.getElementById("ValidateTransactionType").innerHTML = "Please Select Transaction Type.";
+            $('#TransactionType').focus();
+            count = 1;
+        }
+        if (OriginalCode=="")
+        {
+            document.getElementById("ValidateOriginalCode").innerHTML = "Please fill original code.";
+            $('#OriginalCode').focus();
+            count = 1;
+        }
+        if (TaxRate == "") {
+            document.getElementById("ValidateTaxRate").innerHTML = "Please fill tax rate.";
+            $('#TaxRate').focus();
+            count = 1;
+        }
+        if (Description == "") {
+            document.getElementById("ValidateDescription").innerHTML = "Please fill description.";
+            $('#Description').focus();
+            count = 1;
+        }
+        if (RefernceNumber == "") {
+            document.getElementById("ValidateRefernceNumber").innerHTML = "Please fill reference number.";
+            $('#RefernceNumber').focus();
+            count = 1;
+        }
+        if (GST03Fields == "") {
+            document.getElementById("ValidateGST03Fields").innerHTML = "Please fill Gst03fields.";
+            $('#GST03Fields').focus();
+            count = 1;
+        }
+        if (Remarks == "") {
+            document.getElementById("ValidateRemarks").innerHTML = "Please fill Remarks.";
+            $('#Remarks').focus();
+            count = 1;
+        }
+        if (DateType == "") {
+            document.getElementById("ValidateDateType").innerHTML = "Please fill Date type.";
+            $('#DateType').focus();
+            count = 1;
+        }
+
+        if (count == 1) {
+            return false;
+        }
+    }
+
+   /*Refresh validations on textbox change*/
+    function ValidationRefresh(id) {
+       
+        var validateid = "Validate" + id
+        document.getElementById(validateid).innerHTML = ".";
+        var control = document.getElementById(validateid);
+        control.innerHTML="";
+    }
+ 
+    $(document).ready(function () {
+        CategoryId_indexchange();
+        OriginalCode_textchange();
+        var Company = $("#CompanyId").val();
+        if(Company!="Please Select")
+        {
+            BindDDlSystemlist_OnEdit();
+        }
+    });
+    function BindDDlSystemlist_OnEdit()
+    {
+        $("#systemlist").empty();
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/GetStateId",
+            dataType: 'json',
+            data: { id: $("#CompanyId").val() },
+            success: function (systemids) {
+                $.each(systemids, function (i, systemid) {
+                    $("#systemlist").append('<option value="' + systemid.SystemId + '">' +
+                         systemid.SystemId + '</option>');
+                });
+            },
+            error: function (ex) {
+                $("#systemlist").empty();
+            }
+        });
+    }
+
+
+    function IsSpecialcharacter(e) {
+        var keyCode = e.which ? e.which : e.keyCode
+        var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode >= 123);
+        if (ret == true) {
+            return false;
+        }
+        else {
+            return true;
+        }
+        return ret;
+    }
+
+    //For only Numeric
+    var specialKeys = new Array();
+    specialKeys.push(8);
+    specialKeys.push(9);
+    function IsNumeric(e) {
+        var keyCode = e.which ? e.which : e.keyCode
+        var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+
+        return ret;
+    }
+
+    </script>
+
+
+}

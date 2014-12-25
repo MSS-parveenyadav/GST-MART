@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="969102aece3946e5bf6780c8c85409f5" Name="Diagram1" ZoomLevel="111">
+        <EntityTypeShape EntityType="GSTMARTModel.AdminPath" Width="1.5" PointX="5" PointY="0.5" />
+        <EntityTypeShape EntityType="GSTMARTModel.Company" Width="1.5" PointX="2.875" PointY="3.125" />
+        <EntityTypeShape EntityType="GSTMARTModel.Cycle" Width="1.5" PointX="7.375" PointY="0.5" />
+        <EntityTypeShape EntityType="GSTMARTModel.GstSystem" Width="1.5" PointX="5" PointY="2.125" />
+        <EntityTypeShape EntityType="GSTMARTModel.IpAddress" Width="1.5" PointX="7.375" PointY="4" />
+        <EntityTypeShape EntityType="GSTMARTModel.Permission" Width="1.5" PointX="3" PointY="0.5" />
+        <EntityTypeShape EntityType="GSTMARTModel.User" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="GSTMARTModel.FK_CompanyGstSystem" />
+        <AssociationConnector Association="GSTMARTModel.FK_PermissionUser" />
+        <EntityTypeShape EntityType="GSTMARTModel.CompanyUser" Width="1.5" PointX="1.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSTMARTModel.Schedular" Width="1.5" PointX="9.625" PointY="0.625" />
+        <EntityTypeShape EntityType="GSTMARTModel.LDAP" Width="1.5" PointX="7.125" PointY="7.875" />
+        <EntityTypeShape EntityType="GSTMARTModel.Industry" Width="1.5" PointX="12.125" PointY="0.75" />
+        <AssociationConnector Association="GSTMARTModel.CompanyIndustry" />
+        <EntityTypeShape EntityType="GSTMARTModel.TaxCode" Width="1.5" PointX="12.375" PointY="2.875" />
+        <EntityTypeShape EntityType="GSTMARTModel.CustomCode" Width="1.5" PointX="10.75" PointY="4.125" />
+        <EntityTypeShape EntityType="GSTMARTModel.TransactionType" Width="1.5" PointX="8" PointY="6" />
+        <EntityTypeShape EntityType="GSTMARTModel.CurrencyExchange" Width="1.875" PointX="5" PointY="4.75" />
+        <EntityTypeShape EntityType="GSTMARTModel.OriginalCodeTax" Width="1.75" PointX="1.125" PointY="8.375" />
+        <EntityTypeShape EntityType="GSTMARTModel.CurrencyType" Width="1.5" PointX="9.125" PointY="4" />
+        <EntityTypeShape EntityType="GSTMARTModel.CurrencyGroup" Width="1.5" PointX="1.125" PointY="6.125" />
+        <EntityTypeShape EntityType="GSTMARTModel.AuditLog" Width="1.5" PointX="10.125" PointY="5.875" />
+        <EntityTypeShape EntityType="GSTMARTModel.Configuration" Width="1.5" PointX="12.375" PointY="6.375" />
+        <EntityTypeShape EntityType="GSTMARTModel.CurrencySchedular" Width="1.75" PointX="4" PointY="7.75" />
+        <AssociationConnector Association="GSTMARTModel.CompanyCurrencySchedular" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

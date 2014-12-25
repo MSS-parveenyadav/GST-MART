@@ -1,0 +1,316 @@
+﻿
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "AuditLog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid" id="ErrorMessages" style="color: red;"></div><div id="SuccessMessages" class="container-fluid" style="color: green; ">@TempData["Message"]</div>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="tab-content">
+            <div class="tab-pane active tab-conentmain" id="home">
+                <div class="data-table">
+                    <div class="container-fluid">
+                        <div class="w-bg wd_input">
+                            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                                <div class="col-lg-12 full-blue">Audit Log</div>
+                                <thead>
+                                    <tr class="fontlg">
+                                        <td class="sel"><b>User Login</b></td>
+                                        <td  class="text-center"><b>Cycle Run</b></td>
+                                        <td class ="sel"><b>Admin Changes</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hg90">
+                                        <td>Search by User Id & IP</td>
+                                        <td>Start Period&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End Period</td>
+                                        <td>Login Status</td>
+                                    </tr>
+                                    <tr class="hg90">
+                                        <td>
+                                            <div style="width:auto; display:inline-block; margin-right:5px;">
+                                                <input type="text" id="Txtsearch" /></div>
+                                            <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByIP()" value="Search" /></div>
+</td>
+                                        <td><div style="width:100%"><div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker", @style = "width:150px;" })</div>
+                                                                    <div style="width: auto; display: inline-block; margin-right: 5px;">@Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker", @style = "width:150px;" })
+                                            </div>
+                                                <div style="display:inline-block;"  class="btn4"><input type="button" onclick="SearchByDate()" value="Search" /></div>
+                                            
+                                            </div>
+</td>
+                                        <td>
+                                            @Html.DropDownList("FilterUser", new List<SelectListItem>
+
+                 {
+                    new SelectListItem{ Text="All", Value = "All" },
+                    new SelectListItem{ Text="Success", Value = "Success" },
+                    new SelectListItem{ Text="Fail", Value = "Fail" }
+                 })
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="currency"> currency </div>
+            <div class="tab-pane" id="rules"> Rules </div>
+            <div class="tab-pane" id="data"> Data </div>
+            <div class="tab-pane" id="security"> security </div>
+        </div>
+    </div>
+</div>
+<div class="data-table">
+    <div class="container-fluid">
+        <div class="tax-code">
+            <div class="data-tableconv">
+                <div id="EmptyMessage" style="color:red;text-align:center"></div>
+                <table id="DataTable" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                    <thead>
+                        
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>IP Address</th>
+                            <th>Login  Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="searchtable">
+                        @if (ViewBag.AuditLog != null)
+                        {
+                            foreach (var item in ViewBag.AuditLog)
+                            {
+                                <tr>
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.UserId</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Status</td>
+                                    <td>@item.IpAddress</td>
+                                    <td>@item.Message</td>
+                                    <td>
+                                        <ul class="action-button">
+                                            <li>@Html.ActionLink("Export", "ExportData", new { Id = item.Id })</li>
+                                            <li>@Html.ActionLink("Delete", "DeleteAuditLog", new { Id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this Audit Log?');" })</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+
+                </table>
+                <!--<div class="col-md-5 col-sm-5 col-xs-12 cent-m">
+                  <div class="col-md-6">
+                    <div class="button-in"><input type="button" name="" value="Print User List"></div>
+                  </div>
+                  <div class="col-md-6">
+                   <div class="button-in"><input type="button" name="" value="Export User List"></div>
+                  </div>
+
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Pageing">
+    <div class="pagination-footer">
+        <div class="container-fluid">
+            <div class="col-md-4 item-par">
+                <form action="" id="PageingForm" method="get">
+                    <table width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                @{
+                                List<SelectListItem> ddPagination = new List<SelectListItem>();
+                                for (int i = 1; i <= 10; i++)
+                                {
+                                    int j = i * 5;
+                                    int pagesize = Convert.ToInt32(TempData["pagesize"]);
+                                    if (pagesize == j)
+                                    {
+                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                    }
+                                    else
+                                    {
+                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
+                                    }
+                                }
+
+                            @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();" });
+                                }
+                            </td>
+                            <td><span>Items Per Page</span></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <div class="col-md-4 item-page">
+                <ul>
+                    @Html.PagedListPager((IPagedList)ViewBag.AuditLog, page => Url.Action("AuditLog", new { page, pagesize = TempData["pagesize"] }))
+                </ul>
+            </div>
+            <div class="col-md-3 item-of-page">
+                <p>@(ViewBag.AuditLog.PageCount < ViewBag.AuditLog.PageNumber ? 0 : ViewBag.AuditLog.PageNumber) of @ViewBag.AuditLog.PageCount items <a href="/Admin/AuditLog"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+
+    function SearchByIP() {
+        var userid = $("#Txtsearch").val();
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/SearchAuditLogByUserId_Ip",
+            dataType: 'json',
+            data: { id: userid },
+            success: function (response) {
+                var target = $("#searchtable");
+                target.empty();
+                if (response.length != 0) {
+                    $("#Pageing").show();
+                    document.getElementById("EmptyMessage").innerHTML = "";
+                    for (var i = 0; i < response.length; i++) {
+                        var data = response[i];
+
+                        target.append("<tr><td>" + data.CreatedDate + "</td><td>"
+                        + data.UserId + "</td><td>" + data.Name + "</td><td>"
+                        + data.Status + "</td><td>" + data.IpAddress + "</td><td>" + data.Message
+                        + "</td><td><ul class='action-button'><li>"
+                        + "<a href='/Admin/ExportData/" + data.Id + "'>Export</a>"
+                         + "</li><li class='confirmation' id=" + data.Id + " onclick='getdata(this.id)'>" + "<a href='javascript:void(0)'>Delete</a>"
+                          + "</li></td></tr>");
+                    }
+                }
+                else {
+                    document.getElementById("EmptyMessage").innerHTML = "No Record Found";
+                    $("#Pageing").hide();
+                  
+                }
+            },
+            error: function (ex) {
+                // alert('Failed to retrieve states.' + ex);
+            }
+        });
+        return false;
+    };
+
+
+
+
+    $("#FilterUser").change(function () {
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/SearchAuditLogByUserId_Ip",
+            dataType: 'json',
+            data: { id: $("#FilterUser").val() },
+            success: function (response) {
+                var target = $("#searchtable");
+                target.empty();
+                if (response.length != 0) {
+                    $("#Pageing").show();
+                    document.getElementById("EmptyMessage").innerHTML = "";
+                    for (var i = 0; i < response.length; i++) {
+                        var data = response[i];
+
+                        target.append("<tr><td>" + data.CreatedDate + "</td><td>"
+                        + data.UserId + "</td><td>" + data.Name + "</td><td>"
+                        + data.Status + "</td><td>" + data.IpAddress + "</td><td>" + data.Message
+                        + "</td><td><ul class='action-button'><li>"
+                        + "<a href='/Admin/ExportData/" + data.Id + "'>Export</a>"
+                         + "</li><li class='confirmation' id=" + data.Id + " onclick='getdata(this.id)'>" + "<a href='javascript:void(0)'>Delete</a>"
+                          + "</li></td></tr>");
+                    }
+                }
+                else {
+                    document.getElementById("EmptyMessage").innerHTML = "No Record Found";
+                    $("#Pageing").hide();
+                }
+            },
+            error: function (ex) {
+                $("#systemlist").empty();
+            }
+        });
+        return false;
+    })
+
+    function SearchByDate() {
+        var StartDate = $("#txtstartdatepicker").val()
+        var EndDate = $("#txtenddatepicker").val()
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/SearchAuditLogByDate",
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            async:false,
+            data: "{'StartDate':'" + StartDate + "','EndDate':'" + EndDate + "'}",
+            success: function (response) {
+                var target = $("#searchtable");
+                target.empty();
+                if (response.length != 0) {
+                    document.getElementById("EmptyMessage").innerHTML = "";
+                    $("#Pageing").show();
+                    
+                    for (var i = 0; i < response.length; i++) {
+                        var data = response[i];
+                        target.append("<tr><td>" + data.CreatedDate + "</td><td>"
+                        + data.UserId + "</td><td>" + data.Name + "</td><td>"
+                        + data.Status + "</td><td>" + data.IpAddress + "</td><td>" + data.Message
+                        + "</td><td><ul class='action-button'><li>"
+                        + "<a href='/Admin/ExportData/" + data.Id + "'>Export</a>"
+                         + "</li><li class='confirmation' id=" + data.Id + " onclick='getdata(this.id)'>" + "<a href='javascript:void(0)'>Delete</a>"
+                          + "</li></td></tr>");
+                    }
+                }
+                else {
+                    $("#Pageing").hide();
+                    document.getElementById("EmptyMessage").innerHTML = "No Record Found";
+                    var target = $("#searchtable");
+                    target.empty();
+                }
+            },
+            error: function (ex) {
+                $("#systemlist").empty();
+            }
+        });
+        return false;
+    }
+
+
+    $(function () {
+        $("#txtstartdatepicker").datepicker();
+    });
+    $(function () {
+        $("#txtenddatepicker").datepicker();
+    });
+
+    function getdata(id) {
+        if (confirm('Are you sure you wish to delete this Audit Log?')) {
+            window.location = "/Admin/DeleteAuditLog/" + id;
+        } else {
+        }
+    }
+</script>
+
+

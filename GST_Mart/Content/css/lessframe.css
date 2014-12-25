@@ -1,0 +1,273 @@
+/*	Less Framework 4
+	http://lessframework.com
+	by Joni Korpi
+	License: http://opensource.org/licenses/mit-license.php	*/
+
+
+/*	Resets
+	------	*/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figure, figcaption, hgroup, menu, footer, header, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	line-height: normal;
+}
+article, aside, canvas, figure, figure img, figcaption, hgroup, footer, header, nav, section, audio, video {
+	display: block;
+}
+fieldset, img {
+	border: 0;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-style: normal;
+	font-weight: normal;
+}
+li {
+	list-style: none;
+}
+caption, th {
+	text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+q:before, q:after {
+	content: '';
+}
+abbr, acronym {
+	border: 0;
+	font-variant: normal;
+}
+sup {
+	vertical-align: text-top;
+}
+sub {
+	vertical-align: text-bottom;
+	overflow: hidden;
+}
+input, textarea, select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	resize: none;
+	outline: none;
+}
+legend {
+	color: #000;
+}
+table {
+	font-size: inherit;
+}
+pre, code, kbd, samp, tt {
+	font-family: monospace;
+	line-height: 100%;
+}
+em {
+	font-style: italic;
+}
+strong {
+	font-weight: bold;
+}
+html {
+	-webkit-text-size-adjust: auto; /* Automatically adjusted for Safari on iPhone. */
+	-ms-text-size-adjust: auto;
+	font-family: Arial, Helvetica, sans-serif;
+}
+@-webkit-keyframes shakeit {
+0% {
+-webkit-transform: rotate(0deg) translate(2px, 1px);
+}
+10% {
+-webkit-transform: rotate(2deg) translate(1px, 2px);
+}
+20% {
+-webkit-transform: rotate(-2deg) translate(3px, 0px);
+}
+30% {
+-webkit-transform: rotate(0deg) translate(0px, -2px);
+}
+40% {
+-webkit-transform: rotate(-2deg) translate(-1px, 1px);
+}
+50% {
+-webkit-transform: rotate(2deg) translate(1px, -2px);
+}
+60% {
+-webkit-transform: rotate(0deg) translate(3px, -1px);
+}
+70% {
+-webkit-transform: rotate(2deg) translate(-2px, -1px);
+}
+80% {
+-webkit-transform: rotate(-2deg) translate(1px, 1px);
+}
+90% {
+-webkit-transform: rotate(0deg) translate(-2px, -2px);
+}
+100% {
+-webkit-transform: rotate(2deg) translate(-1px, 2px);
+}
+}
+@keyframes shakeit {
+0% {
+transform: rotate(0deg) translate(2px, 1px);
+}
+10% {
+transform: rotate(2deg) translate(1px, 2px);
+}
+20% {
+transform: rotate(-2deg) translate(3px, 0px);
+}
+30% {
+transform: rotate(0deg) translate(0px, -2px);
+}
+40% {
+transform: rotate(-2deg) translate(-1px, 1px);
+}
+50% {
+transform: rotate(2deg) translate(1px, -2px);
+}
+60% {
+transform: rotate(0deg) translate(3px, -1px);
+}
+70% {
+transform: rotate(2deg) translate(-2px, -1px);
+}
+80% {
+transform: rotate(-2deg) translate(1px, 1px);
+}
+90% {
+transform: rotate(0deg) translate(-2px, -2px);
+}
+100% {
+transform: rotate(2deg) translate(-1px, 2px);
+}
+}
+a {
+	color: #1281ae;
+	text-decoration: none;
+	transition-property: all;
+	transition-duration: 0.8s;
+	transition-delay: 0s;
+	transition-easing: ease-out;
+	-moz-transition-property: all;
+	-moz-transition-duration: 0.8s;
+	-moz-transition-delay: 0s;
+	-moz-transition-easing: ease-out;
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 0.8s;
+	-webkit-transition-delay: 0s;
+	-webkit-transition-easing: ease-out;
+	-o-transition-property: all;
+	-o-transition-duration: 0.8s;
+	-o-transition-delay: 0s;
+	-o-transition-easing: ease-out;
+	-ms-transition-property: all;
+	-ms-transition-duration: 0.8s;
+	-ms-transition-delay: 0s;
+	-ms-transition-easing: ease-out;
+}
+a:hover {
+	text-decoration: none;
+	transition-property: all;
+	transition-duration: 0.8s;
+	transition-delay: 0s;
+	transition-easing: ease-out;
+	-moz-transition-property: all;
+	-moz-transition-duration: 0.8s;
+	-moz-transition-delay: 0s;
+	-moz-transition-easing: ease-out;
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 0.8s;
+	-webkit-transition-delay: 0s;
+	-webkit-transition-easing: ease-out;
+	-o-transition-property: all;
+	-o-transition-duration: 0.8s;
+	-o-transition-delay: 0s;
+	-o-transition-easing: ease-out;
+	-ms-transition-property: all;
+	-ms-transition-duration: 0.8s;
+	-ms-transition-delay: 0s;
+	-ms-transition-easing: ease-out;
+}
+:focus {
+	outline: 0;
+}
+.clearfix {
+	clear: both;
+}
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.gap {
+	height: 15px;
+	clear: both;
+}
+.fr {
+	float: right !important;
+}
+.fl {
+	float: left !important;
+}
+.noBorder {
+	border-width: 0 !important;
+}
+.noBorderTop {
+	border-top-width: 0 !important;
+}
+.noBorderRight {
+	border-right-width: 0 !important;
+}
+.noBorderBottom {
+	border-bottom-width: 0 !important;
+}
+.noBorderLeft {
+	border-left-width: 0 !important;
+}
+.noMargin {
+	margin: 0 !important;
+}
+.noMarginTop {
+	margin-top: 0 !important;
+}
+.noMarginRight {
+	margin-right: 0 !important;
+}
+.noMarginBottom {
+	margin-bottom: 0 !important;
+}
+.noMarginLeft {
+	margin-left: 0 !important;
+}
+.noBackground {
+	background: none !important;
+}
+body {
+}
+.small, small {
+	font-size: 13px;
+	line-height: 18px;
+}
+/* Selection colours (easy to forget) */
+
+::selection {
+	background: #58b7e3;
+	color: #fff;
+}
+::-moz-selection {
+background: #58b7e3;
+color:#fff;
+}
+img::selection {
+	background: transparent;
+}
+img::-moz-selection {
+background: transparent;
+}
+ 

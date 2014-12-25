@@ -1,0 +1,5 @@
+Company Code,Transaction Type,Customer number,Customer Name,Customer BRN,Invoice Date,Invoice number,Number of invoice line,Item Code,Item Description,Value of supply excluding GST (MYR),Value of GST in MYR,Tax Code,Country Code,Destination of goods being exported,Currency Code,Value of Supply Excluding GST in Forex,Value of GST in Forex
+Test Company,B01-BRN2013,B01-BRN2013,Test,123,01-01-2016,12,123,dfs23,sdfds,123,125,cv2,1,123,123,123,312
+parveen Company,B01-BRN2013,B01-BRN2013,Test,123,01-01-2016,12,123,dfs23,sdfds,123,125,cv2,1,123,123,123,312
+vikas Company,B01-BRN2013,B01-BRN2013,Test,123,01-01-2016,12,123,dfs23,sdfds,123,125,cv2,1,123,123,123,312
+Chandan Company,B01-BRN2013,B01-BRN2013,Test,123,01-01-2016,12,123,dfs23,sdfds,123,125,cv2,1,123,123,123,312

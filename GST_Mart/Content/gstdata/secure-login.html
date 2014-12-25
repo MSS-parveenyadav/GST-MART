@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>secure-login</title>
+
+<!-- Bootstrap -->
+<link href="css/style.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/lessframe.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="wrapper" class="clearfix"> 
+  <!--[header]-->
+  <div id="header">
+    <div class="container-fluid">
+      <div id="logo"><a href="#"><img src="images/logo.png" alt="logo"></a></div>
+      <!--<div class="admin-login">
+        <div class="admin-wel">
+          <ul>
+            <li>Welcome <a href="#">Administrator</a> </li>
+            <li>01 June <strong>2014,</strong> 10:00 AM</li>
+          </ul>
+          <span>Company ID </span> </div>
+        <div class="login"> <a href="#">Logout <i class="fa fa-power-off"></i> </a> </div>
+      </div>-->
+    </div>
+    
+    <!--[nav-bar]-->
+    <nav class="navbar navbar-default" role="navigation"> 
+      
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+          <li><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+          <li class="active"><a href="4.html"><i class="fa fa-line-chart"></i> Reports</a></li>
+          <li><a href="#"><i class="fa fa-file-archive-o"></i> GAF File</a></li>
+          <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+          <ol>
+          <li>
+            <select class="selectpicker">
+              <option>Mustard</option>
+              <option>Ketchup</option>
+              <option>Relish</option>
+            </select>
+          </li>
+          <li>
+            <input type="text" class="form-control" placeholder="Search">
+          </li>
+          </div>
+          <a href="#" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>
+        </form>
+      </div>-->
+    </nav>
+    <!--[/nav-bar]--> 
+    
+  </div>
+  <!--[/header]--> 
+  
+  <!--[]-->
+  
+  <!--<div class="data-feed">
+    <ul class="nav nav-tabs" role="tablist" id="myTab">
+      <li class="active"><a href="#home" role="tab" data-toggle="tab">Data Source</a></li>
+      <li><a href="#profile" role="tab" data-toggle="tab"> GST Reports</a></li>
+    </ul>
+  </div>-->
+  <div class="container-fluid">
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">
+        <div class=" col-lg-12 sec-login" >
+          <h1>Secure Login <span class="glyphicon glyphicon-question-sign"></span></h1>
+        </div>
+        <div class="sec-login-form">
+          <div class="col-lg-12 sec-login-form-iiner" >
+            <div class="row">
+              <div class="col-xs-12">
+              <label>Company ID :</label>
+               <select name="text" class="form-control">
+<option>Select One</option>
+<option>Select One</option>
+<option>Select One</option>
+<option>Select One</option>
+<option>Select One</option>
+</select>  
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <label>User ID :</label>
+                <input type="text" class="form-control"  >
+              </div>
+              <div class="col-xs-6">
+                <label>Password :</label>
+                <input type="text" class="form-control" >
+              </div>
+              <div class="btn1">
+                <input name="" type="button" value="Login">
+              </div>
+            </div>
+          </div>
+          <div class="rest-pass"> <a href="#">Reset Password</a>
+            <p>Your IP Address ; 66.249.66.188 <i><img src="images/green.png" alt="#"></i></p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="profile">
+        <div class=" col-lg-12 sec-login" >
+          <h1>Security Code Access <span class="glyphicon glyphicon-question-sign"></span></h1>
+        </div>
+        <div class="security">
+          <form action="" method="get" >
+            <div class="col-xs-8 security-form">
+              <label>Security Code:</label>
+              <input type="text" class="form-control" >
+            </div>
+            <div class=" btn2">
+              <input name="" type="button" value="enter">
+            </div>
+          </form>
+          <div class="rest-pass"> <a href="#">Resend Security Code </a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--[]--> 
+  
+
+  
+  
+  <div id="footer">
+    <p>copyright 2013.All Right reserved.</p>
+  </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.min.js"></script> 
+<script>
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+</script>
+</body>
+</html>
