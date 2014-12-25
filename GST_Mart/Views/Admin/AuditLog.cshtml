@@ -17,6 +17,12 @@
     ViewBag.Title = "AuditLog";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@section Submenu
+{
+
+    @Html.Partial("~/Views/_Partial/_Setting.cshtml")
+}
+
 
 <div class="container-fluid" id="ErrorMessages" style="color: red;"></div><div id="SuccessMessages" class="container-fluid" style="color: green; ">@TempData["Message"]</div>
 <div class="container-fluid">

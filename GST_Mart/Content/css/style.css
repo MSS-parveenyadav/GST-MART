@@ -95,13 +95,16 @@
 	list-style: none outside none;
 }
 .form-group select {
-	border: none;
-	float: left;
-	border-radius: 5px 0 0 5px;
-	height: 30px;
-	padding: 0 8px;
-	font-size:12px;
-	width: 164px;
+    border: medium none;
+    border-radius: 5px 0 0 5px;
+    float: left;
+    font-size: 12px;
+    height: 54px !important;
+    padding: 4px 8px;
+    width: 164px;
+}
+.form-group select option {
+    padding: 3px 7px;
 }
 .form-group ol {
 	margin: 0;
@@ -136,12 +139,91 @@
 	border-right: 1px #98b8d8 solid;
 }
 .data-feed li a {
-	font-size: 16px !important;
+	font-size: 12px !important;
 	font-family: 'OpenSansSemibold';
 	color: #333333;
 }
 .data-feed li:last-child {
 	border: medium none;
+}
+
+.fileinput.input-group {
+    display: table;  width: 354px;
+}
+.fileinput-exists .fileinput-new, .fileinput-new .fileinput-exists {
+    display: none;
+}
+.form-control .fileinput-filename {
+    vertical-align: bottom;
+}
+.fileinput-filename {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.btn-file > input {
+    cursor: pointer;
+    direction: ltr;
+    font-size: 23px;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+input[type="file"] {
+    display: block;
+}
+.input-group {
+    border-collapse: separate;
+    display: table;
+    position: relative;
+}
+.btn-file {
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+}
+.input-group-addon {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    padding: 6px 12px;
+    text-align: center;
+}
+.data-tabel {
+    margin-top: 16px;
+}
+.data-tabel tr td {
+    padding: 0;
+}
+.input-group-addon.btn.btn-default.btn-file {
+    background: url("/content/images/log-out.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    color: #fff;
+    font-weight: bold;
+}
+.col-md-6.pull-right .button {
+    float: right;
+    line-height: 18px;
+    width: 122px;
+}
+.navbar-form.navbar-left.pull-right .form-group {
+    margin-top: 0;
+}
+.navbar-form.navbar-left {
+    margin: 0;
+}
+.navbar-form.navbar-left .form-group {
+    margin-top: 12px;
+}
+.form-group select#CompneyList {
+    height: 30px !important;
 }
 .sec-login {
 	background: url(../images/secdata.jpg) repeat-x;
@@ -1255,4 +1337,24 @@ margin-top: 39px;
 color: white;
 } 
 
+}
+#imgtransactiontype
+{
+    width:47px !important;
+   cursor:pointer;
+}
+
+#imgcustomcode
+{
+ cursor:pointer;
+}
+
+/*fieldset, img {
+
+    width:47px;
+}*/
+
+.w-bg .button {
+    float: none;
+    width: 388px;
 }

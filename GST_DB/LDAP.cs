@@ -20,5 +20,6 @@ namespace GST_DB
         public string UserId { get; set; }
         public string Password { get; set; }
         public string CompanyId { get; set; }
+        public string CNBN { get; set; }
     }
 }
