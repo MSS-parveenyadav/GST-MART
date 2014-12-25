@@ -1576,7 +1576,7 @@ namespace GST_BLL.AdminUser
                 using (var db = new DbContext(contextConnectionString))
                 {
                     var Gstmart = new GSTMARTEntities(contextConnectionString);
-                    var query = (from p in Gstmart.Cycles select p).ToList();
+                    var query = (from p in Gstmart.Cycles where p.Status != "Audit Deleted" || p.Status ==null select p).ToList();
                     foreach (var item in query)
                     {
                         list.Add(new SelectListItem { Text = item.CycleID, Value = item.CycleID });
@@ -1619,7 +1619,7 @@ namespace GST_BLL.AdminUser
                 using (var db = new DbContext(contextConnectionString))
                 {
                     var Gstmart = new GSTMARTEntities(contextConnectionString);
-                    List = (from p in Gstmart.Cycles select p).ToList();
+                    List = (from p in Gstmart.Cycles where p.Status != "Audit Deleted" || p.Status == null select p).ToList();
                     return List;
                 }
             }
@@ -1659,11 +1659,11 @@ namespace GST_BLL.AdminUser
                     var Gstmart = new GSTMARTEntities(contextConnectionString);
                     if (parameter != "All Cycle Id")
                     {
-                        Cycles = (from p in Gstmart.Cycles where p.CycleID.Contains(parameter) select p).ToList();
+                        Cycles = (from p in Gstmart.Cycles where p.CycleID.Contains(parameter) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
                     else
                     {
-                        Cycles = (from p in Gstmart.Cycles select p).ToList();
+                        Cycles = (from p in Gstmart.Cycles where p.Status != "Audit Deleted" || p.Status == null select p).ToList();
                     }
 
                     return Cycles;
@@ -1709,18 +1709,18 @@ namespace GST_BLL.AdminUser
                     if (StartDate == "" && Enddate != "")
                     {
                         DateTime EDate = Convert.ToDateTime(Enddate);
-                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate <= EDate.Date select p).ToList();
+                        Cycle = (from p in Gstmart.Cycles where (p.CreatedDate <= EDate.Date) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
                     else if (StartDate != "" && Enddate == "")
                     {
                         DateTime SDate = Convert.ToDateTime(StartDate);
-                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate >= SDate.Date select p).ToList();
+                        Cycle = (from p in Gstmart.Cycles where (p.CreatedDate >= SDate.Date) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
                     else
                     {
                         DateTime EDate = Convert.ToDateTime(Enddate);
                         DateTime SDate = Convert.ToDateTime(StartDate);
-                        Cycle = (from p in Gstmart.Cycles where p.CreatedDate >= SDate.Date && p.CreatedDate <= EDate.Date select p).ToList();
+                        Cycle = (from p in Gstmart.Cycles where (p.CreatedDate >= SDate.Date && p.CreatedDate <= EDate.Date) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
                     return Cycle;
                 }
@@ -1780,7 +1780,16 @@ namespace GST_BLL.AdminUser
 
         }
         
-
+        public User FindAdminEmail()
+        {
+            var Adminuser = new User();
+            Adminuser = (from p in gstmart.Users where p.Usertype == "Admin" select p).FirstOrDefault();
+            if (Adminuser != null)
+            {
+                return Adminuser;
+            }
+            return Adminuser;
+        }
        
 
     }

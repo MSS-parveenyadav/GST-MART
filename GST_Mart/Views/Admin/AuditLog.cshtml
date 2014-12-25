@@ -4,6 +4,13 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
+<style type="text/css">
+    #example {
+        table-layout: fixed;
+    }
+
+</style>
+
 @using PagedList.Mvc;
 @using PagedList;
 @{
@@ -37,9 +44,9 @@
                                     <tr class="hg90">
                                         <td>
                                             <div style="width:auto; display:inline-block; margin-right:5px;">
-                                                <input type="text" id="Txtsearch" />
+                                                <input type="text" id="Txtsearch" style="width:auto" />
                                             </div>
-                                            <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByIP()" value="Search" /></div>
+                                            <div style="display:inline-block;" class="btn3"><input type="button" onclick="SearchByIP()" value="Search" /></div>
                                         </td>
                                         <td>
                                             <div style="width:100%">
@@ -100,9 +107,9 @@
                                 <tr class="hg90">
                                     <td>
                                         <div style="width:auto; display:inline-block; margin-right:5px;">
-                                            <input type="text" id="Txtsearch" />
+                                            <input type="text" id="Txtsearch" style="width:auto" />
                                         </div>
-                                        <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByIP()" value="Search" /></div>
+                                        <div style="display:inline-block;" class="btn3"><input type="button" onclick="SearchByIP()" value="Search" /></div>
                                     </td>
                                     <td>
                                         <div style="width:100%">
@@ -174,7 +181,7 @@
                                     <td>
                                         <ul class="action-button">
                                             <li>@Html.ActionLink("Export", "ExportData", new { Id = item.Id })</li>
-                                            <li>@Html.ActionLink("Delete", "DeleteAuditLog", new { Id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this Audit Log?');" })</li>
+                                            <li>@Html.ActionLink("Delete", "DeleteData", new { Id = item.Id, Page = "DeleteAuditLog" }, new { onclick = "return confirm('Are you sure you wish to delete this Audit Log?');" })</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -219,7 +226,7 @@
                                     <td>
                                         <ul class="action-button">
                                             <li>@Html.ActionLink("Export", "ExportDataofCycle", new { Id = item.Id })</li>
-                                            <li>@Html.ActionLink("Delete", "DeleteCycle", new { Id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this Cycle?');" })</li>
+                                            <li>@Html.ActionLink("Delete", "DeleteData", new { Id = item.Id, Page = "DeleteCycle" }, new { onclick = "return confirm('Are you sure you wish to delete this Cycle?');" })</li>
                                             <li>@Html.ActionLink("View", "CycleErrors", new { Id = item.CycleID })</li>
                                         </ul>
                                     </td>
@@ -259,7 +266,7 @@
                                     <td>
                                         <ul class="action-button">
                                             <li>@Html.ActionLink("Export", "ExportData", new { Id = item.Id })</li>
-                                            <li>@Html.ActionLink("Delete", "DeleteAuditLog", new { Id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this Audit Log?');" })</li>
+                                            <li>@Html.ActionLink("Delete", "DeleteData", new { Id = item.Id, Page = "DeleteAuditLog" }, new { onclick = "return confirm('Are you sure you wish to delete this Audit Log?');" })</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -555,20 +562,21 @@
     $(function () {
         $("#txtenddatepicker2").datepicker();
     });
-    function getdata(id) {
+    function getdata(Id) {
         if (confirm('Are you sure you wish to delete this Audit Log?')) {
-            window.location = "/Admin/DeleteAuditLog/" + id;
+            window.location = "/Admin/DeleteData/" + Id + "?Page=DeleteAuditLog";
         } else {
         }
     }
-    function DeleteCycledata(id) {
+    function DeleteCycledata(Id) {
         if (confirm('Are you sure you wish to delete this Cycle?')) {
-            window.location = "/Admin/DeleteCycle/" + id;
+            window.location = "/Admin/DeleteData/" + Id + "?Page=DeleteCycle";
         } else {
         }
     }
 
     function showcyclerun() {
+        $("#User").removeClass("activeclass"); $("#Cycle").addClass("activeclass"); $("#Admin").removeClass("activeclass");
         document.getElementById("userlogin").hidden = true;
         document.getElementById("cyclerun").hidden = false;
         document.getElementById("adminchange").hidden = true;
@@ -577,6 +585,7 @@
         document.getElementById("AdminChangesTable").hidden = true;
     }
     function showuserlogin() {
+        $("#User").addClass("activeclass"); $("#Cycle").removeClass("activeclass"); $("#Admin").removeClass("activeclass");
         document.getElementById("userlogin").hidden = false;
         document.getElementById("cyclerun").hidden = true;
         document.getElementById("adminchange").hidden = true;
@@ -585,6 +594,7 @@
         document.getElementById("AdminChangesTable").hidden = true;
     }
     function showadminchange() {
+        $("#User").removeClass("activeclass"); $("#Cycle").removeClass("activeclass"); $("#Admin").addClass("activeclass");
         document.getElementById("userlogin").hidden = true;
         document.getElementById("cyclerun").hidden = true;
         document.getElementById("adminchange").hidden = false;

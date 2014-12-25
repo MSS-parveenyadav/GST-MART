@@ -33,6 +33,7 @@ namespace GST_Mart.Controllers
     {
         string originalConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["GSTMARTEntities"].ConnectionString;
         AdminUser adminuser = new AdminUser();
+        AuthorizedUser user = new AuthorizedUser();
         AdminUserModel adminusermodel = new AdminUserModel();
         Mail MailMessage = new Mail();
         string ms_email = ConfigurationManager.AppSettings["master_email"].ToString();
@@ -40,6 +41,7 @@ namespace GST_Mart.Controllers
         string Smtp_Password = ConfigurationManager.AppSettings["Smtp_Password"].ToString();
         string Smtp_Host = ConfigurationManager.AppSettings["SMTP_HOST"].ToString();
         string URL = ConfigurationManager.AppSettings["URL"].ToString();
+        Random random = new Random();
 
 
         DataSchedular schedularObj = new DataSchedular();
@@ -1800,7 +1802,6 @@ namespace GST_Mart.Controllers
         [HttpGet]
         public ActionResult CycleErrors(int Id)
         {
-            AuthorizedUser user = new AuthorizedUser();
 
             //To get Data Type Conversion Errors
             var data = user.ReadRrrors(Id.ToString(), Session["Companey"].ToString());
@@ -1826,6 +1827,60 @@ namespace GST_Mart.Controllers
 
         }
 
-       
+        public string Alphanumrical(int length, Random random)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var result = new string(
+                Enumerable.Repeat(chars, length)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+
+            return result;
+        }
+
+
+        public ActionResult DeleteData(int Id=0,string Page="")
+        {
+            Session["Id"] = Id.ToString();
+            Session["Page"] = Page;
+            var AdminUser = adminuser.FindAdminEmail();
+            string securitycode = Alphanumrical(6, random);
+            Session["Securitycode"] = securitycode;
+            MailMessage.Sendsecuritycode(AdminUser.Email, securitycode, AdminUser.Name, ms_email, smtp_port, Smtp_Password, Smtp_Host, "Security Code for Delete Data");
+            return View("Securitycodeaccess");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteData(string SecurityCode)
+        {
+            String securitycode = Session["Securitycode"].ToString();
+
+            if (securitycode == SecurityCode)
+            {
+                string Page = Session["Page"].ToString();
+                int Id = Convert.ToInt32(Session["Id"].ToString());
+                return RedirectToAction(Page, new {Id=Id});
+            }
+            else
+            {
+                TempData["CodeError"] = "Invalid Code";
+                return View("Securitycodeaccess");
+            }
+        }
+
+        public ActionResult DeleteCycle(int Id)
+        {
+            if (Session["AdminLoginStatus"] == "LoggedIn")
+            {
+                var result = user.TempDeleteCycle(originalConnectionString, Session["CompanyDB"].ToString(), Id, "Audit Deleted");
+                TempData["Message"] = "Cycle Deleted";
+                return RedirectToAction("AuditLog");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
     }
 }
