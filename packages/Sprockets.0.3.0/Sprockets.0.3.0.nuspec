@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Sprockets</id>
+    <version>0.3.0</version>
+    <title>Sprockets</title>
+    <authors>Prabir Shrestha</authors>
+    <owners>Prabir Shrestha</owners>
+    <licenseUrl>https://github.com/prabirshrestha/sprockets-dotnet#license</licenseUrl>
+    <projectUrl>https://github.com/prabirshrestha/sprockets-dotnet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Sprockets style dependency resolver for .NET</description>
+    <copyright>Copyright © Prabir Shrestha 2012</copyright>
+    <tags>sprockets optimization bundling minification</tags>
+  </metadata>
+</package>

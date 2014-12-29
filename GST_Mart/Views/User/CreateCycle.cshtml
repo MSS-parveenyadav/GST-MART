@@ -58,24 +58,12 @@
                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="data-tabel">
                             <tr>
                                 <td> Company :  </td>
-                              
+                                <td>Account Receivable</td>
                             </tr>
                             <tr>
                                 <td>
 
-
-                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                                        <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span>
-                                            <input type="file" class="brows-button" onclick="emptyvalidate();" id="financeFile" name="fileUpload" multiple="multiple" />
-                                        </span>
-                                      
-                                    </div>
-
-
-
-
-                                    
+                                    <input type="file" class="brows-button" onclick="emptyvalidate();" id="financeFile" name="fileUpload" multiple="multiple" />
                                     <p id="Validatemultiple" style="color:red"></p>
                                 </td>
                             </tr>
@@ -94,17 +82,7 @@
                             </tr>
                             <tr>
                                 <td>
-
-                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                                        <span class="input-group-addon btn btn-default btn-file">
-                                            <span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span>
-                                            <input name="fileUpload" onclick="emptyvalidate();" multiple="multiple" type="file" id="saleFile" />
-                                        </span>
-
-                                    </div>
-
-                                  
+                                    <input name="fileUpload" onclick="emptyvalidate();" multiple="multiple" type="file" id="saleFile" />
                                     <p id="ValidatesaleFile" style="color:red"></p>
                                 </td>
                             </tr>
@@ -122,15 +100,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                                        <span class="input-group-addon btn btn-default btn-file">
-                                            <span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span>
-                                            <input name="fileUpload" onclick="emptyvalidate();" multiple="multiple" type="file" id="purchaseFile" />
-                                        </span>
 
-                                    </div>
-                                  
+                                    <input name="fileUpload" onclick="emptyvalidate();" multiple="multiple" type="file" id="purchaseFile" />
                                     <p id="ValidatepurchaseFile" style="color:red"></p>
                                 </td>
                             </tr>
@@ -148,15 +119,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                                        <span class="input-group-addon btn btn-default btn-file">
-                                            <span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span>
-                                            <input name="fileUpload" onclick="emptyvalidate();" multiple="multiple" type="file" id="inventoryFile" />
-                                        </span>
 
-                                    </div>
-                                  
+                                    <input name="fileUpload" onclick="emptyvalidate();" multiple="multiple" type="file" id="inventoryFile" />
                                     <p id="ValidateinventoryFile" style="color:red"></p>
                                 </td>
                             </tr>
@@ -173,15 +137,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                                        <span class="input-group-addon btn btn-default btn-file">
-                                            <span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span>
-                                            <input name="fileUpload" onclick="emptyvalidate();" multiple="multiple" type="file" id="humanFile" />
-                                        </span>
 
-                                    </div>
-                                  
+                                    <input name="fileUpload" onclick="emptyvalidate();" multiple="multiple" type="file" id="humanFile" />
                                     <p id="ValidatehumanFile" style="color:red"></p>
 
                                 </td>
@@ -193,15 +150,12 @@
 
 
 
-                    
 
-                    <div class="col-md-6 pull-right">
-                        <div class="button">
-                            <input type="submit" onclick="SubmitForm()" value="Create" name="">
-                        </div>
 
+
+                    <div class="button">
+                        <input type="submit" onclick="SubmitForm()" value="Create" name="">
                     </div>
-
                 </div>
 
 
@@ -215,8 +169,6 @@
     
 
 </div>
-
-    <script src="http://jasny.github.io/bootstrap/dist/js/jasny-bootstrap.min.js"></script>
      <script>
 
          function emptyvalidate() {
@@ -284,8 +236,6 @@
                 return false;
             }
         }
-
-        $('.fileinput').fileinput()
 
     </script>
 }

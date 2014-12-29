@@ -1,0 +1,106 @@
+﻿@model GST_BLL.DTO.AdminUserModel
+
+@{
+    ViewBag.Title = "SecureLogin";
+    Layout = "~/Views/Shared/_Container.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+{
+
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true)
+
+    <div class="container-fluid">
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class=" col-lg-12 sec-login">
+                    <h1>Secure Admin Login <span class="glyphicon glyphicon-question-sign"></span></h1>
+                </div>
+                <div class="sec-login-form">
+                    <div class="col-lg-12">
+                        <p id="ErrorMessage" style="color: red; font: 14px arial"></p>
+                        <p id="SuccessMessage" style="color: green; font: 14px arial"></p>
+                    </div>
+                    <div class="col-lg-12 sec-login-form-iiner">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>Company ID :</label>
+                                @Html.DropDownList("companylist", new SelectList(ViewBag.Company, "CompanyId", "CompanyId"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label>Admin ID :</label>
+                                @Html.TextBoxFor(model => model.AdminID, new { @class = "form-control", @onkeypress = "return IsSpecialcharacter(event)" })
+                                
+                            </div>
+                            <div class="col-xs-6">
+                                <label>Password :</label>
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                            </div>
+                            <div class="btn1">
+                                <input name="" type="submit" value="Login">
+                            </div>
+                            <br />
+                            <br />
+                            <div style="color:red;font:14px arial" align="center">
+
+                                @TempData["Loginerror"]
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="rest-pass">
+                        @Html.ActionLink("Recover Password", "RecoverPassword", "Admin")
+                        <p>Your IP Address : @TempData["IP"] <i>@*img src="/Content/images/green.png" alt="#"></i>*@</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<script>
+
+    //for cheq user name special char
+    var specialKeys = new Array();
+    specialKeys.push(8);
+    specialKeys.push(9);
+
+
+
+    function IsSpecialcharacter(e) {
+        var keyCode = e.which ? e.which : e.keyCode
+        var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode > 123);
+
+        if (ret == true) {
+            return false;
+        }
+        else {
+            return true;
+        }
+        return ret;
+    }
+
+
+
+
+    $(function () {
+
+        $("#AdminID").bind('paste', function () {
+            setTimeout(function () {
+                //get the value of the input text
+                var data = $('#AdminID').val();
+                //replace the special characters to ''
+                var dataFull = data.replace(/[^\w\s]/gi, '');
+                //set the new value of the input text without special characters
+                $('#AdminID').val(dataFull);
+            });
+
+        });
+    });
+</script>

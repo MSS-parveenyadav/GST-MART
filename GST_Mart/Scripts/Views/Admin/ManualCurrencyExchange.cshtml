@@ -1,0 +1,421 @@
+﻿
+<!-- Bootstrap -->
+<link href="~/Content/css/style.css" rel="stylesheet">
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/css/font-awesome.css" rel="stylesheet">
+<link href="~/Content/css/lessframe.css" rel="stylesheet" />
+
+
+
+<style>
+    .validation {
+        color: red !important;
+    }
+
+    .modal-dialog {
+        z-index: 99999;
+    }
+
+    .modal-body .form-group input.form-control {
+        border: 1px solid #ccc !important;
+        height: 37px;
+        width: 100% !important;
+    }
+
+    .modal-body .form-group {
+        border: medium none;
+    }
+
+    .modal-title {
+        font-size: 23px;
+        line-height: 1.42857;
+        margin: 0;
+        text-align: left;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="~/scripts/jquery.validate.min.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script src="~/Scripts/bootstrap.js"></script>
+
+<!-- DateTimepicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+
+@model GST_BLL.DTO.CurrencyExchangeModel
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "ManualCurrencyExchange";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section Submenu
+{
+
+    @Html.Partial("~/Views/_Partial/_Currency.cshtml")
+}
+
+
+
+@using (Html.BeginForm("ManualCurrencyExchange", "Admin", FormMethod.Post, new { id = "submitForm" }))
+{
+
+    <div class="container-fluid">
+        <div class="tab-pane active" id="home">
+
+            <div class="col-lg-12 top-heading2">
+                <ul>
+                    <li><a href="/Admin/CurrencyExchange" >Auto Feed</a></li>
+                    <li><a href="/Admin/ManualCurrencyExchange" class="select">Manual</a></li>
+                    <li><a href="/Admin/CurrencyGroup">Currency Group</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container-fluid" id="ErrorMessages" style="color: red;"></div><div id="SuccessMessages" class="container-fluid" style="color: green; ">@TempData["Message"]</div>
+    <div class="container-fluid" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+        <div class="tab-conentmain">
+            <div class="tab-pane active" id="home">
+                <div class="data-table">
+                    <div class="container-fluid">
+                        <div class="w-bg">
+                            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <div class="col-lg-12 full-blue"> Manual Currency Exchange</div>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td class="add-tax"> Currency Code :  </td>
+                                        <td>
+                                            @Html.HiddenFor(m => m.Id)
+                                            @Html.DropDownListFor(m => m.CurrencyCode, ViewBag.Currencylist as List<SelectListItem>, new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
+                                            <img id="imgtransactiontype" data-toggle="modal" data-target="#reqmod" onclick="ShowtransactionModal();" src="~/Content/images/add1.png" />
+                                            <p id="ValidateCurrencyCode" style="color: white"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="add-tax">Description :  </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Description, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                            <p id="ValidateDescription" style="color: white"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="add-tax">Conversion Rate :  </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ConversionRate, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                            <p id="ValidateConversionRate" style="color: white"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="add-tax">Date :  </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.CreatedDate, new { @id = "CreatedDate", @onclick = "ValidationRefresh(this.id)" })
+                                            <p id="ValidateCreatedDate" style="color: white"></p>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-10 button">
+                            <input type="submit" onclick="SubmitForm()" value="ADD" name="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tax-code">
+            <div class="data-table">
+                <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Currency Code </th>
+                            <th>Description</th>
+                            <th>Conversion Rate</th>
+                            <th>Date</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.CurrencyExchange != null)
+                        {
+                            foreach (var item in ViewBag.CurrencyExchange)
+                            {
+                                <tr>
+                                    <td>@item.CurrencyCode</td>
+                                    <td>@item.Discription</td>
+                                    <td>@item.ConversionRate</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>
+                                        <ul class="action-button">
+                                            <li>@Html.ActionLink("Edit", "ManualCurrencyExchange", new { Id = item.Id })</li>
+                                            <li>@Html.ActionLink("Delete", "DeleteManualCurrencyExchange", new { Id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this Currency Exchange?');" })</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    @* Bootstarp model for Add Transaction type *@
+
+    <div class="modal fade" id="reqmod" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="ClosePopup" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <center> <h4 class="modal-title" id="myModalLabel">Add New Currency Type </h4></center>
+                        <asp:Label ID="Success_Msg" runat="server" Text=""></asp:Label>
+
+                        <p id="P1" style="color: green"></p>
+                    </div>
+                    <div class="modal-body" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+                        <form role="form" id="formEdit">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Add Currency Type  :</label>
+                                <input type="text" id="CurrencyValue" class="form-control" onkeypress="return IsSpecialcharacter(event)" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" />
+                                <p id="Error1" style="color: red"></p>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Add Currency Code  :</label>
+                                <input type="text" id="currencycode" class="form-control" onkeypress="return IsSpecialcharacter(event)" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" />
+                                <p id="Error2" style="color: red"></p>
+                            </div>
+                            <p id="Error3" style="color: red"></p>
+                            <div class="btn">
+                                <input id="btnCustomCode" type="button" onclick="return AddCurrencyType();" value="Add Custom Code" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    <script type="text/javascript">
+            /*Function to show modal for CurrencyList*/
+            function ShowtransactionModal() {
+                $("#reqmod").show();
+                $('#CurrencyValue').val("");
+                $('#currencycode').val("");
+                document.getElementById("Error1").innerHTML = " ";
+                document.getElementById("Error2").innerHTML = " ";
+                document.getElementById("Error3").innerHTML = " ";
+            }
+
+
+            /*Function to add Currency Type into the database*/
+            function AddCurrencyType() {
+                var Count = 0;
+                var CurrencyType = $('#CurrencyValue').val();
+                var CurrencyCode = $('#currencycode').val();
+                if (CurrencyType == "") {
+                    document.getElementById("Error1").innerHTML = "Company Type is empty.";
+                    Count = 1;
+                }
+                if (CurrencyCode == "") {
+                    document.getElementById("Error2").innerHTML = "Company Code is empty.";
+                    Count = 1;
+                }
+                if (Count == 1) {
+                    return false;
+                }
+                else {
+                    document.getElementById("Error1").innerHTML = " ";
+                    document.getElementById("Error2").innerHTML = " ";
+                    document.getElementById("Error3").innerHTML = " ";
+                    $.ajax({
+
+                        url: "/Admin/SaveCurrencyCode",
+                        type: "POST",
+                        data: "{'CurrencyType':'" + CurrencyType + "','CurrencyCode':'" + CurrencyCode + "'}",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (response) {
+                            $('#CurrencyValue').val("");
+                            $('#currencycode').val("");
+                            document.getElementById("Error3").innerHTML = "Currency Type Save Successfully.";
+                            $("#CurrencyCode").empty();
+                            debugger
+                            $.each(response, function (i, systemid) {
+                                $("#CurrencyCode").append('<option value="' + systemid.Value + '">' +
+                            systemid.Text + '</option>');
+                            });
+                        },
+                        error: function (error) {
+
+                            alert(JSON.stringify(error));
+                        }
+                    });
+                    $('#ClosePopup').trigger('click');
+                }
+            }
+
+        </script>
+    
+    <script>
+    function SubmitForm() {
+        debugger
+        $('#submitForm').submit(function () {
+            document.getElementById("ValidateCurrencyCode").innerHTML = "";
+            document.getElementById("ValidateDescription").innerHTML = "";
+            document.getElementById("ValidateConversionRate").innerHTML = "";
+            document.getElementById("ValidateCreatedDate").innerHTML = "";
+            if (Checkvalidation() == false) {
+                return false;
+            }
+        });
+    }
+
+    function Checkvalidation() {
+        debugger
+        var count = 0;
+        var CurrencyCode = document.getElementById("CurrencyCode").value;
+        var Description = document.getElementById("Description").value;
+        var ConversionRate = document.getElementById("ConversionRate").value;
+        var CreatedDate = document.getElementById("CreatedDate").value;
+        if (CurrencyCode == "") {
+            document.getElementById("ValidateCurrencyCode").innerHTML = "Currency Code Required.";
+            $('#ValidateCurrencyCode').addClass('validation');
+            $('#CurrencyCode').focus();
+            count = 1;
+        }
+        if (Description == "") {
+            document.getElementById("ValidateDescription").innerHTML = "Description Required.";
+            $('#ValidateDescription').addClass('validation');
+            $('#Description').focus();
+            count = 1;
+        }
+        if (ConversionRate == "") {
+            document.getElementById("ValidateConversionRate").innerHTML = "Conversion Rate Required.";
+            $('#ValidateConversionRate').addClass('validation');
+            $('#ConversionRate').focus();
+            count = 1;
+        }
+        if (CreatedDate == "") {
+            document.getElementById("ValidateCreatedDate").innerHTML = "Created Date Required.";
+            $('#ValidateCreatedDate').addClass('validation');
+            $('#CreatedDate').focus();
+            count = 1;
+        }
+        if (count == 1) {
+            return false;
+        }
+    }
+
+    function ValidationRefresh(id) {
+        var validateid = "Validate" + id
+        document.getElementById(validateid).innerHTML = "";
+        var control = document.getElementById(validateid);
+        control.classList.remove('validation');
+    }
+
+    $(function () {
+        $("#CreatedDate").datepicker();
+    });
+
+    function IsSpecialcharacter(e) {
+        var keyCode = e.which ? e.which : e.keyCode
+        var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode >= 123);
+        if (ret == true) {
+            return false;
+        }
+        else {
+            return true;
+        }
+        return ret;
+    }
+
+        //For only Numeric
+    var specialKeys = new Array();
+    specialKeys.push(8);
+    specialKeys.push(9);
+    function IsNumeric(e) {
+        var keyCode = e.which ? e.which : e.keyCode
+        var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+
+        return ret;
+    }
+</script>
+}
+<div class="pagination-footer">
+    <div class="container-fluid">
+        <div class="col-md-4 item-par">
+            <form action="" id="PageingForm" method="get">
+                <table width="100%" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            @{
+                                List<SelectListItem> ddPagination = new List<SelectListItem>();
+                                for (int i = 1; i <= 10; i++)
+                                {
+                                    int j = i * 5;
+                                    int pagesize = Convert.ToInt32(TempData["pagesize"]);
+                                    if (pagesize == j)
+                                    {
+                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                    }
+                                    else
+                                    {
+                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
+                                    }
+                                }
+
+                                @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();" });
+                            }
+                        </td>
+                        <td><span>Items Per Page</span></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="col-md-4 item-page">
+            <ul>
+                @Html.PagedListPager((IPagedList)ViewBag.CurrencyExchange, page => Url.Action("CurrencyExchange", new { page, pagesize = TempData["pagesize"] }))
+            </ul>
+        </div>
+        <div class="col-md-3 item-of-page">
+            <p>@(ViewBag.CurrencyExchange.PageCount < ViewBag.CurrencyExchange.PageNumber ? 0 : ViewBag.CurrencyExchange.PageNumber) of @ViewBag.CurrencyExchange.PageCount items <a href="/Admin/CurrencyExchange"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+

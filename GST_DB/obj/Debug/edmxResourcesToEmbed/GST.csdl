@@ -107,6 +107,7 @@
     <Property Name="UserId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="CompanyId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CNBN" Type="String" Nullable="false" />
   </EntityType>
   <EntityType Name="Permission">
     <Key>

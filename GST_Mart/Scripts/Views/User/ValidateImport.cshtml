@@ -1,0 +1,166 @@
+﻿@model PagedList.IPagedList<GST_BLL.DTO.CycleModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ValidateImport";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<span style="color:red;">@TempData["ErrorMessage"]</span>
+<span style="color:green;">@TempData["SuccessMessage"]</span>
+<!--[feed]-->
+<div class="system-feed">
+    <div class="container-fluid">
+        <div class="col-lg-6 Feed">
+            <h1>System Feed</h1>
+        </div>
+        <div class="col-lg-5 print">
+            <ul>
+                @*<li><a href="javascript:void(0)"><span class="glyphicon glyphicon-pencil"></span></a></li>*@
+                @if (ViewBag.Userpermissions.isCreatecycle != "Deny")
+                { 
+                <li><a href="/User/CreateCycle"><span class="glyphicon glyphicon-plus"></span></a></li>
+                }
+                @if (ViewBag.Userpermissions.isDownlode != "Deny")
+                {
+                <li><a href="/User/DownloadUserData"><span class="glyphicon glyphicon-save"></span></a></li>
+                }
+                @if (ViewBag.Userpermissions.isPrint != "Deny")
+                {
+                <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-print"></span></a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--[data-time]-->
+<div class="data-time">
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <tr class="top-bg">
+                <th scope="col">Date Time</th>
+                <th scope="col">Feed Action</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+            @foreach(var item in Model)
+            { 
+            <tr class="first-table">
+                <td>
+                    <div class="time">
+                        <span class="col-md-3"><img src="images/table-icone1.png" alt="#"></span>
+                        <p class="col-md-5">@item.CreatedDate</p>
+                    </div>
+                </td>
+                <td style="width:65%">
+                    <div class="col-lg-12 paymathed"><a href="#">Cycle Id</a> <a href="#">System Id</a></div>
+                    <p class="account">@item.CycleID @item.SystemId</p>
+                    <div class="col-lg-12 arrors">
+                        <ul class="arra">
+                            <li class="errors1">Errors : @item.CycleErrors    |</li>
+                            <li class="Dupl">Duplicates : @item.DuplicateRecords   |</li>
+                            <li class="errors1">Incomplete : @item.MissingRecords</li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <div class="time">
+                    @if (item.Status == "Imported")
+                    {
+                           <p class="col-md-5" style="color:green;">@item.Status</p>
+                    }
+                    else
+                    { 
+                        <p class="col-md-5" style="color:red;">@item.Status</p>
+                    }
+                    </div>
+                </td>
+                <td style="text-align:center;">
+                   
+                    <ul class="action">
+                      <li class="view">
+                   
+                          @if ((item.CycleErrors != "0" || item.DuplicateRecords!="0" || item.MissingRecords!="0"))
+                          { 
+                           @Html.ActionLink("View", "CycleErrors", new { CycleId = item.CycleID }, "User")
+                          }
+                          
+                        </li>
+                        @if ((item.Status == "Imported" || item.Status == "Deleted"))
+                        {
+
+                        }
+                        else
+                        {
+                          <li class="delite">
+                            @Html.ActionLink("Delete", "DeleteProcess", new {id=item.id,CycleId=item.CycleID })
+                     
+                        
+                        </li><br />
+                        <li class="view">
+
+                            @Html.ActionLink("Process", "ImportTODb", new { id = item.id, CycleId = item.CycleID }, new {@style="background:green;"})
+
+                        </li>
+                            }
+                    </ul>
+                   
+                </td>
+            </tr>
+               
+          
+            }
+        </table>
+    </div>
+</div>
+
+<!--[data-time]-->
+<!--[/feed]-->
+<!--[pagination]-->
+<div class="pagination-footer">
+    <div class="container-fluid">
+        <div class="col-md-4 item-par">
+            <form action="" method="get">
+                <table width="100%" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            @{
+                          
+                                List<SelectListItem> ddPagination = new List<SelectListItem>();
+                                for (int i = 1; i <= 10; i++)
+                                {
+                                    int j = i * 5;
+                                    int pagesize = Convert.ToInt32(TempData["pagesize"]);
+                                    if (pagesize == j)
+                                    {
+                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                    }
+                                    else
+                                    {
+                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
+                                    }
+                                }
+                                @Html.DropDownList("DDlPagingsize", ddPagination, new { onchange="this.form.submit();"});
+                            }
+                        </td>
+                        <td><span>Items Per Page</span></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="col-md-4 item-page">
+            <ul>
+              
+                <li>
+                
+                @Html.PagedListPager(Model, page => Url.Action("ValidateImport", new { page, pagesize = TempData["pagesize"] }))
+               
+              
+            </ul>
+        </div>
+        <div class="col-md-3 item-of-page">
+            <p>@(Model.PageCount< Model.PageNumber? 0:Model.PageNumber)  of @Model.PageCount items <a href="javascript:void(0)"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+        </div>
+    </div>
+</div>
+<!--[/pagenaton]-->

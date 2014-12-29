@@ -1,0 +1,1588 @@
+﻿@model PagedList.IPagedList<GST_BLL.DTO.CreateCompaneyModel>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "CreateCompany";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/LoderPlugin/waitMe.min.js"></script>
+<link href="~/LoderPlugin/waitMe.min.css" rel="stylesheet" />
+@*@Html.AntiForgeryToken()*@
+@Html.ValidationSummary(true)
+<div id="container">
+    <form class="serch" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+        <div class="container-fluid">
+            <div id="centre-coloum">
+                <div id="ErrorMessages" style="color: red;">@TempData["DeleteSucess"]</div>
+                <div id="SuccessMessages" style="color: green;">@TempData["SuccessStatus"]</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <div class=" col-lg-12 sec-login">
+                        <h1>Add Company <span class="glyphicon glyphicon-question-sign"></span></h1>
+                    </div>
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>Company Id :</label>
+
+                            @Html.TextBox("txtCompaneyId", "", new { placeholder = "Company ID :", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            <p id="validateCompaneyId" style="color: white">.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Company Name :</label>
+                            @*@Html.DropDownList("userlist","",new SelectList(ViewBag.userlist, "Id", "Name"),"",new {  placeholder = "Company Name :" })*@
+                            @Html.TextBox("txtCompneyName", "", new { placeholder = "Company Name :", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            <p id="validateCompneyName" style="color: white">.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Description :</label>
+
+                            @Html.TextBox("txtDescription", "", new { placeholder = "Description :", @onkeypress = "return IsSpecialcharacter_number(event)", @onclick = "ValidationRefresh(this.id)" })
+                            <p id="validateDescription" style="color: white">.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Remarks :</label>
+                            @*@Html.DropDownList("userlist","",new SelectList(ViewBag.userlist, "Id", "Name"),"",new {  placeholder = "Company Name :" })*@
+                            @Html.TextBox("txtRemarks", "", new { placeholder = "Remarks :", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            <p id="validateRemarks" style="color: white">.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <div class=" col-lg-12 sec-login">
+                        <h1>Add Industry Code <span class="glyphicon glyphicon-question-sign"></span></h1>
+                    </div>
+                    <div id="centre-coloum">
+                        <div class="btn3">
+                            <input id="btnCreateIndustry" type="button" onclick="CreateIndustryrow(value1 = null);" value="More + " />
+                        </div>
+                        <div id="centre-coloum">
+                            <div class="col-md-4">
+                                <p id="validateIndustrycode" style="color: white"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="tblIndustry" style="width: 100%">
+                        <tr>
+                            <td>
+                                <div id="centre-coloum">
+                                    <div class="col-md-4">
+
+                                        <label>Industry Code :</label>
+                                        <input type="text" class="idscode" id="txtIndustrycode" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <div class=" col-lg-12 sec-login">
+                        <h1>Add System <span class="glyphicon glyphicon-question-sign"></span></h1>
+                    </div>
+                    <div id="centre-coloum">
+                        <div class="btn3">
+                            <input id="btnCreateSystem" type="button" onclick="CreateRow(value1=null,value2=null);" value="More + " />
+                        </div>
+                        <div id="centre-coloum">
+                            <div class="col-md-4">
+                                <p id="validateSystemId" style="color: white"></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p id="validateSystemName" style="color: white"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="tblSystem" style="width: 100%">
+                        <tr>
+                            <td>
+                                <div id="centre-coloum">
+                                    <div class="col-md-4">
+                                        <label>System ID :</label>
+                                        <input type="text" class="vik" id="txtSystemId" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>System Name :</label>
+                                        <input type="text" id="txtSystemName" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="centre-coloum" class="btn3">
+                    <input type="button" id="btnSave" value="Submit Company" onclick="CreateCompany();" />
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <div class=" col-lg-12 sec-login">
+                        <h1>Add Company Admin <span class="glyphicon glyphicon-question-sign"></span></h1>
+                    </div>
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>Admin ID :</label>
+                            @Html.TextBox("txtAdminID", "", new { @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            <p id="validateAdminID" style="color: white">.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Admin Name :</label>
+                            @Html.TextBox("txtAdminName", "", new { @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            <p id="validateAdminName" style="color: white">.</p>
+
+                        </div>
+                    </div>
+
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>Password :</label>
+                            @Html.Password("txtPassword", "", new { @onclick = "ValidationRefresh(this.id)" })
+                            <p id="validatePassword" style="color: white">.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Re-enter Password :</label>
+                            @Html.Password("txtConfPassword", "", new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "psateprivent(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                            <p id="validateConfPassword" style="color: white">.</p>
+                        </div>
+                    </div>
+
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>Email Address :</label>
+                            @Html.TextBox("txtEmail", "", new { @onclick = "ValidationRefresh(this.id)" })
+                            <p id="validateEmail" style="color: white">.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Re enter Email Address :</label>
+                            @Html.TextBox("txtConfEmail", "", new { @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                            <p id="validateConfEmail" style="color: white;">.</p>
+                        </div>
+                    </div>
+
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>Mobile Number :</label>
+                            @Html.TextBox("txtMobile", "", new { @onkeypress = "return IsNumeric(event)", @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                            <p id="validateMobile" style="color: white">.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Re-enter Mobile Number :</label>
+                            @Html.TextBox("txtConfMobile", "", new { @onkeypress = "return IsNumeric(event) ", @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                            <p id="validateConfMobile" style="color: white;">.</p>
+                        </div>
+                        <div class="btn3">
+                            <input type="button" id="btnSave" value="Submit Admin" onclick="CheckValidation()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-table">
+            <div class="container-fluid">
+
+                <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                    @if (Model.Count == 0)
+                    {
+                        <thead>
+                            <tr>
+                                <td>Please Add a Admin User</td>
+                            </tr>
+                        </thead>
+                    }
+                    else
+                    {
+                        <thead>
+                            <tr>
+                                <th>Date </th>
+                                <th>Company ID  </th>
+                                <th>System ID  </th>
+                                <th>Admin ID  </th>
+                                <th>Industry ID  </th>
+                                <th class="remove">Action  </th>
+                            </tr>
+                        </thead>
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Company.userModel.Createddate</td>
+                            <td>@item.Company.CompanyId</td>
+                            <td>
+                                @foreach (var system in item.Company.systemModel)
+                                {
+                                    <p>@system.SystemId </p>
+                                }
+                            </td>
+                            <td>@item.Company.userModel.AdminID</td>
+                            <td>
+                                @foreach (var system in item.Company.industrymodel)
+                                {
+                                    <p>  @system.Industrycode</p>
+
+                                }
+                            </td>
+
+                            <td class="remove">
+                                <ul class="action-button">
+                                    <li>
+                                        <a onclick="EditData(@item.Company.id);">Edit</a>
+                                        @*<input id="BtnEdit" type="button" value="Edit" onclick="EditData(@item.Company.id,@item.Company.userModel.id);" />*@
+                                    </li>
+                                    <li>
+
+
+
+
+                                        @Html.ActionLink("Delete", "DeleteCompany", new { CompanyId = @item.Company.id }, new { onclick = "return confirm('Are you sure you wish to delete this Company?');" })
+                                    </li>
+                                    <li>
+
+                                        @*<input type="button" id="btnSave" value="print" onclick="getPrint();" />*@
+                                        @Html.ActionLink("Download", "DownloadData", new { id = @item.Company.id })
+                                    </li>
+                                    <li>
+
+                                        <a class="use-address">Print</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+
+            </div>
+        </div>
+
+        <!--[]-->
+        <!--[pagination]-->
+        <div class="pagination-footer">
+            <div class="container-fluid">
+                <div class="col-md-4 item-par">
+
+                    <table width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+
+                                @{
+                                    List<SelectListItem> ddPagination = new List<SelectListItem>();
+                                    for (int i = 1; i <= 10; i++)
+                                    {
+                                        int j = i * 5;
+                                        int pagesize = Convert.ToInt32(TempData["pagesize"]);
+                                        if (pagesize == j)
+                                        {
+                                            ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                        }
+                                        else
+                                        {
+                                            ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
+                                        }
+                                    }
+                                    @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();" });
+                                }
+
+                            </td>
+                            <td><span>Items Per Page</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-4 item-page">
+                    <ul>
+                        @Html.PagedListPager(Model, page => Url.Action("CreateCompany", new { page, pagesize = TempData["pagesize"] }))
+                    </ul>
+                </div>
+                <div class="col-md-3 item-of-page">
+                    <p>@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount items <a href="/Master/CreateCompany"><span class="glyphicon glyphicon-repeat"></span></a></p>
+                </div>
+            </div>
+        </div>
+        <!--[pagenaton]-->
+        <input id="CompanyId" type="hidden" value="" /><input id="UserId" type="hidden" value="" />
+    </form>
+</div>
+
+<script>
+  
+    //Variables to delete systems in case of Edit//
+    var GoingForEdit = "";
+    var CompaneyId = "";
+   
+    //For mouse right click
+    
+
+    var specialKeys = new Array();
+
+    specialKeys.push(8);
+
+    //Industry Code is empty.
+
+    specialKeys.push(9);
+
+    function IsNumeric(e) {
+      
+
+
+        var keyCode = e.which ? e.which : e.keyCode
+        var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+
+        
+        return ret;
+    }
+
+    function IsSpecialcharacter(e) {
+        var keyCode = e.which ? e.which : e.keyCode
+        var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode >= 123);
+        if (ret == true) {
+            return false;
+        }
+        else {
+            return true;
+        }
+        return ret;
+    }
+
+    function IsSpecialcharacter_number(e) {
+        var keyCode = e.which ? e.which : e.keyCode
+
+        var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode >= 123 || keyCode >= 48 && keyCode <= 57);
+        if (ret == true) {
+            return false;
+        }
+        else {
+            return true;
+        }
+        return ret;
+    }
+
+    function CreateRow(value1, value2) {
+
+        var c = CkeckSystems();
+        if (c != 0) {
+            document.getElementById("validateSystemId").innerHTML = "Either System Id or Name is empty.";
+            $('#validateSystemId').addClass('validation');
+            return
+        }
+
+        if (value1 == null) {
+            var Sysid = "";
+        }
+        else { var Sysid = value1; }
+        if (value2 == null) {
+            var Sysnam = "";
+        }
+        else { var Sysnam = value2; }
+
+        var table = document.getElementById("tblSystem");
+        var tr = document.createElement("tr");
+        tr.appendChild(document.createElement("td"));
+        var MainDiv = document.createElement("div");
+        MainDiv.id = 'centre-coloum'
+        var InnerDiv1 = document.createElement("div");
+        InnerDiv1.className = 'col-md-4'
+        var label = document.createElement("label");
+        label.appendChild(document.createTextNode("System ID :"));
+        var TextBox = document.createElement("input");
+        TextBox.type = "text"
+        TextBox.id = "txtSystemId"
+        TextBox.className = "vik"
+        TextBox.value = Sysid
+        TextBox.onclick = clearVal
+        InnerDiv1.appendChild(label);
+        InnerDiv1.appendChild(TextBox);
+
+        var InnerDiv2 = document.createElement("div");
+        InnerDiv2.className = 'col-md-4'
+        var label1 = document.createElement("label");
+        label1.appendChild(document.createTextNode("System Name :"));
+        var TextBox1 = document.createElement("input");
+        TextBox1.type = "text"
+        TextBox1.id = "txtSystemName"
+        TextBox1.value = Sysnam
+        TextBox1.onclick = clearVal
+        InnerDiv2.appendChild(label1);
+        InnerDiv2.appendChild(TextBox1);
+
+        var InnerDiv3 = document.createElement("div");
+        InnerDiv3.className = 'col-md-4'
+        var Break = document.createElement("label");
+        Break.style = 'color:white;display:block;'
+        Break.appendChild(document.createTextNode(""));
+        var btnDelete = document.createElement("input");
+        btnDelete.type = "button"
+        btnDelete.id = "btndelete"
+        btnDelete.value = 'Delete'
+        btnDelete.className = 'btndanger'
+        btnDelete.onclick = DeleteRow
+        InnerDiv3.appendChild(Break);
+        InnerDiv3.appendChild(btnDelete);
+
+        MainDiv.appendChild(InnerDiv1);
+        MainDiv.appendChild(InnerDiv2);
+        MainDiv.appendChild(InnerDiv3);
+        tr.cells[0].appendChild(MainDiv);
+        table.appendChild(tr);
+    }
+
+    function CreateIndustryrow(value1) {
+        var c = Ckeckindustrycode();
+        if (c != 0) {
+            document.getElementById("validateIndustrycode").innerHTML = "Industry Code is required.";
+            $('#validateIndustrycode').addClass('validation');
+            return
+        }
+
+        var induscode = "";
+        if (value1 == null) {
+
+            induscode = "";
+        }
+        else { induscode = value1; }
+
+        var table = document.getElementById("tblIndustry");
+        var tr = document.createElement("tr");
+        tr.appendChild(document.createElement("td"));
+        var MainDiv = document.createElement("div");
+        MainDiv.id = 'centre-coloum'
+        var InnerDiv1 = document.createElement("div");
+        InnerDiv1.className = 'col-md-4'
+        var label = document.createElement("label");
+        label.appendChild(document.createTextNode("Industry Code :"));
+        var TextBox = document.createElement("input");
+        TextBox.type = "text"
+        TextBox.id = "txtIndustrycode"
+        TextBox.className = "idscode"
+        TextBox.value = induscode
+        TextBox.onclick = clearindusval
+        InnerDiv1.appendChild(label);
+        InnerDiv1.appendChild(TextBox);
+
+        var InnerDiv3 = document.createElement("div");
+        InnerDiv3.className = 'col-md-4'
+        var Break = document.createElement("label");
+        Break.style = 'color:white;display:block;'
+        //Break.appendChild(document.createTextNode("."));
+        var btnDelete = document.createElement("input");
+        btnDelete.type = "button"
+        btnDelete.id = "btndelete"
+        btnDelete.value = 'Delete'
+        btnDelete.className = 'btndanger'
+        btnDelete.onclick = DeleteRow
+        InnerDiv3.appendChild(Break);
+        InnerDiv3.appendChild(btnDelete);
+
+        MainDiv.appendChild(InnerDiv1);
+
+        MainDiv.appendChild(InnerDiv3);
+        tr.cells[0].appendChild(MainDiv);
+        table.appendChild(tr);
+
+    }
+
+    function DeleteRow() {
+        $(this).closest('tr').remove();
+    }
+
+    function CheckValidation() {
+        document.getElementById("ErrorMessages").innerHTML = "";
+        document.getElementById("SuccessMessages").innerHTML = "";
+        $.ajax({
+            url: "/Master/CheckLoginStatus",
+            type: "POST",
+            data: {},
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response != "LoggedIn") {
+                    window.location.href = '/Master/Login';
+                }
+            },
+            error: function (error) {
+                setTimeout(function () {
+                    $('#container > form').waitMe('hide');
+                    window.location.href = '/Master/Login';
+                }, (4000))
+
+            }
+        });
+        var count = 1;
+        var CompaneyId = document.getElementById("txtCompaneyId").value;
+        var AdminID = document.getElementById("txtAdminID").value;
+        var AdminName = document.getElementById("txtAdminName").value;
+        var Password = document.getElementById("txtPassword").value;
+        var ConfPassword = document.getElementById("txtConfPassword").value;
+        var Email = document.getElementById("txtEmail").value;
+        var ConfEmail = document.getElementById("txtConfEmail").value;
+        var Mobile = document.getElementById("txtMobile").value;
+        var ConfMobile = document.getElementById("txtConfMobile").value;
+        var CompneyId = document.getElementById("CompanyId").value;
+        var UserId = document.getElementById("UserId").value;
+
+
+
+        if (AdminID == "") {
+            document.getElementById("validateAdminID").innerHTML = "Admin Id is required";
+            $('#validateAdminID').addClass('validation');
+            $('#txtAdminID').focus();
+            count = parseInt(count) + 1;
+        }
+        if (AdminName == "") {
+            document.getElementById("validateAdminName").innerHTML = "Admin Name is required";
+            $('#validateAdminName').addClass('validation');
+            $('#txtAdminName').focus();
+            count = parseInt(count) + 1;
+        }
+        if (Password == "") {
+            document.getElementById("validatePassword").innerHTML = "Password is required";
+            $('#validatePassword').addClass('validation');
+            $('#txtPassword').focus();
+            count = parseInt(count) + 1;
+        }
+        if (Password.length < 8 || Password.length >= 12) {
+            document.getElementById("validatePassword").innerHTML = "Length between 8 to 12 Characters";
+            $('#validatePassword').addClass('validation');
+            $('#txtPassword').focus();
+            count = parseInt(count) + 1;
+        }
+        if (Password != ConfPassword) {
+            document.getElementById("validateConfPassword").innerHTML = "Password and Confirm Password does not match";
+            $('#validateConfPassword').addClass('validation');
+            $('#txtConfPassword').focus();
+            count = parseInt(count) + 1;
+        }
+        if (Email == "") {
+            document.getElementById("validateEmail").innerHTML = "Email is required";
+            $('#validateEmail').addClass('validation');
+            $('#txtEmail').focus();
+            count = parseInt(count) + 1;
+        }
+        if (Email != "") {
+            var reg = /^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            if (reg.test(Email)) {
+            }
+            else {
+                document.getElementById("validateEmail").innerHTML = "Invalid Email Address";
+                $('#validateEmail').addClass('validation');
+                $('#txtEmail').focus();
+                count = parseInt(count) + 1;
+            }
+        }
+        if (Email != ConfEmail) {
+            document.getElementById("validateConfEmail").innerHTML = "Email and Confirm Email does not match";
+            $('#validateConfEmail').addClass('validation');
+            $('#txtConfEmail').focus();
+            count = parseInt(count) + 1;
+        }
+        //if (Email != "" && GoingForEdit == "") {
+        //    var Result = DublicateEmail();
+        //    if (Result == "Yes")
+        //    {
+        //        count = parseInt(count) + 1;
+        //    }
+        //    count = parseInt(count) + 1;
+        //}
+        
+        if (Mobile == "") {
+            document.getElementById("validateMobile").innerHTML = "Mobile No. is required";
+            $('#validateMobile').addClass('validation');
+            $('#txtMobile').focus();
+            count = parseInt(count) + 1;
+        }
+        if (Mobile.length <=9) {
+            document.getElementById("validateMobile").innerHTML = "Minimum 10 Number  ";
+            $('#validateMobile').addClass('validation');
+            $('#txtMobile').focus();
+            count = parseInt(count) + 1;
+        }
+
+
+        if (Mobile != ConfMobile) {
+            document.getElementById("validateConfMobile").innerHTML = "Mobile and Confirm Mobile does not match";
+            $('#validateConfMobile').addClass('validation');
+            $('#txtConfMobile').focus();
+            count = parseInt(count) + 1;
+        }
+
+        
+
+        if (count != 1) {
+            return
+        }
+        else {
+            var current_effect = $('#waitMe_ex_effect').val();
+            $('#container > form').waitMe({
+                effect: current_effect,
+                text: 'Please wait...',
+                bg: 'rgba(255,255,255,0.7)',
+                color: '#000',
+                sizeW: '',
+                sizeH: ''
+            });
+        }
+
+        $.ajax({
+
+            url: "/Master/CreateAdmin",
+            type: "POST",
+            data: "{'AdminID':'" + AdminID + "','AdminName':'" + AdminName + "','Password':'" + Password + "','Email':'" + Email + "','Mobile':'" + Mobile + "','Compneyid':'" + CompneyId + "','Userid':'" + UserId + "'}",
+            //data: "{ 'CompaneyId':' CompaneyId','CompneyName':'CompneyName','AdminID':' AdminID','AdminName':'AdminName','Password':'Password','Email':' Email ','Mobile':'Mobile','Compneyid':'ompneyId','Userid':'UserId '}",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            success: function (response) {
+                if (response == "Please Login First") {
+                    window.location.href = '/Master/Login';
+                    document.getElementById("ErrorMessages").innerHTML = response;
+                    $('#container > form').waitMe('hide');
+                    return;
+                }
+
+                else {
+                    document.getElementById("ErrorMessages").innerHTML = response;
+                    ControlRefresh();
+                    setTimeout(function () {
+                        $('#container > form').waitMe('hide');
+                        window.location.href = '/Master/CreateCompany';
+                    }, (4000))
+
+                }
+
+            },
+            error: function (error) {
+                setTimeout(function () {
+                    $('#container > form').waitMe('hide');
+                    window.location.href = '/Master/CreateCompany';
+                }, (4000))
+                alert(JSON.stringify(error));
+            }
+        });
+    }
+
+    function SaveSystem(ID, SystemId, SystemName) {
+        $.ajax({
+            url: "/Master/SaveSystem",
+            type: "POST",
+            data: "{ 'ID':'" + ID + "','SystemId':'" + SystemId + "','SystemName':'" + SystemName + "'}",
+            dataType: "json",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+
+            },
+            error: function (error) {
+                setTimeout(function () {
+                    $('#container > form').waitMe('hide');
+                    window.location.href = '/Master/CreateCompany';
+                }, (4000))
+                alert(JSON.stringify(error));
+            }
+        });
+    }
+
+    function SaveIndustryCode(ID, Industrycode) {
+       
+        $.ajax({
+            url: "/Master/SaveIndustryCode",
+            type: "POST",
+            data: "{ 'ID':'" + ID + "','Industrycode':'" + Industrycode + "'}",
+            dataType: "json",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+
+            },
+            error: function (error) {
+                setTimeout(function () {
+                    $('#container > form').waitMe('hide');
+                    window.location.href = '/Master/CreateCompany';
+                }, (4000))
+                alert(JSON.stringify(error));
+            }
+        });
+    }
+
+    function EditData(CompanyId) {
+
+        var UserId="";
+        AllRefreshValidation();
+
+        $('#txtAdminID').attr('readonly', 'true'); // mark it as read only
+        $('#txtAdminID').css('background-color', '#DEDEDE');
+
+        $('#txtCompaneyId').attr('readonly', 'true'); // mark it as read only
+        $('#txtCompaneyId').css('background-color', '#DEDEDE');
+
+        RefreshTable();
+        $.ajax({
+            url: "/Master/EditCompaney",
+            type: "POST",
+            data: "{ 'CompanyId':'" + CompanyId + "','UserId':'" + UserId + "'}",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+
+                
+                // alert(JSON.stringify(response.Company));
+                if (response == "Please Login First") {
+                    window.location.href = '/Master/Login';
+                }
+                GoingForEdit = "Yes";
+                CompaneyId = response.Company["CompanyId"];
+
+                document.getElementById("txtCompaneyId").value = response.Company["CompanyId"];
+                document.getElementById("txtCompneyName").value = response.Company["CompanyName"];
+                document.getElementById("txtAdminID").value = response.Company.userModel["AdminID"];
+                document.getElementById("txtAdminName").value = response.Company.userModel["Name"];
+                document.getElementById("txtPassword").value = response.Company.userModel["Password"];
+                document.getElementById("txtConfPassword").value = response.Company.userModel["Password"];
+                document.getElementById("txtEmail").value = response.Company.userModel["Email"];
+                document.getElementById("txtConfEmail").value = response.Company.userModel["Email"];
+                document.getElementById("txtMobile").value = response.Company.userModel["MobileNumber"];
+                document.getElementById("txtConfMobile").value = response.Company.userModel["MobileNumber"];
+                document.getElementById("txtDescription").value = response.Company["Description"];
+                document.getElementById("txtRemarks").value = response.Company["Remarks"];
+                document.getElementById("CompanyId").value = response.Company["id"];
+                document.getElementById("UserId").value = response.Company.userModel["id"];
+                for (var i = 0; i < response.Company.systemModel.length; i++) {
+                    if (i == 0) {
+                        document.getElementById("txtSystemId").value = response.Company.systemModel[i]["SystemId"];
+                        document.getElementById("txtSystemName").value = response.Company.systemModel[i]["SystemName"];
+                    }
+                    else {
+                        CreateRow(response.Company.systemModel[i]["SystemId"], response.Company.systemModel[i]["SystemName"]);
+                    }
+
+                }
+                for (var i = 0; i < response.Company.industrymodel.length; i++) {
+
+                    // console.log(response.Company.industrymodel.length);
+                    // console.log(response.Company.industrymodel[i]["Industrycode"]);
+
+                    if (i == 0) {
+                        $('#txtIndustrycode').val(response.Company.industrymodel[i]["Industrycode"]);
+                    }
+                    else {
+
+                        CreateIndustryrow(response.Company.industrymodel[i]["Industrycode"]);
+                    }
+
+                }
+            },
+            error: function (error) {
+                alert("error");
+            }
+        });
+    }
+
+    function ControlRefresh() {
+        document.getElementById("txtCompaneyId").value = "";
+        document.getElementById("txtCompneyName").value = "";
+        document.getElementById("txtDescription").value = "";
+        document.getElementById("txtRemarks").value = "";
+        document.getElementById("txtSystemId").value = "";
+        document.getElementById("txtSystemName").value = "";
+        document.getElementById("txtIndustrycode").value = "";
+        document.getElementById("txtAdminName").value = "";
+        document.getElementById("txtPassword").value = "";
+        document.getElementById("txtConfPassword").value = "";
+        document.getElementById("txtEmail").value = "";
+        document.getElementById("txtConfEmail").value = "";
+        document.getElementById("txtMobile").value = "";
+        document.getElementById("txtConfMobile").value = "";
+        document.getElementById("CompanyId").value = "";
+        document.getElementById("UserId").value = "";
+    }
+
+    function RefreshTable() {
+
+
+
+        var table = document.getElementById("tblSystem");
+
+        var inputs = table.getElementsByTagName("tr");
+        var tableLength = inputs.length;
+
+        console.log(inputs.length);
+        for (var i = 0; i < tableLength; i++) {
+            if (i == 0) {
+            }
+
+            if (i > 0) {
+
+                document.getElementById("tblSystem").deleteRow(i - 1);
+            }
+        }
+
+
+
+        var table = document.getElementById("tblIndustry");
+
+        var inputs = table.getElementsByTagName("tr");
+        var tableLength = inputs.length;
+
+        console.log(inputs.length);
+        for (var i = 0; i < tableLength; i++) {
+            if (i == 0) {
+            }
+
+            if (i > 0) {
+
+                document.getElementById("tblIndustry").deleteRow(i - 1);
+            }
+        }
+
+        //var table = document.getElementById("tblSystem");
+        //var inputs = table.getElementsByTagName("tr");
+        //for (var i = inputs.length; i < inputs.length; i--) {
+        //    if (i != 0) {
+        //        document.getElementById("tblSystem").deleteRow(i);
+        //    }
+        //}
+
+        // var tblindustry = document.getElementById("tblIndustry");
+        // var input = tblindustry.getElementsByTagName("tr");
+        // var ss = false;
+        //if( input.length > 1)
+        // ss = true;
+        // for (var i = 0; ss==true; i++) {
+        //     document.getElementById("tblIndustry").deleteRow(i);
+        //     if (input.length ==1)
+        //         ss = false;
+        //     }
+
+    }
+
+    function checkUserName(value) {
+        var username = document.getElementsByName("username").value;
+        var pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+        if (pattern.test(username)) {
+            alert("Please only use standard alphanumerics");
+            return false;
+        }
+        return true;
+    }
+
+    function isValid(str) {
+
+        var iChars = "~`!#$%^&*+=-[]\\\';,/{}|\":<>?@@";
+
+        for (var i = 0; i < str.length; i++) {
+            if (iChars.indexOf(str.charAt(i)) != -1) {
+                alert("File name has special characters ~`!#$%^&*+=-[]\\\';,/{}|\":(>? \nThese are not allowed\n");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function ValidationRefresh(id) {
+        var validateid = "validate" + id.slice(3);
+        document.getElementById(validateid).innerHTML = ".";
+        var control = document.getElementById(validateid);
+        control.classList.remove('validation');
+    }
+
+
+    function CkeckSystems() {
+        var c = 0
+        var table = document.getElementById("tblSystem");
+        var inputs = table.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            var inputId = inputs[i].id;
+            if (inputId == "txtSystemId") {
+                var inputvalue = inputs[i].value;
+                if (inputvalue == "") {
+                    c = parseInt(c) + 1;
+                }
+            }
+            if (inputId == "txtSystemName") {
+                var inputvalue = inputs[i].value;
+                if (inputvalue == "") {
+                    c = parseInt(c) + 1;
+                }
+            }
+        }
+        return c;
+    }
+
+    function Ckeckindustrycode() {
+        var c = 0
+        var table = document.getElementById("tblIndustry");
+        var inputs = table.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            var inputId = inputs[i].id;
+            if (inputId == "txtIndustrycode") {
+                var inputvalue = inputs[i].value;
+                if (inputvalue == "") {
+                    c = parseInt(c) + 1;
+                }
+            }
+        }
+        return c;
+    }
+
+    function clearVal() {
+        var id = "txtSystemId";
+        ValidationRefresh(id);
+        var id1 = "txtSystemName";
+        ValidationRefresh(id1);
+    }
+
+    function clearindusval() {
+        var id = "txtIndustrycode";
+        ValidationRefresh(id);
+    }
+
+    function AllRefreshValidation() {
+        AllValidationRefresh("validateAdminID")
+        AllValidationRefresh("validateAdminName")
+        AllValidationRefresh("validatePassword")
+        AllValidationRefresh("validateConfPassword")
+        AllValidationRefresh("validateEmail")
+        AllValidationRefresh("validateConfEmail")
+        AllValidationRefresh("validateMobile")
+        AllValidationRefresh("validateConfMobile")
+        AllValidationRefresh("validateSystemId")
+        AllValidationRefresh("validateSystemName")
+        AllValidationRefresh("validateCompaneyId")
+        AllValidationRefresh("validateCompneyName")
+    }
+
+    function AllValidationRefresh(id) {
+        var validateid = id;
+        document.getElementById(validateid).innerHTML = ".";
+
+        var control = document.getElementById(validateid);
+        control.classList.remove('validation');
+    }
+
+
+    function AvoidPagedataShift(id) {
+        var validateid = id;
+        var controlid = "validate" + id.slice(3);
+        document.getElementById(controlid).innerHTML = "";
+
+        var control = document.getElementById(validateid);
+        control.classList.remove('validation');
+    }
+
+    function checkDuplicateSystem() {
+
+
+        var table = document.getElementById("tblSystem");
+        var inputs = table.getElementsByTagName("input");
+        var length = inputs.length;
+        var checkResult = 0;
+
+        for (var i = 0; i < length; i++) {
+            var SystemId;
+            var SystemName;
+            var inputId = inputs[i].id;
+            if (inputId == "txtSystemId") {
+
+                var SystemId = inputs[i].value;
+                var result = validateSystem(SystemId);
+
+                if (result.responseJSON == "Fail") {
+
+                    checkResult = 1;
+                    //alert("Fail");
+                }
+                else if (result.responseJSON == "Pass") {
+                    // alert("Pass")
+                }
+                else {
+                    //alert("NO Result");
+                }
+            }
+        }
+        validateSystem("ForStaticListEmpty");
+
+
+        if (checkResult > 0) {
+            // alert("Duplicate Found")
+            return false
+
+        }
+        else {
+            // alert("unique Value")
+            return true
+
+        }
+
+
+
+    }
+
+    //check duplicate for industry code
+    function checkDuplicateIndustry() {
+
+
+        var table = document.getElementById("tblIndustry");
+        var inputs = table.getElementsByTagName("input");
+        var length = inputs.length;
+        var checkResult = 0;
+
+        for (var i = 0; i < length; i++) {
+            var SystemId;
+            var SystemName;
+            var inputId = inputs[i].id;
+            if (inputId == "txtIndustrycode") {
+
+                var SystemId = inputs[i].value;
+                var result = validateIndustry(SystemId);
+
+                if (result.responseJSON == "Fail") {
+
+                    checkResult = 1;
+                    //alert("Fail");
+                }
+                else if (result.responseJSON == "Pass") {
+                    // alert("Pass")
+                }
+                else {
+                    //alert("NO Result");
+                }
+            }
+        }
+        validateIndustry("ForStaticListEmpty");
+
+
+        if (checkResult > 0) {
+            // alert("Duplicate Found")
+            return false
+
+        }
+        else {
+            // alert("unique Value")
+            return true
+
+        }
+
+
+
+        }
+        //1. Run Function
+        function CreateCompany() {
+
+            if (GoingForEdit == "Yes") {
+
+                DeleteSystemsByCompaneyId(CompaneyId);
+                DeleteIndustryByCompaneyId(CompaneyId);
+            }
+
+            var res = RequiredFieldValidator();
+
+            if (res == true) {
+                // Loader Screen start after validation Pass
+                var current_effect = $('#waitMe_ex_effect').val();
+                $('#container > form').waitMe({
+                    effect: current_effect,
+                    text: 'Please wait...',
+                    bg: 'rgba(255,255,255,0.7)',
+                    color: '#000',
+                    sizeW: '',
+                    sizeH: ''
+
+                });
+
+                // Check for System Duplication
+                var resSystem = checkDuplicateSystem();
+                // Check for System Duplication
+                var resIndustry = checkDuplicateIndustry();
+
+
+
+                if (resSystem == true && resIndustry == true) {
+                    CheckValidationforCompaney();
+                }
+                else {
+                    $('#container > form').waitMe('hide');
+                }
+
+
+            }
+            else {
+                // alert("Required Field Validation Failed");
+
+            }
+
+
+
+
+
+
+
+
+
+        }
+        //2 Process
+        function RequiredFieldValidator() {
+            document.getElementById("ErrorMessages").innerHTML = "";
+            document.getElementById("SuccessMessages").innerHTML = "";
+
+
+            // To get the value of Company Details in Variable
+            var count = 1;
+            var CompaneyId = document.getElementById("txtCompaneyId").value;
+            var CompneyName = document.getElementById("txtCompneyName").value;
+            var txtDescription = document.getElementById("txtDescription").value;
+
+
+            var txtRemarks = document.getElementById("txtRemarks").value;
+
+
+            //Check Multiple System ID Validation
+            var table = document.getElementById("tblSystem");
+            var inputs = table.getElementsByTagName("input");
+
+            for (var i = 0; i < inputs.length; i++) {
+                var inputId = inputs[i].id;
+                if (inputId == "txtSystemId") {
+                    var inputvalue = inputs[i].value;
+                    if (inputvalue == "") {
+                        document.getElementById("validateSystemId").innerHTML = "System Id is required";
+                        $('#validateSystemId').addClass('validation');
+                        count = parseInt(count) + 1;
+                    }
+                }
+                if (inputId == "txtSystemName") {
+                    var inputvalue = inputs[i].value;
+                    if (inputvalue == "") {
+                        document.getElementById("validateSystemName").innerHTML = "System Name is required";
+                        $('#validateSystemName').addClass('validation');
+                        count = parseInt(count) + 1;
+                    }
+                }
+            }
+
+
+            //Check Multiple Industry Code Validation
+            var table = document.getElementById("tblIndustry");
+
+            var inputs = table.getElementsByTagName("input");
+
+            for (var i = 0; i < inputs.length; i++) {
+                var inputId = inputs[i].id;
+                if (inputId == "txtIndustrycode") {
+                    var inputvalue = inputs[i].value;
+                    if (inputvalue == "") {
+                        document.getElementById("validateIndustrycode").innerHTML = "Industry Code is required.";
+                        $('#validateIndustrycode').addClass('validation');
+                        count = parseInt(count) + 1;
+                    }
+                }
+            }
+
+            // Required Filed Validation
+            if (CompaneyId.length != 8) {
+                document.getElementById("validateCompaneyId").innerHTML = "Company id equal to 8 alphanumeric characters";
+                $('#validateCompaneyId').addClass('validation');
+                $('#txtCompaneyId').focus();
+                count = parseInt(count) + 1;
+            }
+
+            //AlphaNumeric Validation
+            if (CompaneyId.match(/[^0-9a-z]/i)) {
+                document.getElementById("validateCompaneyId").innerHTML = "Only letters and digits allowed!";
+                $('#validateCompaneyId').addClass('validation');
+                $('#txtCompaneyId').focus();
+                count = parseInt(count) + 1;
+            }
+            else if (!CompaneyId.match(/\d/)) {
+                document.getElementById("validateCompaneyId").innerHTML = "At least one digit required!";
+                $('#validateCompaneyId').addClass('validation');
+                $('#txtCompaneyId').focus();
+                count = parseInt(count) + 1;
+            }
+            else if (!CompaneyId.match(/[a-z]/i)) {
+                document.getElementById("validateCompaneyId").innerHTML = "At least one letter required!";
+                $('#validateCompaneyId').addClass('validation');
+                $('#txtCompaneyId').focus();
+                count = parseInt(count) + 1;
+            }
+
+            if (CompaneyId == "") {
+                document.getElementById("validateCompaneyId").innerHTML = "Company Id is required";
+                $('#validateCompaneyId').addClass('validation');
+                $('#txtCompaneyId').focus();
+                count = parseInt(count) + 1;
+            }
+            if (CompneyName == "") {
+                document.getElementById("validateCompneyName").innerHTML = "Company Name is required";
+                $('#validateCompneyName').addClass('validation');
+                $('#txtCompneyName').focus();
+                count = parseInt(count) + 1;
+            }
+
+            if (txtDescription == "") {
+                document.getElementById("validateDescription").innerHTML = "Description is required";
+                $('#validateDescription').addClass('validation');
+                $('#txtDescription').focus();
+                count = parseInt(count) + 1;
+            }
+
+            if (txtRemarks == "") {
+                document.getElementById("validateRemarks").innerHTML = "Remarks is required";
+                $('#validateRemarks').addClass('validation');
+                $('#txtRemarks').focus();
+                count = parseInt(count) + 1;
+            }
+            if (count != 1) {
+                return false
+            }
+            else {
+
+                return true
+            }
+
+
+
+        }
+        //Check Duplicate System ID
+        function validateSystem(systemid) {
+
+
+            var response = $.ajax({
+                url: "/Master/chkDuptSysid",
+                type: "POST",
+                data: "{ 'systemid':'" + systemid + "'}",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+
+
+                    if (response == "Fail") {
+
+                        document.getElementById("validateSystemId").innerHTML = "System duplicate not allowd";
+                        $('#validateSystemId').addClass('validation');
+                    }
+
+                },
+                error: function (e) {
+
+                }
+
+            });
+            return response;
+
+        }
+
+
+
+
+        //check duplicate industry id
+
+        function validateIndustry(systemid) {
+
+
+            var response = $.ajax({
+                url: "/Master/chkDuptindustryid",
+                type: "POST",
+                data: "{ 'systemid':'" + systemid + "'}",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    if (response == "Fail") {
+
+                        document.getElementById("validateIndustrycode").innerHTML = "Industry duplicate not allowd";
+                        $('#validateIndustrycode').addClass('validation');
+                    }
+
+                },
+                error: function (e) {
+
+                }
+
+            });
+            return response;
+
+        }
+
+        //Create Compnay,system,Indutry
+        function CheckValidationforCompaney() {
+
+
+            var CompaneyId = document.getElementById("txtCompaneyId").value;
+            var CompneyName = document.getElementById("txtCompneyName").value;
+            var txtDescription = document.getElementById("txtDescription").value;
+
+            var txtRemarks = document.getElementById("txtRemarks").value;
+
+
+
+            $.ajax({
+
+                url: "/Master/CreateCompaney",
+                type: "POST",
+                data: "{ 'CompaneyId':'" + CompaneyId + "','CompneyName':'" + CompneyName + "','Description':'" + txtDescription + "','Remarks':'" + txtRemarks + "'}",
+                dataType: "json",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+
+
+                    var abc = typeof (response);
+                    if (abc !== "number") {
+                        if (response == "Please Login First") {
+                            window.location.href = '/Master/Login';
+                        }
+                        document.getElementById("ErrorMessages").innerHTML = response;
+                        $('#container > form').waitMe('hide');
+                        return;
+                    }
+                    else if (response != 0) {
+
+                        document.getElementById("CompanyId").value = "";
+                        document.getElementById("UserId").value = "";
+
+
+                        var table = document.getElementById("tblSystem");
+                        var inputs = table.getElementsByTagName("input");
+                        var checkLength = inputs.length;
+
+
+
+                        var ID = response;
+                        // alert(checkLength);
+                        var SystemId;
+                        var SystemName;
+                        for (var i = 0; i < checkLength; i++) {
+
+                            var SystemId;
+                            var SystemName;
+                            var inputId = inputs[i].id;
+                            if (inputId == "btndelete") {
+
+                            }
+                            else {
+
+                                if (inputId == "txtSystemId") {
+                                    var SystemId = inputs[i].value;
+                                }
+                                if (inputId == "txtSystemName") {
+                                    var SystemName = inputs[i].value;
+                                    SaveSystem(ID, SystemId, SystemName);
+                                }
+                            }
+                        }
+
+
+
+                        var Industry = [];
+                        $(".idscode").each(function (index) {
+
+                            var currValue = $(this).val();
+
+                            //   console.log('array test', $.inArray(currValue, fruits))
+                            if ($.inArray(currValue, Industry) == 0) {
+                                alert("Duplicate Industry Code is not Allowed");
+                                $('#container > form').waitMe('hide');
+                                return false;
+                            }
+                            else {
+                                var ID = response;
+                                var table = document.getElementById("tblIndustry");
+                                var inputs = table.getElementsByTagName("input");
+                                for (var i = 0; i < inputs.length; i++) {
+                                    var inputId = inputs[i].id;
+                                    if (inputId == "btndelete") {
+
+                                    }
+                                    else {
+                                        if (inputId == "txtIndustrycode") {
+                                            var IndustryId = inputs[i].value;
+                                            SaveIndustryCode(ID, IndustryId);
+                                        }
+                                    }
+                                }
+                                ControlRefresh();
+                                //
+                                //   RefreshTable();
+                                setTimeout(function () {
+                                    $('#container > form').waitMe('hide');
+                                    window.location.href = '/Master/CreateCompany';
+                                }, (4000))
+                            }
+                            Industry.push(currValue);
+                        });
+
+                    }
+                    else {
+                        document.getElementById("ErrorMessages").innerHTML = response;
+                        $('#container > form').waitMe('hide');
+
+                    }
+
+                },
+                error: function (error) {
+                    setTimeout(function () {
+                        $('#container > form').waitMe('hide');
+                        window.location.href = '/Master/CreateCompany';
+                    }, (4000))
+                    alert(JSON.stringify(error));
+                }
+            });
+        }
+
+
+        //Delete Systems By CompaneyId
+        function DeleteSystemsByCompaneyId(CompanyId) {
+            $.ajax({
+                url: "/Master/DeleteSystems",
+                type: "POST",
+                data: "{ 'CompanyId':'" + CompanyId + "'}",
+                dataType: "json",
+                async:false,
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                },
+                error: function (error) {
+                }
+            });
+        }
+
+
+        function DeleteIndustryByCompaneyId(CompanyId) {
+
+            $.ajax({
+                url: "/Master/DeleteIndustry",
+                type: "POST",
+                data: "{ 'CompanyId':'" + CompanyId + "'}",
+                dataType: "json",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                },
+                error: function (error) {
+                }
+            });
+        }
+
+        function getPrint(DateTime, CompanyId, SystemId, AdminId, IndustryId) {
+           var pp = window.open();
+            pp.document.writeln('<base target="_self"></HEAD>')
+            pp.document.writeln('<body MS_POSITIONING="example" bottomMargin="0"');
+            pp.document.writeln(' leftMargin="10" topMargin="0" rightMargin="10">');
+          
+
+         
+            pp.document.writeln('<TABLE id="" border=1 width=100%><TR><TD>DateTime</TD><TD>CompanyId</td><td>SystemId</td><td>AdminId<td>IndustryId</td></tr>');
+           
+          
+
+            pp.document.writeln('<tr><td>' + DateTime + '</td><td>' + CompanyId + '</td><td>' + SystemId + '</td><td>' + AdminId + '</td><td>' + IndustryId + '</td></tr>');
+
+
+            pp.document.writeln('</body></TABLE>');
+            pp.document.writeln('<INPUT ID="PRINT" type="button" value="Print" ');
+            pp.document.writeln('onclick="javascript:location.reload(false);window.print();">');
+            pp.document.writeln('<INPUT ID="CLOSE" type="button" ' +
+                                'value="Close" onclick="window.close();">');
+     
+
+        };
+
+    // data geting from row for print option
+        $(".use-address").click(function () {
+           
+          
+            var DateTime = $(this).closest('tr').children().eq(0).text();
+            var CompanyId = $(this).closest('tr').children().eq(1).text();
+            var sytemchild = $(this).closest('tr').children().eq(2).children().length;
+            var SystemId = "";
+            for (var i = 0; i < sytemchild; i++)
+            {
+                SystemId = SystemId + $(this).closest('tr').children().eq(2).children().eq(i-1).text()+",";
+
+            }
+            var AdminId = $(this).closest('tr').children().eq(3).text();
+            var IndustryChild = $(this).closest('tr').children().eq(4).children().length;
+            var IndustryId = "";
+  
+          
+            for (var i =0; i <  IndustryChild; i++) {
+                IndustryId = IndustryId + $(this).closest('tr').children().eq(4).children().eq(i).text() + ",";
+
+            }
+            SystemId = SystemId.substr(0, SystemId.length - 1);
+            IndustryId = IndustryId.substr(0, IndustryId.length - 1);
+       
+            getPrint(DateTime, CompanyId, SystemId, AdminId, IndustryId);
+               
+        });
+    
+    //for privent paste data
+
+        $(function () {
+            priventpastecomid();
+            priventpastecominame();
+        });
+        function priventpastecomid()
+        {
+
+            $("#txtCompaneyId").bind('paste', function () {
+                setTimeout(function () {
+                    //get the value of the input text
+                    var data = $('#txtCompaneyId').val();
+                    //replace the special characters to ''
+                    var dataFull = data.replace(/[^\w\s]/gi, '');
+                    //set the new value of the input text without special characters
+                    $('#txtCompaneyId').val(dataFull);
+                });
+
+            });
+
+        }
+
+        function priventpastecominame() {
+
+            $("#txtCompneyName").bind('paste', function () {
+                setTimeout(function () {
+                    //get the value of the input text
+                    var data = $('#txtCompneyName').val();
+                    //replace the special characters to ''
+                    var dataFull = data.replace(/[^\w\s]/gi, '');
+                    //set the new value of the input text without special characters
+                    $('#txtCompneyName').val(dataFull);
+                });
+
+            });
+
+        }
+
+
+    //Dublicate Email in Database
+        //function DublicateEmail() {
+        //    var Result = "";
+        //        $.ajax({
+        //            type: 'POST',
+        //            url: "/Master/SearchDublicateEmail",
+        //            dataType: 'json',
+        //            data: { Email: $("#txtEmail").val() },
+        //            success: function (response) {
+        //                if (response == "Yes") {
+        //                    document.getElementById("validateEmail").innerHTML = "This Email Id is Already Exist !";
+        //                    $('#validateEmail').addClass('validation');
+        //                    $('#txtEmail').focus();
+        //                    Result = "Yes";
+        //                }
+        //                else {
+        //                    Result = "No";
+        //                }
+        //            },
+        //            error: function (error) {
+        //                Result = "No";
+        //            }
+        //        });
+        //}
+
+       
+</script>

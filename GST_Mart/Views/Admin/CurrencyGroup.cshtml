@@ -50,15 +50,6 @@
     ViewBag.Title = "CurrencyGroup";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-@section Submenu
-{
-
-    @Html.Partial("~/Views/_Partial/_Currency.cshtml")
-}
-
-
-
 @using (Html.BeginForm("CurrencyGroup", "Admin", FormMethod.Post, new { id = "submitForm" }))
 { 
         <div class="container-fluid">
@@ -67,7 +58,7 @@
                 <div class="col-lg-12 top-heading2">
                     <ul>
                         <li><a href="/Admin/CurrencyExchange" >Auto Feed</a></li>
-                        <li><a href="/Admin/ManualCurrencyExchange">Manual</a></li>
+                        <li><a href="/Admin/ManualCurrencyExchange">Mannual</a></li>
                         <li><a href="/Admin/CurrencyGroup" class="select">Currency Group</a></li>
                     </ul>
                 </div>
@@ -255,7 +246,7 @@
                         success: function (response) {
                             $('#CurrencyValue').val("");
                             $('#CurrencyCode').val("");
-                            document.getElementById("Error3").innerHTML = "Currency Type Save Successfully.";
+                            document.getElementById("Error3").innerHTML = "Currency Type Save Sucessfully.";
                             $("#CurrencyType").empty();
                             $.each(response, function (i, systemid) {
                                 $("#CurrencyType").append('<option value="' + systemid.Value + '">' +

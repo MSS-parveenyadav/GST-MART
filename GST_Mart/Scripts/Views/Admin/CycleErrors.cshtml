@@ -1,0 +1,640 @@
+﻿
+@model   IEnumerable<GST_BLL.DTO.LoogerModel>
+
+@{
+    ViewBag.Title = "CycleErrors";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@if (Model.Count() != 0)
+{
+    <h2>Ledger Mismatch Errors</h2>
+
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <th>Error Column</th>
+                        <th>Error Code </th>
+                        <th>ErrorColumn  </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Flat_File_Source_Error_Output_Column</td>
+                        <td>@item.ErrorCode</td>
+                        <td>@item.ErrorColumn</td>
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+    <br />
+    <br />
+}
+
+@if (ViewBag.companyError.Count != 0)
+{
+    <h2>Company Mismatch Errors</h2>
+
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <th>Error Column</th>
+                        <th>Error Code </th>
+                        <th>ErrorColumn  </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.companyError)
+                {
+                    <tr>
+                        <td>@item.Flat_File_Source_Error_Output_Column</td>
+                        <td>@item.ErrorCode</td>
+                        <td>@item.ErrorColumn</td>
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+    <br />
+    <br />
+    <hr />
+}
+<br />
+<br />
+
+@if (ViewBag.footerError.Count != 0)
+{
+    <h2>Footer Mismatch Errors</h2>
+
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <th>Error Column</th>
+                        <th>Error Code </th>
+                        <th>ErrorColumn  </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.footerError)
+                {
+                    <tr>
+                        <td>@item.Flat_File_Source_Error_Output_Column</td>
+                        <td>@item.ErrorCode</td>
+                        <td>@item.ErrorColumn</td>
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <hr />
+}
+<br />
+<br />
+
+@if (ViewBag.supplyError.Count != 0)
+{
+    <h2>Supply Mismatch Errors</h2>
+
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <th>Error Column</th>
+                        <th>Error Code </th>
+                        <th>ErrorColumn  </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.supplyError)
+                {
+                    <tr>
+                        <td>@item.Flat_File_Source_Error_Output_Column</td>
+                        <td>@item.ErrorCode</td>
+                        <td>@item.ErrorColumn</td>
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <hr />
+}
+
+<br />
+<br />
+@if (ViewBag.purchaseError.Count != 0)
+{
+    <h2>Supply Mismatch Errors</h2>
+
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <th>Error Column</th>
+                        <th>Error Code </th>
+                        <th>ErrorColumn  </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.purchaseError)
+                {
+                    <tr>
+                        <td>@item.Flat_File_Source_Error_Output_Column</td>
+                        <td>@item.ErrorCode</td>
+                        <td>@item.ErrorColumn</td>
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+    <br />
+    <br />
+}
+
+
+@if (ViewBag.purchase.Count != 0)
+{
+    <h2>Purchase Duplicate Records</h2>
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+
+                        <td>Invoice Number</td>
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.purchase)
+                {
+                    <tr>
+
+                        <td>@item.Invoice_No</td>
+
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+
+    <br />
+    <br />
+}
+
+@if (ViewBag.supply.Count != 0)
+{
+    <h2>Supply Duplicate Records</h2>
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+
+                        <td>Invoice Number</td>
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.supply)
+                {
+                    <tr>
+
+                        <td>@item.Invoice_No</td>
+
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+    <br />
+    <br />
+}
+
+@if (ViewBag.ledger.Count != 0)
+{
+    <h2>Ledger Duplicate Records</h2>
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+
+                        <td>Transaction ID</td>
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.ledger)
+                {
+                    <tr>
+
+                        <td>@item.TransactionID</td>
+
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+    <br />
+    <br />
+
+}
+<hr />
+
+@if (ViewBag.MissingPurchase.Count != 0)
+{
+    <h3>Incomplete Purchase Records</h3>
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+
+                        <th>Company ID</th>
+                        <th>Company Code</th>
+                        <th>Create Date</th>
+
+                        <th>Currency Code</th>
+                        <th>Import Declaration No</th>
+                        <th>Invoice Date</th>
+                        <th>Invoice No</th>
+                        <th>Line No</th>
+                        <th>Product Code</th>
+                        <th>Product Description</th>
+                        <th>Currency Amount_GST</th>
+                        <th>Purchase Currency Amount</th>
+
+                        <th>Purchase Currency GST Tax</th>
+                        <th>GST Tax 6%</th>
+
+                        <th>Supplier_BRN</th>
+                        <th>Supplier_Name</th>
+                        <th>Supplier_Number</th>
+                        <th>Tax_Code</th>
+                        <th>Transaction_Type</th>
+
+
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.MissingPurchase)
+                {
+                    <tr>
+                        <td>@item.CompanyID</td>
+                        <td>@item.Company_Code</td>
+                        <td>@item.CreateDate</td>
+
+                        <td>@item.Foreign_Currency_Code</td>
+                        <td>@item.Import_Declaration_No</td>
+                        <td>@item.Invoice_Date</td>
+                        <td>@item.Invoice_No</td>
+                        <td>@item.Line_No</td>
+
+                        <td>@item.Product_Code</td>
+                        <td>@item.Product_Description</td>
+                        <td>@item.Purchase_Currency_Purchase_Amount_GST</td>
+                        <td>@item.Purchase_Foreign_Currency_Amount</td>
+
+                        <td>@item.Purchase_Value_GST_Amount</td>
+                        <td>@item.Purchase_Value_MYR</td>
+
+                        <td>@item.Supplier_BRN</td>
+                        <td>@item.Supplier_Name</td>
+                        <td>@item.Supplier_Number</td>
+                        <td>@item.Tax_Code</td>
+                        <td>@item.Transaction_Type</td>
+
+
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+
+    <br />
+    <br />
+}
+
+@if (ViewBag.MissingSupply.Count != 0)
+{
+    <h2>Incomplete Supply Records</h2>
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <td>CompanyID</td>
+                        <td>Company_Code</td>
+                        <td>Country</td>
+                        <td>Customer BRN</td>
+                        <td>Customer Code</td>
+                        <td>Customer Name</td>
+                        <td>Currency Code</td>
+                        <td>Invoice Date</td>
+                        <td>Invoice No</td>
+                        <td>Line No</td>
+                        <td>Product Code</td>
+                        <td>Product Description</td>
+                        <td>Sales Currency Amount</td>
+                        <td>Sales_Foreign_Currency_Amount</td>
+                        <td>Sales Currency GST Tax</td>
+                        <td>GST Tax 6%</td>
+                        <td>Tax Code</td>
+                        <td>Transaction Type</td>
+
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.MissingSupply)
+                {
+                    <tr>
+
+
+                        <td>@item.CompanyID</td>
+                        <td>@item.Company_Code</td>
+                        <td>@item.Country</td>
+                        <td>@item.Customer_BRN</td>
+                        <td>@item.Customer_Code</td>
+                        <td>@item.Customer_Name</td>
+                        <td>@item.Foreign_Currency_Code</td>
+                        <td>@item.Invoice_Date</td>
+                        <td>@item.Invoice_No</td>
+                        <td>@item.Line_No</td>
+                        <td>@item.Product_Code</td>
+                        <td>@item.Product_Description</td>
+                        <td>@item.Sales_Currency_Sales_Amount_GST</td>
+                        <td>@item.Sales_Foreign_Currency_Amount</td>
+                        <td>@item.Sales_Value_GST_Amount</td>
+                        <td>@item.Sales_Value_MYR</td>
+                        <td>@item.Tax_Code</td>
+                        <td>@item.Transaction_Type</td>
+
+
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+    <br />
+    <br />
+}
+
+@if (ViewBag.MissingLedger.Count != 0)
+{
+    <h2>Incomplete Ledger Records</h2>
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <th>Company ID</th>
+                        <th>Company Code</th>
+                        <th>Transaction Type</th>
+                        <th>Transaction Date</th>
+                        <th>Account ID</th>
+                        <th>Account Name</th>
+                        <th>Transaction Description</th>
+                        <th>Name</th>
+                        <th>Transaction ID</th>
+                        <th>Source Document ID</th>
+                        <th>Source Type</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Balance</th>
+                        <th>Tax Code</th>
+
+
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.MissingLedger)
+                {
+                    <tr>
+
+                        <th>@item.CompanyID</th>
+                        <th>@item.CompanyCode</th>
+                        <th>@item.TransactionType</th>
+                        <th>@item.TransactionDate</th>
+                        <th>@item.AccountID</th>
+                        <th>@item.AccountName</th>
+                        <th>@item.TransactionDescription</th>
+                        <th>@item.Name</th>
+                        <th>@item.TransactionID</th>
+                        <th>@item.SourceDocumentID</th>
+                        <th>@item.SourceType</th>
+                        <th>@item.Debit</th>
+                        <th>@item.Credit</th>
+                        <th>@item.Balance</th>
+                        <th>@item.TaxCode</th>
+
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+    <br />
+    <br />
+}
+
+@if (ViewBag.MissingCompany.Count != 0)
+{
+    <h2>Incomplete Company Records</h2>
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <th>Company BRN</th>
+                        <th>Company Code</th>
+                        <th>Company GST No</th>
+                        <th>Company Name</th>
+                        <th>File Creation Date</th>
+                        <th>GAF_Version</th>
+                        <th>Period_End</th>
+                        <th>Period_Start</th>
+                        <th>Product_Version</th>
+                        <th>Record_Identifier</th>
+
+
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.MissingCompany)
+                {
+                    <tr>
+
+                        <td>@item.Company_BRN</td>
+                        <td>@item.Company_Code</td>
+                        <td>@item.Company_GST_No</td>
+                        <td>@item.Company_Name</td>
+                        <td>@item.File_Creation_Date</td>
+                        <td>@item.GAF_Version</td>
+                        <td>@item.Period_End</td>
+                        <td>@item.Period_Start</td>
+                        <td>@item.Product_Version</td>
+                        <td>@item.Record_Identifier</td>
+
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+
+    <br />
+    <br />
+}
+
+
+@if (ViewBag.MissingFooter.Count != 0)
+{
+    <h2>Incomplete Footer Records</h2>
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0" border="1">
+
+
+                <thead>
+                    <tr>
+                        <th>Company BRN</th>
+                        <th>Company Code</th>
+                        <th>Company GST No</th>
+                        <th>Company Name</th>
+                        <th>File Creation Date</th>
+                        <th>GAF_Version</th>
+                        <th>Period_End</th>
+                        <th>Period_Start</th>
+                        <th>Product_Version</th>
+                        <th>Record_Identifier</th>
+
+
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in ViewBag.MissingFooter)
+                {
+                    <tr>
+
+                        <td>@item.Balance_Sum</td>
+                        <td>@item.Company_Code</td>
+                        <td>item.CompanyID</td>
+                        <td>@item.Credit_Sum</td>
+                        <td>@item.CycleID</td>
+                        <td>@item.Debit_Sum</td>
+                        <td>@item.id</td>
+                        <td>@item.Ledger_Count</td>
+                        <td>@item.Purchase_Amount_Sum</td>
+                        <td>@item.Purchase_Count</td>
+                        <td>@item.Purchase_GST_Amount_GST</td>
+                        <td>@item.Record_Identifier</td>
+                        <td>
+                            @item.Supply_Amount_Sum
+                        </td>
+                        <td>
+                            @item.Supply_Count
+                        </td>
+                        <td>@item.Supply_GST_Amount_Sum</td>
+
+                    </tr>
+                }
+            </table>
+
+
+        </div>
+    </div>
+
+}
+
+
+
