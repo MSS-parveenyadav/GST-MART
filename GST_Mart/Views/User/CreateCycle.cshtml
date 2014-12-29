@@ -24,7 +24,7 @@
                         <div class="col-md-6">
                             <label>Cycle Description :</label>
 
-                            @Html.TextBoxFor(m=>m.Description)
+                            @Html.TextBoxFor(m => m.Description, new { placeholder = "Description" })
                             <span style="color:red;">@Html.ValidationMessageFor(m => m.Description)</span>
                         </div>
                         <div class="col-md-6">

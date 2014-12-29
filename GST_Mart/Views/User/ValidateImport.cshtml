@@ -120,12 +120,12 @@
 <div class="pagination-footer">
     <div class="container-fluid">
         <div class="col-md-4 item-par">
-            <form action="" method="get">
+            <form action="" method="get" class="serch">
                 <table width="100%" cellspacing="0" cellpadding="0">
                     <tr>
                         <td>
                             @{
-                          
+
                                 List<SelectListItem> ddPagination = new List<SelectListItem>();
                                 for (int i = 1; i <= 10; i++)
                                 {
@@ -140,7 +140,7 @@
                                         ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
                                     }
                                 }
-                                @Html.DropDownList("DDlPagingsize", ddPagination, new { onchange="this.form.submit();"});
+                                @Html.DropDownList("DDlPagingsize", ddPagination, new { onchange = "this.form.submit();" });
                             }
                         </td>
                         <td><span>Items Per Page</span></td>

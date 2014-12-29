@@ -44,15 +44,15 @@
                                     <tr class="hg90">
                                         <td>
                                             <div style="width:auto; display:inline-block; margin-right:5px;">
-                                                <input type="text" id="Txtsearch" style="width:auto" />
+                                                <input type="text" id="Txtsearch" style="width:auto" placeholder="User Id / Ip Address" />
                                             </div>
                                             <div style="display:inline-block;" class="btn3"><input type="button" onclick="SearchByIP()" value="Search" /></div>
                                         </td>
                                         <td>
                                             <div style="width:100%">
-                                                <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker", @style = "width:150px;" })</div>
+                                                <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker", @style = "width:150px;", placeholder = "Start Period" })</div>
                                                 <div style="width: auto; display: inline-block; margin-right: 5px;">
-                                                    @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker", @style = "width:150px;" })
+                                                    @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker", @style = "width:150px;", placeholder = "End Period" })
                                             </div>
                                             <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByDate()" value="Search" /></div>
 
@@ -82,9 +82,9 @@
                                     <td></td>
                                     <td>
                                         <div style="width:100%">
-                                            <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker1", @style = "width:150px;" })</div>
+                                            <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker1", @style = "width:150px;", placeholder = "Start Date" })</div>
                                             <div style="width: auto; display: inline-block; margin-right: 5px;">
-                                                @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker1", @style = "width:150px;" })
+                                                @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker1", @style = "width:150px;", placeholder = "End Date" })
                                             </div>
                                             <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchCycleByDate()" value="Search" /></div>
 

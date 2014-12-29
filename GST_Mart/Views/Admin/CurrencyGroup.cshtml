@@ -87,14 +87,14 @@
                                         <td class="add-tax"> Currency Group Name :  </td>
                                         <td>
                                             @Html.HiddenFor(m => m.Id)
-                                            @Html.TextBoxFor(m => m.CurrencyGroupName, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                            @Html.TextBoxFor(m => m.CurrencyGroupName, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}", placeholder = "Currency Group Name" })
                                             <p id="ValidateCurrencyGroupName" style="color: white"></p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="add-tax">Select Tax Code :  </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.TaxCode, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                            @Html.TextBoxFor(m => m.TaxCode, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}", placeholder = "Select Tax Code" })
                                             <p id="ValidateTaxCode" style="color: white"></p>
                                         </td>
                                     </tr>
@@ -326,7 +326,7 @@
         </script>
 
 }
-<form method="get">
+<form method="get" class="serch">
     <div class="pagination-footer">
         <div class="container-fluid">
             <div class="col-md-4 item-par">
@@ -335,22 +335,22 @@
                     <tr>
                         <td>
                             @{
-                            List<SelectListItem> ddPagination = new List<SelectListItem>();
-                            for (int i = 1; i <= 10; i++)
-                            {
-                                int j = i * 5;
-                                int pagesize = Convert.ToInt32(TempData["pagesize"]);
-                                if (pagesize == j)
+                                List<SelectListItem> ddPagination = new List<SelectListItem>();
+                                for (int i = 1; i <= 10; i++)
                                 {
-                                    ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                    int j = i * 5;
+                                    int pagesize = Convert.ToInt32(TempData["pagesize"]);
+                                    if (pagesize == j)
+                                    {
+                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                    }
+                                    else
+                                    {
+                                        ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
+                                    }
                                 }
-                                else
-                                {
-                                    ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
-                                }
-                            }
 
-                            @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();" });
+                                @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();" });
                             }
                         </td>
                         <td><span>Items Per Page</span></td>
