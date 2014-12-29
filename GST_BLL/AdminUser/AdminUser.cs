@@ -1738,13 +1738,18 @@ namespace GST_BLL.AdminUser
                         DateTime SDate = Convert.ToDateTime(StartDate);
                         Cycle = (from p in Gstmart.Cycles where (p.CreatedDate >= SDate.Date) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
-                    else
+                    else if (StartDate != "" && Enddate != "")
                     {
                         DateTime EDate = Convert.ToDateTime(Enddate);
                         EDate = EDate.AddHours(24);
                         DateTime SDate = Convert.ToDateTime(StartDate);
                         Cycle = (from p in Gstmart.Cycles where (p.CreatedDate >= SDate.Date && p.CreatedDate <= EDate.Date) && (p.Status != "Audit Deleted" || p.Status == null) select p).ToList();
                     }
+                    else 
+                    {
+                        Cycle = (from p in Gstmart.Cycles where p.Status != "Audit Deleted" || p.Status == null select p).ToList();
+                    }
+                    
                     return Cycle;
                 }
             }
