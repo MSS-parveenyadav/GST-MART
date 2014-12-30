@@ -170,20 +170,6 @@
     </div>
 </div>
 }
-      <p style="color:green;">
-    @TempData["MessageCompany"]<br />
-    @TempData["MessageLedger"]<br />
-    @TempData["MessageSupply"]<br />
-    @TempData["MessageFooter"]<br />
-    @TempData["MessagePurchase"]
-</p>
-<p style="color:green;">
-    @TempData["ErrorCompany"]<br />
-    @TempData["ErrorLedger"]<br />
-    @TempData["ErrorSupply"]<br />
-    @TempData["ErrorFooter"]<br />
-    @TempData["ErrorPurchase"]
-</p> 
 <div class="tab-pane" id="profile">
     <div class=" col-lg-12 sec-login">
       
@@ -325,9 +311,20 @@
             $('#CompanyFilePath').focus();
             count = 1;
         }
+        if (PathValidation(CompanyFilePath) == false) {
+            document.getElementById("ValidateCompanyFilePath").innerHTML = "Please Enter Valid Path.";
+            $('#CompanyFilePath').focus();
+            count = 1;
+        }
+
         if (LedgerFilePath == "") {
 
             document.getElementById("ValidateLedgerFilePath").innerHTML = "Field Can't be Empty";
+            $('#LedgerFilePath').focus();
+            count = 1;
+        }
+        if (PathValidation(LedgerFilePath) == false) {
+            document.getElementById("ValidateLedgerFilePath").innerHTML = "Please Enter Valid Path.";
             $('#LedgerFilePath').focus();
             count = 1;
         }
@@ -337,15 +334,30 @@
             $('#FooterFilePath').focus();
             count = 1;
         }
+        if (PathValidation(FooterFilePath) == false) {
+            document.getElementById("ValidateFooterFilePath").innerHTML = "Please Enter Valid Path.";
+            $('#FooterFilePath').focus();
+            count = 1;
+        }
         if (SupplyFilePath == "") {
 
             document.getElementById("ValidateSupplyFilePath").innerHTML = "Field Can't be Empty";
             $('#SupplyFilePath').focus();
             count = 1;
         }
+        if (PathValidation(SupplyFilePath) == false) {
+            document.getElementById("ValidateSupplyFilePath").innerHTML = "Please Enter Valid Path.";
+            $('#SupplyFilePath').focus();
+            count = 1;
+        }
         if (PurchaseFilePath == "") {
 
             document.getElementById("ValidatePurchaseFilePath").innerHTML = "Field Can't be Empty";
+            $('#PurchaseFilePath').focus();
+            count = 1;
+        }
+        if (PathValidation(PurchaseFilePath) == false) {
+            document.getElementById("ValidatePurchaseFilePath").innerHTML = "Please Enter Valid Path.";
             $('#PurchaseFilePath').focus();
             count = 1;
         }
@@ -359,6 +371,34 @@
         document.getElementById(validateid).innerHTML = "";
         var control = document.getElementById(validateid);
         control.classList.remove('validation');
+    }
+
+    function PathValidation(location) {
+        var path = location;
+        if (path == "") {
+            return false;
+        }
+        if (navigator.platform == "Linux") {
+            if (path.charAt(0) != "/") {
+                return false;
+            }
+            if (path.charAt(0) == "/" && path.charAt(1) == "/") {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            if ((path.charAt(0) != "\\" && path.charAt(1) != "\\") && (path.charAt(0) != "/" && path.charAt(1) != "/")) {
+                if (!path.charAt(0).match(/^[a-zA-z]/)) {
+                    return false;
+                }
+                if (path.charAt(1) == "" || !path.charAt(1).match(/^[:]/) || !path.charAt(2).match(/^[\/\\]/)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
     }
 
 </script>
