@@ -4,9 +4,10 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <ServerName>192.168.0.106</ServerName>
-        <PathOnServer>E:\Parveen Yadav</PathOnServer>
-        <StartObjectID>ImporterSupplyData.dtsx</StartObjectID>
+        <ServerName>Acer</ServerName>
+        <PathOnServer>/SSISDB/Myfirstfolder/GST-mart</PathOnServer>
+        <CreateDeploymentUtility>true</CreateDeploymentUtility>
+        <StartObjectID>DeleteData.dtsx</StartObjectID>
         <Run64BitRuntime>true</Run64BitRuntime>
         <UserIDs />
         <UserPasswords />

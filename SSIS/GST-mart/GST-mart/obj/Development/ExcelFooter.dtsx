@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ExcelFooter"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{E9939F1F-B7D8-4A2C-A91E-2C2978E7505D}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{925BB74A-2E8C-4BBD-BD65-395051BEA0C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,11 +24,11 @@
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=Acer;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAfAqeFuZMW2LnNcnPFonFlc40tRIYyvuwhSEs4EKjgbAAAAAAOgAAAAAIAACAAAABXaVl/Dp2fPOrFap4lFtOpC9cAhoBrF0O+TLTAPYVQViAAAACkCPLgAuOCuyVAkvdavWJpAyAVoHotA5vqLoi03D+3IUAAAADIcbf5meDHgWi/tB0167lVWZIBWN9UPErPzWSbCNlShSF5FHDt2f7XbjHT2Mh6uXlggyiWHOQ4nuN6gO0wOTTb</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACXq1UzCewCR669bhIe717cFNLE9Aa/9A+epFRk+v7D+AAAAAAOgAAAAAIAACAAAABgEGhCXPFWhVT6E4X6U+4yrHQCqfl19LMW0swiDzzOaiAAAAC7iQWsDWNU1NA1pflztOe50R05v1FJA3cUIfbChNSbO0AAAAC5URO9sb2BmZPRhNIxz4wDNbuEcIUYLv0wBOTgVY2CFb/JOG4JCKAP+1WU8t6sDcTVIW1RLrBOsS46sbicvHqk</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -39,7 +39,7 @@
       DTS:ObjectName="SourceConnectionExcel">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\xlsx\new\Footer.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=F:\xlsx\new\Footer.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -51,7 +51,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CompanyID">
       <DTS:VariableValue
-        DTS:DataType="8">abcdefgijklmnopqrstuvwxyz</DTS:VariableValue>
+        DTS:DataType="8">10</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -60,7 +60,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CycleID">
       <DTS:VariableValue
-        DTS:DataType="8">abcdefgijklmnopqrstuvwxyz</DTS:VariableValue>
+        DTS:DataType="8">10</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>

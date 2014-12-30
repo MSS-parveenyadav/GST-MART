@@ -13,7 +13,20 @@
     @Html.Partial("~/Views/_Partial/_dashboard.cshtml")
 }
 
+<style>
+    body {
+        position: relative;
+    }
+    #companyIdList {
+        position: absolute;
+        right: 39px;
+        top: 102px;
+    }
+        #companyIdList select {
+            height: 55px;
+        }
 
+</style>
 
 
         <div id="wrapper" class="clearfix">
@@ -21,19 +34,22 @@
 {
     
     
-    @section CompanyList
+    @*@section CompanyList
             {
 
     @Html.ListBoxFor(m => m.Companies, Model.listcompaney, new { size = 2, @onclick = "ValidationRefresh(this.id)" })
             <p id="ValidateCompanies" style="color: gray"></p>
-}
+}*@
 
 
     @*@Html.AntiForgeryToken()*@
     @Html.ValidationSummary(true)
 
-        
-     
+    <div id="companyIdList">
+        @Html.ListBoxFor(m => m.Companies, Model.listcompaney, new { size = 2, @onclick = "ValidationRefresh(this.id)" })
+        <p id="ValidateCompanies" style="color: gray"></p>
+    </div>
+
             <div class="container-fluid">
                 <div class="serch">
                     <div id="ErrorMessages" style="color: red;">@TempData["ErrorMessage"]</div><div id="SuccessMessages" style="color: green; ">@TempData["SuccessMessage"]</div>

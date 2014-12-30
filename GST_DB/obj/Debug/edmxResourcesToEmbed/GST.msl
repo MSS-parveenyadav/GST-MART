@@ -69,6 +69,7 @@
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CNBN" ColumnName="CNBN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/23/2014 12:01:44
--- Generated from EDMX file: D:\Newfolder\dev\GST_DB\GST.edmx
+-- Date Created: 12/25/2014 18:50:15
+-- Generated from EDMX file: F:\Projects\gst-mart\GST_DB\GST.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -25,6 +25,9 @@ IF OBJECT_ID(N'[dbo].[FK_PermissionUser]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_CompanyIndustry]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Industries] DROP CONSTRAINT [FK_CompanyIndustry];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CompanyCurrencySchedular]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CurrencySchedulars] DROP CONSTRAINT [FK_CompanyCurrencySchedular];
 GO
 
 -- --------------------------------------------------
@@ -91,6 +94,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Configurations]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Configurations];
 GO
+IF OBJECT_ID(N'[dbo].[CurrencySchedulars]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CurrencySchedulars];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -111,7 +117,8 @@ CREATE TABLE [dbo].[Companies] (
     [Permission] nvarchar(max)  NOT NULL,
     [CompanyID] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
-    [Remarks] nvarchar(max)  NOT NULL
+    [Remarks] nvarchar(max)  NOT NULL,
+    [CurrencySchedularId] int  NULL
 );
 GO
 
@@ -156,7 +163,8 @@ CREATE TABLE [dbo].[LDAPs] (
     [PortNumber] nvarchar(max)  NOT NULL,
     [UserId] nvarchar(max)  NOT NULL,
     [Password] nvarchar(max)  NOT NULL,
-    [CompanyId] nvarchar(max)  NOT NULL
+    [CompanyId] nvarchar(max)  NOT NULL,
+    [CNBN] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -257,12 +265,10 @@ CREATE TABLE [dbo].[CurrencyExchanges] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [CreatedDate] nvarchar(max)  NOT NULL,
     [CurrencyCode] nvarchar(max)  NOT NULL,
-    [FeedUrl] nvarchar(max)  NOT NULL,
-    [Frequency] nvarchar(max)  NOT NULL,
-    [Time] nvarchar(max)  NOT NULL,
     [Discription] nvarchar(max)  NOT NULL,
     [ConversionRate] nvarchar(max)  NOT NULL,
-    [CompanyId] nvarchar(max)  NOT NULL
+    [CompanyId] nvarchar(max)  NOT NULL,
+    [CurrencyDate] datetime  NOT NULL
 );
 GO
 
@@ -315,6 +321,17 @@ CREATE TABLE [dbo].[Configurations] (
     [dbuserid] nvarchar(max)  NOT NULL,
     [dbpwd] nvarchar(max)  NOT NULL,
     [directorypath] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'CurrencySchedulars'
+CREATE TABLE [dbo].[CurrencySchedulars] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [FeedUrl] nvarchar(max)  NOT NULL,
+    [FrequencyUnit] nvarchar(max)  NOT NULL,
+    [Time] nvarchar(max)  NOT NULL,
+    [CreateDate] datetime  NOT NULL,
+    [Company_Id] int  NULL
 );
 GO
 
@@ -442,6 +459,12 @@ ADD CONSTRAINT [PK_Configurations]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'CurrencySchedulars'
+ALTER TABLE [dbo].[CurrencySchedulars]
+ADD CONSTRAINT [PK_CurrencySchedulars]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
@@ -486,6 +509,20 @@ ADD CONSTRAINT [FK_CompanyIndustry]
 CREATE INDEX [IX_FK_CompanyIndustry]
 ON [dbo].[Industries]
     ([CompanyId]);
+GO
+
+-- Creating foreign key on [Company_Id] in table 'CurrencySchedulars'
+ALTER TABLE [dbo].[CurrencySchedulars]
+ADD CONSTRAINT [FK_CompanyCurrencySchedular]
+    FOREIGN KEY ([Company_Id])
+    REFERENCES [dbo].[Companies]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CompanyCurrencySchedular'
+CREATE INDEX [IX_FK_CompanyCurrencySchedular]
+ON [dbo].[CurrencySchedulars]
+    ([Company_Id]);
 GO
 
 -- --------------------------------------------------

@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImporterSupplyData"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{54743D94-D1BA-4CEE-B123-4E31ACF8FBBA}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{10CB77C8-BC84-4B57-A559-8D4E74D1CADA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -22,13 +22,21 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{48BB15DE-E01F-40C3-AF3E-8C99286CEC2E}"
       DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::DestCatalog]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=192.168.0.143;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAsRQvng48BMWduYwFUEe/ctpz3T8Ww8eYcaSuLYhCWHQAAAAAOgAAAAAIAACAAAAB71RRoTe10LJ5WSxDjvgRdyUFPa8KQ9cdjkppt+1CZCCAAAAD+D9g+Hdig30rc7PdNU3uYPaxY/AmgQO0x17WIvqEVREAAAAA2nweop6m+EKZNzwvJCxGXunUzR3oyaOlf0k73CxXdmsOyanMD296i5pOMDpOfuxACgeHWimOM5/RkJAnOJyZz</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAClf1WOAcACa4nC/Fnfljt5EggBn5fEqHe+Jg85ng3avwAAAAAOgAAAAAIAACAAAABqZZdMX2J5rHFFG7KnEt+4VYo2GJvebKOa4JiEI4I9riAAAADSIc/Vf9ixYPPaUAjktosizNz3oV2KsfHuuWY4MKakCkAAAAC8Og2Xgzs/jFAw7LpqcW8WsOKaQMavlZK6ayc8bxnXm5KEZv4CIu/PthVIj+D6X6i0mj5J23WLELk+D7OtmZRQ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -37,18 +45,35 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{4F42DEDE-9117-44FB-921C-1E318CAEE57C}"
       DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::Catalog]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=192.168.0.143;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADbLjKwrBwUZJeU59NifkN9PAH4om1mf7JW6IvR77EBBgAAAAAOgAAAAAIAACAAAABxKuyFw9VNgMrbyoSTKs5HPOarRNWzFHok0s7bt1hWLSAAAAAcdbzz/zP+CPOuoRIGFZ2ZOeNefC5tO1WjqvhHklQn8kAAAABhoh6xCI3NFEh1cyvEA6zgKiAXMuGouTQIdb8z1V7+HQcsiGRRujS4zbdLeqYxl+nZJN2OGOAZKdQx2xN97hLl</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAiHWddTuyruNFppOk0AEzSP/x29K03BW6A3uKxjIrWAAAAAAAOgAAAAAIAACAAAACRLQT42EUdzu7mx748X8+xeNg9p4+QGkKi9qzs6IxtdSAAAABH4gmfbsS/BrU2KaLuhPaDQkHGxIdRLsqiJMDT/iUM3kAAAACaS5KRneh0DSNx3K3asujAoQXonPlObZXPVXjsvjW1tWliaWRKd64jo7hg1OFCFv9liVlMI2FnOW0IhtMQMeko</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B5424BA0-9CD5-4388-98B6-9D31CB4EED2E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Catalog">
+      <DTS:VariableValue
+        DTS:DataType="8">STAGEDBGSTMASRT</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{184B86C2-D8D9-40F3-8DE0-044B1B21408F}"
@@ -66,6 +91,42 @@
       DTS:ObjectName="CycleIDDelete">
       <DTS:VariableValue
         DTS:DataType="20">6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{009521A4-92F8-4848-BCC2-BEDAD2E0CFD2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Datasource">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.0.143</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7595A1BC-4F19-479D-AA03-B86C46A739A2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestCatalog">
+      <DTS:VariableValue
+        DTS:DataType="8">GSTReport</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{178F0D9F-7C00-4358-92EE-CBE5F5DD6903}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Password">
+      <DTS:VariableValue
+        DTS:DataType="8">Admin123#</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EBC839C1-7149-4009-A844-10745E794DB1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Username">
+      <DTS:VariableValue
+        DTS:DataType="8">sa</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>

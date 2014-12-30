@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="CSVSupply"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{78F91817-FB27-41EF-B1D9-423932C57E8B}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{4C5452EF-0255-4CB3-8C55-DE17245C2673}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,11 +24,11 @@
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=Acer;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAWlFaFtx2xvJ+QazOxHwLuwE6moTOLVPf+OdIXb/0/qQAAAAAOgAAAAAIAACAAAACm4zA8+wI3w+w//CcXISNJViTIS37icAGnug2+7xjkCSAAAABZUn4ElWCd4IfrlfXWERz34ZCuIL5dK9hd7Fvm//MzyEAAAACFCUFPKT3WT8s2eDQFDPywmWOKtXRyERvicnmdUoi8LJzigRvYLACPae5mJSvpw7J7IlQT8uyMRzdg+Am8/dmZ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA/TqMDR1xGwmZXo6MMGmJF+uxGva3DsaAUnBxwmMFh1wAAAAAOgAAAAAIAACAAAABlGokCTw3fDUS3BJxJFb8iz2N0BmJZL66IQtD26U1EwyAAAADEZvY7zQj8fST97zhYqk76BfHduMGpJ+X+EwsH1wuG8UAAAACfRVOO0xdXcGEBnUhiHnQwjNeldxSUCgZzyavG/IOKFPfJQ0oLutZIW23yEO2dSYMo0KzXa0pwnveaVY0wQCy6</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="D:\csv file\NewSupply.csv">
+          DTS:ConnectionString="F:\csv file\csv file\NewSupply.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -55,7 +55,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Company Code"
-              DTS:DTSID="{4AC0883D-CE18-4E61-90FC-FEA1D07B84AA}"
+              DTS:DTSID="{8A105668-F82C-4A1F-BFEB-86D1A84807F2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -64,7 +64,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Customer Name"
-              DTS:DTSID="{D425D535-2996-4071-A7D2-3CBAD2C6D682}"
+              DTS:DTSID="{D77350FE-F0E6-44DE-A220-00755A245BE4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,7 +73,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Customer BRN"
-              DTS:DTSID="{D5E6D975-72AA-4C4E-8E34-A49DE07D0774}"
+              DTS:DTSID="{E7CE0DA8-5B64-4351-B3CE-0B7363F0C05C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -81,7 +81,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="Invoice Date"
-              DTS:DTSID="{7783848B-0CCB-4D44-B8E2-62FEE2A0FD72}"
+              DTS:DTSID="{5123FC07-4D9A-4591-A00C-158EBD862586}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -90,7 +90,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Invoice No"
-              DTS:DTSID="{3CD77EC4-3250-4DE3-8439-BBA981372843}"
+              DTS:DTSID="{B1C1BE1F-8AC9-4F1A-BFCA-8FB4015FBED9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -99,7 +99,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Line No"
-              DTS:DTSID="{C74A1BF3-8E5D-4E71-B3FC-D0280BCEDD67}"
+              DTS:DTSID="{6CC255BD-E851-401C-AC81-18047F7271D9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -108,7 +108,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Product Description"
-              DTS:DTSID="{BDFDD656-2AF8-44E7-BB56-2854BBB94629}"
+              DTS:DTSID="{E12D4ED8-4B16-4CF5-A5A2-A536A9773ED8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -116,7 +116,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="Sales Value without tax"
-              DTS:DTSID="{9DC505B6-8E9A-438E-A99E-7F1E056B798B}"
+              DTS:DTSID="{80B3C50C-58EF-48B9-B83C-84BD1A0B1DEB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -124,7 +124,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="GST Tax 6%"
-              DTS:DTSID="{7B4C0199-92A8-4A02-BC29-2E1A6C89F2D9}"
+              DTS:DTSID="{CA2FAFC8-29D6-4343-9787-6A6AFB1C0A83}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -133,7 +133,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Tax Code"
-              DTS:DTSID="{BCCE7FD9-409A-49AD-BCC4-F4C4467B1514}"
+              DTS:DTSID="{4A54D129-827F-493A-B7A0-FA267E15859B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -142,7 +142,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Country"
-              DTS:DTSID="{522BD89B-83EE-475B-9B6D-E969B69D97A8}"
+              DTS:DTSID="{CA621E26-6D6A-40F6-8CD6-E19FE39EA494}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -151,7 +151,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Currency Code"
-              DTS:DTSID="{0A0A5139-F932-4177-A91F-E61EDC902C9C}"
+              DTS:DTSID="{AD892699-29E9-4940-A585-B1765473F283}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -159,7 +159,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="Sales Currency Amount"
-              DTS:DTSID="{7540FAD9-1331-4D79-987B-DC373D31B49F}"
+              DTS:DTSID="{B6EA2B17-F8D7-46AD-A972-6B1D7341E613}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -167,7 +167,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="Sales Currency GST Tax"
-              DTS:DTSID="{3A7E339C-734D-4C64-AF53-8E565776E3D1}"
+              DTS:DTSID="{BC076200-2B2C-4D1B-BFC8-A74836A549BA}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -182,7 +182,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CompanyID">
       <DTS:VariableValue
-        DTS:DataType="8">abcdefghijklmnopkrstuvwxyz</DTS:VariableValue>
+        DTS:DataType="8">10</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -191,7 +191,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CycleID">
       <DTS:VariableValue
-        DTS:DataType="8">abcdefghijklmnopkrstuvwxyz</DTS:VariableValue>
+        DTS:DataType="8">10</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1486,8 +1486,7 @@
                       name="CreatedDate" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CycleID]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="i8"
                       name="CycleID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CompanyID]"
@@ -1825,7 +1824,7 @@
                       name="MTH" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[Cycle_ID]"
-                      dataType="nText"
+                      dataType="i8"
                       name="Cycle_ID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[Transaction_Type]"
@@ -4898,7 +4897,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <NodeLayout
           Size="180,42"
           Id="Package\Data Flow Task 1\OLE DB Destination 2"
-          TopLeft="590,341" />
+          TopLeft="589,344" />
         <NodeLayout
           Size="172,42"
           Id="Package\Data Flow Task 1\Script Component 1"
@@ -4954,7 +4953,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5090,7 +5091,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5124,7 +5127,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5158,7 +5163,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5193,7 +5200,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-6.95972005208331,32.734486266531,127.2527734375,11.609375"
+              BoundingBox="-6.95972005208349,32.734486266531,127.2527734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5239,32 +5246,34 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="64.5,71"
+              EndConnector="63.5,74"
               Start="0,0"
-              End="64.5,63.5">
+              End="63.5,66.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5" />
+                    End="0,33" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5"
-                    Point2="0,35.5"
-                    Point3="4,35.5" />
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="4,37" />
                   <mssgle:LineSegment
-                    End="60.5,35.5" />
+                    End="59.5,37" />
                   <mssgle:CubicBezierSegment
-                    Point1="60.5,35.5"
-                    Point2="64.5,35.5"
-                    Point3="64.5,39.5" />
+                    Point1="59.5,37"
+                    Point2="63.5,37"
+                    Point3="63.5,41" />
                   <mssgle:LineSegment
-                    End="64.5,63.5" />
+                    End="63.5,66.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5298,7 +5307,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

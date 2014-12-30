@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="CSVPurchas"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{E24ECB1F-723C-4F31-B0AF-726004C34519}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{143A2D41-6279-4125-90CC-ECAB71160779}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -22,13 +22,21 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{FE3D7F11-BFB8-4CA1-86D1-3639D25BCE96}"
       DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::Catalog]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::DataSource]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=192.168.0.143;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAFj6VLhPqa12K353cgGGejqlRZQcYCRYbbsOtoZWf8KQAAAAAOgAAAAAIAACAAAADngTe4V687s7IQEBpbFGEhSGE1Buorcltbagbski22tCAAAAChv9xFji9ncuBo7vvEXowa+E/JLO6oqi683hL4bBRblUAAAABffhe3JemE9bC2terHAQXXLGi2B1NIXsdA6SzXO4NxogylhQPCTzHc/n+4pd44cu+hgA9iWsQcbCSgB4ED7I0N</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADBLo/WUx/hpueUjn7HZmKlYz2IounvX55BZmnlGSQDCwAAAAAOgAAAAAIAACAAAAD3JwY83L6UDh+juPVUYzlIPs9tTdfvkmdgi+ulKJqVTiAAAABvBKygTG8s0qpt8gM6mvNA1AcH+p0roSOQ2/toYervxUAAAAD4YbtB5omYVPC25HntFMnmyJZytBYqaXO6jwLnrgXqL0Y4iX4R5J6sjBDf8P1A+itSnf5WmICxDoG2QiWyoNHQ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +54,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="D:\csv file\NewPurcase.csv">
+          DTS:ConnectionString="F:\csv file\csv file\NewPurcase.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -55,7 +63,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Company Code"
-              DTS:DTSID="{58D35BA4-3636-4862-BA57-2DF87FC17D23}"
+              DTS:DTSID="{61B454D6-9CB4-495D-A835-43107DA0EF4F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -64,7 +72,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Supplier BRN"
-              DTS:DTSID="{6D4EAEE7-1689-4A81-A7A6-625FDDA890E8}"
+              DTS:DTSID="{F112EC46-07BE-4660-8CBE-6491EFDDF53C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,7 +81,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Supplier Name"
-              DTS:DTSID="{CD8A756F-C8BC-4846-8530-BABB67A4CA4E}"
+              DTS:DTSID="{BDB3DDF9-C59C-4B72-8188-45A9F55C5BF3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -81,7 +89,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="Invoice Date"
-              DTS:DTSID="{5A72C9F1-DBD5-4E2E-9DCC-96548EF4B8EF}"
+              DTS:DTSID="{8CAB13B9-3F37-40E8-B1EA-59D75FBD1C3B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -90,7 +98,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Invoice No"
-              DTS:DTSID="{3D547B84-372D-4BEA-BDFF-7ED5D38F08B4}"
+              DTS:DTSID="{5BB889FA-17D2-4B3E-A96B-D616595715CA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -99,7 +107,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Import Declaration No"
-              DTS:DTSID="{21421F82-7720-4C31-A0D4-7299CBC1074D}"
+              DTS:DTSID="{6C866C75-9A9C-4EFE-86DC-44532875FBA0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -108,7 +116,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Line No"
-              DTS:DTSID="{0DC44CA2-D050-49D3-B1EA-4D663E1702D9}"
+              DTS:DTSID="{A956D7C9-D25D-4FC7-A9F6-BA62A84A3BDC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -117,7 +125,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Product Description"
-              DTS:DTSID="{B26B58F0-C846-4119-A9E0-06351345741F}"
+              DTS:DTSID="{03087BD7-23BA-41BC-AC1E-F524FC0F00A5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -125,7 +133,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="Purchase Value without tax"
-              DTS:DTSID="{7804548E-93BE-43A2-9A30-03CA822D885F}"
+              DTS:DTSID="{B7DA3560-D880-43D5-8462-998C48465FB9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -133,7 +141,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="GST Tax 6%"
-              DTS:DTSID="{64F94D33-F762-4153-B197-479D615AD069}"
+              DTS:DTSID="{3AD1B61B-34B7-4C4D-9AA3-7774C535D927}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -142,7 +150,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Tax Code"
-              DTS:DTSID="{427CC84D-187F-46C5-86A3-AA9700D28CEB}"
+              DTS:DTSID="{F4B0EF87-6F79-43CC-81DF-A7906BF55DE7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -151,7 +159,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Currency Code"
-              DTS:DTSID="{4D6342EA-B2B0-4494-AAA3-D44A897D14B8}"
+              DTS:DTSID="{E6C0D7DC-C0AA-4A87-AF45-FBC8835A4B22}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -159,7 +167,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="Purchase Currency Amount"
-              DTS:DTSID="{A44DFB57-662D-4E46-A844-FE0CF3E0B9E9}"
+              DTS:DTSID="{CCEE1986-82C1-4DFD-B946-E16CAD28C38D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -167,7 +175,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="Purchase Currency GST Tax"
-              DTS:DTSID="{5C12D2EE-586C-4E28-AA2E-0D67391310BB}"
+              DTS:DTSID="{B48EB063-AF11-430F-B9FE-B1B6BDF2EEDC}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -177,12 +185,21 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{8D534C36-9AB7-4E46-B330-1FC1875CFB91}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Catalog">
+      <DTS:VariableValue
+        DTS:DataType="8">STAGEDBGSTMASRT</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{3329A8CB-950B-4858-9D38-F6F07F2E0763}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CompanyID">
       <DTS:VariableValue
-        DTS:DataType="8">abcdefghijklmnopqrstuvwxyz</DTS:VariableValue>
+        DTS:DataType="8">10</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -191,7 +208,34 @@
       DTS:Namespace="User"
       DTS:ObjectName="CycleID">
       <DTS:VariableValue
-        DTS:DataType="8">abcdefghijklmnopqrstuvwxyz</DTS:VariableValue>
+        DTS:DataType="8">10</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7B5D7633-7585-4866-BA78-F01BFFA330AF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DataSource">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.0.143</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{053375A4-067E-4E8F-A157-8203B7618370}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Password">
+      <DTS:VariableValue
+        DTS:DataType="8">Admin123#</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{571EE998-20DB-4935-ACDB-B80E60D45A06}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Username">
+      <DTS:VariableValue
+        DTS:DataType="8">sa</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1642,7 +1686,7 @@
                       name="MTH" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Cycle_ID]"
-                      dataType="nText"
+                      dataType="i8"
                       name="Cycle_ID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Value_Exempt_Supplies]"
@@ -1671,7 +1715,7 @@
                       name="CompanyID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CreateDate]"
-                      dataType="dbDate"
+                      dataType="dbTimeStamp"
                       name="CreateDate" />
                   </externalMetadataColumns>
                 </input>
@@ -1840,8 +1884,7 @@
                       name="CreatedDate" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[CycleID]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="i8"
                       name="CycleID" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[CompanyID]"

@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImporterSupplyData"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{9B09F67C-3707-4258-9667-1CC9BCCD8B6C}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{24531B89-789F-4EDF-B36B-E6A0CC91D23B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,11 +24,11 @@
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=ACER;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11.1;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAUzwEGjv8naX3ffHTpkLG+95N6MOW8UlCGGGGCahjMtAAAAAAOgAAAAAIAACAAAAAb7LlhG+/MZ4SYzD4cBp8RYxXjUKMDkORKvdJrG1/5CiAAAAADuzSGORvhcssOiMXkPd50iaujWg4HAw6vedufiSLqrkAAAABUiNvHXSjrHV+REM5rdoze5gcc/XIM/4V6RxMgdCA9C2nPYrD3wuJYKk2wtpthBiXRQuDmSNpGyVPc5p1QT9ye</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADqXjHe++PHHIndp95LI4+IFy0q6aXslcUfPUFMa0tshQAAAAAOgAAAAAIAACAAAACBV9Uf3dgozVy3K/h/gM91Ub95MBzD6m5ou8Au/V70WSAAAACsHsoA201rRt6R4jZfvZwiSpzMUVGOfIwZxXkUhi5zY0AAAABtwpv6IJnOV0aSnFUK3GVYg1UKEGLO6WJPxbk284QuVGKWtEyfQkNbNfojouNVOdrnyLPdOlx/d+/uJkrfMvFx</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -39,11 +39,11 @@
       DTS:ObjectName="SourceConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=Acer;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC64beZXz6xQfVHQt123VW9Ah5jb9GrT3rxsglloz5OiAAAAAAOgAAAAAIAACAAAADPA7GVXi3KX5u9Uqzk2+SMrZFyFTC1snMUu5Xp21TH9CAAAADuOeGfV14XSzI4cKe3FZb5xeBdBbkQcq3iCZaxhQhAa0AAAACLdNgLy2mBp3lhwZc1ij/1zlhV5wuSEGfBWjDL7Rq0UKB27k9RH0rxivp4CI5YlVCI0nxcbifQn9Sd3FkngQMK</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABMgoFAsKxpC54RFpBmUil0EzoWYzobeDwq70slzUkdPAAAAAAOgAAAAAIAACAAAAAfpk0IgiOexi923AagJYyX6OR1xNZYh22bg0m7c6/x/yAAAABKsqMYlxmsCXVytl59w87amnyiJ6faBCJpPO/jk4dyBEAAAADuSLYi/p9EFNpDy0XhPIklf4qFe4vfrMyC3htajgpA+Dl3/8w811KM5JIZo7LQRKFNZM7M8JT5IyU7BzBYEQr+</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1787,13 +1787,21 @@ delete tbl_GSTSupply where Cycle_ID=?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="182,42"
-          Id="Package\Data Flow Task 1\Data Conversion 0 - 0"
-          TopLeft="616,33.5" />
+          Size="154,42"
+          Id="Package\Data Flow Task 1\Derived Column"
+          TopLeft="623,115" />
         <NodeLayout
           Size="203,42"
           Id="Package\Data Flow Task 1\Destination - GAF_SUPPLY"
           TopLeft="228.5,228.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Data Flow Task 1\OLE DB Command"
+          TopLeft="624,212" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Data Flow Task 1\Data Conversion 0 - 0"
+          TopLeft="616,33.5" />
         <NodeLayout
           Size="190,42"
           Id="Package\Data Flow Task 1\Source - tbl_GSTSupply"
@@ -1832,58 +1840,6 @@ delete tbl_GSTSupply where Cycle_ID=?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Data Flow Task 1\Derived Column"
-          TopLeft="623,115" />
-        <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[Data Conversion Output]"
-          TopLeft="703.5,75.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.5"
-              Start="0,0"
-              End="0,32">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Data Flow Task 1\OLE DB Command"
-          TopLeft="624,212" />
-        <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[Derived Column Output]"
-          TopLeft="703.5,157">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55"
-              Start="0,0"
-              End="0,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[OLE DB Command Output]"
           TopLeft="624,233">
@@ -1910,6 +1866,50 @@ delete tbl_GSTSupply where Cycle_ID=?</property>
                     Point3="-100.25,16.5" />
                   <mssgle:LineSegment
                     End="-185,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Derived Column Output]"
+          TopLeft="703.5,157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Data Conversion Output]"
+          TopLeft="703.5,75.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.5"
+              Start="0,0"
+              End="0,32">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

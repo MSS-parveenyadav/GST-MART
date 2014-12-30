@@ -674,32 +674,31 @@ namespace GST_Mart.Controllers
                             }
                         case 2:
                             {
-                            
-                               // package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_ledger_Path"], null);
+
+                                // package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_ledger_Path"], null);
                                 return true;
                                 //  break;
 
                             }
                         case 3:
                             {
-                              
+                               // return true;
                                 package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_supply_Path"], null);
                                 break;
                             }
                         case 4:
                             {
-                               
+                               // return true;
                                 package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_purchase_Path"], null);
-
                                 break;
                             }
-                        case 5:
-                            {
-                                package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_footter_Path"], null);
-                                break;
+                        //case 5:
+                        //    {
+                        //        package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_footter_Path"], null);
+                        //        break;
                              
 
-                            }
+                        //    }
 
 
 
@@ -711,6 +710,10 @@ namespace GST_Mart.Controllers
                 SSISvar = package.Variables;
                 SSISvar["CycleID"].Value = CycleID;
                 SSISvar["CompanyID"].Value = CompanyID;
+                SSISvar["Catalog"].Value = "STAGEDBGSTMASRT";
+                SSISvar["DataSource"].Value = "192.168.0.143";
+                SSISvar["Password"].Value = "Admin123#";
+                SSISvar["Username"].Value = "sa";
                 #endregion
 
                 #region Execute Package
@@ -989,6 +992,11 @@ namespace GST_Mart.Controllers
                 SSISvar = package.Variables;
                 SSISvar["CycleID"].Value = CycleId;
                 SSISvar["CompanyID"].Value = Session["CompanyName"].ToString();
+                SSISvar["Catalog"].Value = "STAGEDBGSTMASRT";
+                SSISvar["DataSource"].Value = "192.168.0.143";
+                SSISvar["Password"].Value = "Admin123#";
+                SSISvar["Username"].Value = "sa";
+                SSISvar["DestCatalog"].Value = "GSTReport";
 
                 //Excute Package
                 Microsoft.SqlServer.Dts.Runtime.DTSExecResult results = package.Execute(null, SSISvar, null, null, null);
@@ -1066,6 +1074,13 @@ namespace GST_Mart.Controllers
                     SSISvar = package.Variables;
                     SSISvar["CycleID"].Value = CycleId;
                     SSISvar["CycleIDDelete"].Value = CycleId;
+                    SSISvar["Catalog"].Value = "STAGEDBGSTMASRT";
+                    SSISvar["DataSource"].Value = "192.168.0.143";
+                    SSISvar["Password"].Value = "Admin123#";
+                    SSISvar["Username"].Value = "sa";
+                    SSISvar["DestCatalog"].Value = "GSTReport";
+
+
 
                     #endregion
                     //Excute Package

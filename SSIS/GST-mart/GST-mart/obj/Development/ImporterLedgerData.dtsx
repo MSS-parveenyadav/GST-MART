@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImporterLedgerData"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{4F50AF07-C2CC-4EA7-B793-CE2FFF1D3570}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{A533EB1F-D33A-4A5F-AE7B-125B64552A3C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,11 +24,11 @@
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=acer;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC2TZ4SOcLtFk6Vzoa7uLmhiIXYveUhvPRPyp8CcktiMQAAAAAOgAAAAAIAACAAAABH67yJNUT0T0kym83DrMIf2xCDmpwT+yX8ogGpFgc58yAAAACQfxE8bktO2+QKlR6qQkBhDXOTBZLSk30nRwEwzbKWQUAAAADZhbuJE51vRDJvtGhZTDrXo4gNVA6LlXMJlx6/+TbhqfgESIGU+pPIkSF+5etugch7V0EIUo+mAJgEuAsv33m1</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACp3mRQBUIb4XA28pBOSQ7HYXYwX+zA+IgkG9aZKEPYfwAAAAAOgAAAAAIAACAAAABGGcRUcCMsG1aNuD05PEqJs/66SqEV7Jm02BGsnUvKZSAAAADZ6QGql/MCC9y3h3oJOFAmiOI9ZXShFxWW+MAnwMmvpUAAAAAVZjoNum/aNePEQmEsywqjZuNtU526sRHOi8p092zQqyauZW9qMbzC+6E8xtZSavAWcCnOw73ZHoNmVCzbxtRn</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -39,11 +39,11 @@
       DTS:ObjectName="SourceConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=Acer;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAACEzJm8MlsTVy7gmwc61TnRtCHRa3DPJqNlKePtEMMPAAAAAAOgAAAAAIAACAAAABg6SFbzrnLdKqKCZBG0IKnxh9PmRytf83rTpHqLYsUiyAAAABSRkvBfeMNYRJ86Vn5ra58YMSJSBG5Wu8xOiUU8NBoGkAAAABheRdyPUV5TWmgZ48uNm8MG46fN5iOUdlbxS7dx72kYjlzGIBMrDvmMPA0exI+QUCOrJosjJF1soUQWPDIn2D2</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC252xJVV1KDprU3Qu0fnwUHwfAGWXmbYIBSV2snFjhNQAAAAAOgAAAAAIAACAAAAAGMEy2t6weEoKT9/KxpaoIQtFZdePyF47Pj2WoPLjoUyAAAABzp/RiGSCuIPbrM5MxNsYTB+sJNMzB3WaXdlMV27kgqUAAAADOSHlLaMUVShDZazpCvNEPRn2FctELuiZbqy9NucRTHQ33B0O1jeFmeD31YhN60Ow85ubBAxu90ldDqoiaxqk3</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -56,7 +56,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CycleID">
       <DTS:VariableValue
-        DTS:DataType="8">6</DTS:VariableValue>
+        DTS:DataType="8">0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -715,24 +715,6 @@
                       cachedScale="4"
                       externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].ExternalColumns[Balance]"
                       lineageId="Package\Data Flow Task 1\Source - tbl_Ledger.Outputs[OLE DB Source Output].Columns[Balance]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].Columns[CycleID]"
-                      cachedDataType="i8"
-                      cachedName="CycleID"
-                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].ExternalColumns[CycleID]"
-                      lineageId="Package\Data Flow Task 1\Source - tbl_Ledger.Outputs[OLE DB Source Output].Columns[CycleID]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].Columns[CreatedDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="CreatedDate"
-                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].ExternalColumns[CreatedDate]"
-                      lineageId="Package\Data Flow Task 1\Source - tbl_Ledger.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].Columns[CompanyID]"
-                      cachedDataType="nText"
-                      cachedName="CompanyID"
-                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].ExternalColumns[CompanyID]"
-                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[CompanyID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -821,18 +803,6 @@
                       dataType="wstr"
                       length="10"
                       name="Tax_Code" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].ExternalColumns[CompanyID]"
-                      dataType="nText"
-                      name="CompanyID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].ExternalColumns[CycleID]"
-                      dataType="nText"
-                      name="CycleID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\Destination - GAF_LEDGER.Inputs[Destination Input].ExternalColumns[CreatedDate]"
-                      dataType="dbTimeStamp"
-                      name="CreatedDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1552,40 +1522,10 @@ Delete  tbl_Ledger where CycleID=?</property>
           Size="182,42"
           Id="Package\Data Flow Task 1\Data Conversion 0 - 0"
           TopLeft="409.5,93.5" />
-        <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
-          TopLeft="420.5,58.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="80,35"
-              Start="0,0"
-              End="80,27.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.5"
-                    Point2="0,17.5"
-                    Point3="4,17.5" />
-                  <mssgle:LineSegment
-                    End="76,17.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="76,17.5"
-                    Point2="80,17.5"
-                    Point3="80,21.5" />
-                  <mssgle:LineSegment
-                    End="80,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task 1\Derived Column"
+          TopLeft="614,145" />
         <NodeLayout
           Size="166,42"
           Id="Package\Data Flow Task 1\OLE DB Command"
@@ -1616,38 +1556,6 @@ Delete  tbl_Ledger where CycleID=?</property>
                     Point3="32.5,36.25" />
                   <mssgle:LineSegment
                     End="32.5,57" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Data Flow Task 1\Derived Column"
-          TopLeft="614,145" />
-        <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[Data Conversion Output]"
-          TopLeft="591.5,114.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="99.5,30.5"
-              Start="0,0"
-              End="99.5,23">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="95.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="95.5,0"
-                    Point2="99.5,0"
-                    Point3="99.5,4" />
-                  <mssgle:LineSegment
-                    End="99.5,23" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1690,11 +1598,73 @@ Delete  tbl_Ledger where CycleID=?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Data Conversion Output]"
+          TopLeft="591.5,114.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.5,30.5"
+              Start="0,0"
+              End="99.5,23">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="95.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.5,0"
+                    Point2="99.5,0"
+                    Point3="99.5,4" />
+                  <mssgle:LineSegment
+                    End="99.5,23" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="420.5,58.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80,35"
+              Start="0,0"
+              End="80,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="76,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="76,17.5"
+                    Point2="80,17.5"
+                    Point3="80,21.5" />
+                  <mssgle:LineSegment
+                    End="80,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task 1\Source - tbl_Ledger">
+    design-time-name="Package\Data Flow Task 1\Destination - GAF_LEDGER">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1707,7 +1677,7 @@ Delete  tbl_Ledger where CycleID=?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task 1\Destination - GAF_LEDGER">
+    design-time-name="Package\Data Flow Task 1\Source - tbl_Ledger">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

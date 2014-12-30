@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImporterFooterData"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{0BC4716A-47E6-45E4-8CB7-11DD1879C96C}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{D6700356-07C7-4E60-A996-9C8762B80E15}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,11 +24,11 @@
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=Acer;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11.1;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACPGVplBGSWeJc5jeUbYu7I3U3WIT8VCevPD9tzHlixCQAAAAAOgAAAAAIAACAAAAB2D8SLTIVhyTCJWHw/UUBE8w+6Lm3VAa1chI7L89vDmyAAAAA2iBUbcz3A7yeI1qr82TLeKT8PxRThbm7nfx+Zc9cSpEAAAAC3Lrf14jHHg5YfJzqU2sutB8Vzklah62gd/UCktxpHw2Ns8UexkMrtXGClh7CPPyX0P5kn25PRMKoQELAzJVCo</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACIWC0R70y1wSZzsmg/Jt7pYFOPI9HcSTavzc4w1zOo/QAAAAAOgAAAAAIAACAAAABlsA9Maek+kVhQnZXxh6lwNSSjvV0Hwx/a6Qwi25OS6SAAAAB0lmh3iXxkySBatGleWpdMt7nVUpbniWNDdEn5CdS4cEAAAACTfsO3PSctMRjL7wIyx7fRHYjJL1K8lhdkwYhFfhffoqzNVf4v6Q2HpF1nH6yHq9erFvuMIAObuk6B54GLLmct</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -39,11 +39,11 @@
       DTS:ObjectName="SourceConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=Acer;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAV2zFeJ+bEJTaSd8hvm7qA3sG0Z19CAsH6igLUN5RlwwAAAAAOgAAAAAIAACAAAAC4RiVt1vPEz3Z7lkrV10XmZqJHF54t+eJw8XuwF74p/CAAAAACzQLcqbsyNdKyx7OdvApYYUHNz3M4/+nt9QIclCKy6kAAAAASiRFt8T/mw7ALwVVxOrRDWQpK2XHFaw5qtN9AECy2xVGvua0LY7Z3ueiJgm0dQycknEYr9AW31cy3B7SozzgH</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADelM0GgKDFRIFrr6oUwuWzjuVBi6IiJ7xOspIuBJSjrQAAAAAOgAAAAAIAACAAAAAVGcOjpfFDK/ib7lghaHdEXwfA+q7WCedjGD7v5neiVSAAAADrIiwlqd1TPB3CudyKD0LHNDpp24Kl4bXzW4bvvPq0vEAAAABj7mlY45XZpJlX0W6jikgGm8p+cBhh1HDZI24Pzy2PNa+kVEpEcu7/9gOhtoSk3FvkL/bVY0n513U8/jo8vW9r</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>

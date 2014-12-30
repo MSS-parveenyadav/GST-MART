@@ -511,6 +511,7 @@
     <Content Include="Content\SpryAssets\SpryMenuBarHorizontal.css" />
     <Content Include="Content\SpryAssets\SpryMenuBarRight.gif" />
     <Content Include="Content\SpryAssets\SpryMenuBarRightHover.gif" />
+    <Content Include="DBScript\GST.sql" />
     <Content Include="DBScript\script.sql" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />

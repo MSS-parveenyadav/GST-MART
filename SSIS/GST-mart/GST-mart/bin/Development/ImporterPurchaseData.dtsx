@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImporterPurchaseData"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{9C93BB4E-073A-44F9-82FF-1CB18C94CAA7}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{A66A8BF7-591F-4ED5-9A6F-54DF5491937A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -22,13 +22,21 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{E49D5AFF-1B1F-49A4-ADD1-ADF9386E150A}"
       DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::DestCatalog]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=192.168.0.143;User ID=sa;Initial Catalog=GSTReport;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACQXBukVxvPnnctq2QGOTkTUwxOsh+CIm5o6Z922dDb4QAAAAAOgAAAAAIAACAAAAAY8CdtLV7++fb7pRq+qmlnl1MDpm4DVAJWjpQ8W+BKwyAAAAB0z2tGkJBNcebdtwHaihI4gWa3DT/Pdg2UzJ2fq538ykAAAADqWDpiEsz33fix9Bi3Mf0nG/c+fBRfmoKjsk2nAy0ssrNqlS3WIkeADlNgJFPGjtdCGl1ZfrS2An1ZW85y+VUG</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAwmHnuGNL0fUylkf0cYzn/eNbwdENAcOHJJpKujyeRQwAAAAAOgAAAAAIAACAAAAAblO3Eh40RUiOTsqO6vvvPSzb8vBJR3udNanTp3TNM4CAAAAD9HFCrgoouiwEreu8E4etZBkWm/yjTlTB44pPmqtOEfEAAAADMP71uBVqAyZF0GfLqVhwax/O76WgQvVRyYod2L43ob21FBEsEJjg3ZVUEhpZ6w5WgNlI8JiN9snmwl2oIumQe</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -37,18 +45,35 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{4DEC4F0F-0E2F-4DD0-B6B3-1151221606B3}"
       DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::Catalog]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=192.168.0.143;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADiDUyY+zeTADyEJqASGJZXdUU548N/7EboNo+c3vLzAQAAAAAOgAAAAAIAACAAAABjMfcUPrJwbS9s1OhcT0Fc+pr/RD4+5pomUQQiMMA33yAAAABWfR/ms6HDqwsd1WFvHAkdWvJ/MnWSxsLHSFcLO/EIoUAAAAAszonG9m/v/JpIw/rg8G3ab8X8hK4sTZkKixksX3jeJOzbiXvXZnAdt57eoYTMSpTICIDwxA7Jc9wKj5jWkdwT</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACe0Fc19bOmLBi5ne1pHHrSNQLyRy3X9ZBd2amxeYmAQQAAAAAOgAAAAAIAACAAAADPp1YTGKwMZfqbTEDI0Yklg0TN0GgyKdacWbaqaMfmdyAAAACTeLZebfAg/UmLQZ0TfRykPxlFiMb0S1QXOlF4+6clYkAAAABMl7AYxXjaHxi3uK17dqDx8l7UGp2eVkSo+rxApKyzdodclZaWJkSs7m5nEuDepParqkRxwa4nWH0QZVA+jmXn</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8E12BCAE-8E91-49C6-B3FE-1A51BBF21930}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Catalog">
+      <DTS:VariableValue
+        DTS:DataType="8">STAGEDBGSTMASRT</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{B02D1C97-D630-4F6D-814B-83F7F15BF83B}"
@@ -66,6 +91,42 @@
       DTS:ObjectName="CycleIDDelete">
       <DTS:VariableValue
         DTS:DataType="20">6</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D694DEA-CB73-4E75-BA25-5F0674678B81}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Datasource">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.0.143</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E8166E42-AEB1-40BA-ABF8-B7E6569AE958}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestCatalog">
+      <DTS:VariableValue
+        DTS:DataType="8">GSTReport</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BCDBC47A-9426-4D4E-AFDE-D817366C2AC8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Password">
+      <DTS:VariableValue
+        DTS:DataType="8">Admin123#</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C79F7928-656D-440C-A2C9-06F089473039}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Username">
+      <DTS:VariableValue
+        DTS:DataType="8">sa</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1781,13 +1842,21 @@ delete  tbl_GSTPurchase where Cycle_ID=?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="219,42"
-          Id="Package\Data Flow Task 1\Destination - GAF_PURCHASE"
-          TopLeft="397.5,337.5" />
+          Size="166,42"
+          Id="Package\Data Flow Task 1\OLE DB Command"
+          TopLeft="634,226" />
         <NodeLayout
           Size="201,42"
           Id="Package\Data Flow Task 1\Source - tbl_GSTPurchase"
           TopLeft="14.5,5.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task 1\Derived Column"
+          TopLeft="586,138" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Data Flow Task 1\Destination - GAF_PURCHASE"
+          TopLeft="397.5,337.5" />
         <NodeLayout
           Size="182,42"
           Id="Package\Data Flow Task 1\Data Conversion 0 - 0"
@@ -1826,36 +1895,32 @@ delete  tbl_GSTPurchase where Cycle_ID=?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Data Flow Task 1\Derived Column"
-          TopLeft="586,138" />
         <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[Data Conversion Output]"
-          TopLeft="400,108.5">
+          Id="Package\Data Flow Task 1.Paths[OLE DB Command Output]"
+          TopLeft="717,268">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="186,50.5"
+              EndConnector="-210,69.5"
               Start="0,0"
-              End="178.5,50.5">
+              End="-210,62">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="89,0" />
+                    End="0,30.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="89,0"
-                    Point2="93,0"
-                    Point3="93,4" />
+                    Point1="0,30.75"
+                    Point2="0,34.75"
+                    Point3="-4,34.75" />
                   <mssgle:LineSegment
-                    End="93,46.5" />
+                    End="-206,34.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="93,46.5"
-                    Point2="93,50.5"
-                    Point3="97,50.5" />
+                    Point1="-206,34.75"
+                    Point2="-210,34.75"
+                    Point3="-210,38.75" />
                   <mssgle:LineSegment
-                    End="178.5,50.5" />
+                    End="-210,62" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1864,10 +1929,6 @@ delete  tbl_GSTPurchase where Cycle_ID=?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Data Flow Task 1\OLE DB Command"
-          TopLeft="634,226" />
         <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[Derived Column Output]"
           TopLeft="663,180">
@@ -1903,31 +1964,31 @@ delete  tbl_GSTPurchase where Cycle_ID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[OLE DB Command Output]"
-          TopLeft="717,268">
+          Id="Package\Data Flow Task 1.Paths[Data Conversion Output]"
+          TopLeft="400,108.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-210,69.5"
+              EndConnector="186,50.5"
               Start="0,0"
-              End="-210,62">
+              End="178.5,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.75" />
+                    End="89,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.75"
-                    Point2="0,34.75"
-                    Point3="-4,34.75" />
+                    Point1="89,0"
+                    Point2="93,0"
+                    Point3="93,4" />
                   <mssgle:LineSegment
-                    End="-206,34.75" />
+                    End="93,46.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-206,34.75"
-                    Point2="-210,34.75"
-                    Point3="-210,38.75" />
+                    Point1="93,46.5"
+                    Point2="93,50.5"
+                    Point3="97,50.5" />
                   <mssgle:LineSegment
-                    End="-210,62" />
+                    End="178.5,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
