@@ -375,8 +375,6 @@
 
         var c = CkeckSystems();
         if (c != 0) {
-            document.getElementById("validateSystemId").innerHTML = "Either System Id or Name is empty.";
-            $('#validateSystemId').addClass('validation');
             return
         }
 
@@ -910,12 +908,16 @@
             if (inputId == "txtSystemId") {
                 var inputvalue = inputs[i].value;
                 if (inputvalue == "") {
+                    document.getElementById("validateSystemId").innerHTML = "System Id  is required.";
+                    $('#validateSystemId').addClass('validation');
                     c = parseInt(c) + 1;
                 }
             }
             if (inputId == "txtSystemName") {
                 var inputvalue = inputs[i].value;
                 if (inputvalue == "") {
+                    document.getElementById("validateSystemName").innerHTML = "System Name  is required.";
+                    $('#validateSystemName').addClass('validation');
                     c = parseInt(c) + 1;
                 }
             }
