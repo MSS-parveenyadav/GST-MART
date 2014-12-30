@@ -771,7 +771,6 @@
 
                 }
                 for (var i = 0; i < response.Company.industrymodel.length; i++) {
-
                     // console.log(response.Company.industrymodel.length);
                     // console.log(response.Company.industrymodel[i]["Industrycode"]);
 
@@ -1409,7 +1408,9 @@
                                     else {
                                         if (inputId == "txtIndustrycode") {
                                             var IndustryId = inputs[i].value;
-                                            SaveIndustryCode(ID, IndustryId);
+                                            if (IndustryId != "") {
+                                                SaveIndustryCode(ID, IndustryId);
+                                            }
                                         }
                                     }
                                 }

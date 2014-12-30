@@ -17,6 +17,12 @@
     ViewBag.Title = "AuditLog";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@section Submenu
+{
+
+    @Html.Partial("~/Views/_Partial/_Setting.cshtml")
+}
+
 
 <div class="container-fluid" id="ErrorMessages" style="color: red;"></div><div id="SuccessMessages" class="container-fluid" style="color: green; ">@TempData["Message"]</div>
 <div class="container-fluid">
@@ -478,10 +484,9 @@
                     document.getElementById("EmptyMessage").innerHTML = "";
                     for (var i = 0; i < response.length; i++) {
                         var data = response[i];
+                        var Date = ToJavaScriptDate(data.CreatedDate);
                         var Id = data.CycleID;
-                        var d = new Date(data.CreatedDate);
-                        var n = d.toLocaleString();
-                        target.append("<tr><td>" + n + "</td><td>"
+                        target.append("<tr><td>" + Date + "</td><td>"
                         + data.CycleID + "</td><td>"
                         + data.Status + "</td><td><ul class='action-button'><li>"
                         + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
@@ -522,9 +527,10 @@
                     for (var i = 0; i < response.length; i++) {
                         var data = response[i];
                         var Id = data.CycleID;
-                        var d = new Date(data.CreatedDate);
-                        var n = d.toLocaleString();
-                        target.append("<tr><td>" + n + "</td><td>"
+
+                        var Date=ToJavaScriptDate(data.CreatedDate);
+                        
+                        target.append("<tr><td>" + Date + "</td><td>"
                         + data.CycleID + "</td><td>"
                         + data.Status + "</td><td><ul class='action-button'><li>"
                         + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
@@ -614,6 +620,13 @@
         document.getElementById("cycleruntable").hidden = true;
         document.getElementById("AdminChangesTable").hidden = true;
     });
+
+    function ToJavaScriptDate(value) {
+        var pattern = /Date\(([^)]+)\)/;
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+    }
 </script>
 <style>
     .activeclass {

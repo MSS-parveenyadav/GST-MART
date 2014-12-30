@@ -7,6 +7,13 @@
 {
     @*@Html.AntiForgeryToken()*@
     @Html.ValidationSummary(true)
+    
+    @section Submenu
+{
+
+    @Html.Partial("~/Views/_Partial/_Setting.cshtml")
+}
+
     <div class="container-fluid">
         <div class="tab-pane active" id="home">
 
