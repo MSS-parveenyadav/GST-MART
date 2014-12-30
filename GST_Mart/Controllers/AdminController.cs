@@ -1177,6 +1177,7 @@ namespace GST_Mart.Controllers
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
+        #region Currency
         [HttpPost]
         public ActionResult CurrencyExchange(CurrencyExchangeModel model)
         {
@@ -1257,28 +1258,7 @@ namespace GST_Mart.Controllers
                 Frequency.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
             }
         }
-        public ActionResult DeleteTaxcode(int id)
-        {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
-            {
 
-                var res = adminuser.DeleteTaxModel(id);
-                if (res == true)
-                {
-                    TempData["Sucess"] = "Tax Code Delete Successfully.";
-                    return RedirectToAction("TAXCODE");
-                }
-                else
-                {
-                    TempData["Error"] = "Deletion Fail.";
-                    return RedirectToAction("TAXCODE");
-                }
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
 
 
         public ActionResult DeleteCurrencyExchange(int Id)
@@ -1296,14 +1276,6 @@ namespace GST_Mart.Controllers
         }
 
 
-        //********Search User by userid or emailid*********//
-        [WebMethod]
-        public JsonResult SearchUserId(string id)
-        {
-            var res = adminuser.SearchUser(id);
-
-            return Json(res, JsonRequestBehavior.AllowGet);
-        }
 
         //**********Currency Group *******//
         public ActionResult CurrencyGroup(int? page, int pagesize = 0, string DDlPageingsize = "5", int id = 0)
@@ -1373,72 +1345,6 @@ namespace GST_Mart.Controllers
         }
 
         //**********End Currency Group *******//
-
-
-        public ActionResult EditTAXCODE(int id)
-        {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
-            {
-                var list = adminuser.GetTAXCODEBYID(id);
-                TaxCodeModel model = new TaxCodeModel();
-                if (list != null)
-                {
-                    foreach (var item in list)
-                    {
-                        model.Id = item.Id;
-                        model.CompanyId = item.CompanyId;
-                        model.SystemId = item.SystemId;
-                        model.CustomCode = item.CustomCode;
-                        model.OriginalCode = item.OriginalCode;
-                        model.TransactionType = item.TransactionType;
-                        model.TaxRate = item.TaxRate;
-                        model.Description = item.Description;
-                        model.RefernceNumber = item.RefernceNumber;
-                        model.GST03Fields = item.GST03Fields;
-                        model.Remarks = item.Remarks;
-                        model.DateType = item.DateType;
-
-
-                    }
-                }
-
-                List<SelectListItem> comapnymodel = new List<SelectListItem>();
-                List<SelectListItem> transtypemodel = new List<SelectListItem>();
-                List<SelectListItem> customcodemodel = new List<SelectListItem>();
-                List<SelectListItem> DateFormet = new List<SelectListItem>();
-
-                DateFormet = adminuser.getdateformetlist();
-                ViewBag.DateFormet = DateFormet;
-
-                comapnymodel = adminuser.GetCompanyListForDDl();
-                ViewBag.companylist = comapnymodel;
-
-                transtypemodel = adminuser.GetTransactionlist();
-                ViewBag.transactionlist = transtypemodel;
-
-                customcodemodel = adminuser.GetCustomcodelist();
-                ViewBag.customcodelist = customcodemodel;
-
-                var txcodemodel = adminuser.gettaxmodellist();
-                ViewBag.taxcodemodel = txcodemodel;
-                return View("Taxcode", model);
-
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
-
-        [WebMethod]
-        public JsonResult Gettaxratebyoriginalcode(string id)
-        {
-            var res = adminuser.gettaxratebyoriginalcode(id);
-
-            return Json(res, JsonRequestBehavior.AllowGet);
-
-
-        }
 
 
         //******* Manual Currency Exchange *******//
@@ -1520,6 +1426,7 @@ namespace GST_Mart.Controllers
             }
         }
 
+
         [WebMethod]
         public JsonResult SaveCurrencyCode(string CurrencyType, string CurrencyCode)
         {
@@ -1531,6 +1438,110 @@ namespace GST_Mart.Controllers
 
         //******* End Manual Currency Exchange *******//
 
+        #endregion
+        public ActionResult DeleteTaxcode(int id)
+        {
+            if (Session["AdminLoginStatus"] == "LoggedIn")
+            {
+
+                var res = adminuser.DeleteTaxModel(id);
+                if (res == true)
+                {
+                    TempData["Sucess"] = "Tax Code Delete Successfully.";
+                    return RedirectToAction("TAXCODE");
+                }
+                else
+                {
+                    TempData["Error"] = "Deletion Fail.";
+                    return RedirectToAction("TAXCODE");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+
+
+
+        //********Search User by userid or emailid*********//
+        [WebMethod]
+        public JsonResult SearchUserId(string id)
+        {
+            var res = adminuser.SearchUser(id);
+
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        public ActionResult EditTAXCODE(int id)
+        {
+            if (Session["AdminLoginStatus"] == "LoggedIn")
+            {
+                var list = adminuser.GetTAXCODEBYID(id);
+                TaxCodeModel model = new TaxCodeModel();
+                if (list != null)
+                {
+                    foreach (var item in list)
+                    {
+                        model.Id = item.Id;
+                        model.CompanyId = item.CompanyId;
+                        model.SystemId = item.SystemId;
+                        model.CustomCode = item.CustomCode;
+                        model.OriginalCode = item.OriginalCode;
+                        model.TransactionType = item.TransactionType;
+                        model.TaxRate = item.TaxRate;
+                        model.Description = item.Description;
+                        model.RefernceNumber = item.RefernceNumber;
+                        model.GST03Fields = item.GST03Fields;
+                        model.Remarks = item.Remarks;
+                        model.DateType = item.DateType;
+
+
+                    }
+                }
+
+                List<SelectListItem> comapnymodel = new List<SelectListItem>();
+                List<SelectListItem> transtypemodel = new List<SelectListItem>();
+                List<SelectListItem> customcodemodel = new List<SelectListItem>();
+                List<SelectListItem> DateFormet = new List<SelectListItem>();
+
+                DateFormet = adminuser.getdateformetlist();
+                ViewBag.DateFormet = DateFormet;
+
+                comapnymodel = adminuser.GetCompanyListForDDl();
+                ViewBag.companylist = comapnymodel;
+
+                transtypemodel = adminuser.GetTransactionlist();
+                ViewBag.transactionlist = transtypemodel;
+
+                customcodemodel = adminuser.GetCustomcodelist();
+                ViewBag.customcodelist = customcodemodel;
+
+                var txcodemodel = adminuser.gettaxmodellist();
+                ViewBag.taxcodemodel = txcodemodel;
+                return View("Taxcode", model);
+
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        [WebMethod]
+        public JsonResult Gettaxratebyoriginalcode(string id)
+        {
+            var res = adminuser.gettaxratebyoriginalcode(id);
+
+            return Json(res, JsonRequestBehavior.AllowGet);
+
+
+        }
+
+           
 
         //****** Audit Log Start ********//
 
@@ -1713,8 +1724,6 @@ namespace GST_Mart.Controllers
 
         
 
-        //****** End Audit Log ********//
-
         //Search User By UserId or Ip Address//SearchAuditLogByDate
 
         [WebMethod]
@@ -1744,6 +1753,7 @@ namespace GST_Mart.Controllers
 
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult SearchCycleByDate(string StartDate, string EndDate)
         {
             var res = adminuser.SearchCycleByDate(StartDate, EndDate, originalConnectionString, Session["CompanyDB"].ToString());

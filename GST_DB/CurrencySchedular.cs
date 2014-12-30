@@ -19,6 +19,10 @@ namespace GST_DB
         public string FrequencyUnit { get; set; }
         public string Time { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public System.DateTime NextRunDate { get; set; }
+        public System.TimeSpan NextRunTime { get; set; }
+        public System.DateTime LastRun { get; set; }
+        public string Status { get; set; }
     
         public virtual Company Company { get; set; }
     }

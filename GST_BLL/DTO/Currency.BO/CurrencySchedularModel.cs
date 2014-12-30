@@ -12,9 +12,12 @@ namespace GST_BLL.DTO.Currency.BO
         public string FeedUrl { get; set; }
         public string FrequencyUnit { get; set; }
         public string Time { get; set; }
-
         public DateTime CreateDate { get; set; }
-        public virtual Company Company { get; set; }
+        public DateTime NextRunDate { get; set; }
+        public TimeSpan NextRunTime { get; set; }
+        public DateTime LastRun { get; set; }
+        public string Status { get; set; }
 
+        public virtual Company Company { get; set; }
     }
 }
