@@ -449,6 +449,8 @@ namespace GST_BLL.AuthorizedUser
 
         }
 
+
+
         #region Read Errors
         //Read Ledger Errors
         public List<LoogerModel> ReadRrrors(string cycleID, string companyID)
@@ -617,6 +619,7 @@ namespace GST_BLL.AuthorizedUser
         }
 
         #endregion
+
 
         #region Duplicate Records
 
@@ -1164,8 +1167,7 @@ namespace GST_BLL.AuthorizedUser
         }
 
         #endregion
-
-
+        
 
         #region UserPermissions
 
