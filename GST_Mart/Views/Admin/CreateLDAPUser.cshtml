@@ -34,10 +34,10 @@
 
                                 <tbody>
                                     <tr>
-                                        <td class="col-md-1" align="right"><label>Category ID :</label></td>
-                                        <td class="col-md-3 cmg">
+                                        <td class="col-md-1" align="right"><label>Category Id :</label></td>
+                                        <td class="col-md-2 cmg">
                                             @Html.HiddenFor(model => model.Id, new { @class = "form-control" })
-                                            @Html.TextBoxFor(model => model.ComapanyId, new { @class = "form-control" })
+                                            @Html.TextBoxFor(model => model.ComapanyId, new { placeholder = "Category Id", @onchange = "ValidationRefresh(this.id)" })
                                             <p id="ValidateCategoryId" style="color:red"></p>
                                         </td>
                                     </tr>
@@ -45,8 +45,8 @@
 
                                     <tr>
                                         <td class="col-md-1" align="right"><label>Domain Name or IP Address :</label></td>
-                                        <td class="col-md-3 cmg">
-                                            @Html.TextBoxFor(model => model.Domainname, new { @class = "form-control", @onkeypress = "return vaildateport();" })
+                                        <td class="col-md-2 cmg">
+                                            @Html.TextBoxFor(model => model.Domainname, new { @onkeypress = "return vaildateport();", placeholder = "Domain Name / IP Address", @onchange = "ValidationRefresh(this.id)" })
                                             <p id="ValidateDomainname" style="color:red"></p>
                                         </td>
                                     </tr>
@@ -55,8 +55,8 @@
 
                                     <tr>
                                         <td class="col-md-1" align="right"><label>Port Number :</label></td>
-                                        <td class="col-md-3 cmg">
-                                            @Html.TextBoxFor(model => model.Portnumber, new { @class = "form-control", @onkeypress = "return IsNumeric(event);" })
+                                        <td class="col-md-2 cmg">
+                                            @Html.TextBoxFor(model => model.Portnumber, new { @onkeypress = "return IsNumeric(event);", placeholder = "Port Number", @onchange = "ValidationRefresh(this.id)" })
                                             <p id="ValidatePortNumber" style="color:red"></p>
                                         </td>
                                     </tr>
@@ -64,8 +64,8 @@
 
                                     <tr>
                                         <td class="col-md-1" align="right"><label>User Id :</label></td>
-                                        <td class="col-md-3 cmg">
-                                            @Html.TextBoxFor(model => model.UserId, new { @class = "form-control" })
+                                        <td class="col-md-2 cmg">
+                                            @Html.TextBoxFor(model => model.UserId, new { placeholder = "User Id", @onchange = "ValidationRefresh(this.id)" })
                                             <p id="ValidateUserId" style="color:red"></p>
                                         </td>
                                     </tr>
@@ -73,16 +73,16 @@
 
                                     <tr>
                                         <td class="col-md-1" align="right"><label>Password :</label></td>
-                                        <td class="col-md-3 cmg">
-                                            @Html.TextBoxFor(model => model.password, new { @class = "form-control", @onkeypress = "return IsSpecialcharacter(event);" })
+                                        <td class="col-md-2 cmg">
+                                            @Html.TextBoxFor(model => model.password, new { @onkeypress = "return IsSpecialcharacter(event);", placeholder = "Password", @onchange = "ValidationRefresh(this.id)" })
                                             <p id="ValidatePassword" style="color:red"></p>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td class="col-md-1" align="right"><label>CN/BN :</label></td>
-                                        <td class="col-md-3 cmg">
-                                            @Html.TextBoxFor(model => model.cnbn, new { @class = "form-control"})
+                                        <td class="col-md-2 cmg">
+                                            @Html.TextBoxFor(model => model.cnbn, new { placeholder = "CN/BN"})
                                             <p id="ValidateCnbn" style="color:red"></p>
                                         </td>
                                     </tr>
@@ -194,18 +194,18 @@
                 var cnbn = document.getElementById("cnbn").value;
 
                 if (CategoryId == "") {
-                    document.getElementById("ValidateCategoryId").innerHTML = "Please Enter CategoryID";
+                    document.getElementById("ValidateCategoryId").innerHTML = "Please Enter Category Id.";
                     $('#ComapanyId').focus();
                     count = 1;
                 }
                 if (Domainname == "") {
-                    document.getElementById("ValidateDomainname").innerHTML = "Please Enter Domain Name";
+                    document.getElementById("ValidateDomainname").innerHTML = "Please Enter Domain Name.";
                     $('#Domainname').focus();
                     count = 1;
                 }
                 if (Portnumber == "") {
 
-                    document.getElementById("ValidatePortNumber").innerHTML = "Please Enter PortNumber.";
+                    document.getElementById("ValidatePortNumber").innerHTML = "Please Enter Port Number.";
                     $('#Portnumber').focus();
                     count = 1;
                 }
@@ -215,7 +215,7 @@
 
                 if (UserId == "") {
 
-                    document.getElementById("ValidateUserId").innerHTML = "Please Enter UserID.";
+                    document.getElementById("ValidateUserId").innerHTML = "Please Enter User Id.";
                     $('#UserId').focus();
                     count = 1;
                 }
@@ -247,6 +247,13 @@
                 var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
 
                 return ret;
+            }
+
+            function ValidationRefresh(id) {
+                var validateid = "Validate" + id
+                document.getElementById(validateid).innerHTML = "";
+                var control = document.getElementById(validateid);
+                control.classList.remove('validation');
             }
  
         </script>

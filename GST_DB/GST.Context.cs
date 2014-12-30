@@ -23,6 +23,7 @@ namespace GST_DB
             : base(con)
         {
         }
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

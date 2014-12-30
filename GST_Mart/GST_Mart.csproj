@@ -832,10 +832,8 @@
     <Content Include="Views\Admin\TAXCODE.cshtml" />
     <Content Include="Views\Admin\CurrencyGroup.cshtml" />
     <Content Include="Views\Admin\ManualCurrencyExchange.cshtml" />
-    <Content Include="Views\Admin\CreateLDAPUser.cshtml" />
     <Content Include="Views\User\Securitycodeaccess.cshtml" />
     <Content Include="Views\Admin\AuditLog.cshtml" />
-    <Content Include="Views\Admin\CreateLDAPUser.cshtml" />
     <Content Include="Views\User\CycleErrors.cshtml" />
     <Content Include="Views\Admin\Configuration.cshtml">
       <SubType>Code</SubType>

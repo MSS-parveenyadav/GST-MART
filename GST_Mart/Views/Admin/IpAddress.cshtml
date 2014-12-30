@@ -32,16 +32,16 @@
                             <div class="container-fluid">
                                 <div class="w-bg">
 
-                                    <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                                    <table id="example" class="table table-striped " width="100%" cellspacing="0">
 
                                         <tbody>
                                             <tr>
                                                 <td class="col-md-1" align="right"><label>IP ADDRESS</label></td>
-                                                <td class="col-md-3 cmg">
+                                                <td class="col-md-2 cmg">
                                              
 
 
-                                                    @Html.TextBoxFor(m => m.IP, "", new { @onkeypress = "return IsNumeric(event)" })<p style="color:green">@TempData["Status"]</p><p style="color:red">@TempData["Error"]</p>
+                                                    @Html.TextBoxFor(m => m.IP, "", new { @onkeypress = "return IsNumeric(event)", placeholder = "Ip Address" })<p style="color:green">@TempData["Status"]</p><p style="color:red">@TempData["Error"]</p>
                                                 </td>
                                             </tr>
                                         </tbody>

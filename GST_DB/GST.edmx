@@ -63,6 +63,7 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CurrencySchedularId" Type="int" Nullable="true" />
+    <Property Name="CreatedDate" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Cycles">
     <Key>
@@ -390,6 +391,7 @@
           <NavigationProperty Name="Industries" Relationship="GSTMARTModel.FK_CompanyIndustry" FromRole="Company" ToRole="Industry" />
           <Property Name="CurrencySchedularId" Type="Int32" Nullable="true" />
           <NavigationProperty Name="CurrencySchedulars" Relationship="GSTMARTModel.CompanyCurrencySchedular" FromRole="Company" ToRole="CurrencySchedular" />
+          <Property Name="CreatedDate" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="Cycle">
           <Key>
@@ -673,6 +675,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="CurrencySchedularId" ColumnName="CurrencySchedularId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

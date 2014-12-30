@@ -29,6 +29,7 @@ namespace GST_DB
         public string Description { get; set; }
         public string Remarks { get; set; }
         public Nullable<int> CurrencySchedularId { get; set; }
+        public string CreatedDate { get; set; }
     
         public virtual ICollection<GstSystem> GstSystems { get; set; }
         public virtual ICollection<Industry> Industries { get; set; }

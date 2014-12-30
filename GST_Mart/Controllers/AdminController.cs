@@ -499,7 +499,7 @@ namespace GST_Mart.Controllers
             }
         }
 
-        private List<GST_DB.IpAddress> BindIpAddressList()
+        private List<GST_BLL.DTO.IpAddressModel> BindIpAddressList()
         {
             IPAddress IP = adminuser.getipaddress();
             TempData["Ipaddress"] = IP;

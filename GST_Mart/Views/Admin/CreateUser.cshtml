@@ -24,7 +24,7 @@
     @section CompanyList
             {
 
-    @Html.ListBoxFor(m => m.Companies, Model.listcompaney, new { size = 2, @onclick = "ValidationRefresh(this.id)" })
+    @Html.ListBoxFor(m => m.Companies, Model.listcompaney, new { size = 2, @onclick = "ValidationRefresh(this.id)" })<br /><br /><br /><br />
             <p id="ValidateCompanies" style="color: gray"></p>
 }
 
@@ -36,7 +36,7 @@
      
             <div class="container-fluid">
                 <div class="serch">
-                    <div id="ErrorMessages" style="color: red;">@TempData["ErrorMessage"]</div><div id="SuccessMessages" style="color: green; ">@TempData["SuccessMessage"]</div>
+                    <div id="ErrorMessages" style="color: red; text-align: center;font-size:x-large">@TempData["ErrorMessage"]</div><div id="SuccessMessages" style="color: green; font-size: x-large; text-align: center; ">@TempData["SuccessMessage"]</div>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
                             <div class=" col-lg-12 sec-login">
@@ -46,50 +46,50 @@
                             <form action="" method="get" class="serch">
                                 <div id="centre-coloum">
                                     <div class="col-md-6">
-                                        <label>User ID :</label>
+                                        <label>User Id:</label>
                                         @Html.HiddenFor(model => model.Id, new { @class = "form-control" })
-                                        @Html.TextBoxFor(model => model.UserId, new {  @onkeypress = "return IsSpecialcharacter(event);", @onclick = "ValidationRefresh(this.id)" })
+                                        @Html.TextBoxFor(model => model.UserId, new { @onkeypress = "return IsSpecialcharacter(event);", @onclick = "ValidationRefresh(this.id)", placeholder = "User Id" })
                                         <p id="ValidateUserId" style="color: white">.</p>
                                     </div>
                                     <div class="col-md-6">
                                         <label>Name :</label>
-                                        @Html.TextBoxFor(model => model.Usename, new {  @onkeypress = "return IsSpecialcharacter(event);", @onclick = "ValidationRefresh(this.id)" })
+                                        @Html.TextBoxFor(model => model.Usename, new { @onkeypress = "return IsSpecialcharacter(event);", @onclick = "ValidationRefresh(this.id)", placeholder = "Name" })
                                         <p id="ValidateUsename" style="color: white">.</p>
                                     </div>
                                 </div>
                                 <div id="centre-coloum">
                                     <div class="col-md-6">
                                         <label>Password :</label>
-                                        @Html.TextBoxFor(model => model.Password, new { @onclick = "ValidationRefresh(this.id)", @type = "password" })
+                                        @Html.TextBoxFor(model => model.Password, new { @onclick = "ValidationRefresh(this.id)", @type = "password", placeholder = "Password" })
                                         <p id="ValidatePassword" style="color: white">.</p>
                                     </div>
                                     <div class="col-md-6">
                                         <label>Re-enter Password :</label>
-                                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @onclick = "ValidationRefresh(this.id)", @type = "password" })
+                                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @onclick = "ValidationRefresh(this.id)", @type = "password", placeholder = "Re-enter Password" })
                                         <p id="ValidateConfirmPassword" style="color: white">.</p>
                                     </div>
                                 </div>
                                 <div id="centre-coloum">
                                     <div class="col-md-6">
                                         <label>Email Address :</label>
-                                        @Html.TextBoxFor(model => model.Email, new {  @onclick = "ValidationRefresh(this.id)" })
+                                        @Html.TextBoxFor(model => model.Email, new { @onclick = "ValidationRefresh(this.id)", placeholder = "Email Address" })
                                         <p id="ValidateEmail" style="color: white">.</p>
                                     </div>
                                     <div class="col-md-6">
                                         <label>Re-enter Email Address :</label>
-                                        @Html.TextBoxFor(model => model.ConfirmEmail, new {  @onclick = "ValidationRefresh(this.id)" })
+                                        @Html.TextBoxFor(model => model.ConfirmEmail, new { @onclick = "ValidationRefresh(this.id)", placeholder = "Re-enter Email Address" })
                                         <p id="ValidateConfirmEmail" style="color: white">.</p>
                                     </div>
                                 </div>
                                 <div id="centre-coloum">
                                     <div class="col-md-6">
                                         <label>Mobile Number :</label>
-                                        @Html.TextBoxFor(model => model.MobileNumber, new {  @onkeypress = "return IsNumeric(event); ", @onclick = "ValidationRefresh(this.id)" })
+                                        @Html.TextBoxFor(model => model.MobileNumber, new { @onkeypress = "return IsNumeric(event); ", @onclick = "ValidationRefresh(this.id)", placeholder = "Mobile Number" })
                                         <p id="ValidateMobileNumber" style="color: white">.</p>
                                     </div>
                                     <div class="col-md-6">
                                         <label>Re-enter Mobile Number :</label>
-                                        @Html.TextBoxFor(model => model.ConfirmMobileNumber, new {  @onkeypress = "return IsNumeric(event); ", @onclick = "ValidationRefresh(this.id)" })
+                                        @Html.TextBoxFor(model => model.ConfirmMobileNumber, new { @onkeypress = "return IsNumeric(event); ", @onclick = "ValidationRefresh(this.id)", placeholder = "Re-enter Mobile Number" })
                                         <p id="ValidateConfirmMobileNumber" style="color: white">.</p>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                     @Html.DropDownListFor(m=>m.Createcycle, new List<SelectListItem>
 
                  {
-                    new SelectListItem{ Text="Please Select", Value = "0" },
+                    new SelectListItem{ Text="Please Select Cycle Permission", Value = "0" },
                     new SelectListItem{ Text="Allowed", Value = "Create Cycle" },
                     new SelectListItem{ Text="Denied", Value = "Deny" }
                  }, new {  @onclick = "ValidationRefresh(this.id)" })
@@ -139,7 +139,7 @@
                                     @Html.DropDownListFor(m=>m.AccessSetting, new List<SelectListItem>
 
                  {
-                     new SelectListItem{ Text="Please Select", Value = "0" },
+                     new SelectListItem{ Text="Please Select Access Permission", Value = "0" },
                     new SelectListItem{ Text="Allowed", Value = "Access Setting" },
                     new SelectListItem{ Text="Denied", Value = "Deny" }
                  }, new {  @onclick = "ValidationRefresh(this.id)" })
@@ -153,7 +153,7 @@
                                     @Html.DropDownListFor(m=>m.DownloadData, new List<SelectListItem>
 
                  {
-                     new SelectListItem{ Text="Please Select", Value = "0" },
+                     new SelectListItem{ Text="Please Select Download Permission", Value = "0" },
                     new SelectListItem{ Text="Allowed", Value = "Download Data" },
                     new SelectListItem{ Text="Denied", Value = "Deny" }
                  }, new {  @onclick = "ValidationRefresh(this.id)" })
@@ -165,7 +165,7 @@
                                     @Html.DropDownListFor(m=>m.PrintReport, new List<SelectListItem>
 
                  {
-                     new SelectListItem{ Text="Please Select", Value = "0" },
+                     new SelectListItem{ Text="Please Select Print Permission", Value = "0" },
                     new SelectListItem{ Text="Allowed", Value = "Print Report" },
                     new SelectListItem{ Text="Denied", Value = "Deny" }
                  }, new {  @onclick = "ValidationRefresh(this.id)" })
@@ -212,7 +212,7 @@
                         <thead>
 
                             <tr>
-                                <td>Search User</td>
+                                <td><label>Search User</label></td>
                                 <td colspan="4">
 
 
@@ -220,7 +220,7 @@
 
                                     <input type="text" id="Txtsearch" placeholder="Filter by Email or User Id" />
                                 </td>
-                                <td>Filter User</td>
+                                <td><label>Filter User</label></td>
                                 <td>
                                     @Html.DropDownList("FilterUser", new List<SelectListItem>
 
@@ -299,7 +299,7 @@
                 <div class="pagination-footer">
                     <div class="container-fluid">
                         <div class="col-md-4 item-par">
-                            <form action="/Admin/CreateUser" method="get">
+                            <form action="/Admin/CreateUser" class="serch" method="get">
                                 <table width="100%" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td>
@@ -399,20 +399,20 @@
                     var DownloadData = document.getElementById("DownloadData").value;
                     var PrintReport = document.getElementById("PrintReport").value;
                     if (Companies == "") {
-                        document.getElementById("ValidateCompanies").innerHTML = "Please Select Company";
+                        document.getElementById("ValidateCompanies").innerHTML = "Please select atleast One Company.";
                         $('#ValidateCompanies').addClass('validation');
                         $('#Companies').focus();
                         count = 1;
                     }
                     if (UserId == "") {
-                        document.getElementById("ValidateUserId").innerHTML = "Please Enter UserId";
+                        document.getElementById("ValidateUserId").innerHTML = "Please Enter User Id.";
                         $('#ValidateUserId').addClass('validation');
                         $('#UserId').focus();
                         count = 1;
                     }
                     if (Usename == "") {
 
-                        document.getElementById("ValidateUsename").innerHTML = "Please Enter Username.";
+                        document.getElementById("ValidateUsename").innerHTML = "Please Enter User Name.";
                         $('#ValidateUsename').addClass('validation');
                         $('#Usename').focus();
                         count = 1;
@@ -425,56 +425,56 @@
                         count = 1;
                     }
                     if (Password.length < 8 || Password.length >= 13) {
-                        document.getElementById("ValidatePassword").innerHTML = "Length between 8 to 12 Characters";
+                        document.getElementById("ValidatePassword").innerHTML = "Password must be 8-12 Characters.";
                         $('#ValidatePassword').addClass('validation');
                         $('#Password').focus();
                         count = 1;
                     }
                     if (ConfirmPassword == "") {
 
-                        document.getElementById("ValidateConfirmPassword").innerHTML = "Please Enter Confirm Password.";
+                        document.getElementById("ValidateConfirmPassword").innerHTML = "Please Re-Enter Password.";
                         $('#ValidateConfirmPassword').addClass('validation');
                         $('#ConfirmPassword').focus();
                         count = 1;
                     }
                     if (Password != ConfirmPassword) {
 
-                        document.getElementById("ValidateConfirmPassword").innerHTML = "Enter same Password.";
+                        document.getElementById("ValidateConfirmPassword").innerHTML = "Password and Confirm Password should be same.";
                         $('#ValidateConfirmPassword').addClass('validation');
                         $('#ConfirmPassword').focus();
                         count = 1;
                     }
                     if (Email == "") {
                         
-                        document.getElementById("ValidateEmail").innerHTML = "Please Enter email.";
+                        document.getElementById("ValidateEmail").innerHTML = "Please Enter Email.";
                         $('#ValidateEmail').addClass('validation');
                         $('#Email').focus();
                         count = 1;
                     }
                     if (ConfirmEmail == "") {
 
-                        document.getElementById("ValidateConfirmEmail").innerHTML = "Please Re-enter email.";
+                        document.getElementById("ValidateConfirmEmail").innerHTML = "Please Re-enter Email.";
                         $('#ValidateConfirmEmail').addClass('validation');
                         $('#ConfirmEmail').focus();
                         count = 1;
                     }
                     if (Email != ConfirmEmail) {
 
-                        document.getElementById("ValidateConfirmEmail").innerHTML = "Enter same email.";
+                        document.getElementById("ValidateConfirmEmail").innerHTML = "Email and Confirm Email should be same.";
                         $('#ValidateConfirmEmail').addClass('validation');
                         $('#ConfirmEmail').focus();
                         count = 1;
                     }
                     if (MobileNumber == "") {
                       //  document.getElementById("ValidateConfirmMobileNumber").innerHTML = "";
-                        document.getElementById("ValidateMobileNumber").innerHTML = "Please Enter mobile number.";
+                        document.getElementById("ValidateMobileNumber").innerHTML = "Please Enter Mobile Number.";
                         $('#ValidateMobileNumber').addClass('validation');
                         $('#MobileNumber').focus();
                         count = 1;
                     }
                     if (ConfirmMobileNumber == "") {
 
-                        document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Please Re-enter mobile number.";
+                        document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Please Re-enter Mobile Number.";
                         $('#ValidateConfirmMobileNumber').addClass('validation');
                         $('#ConfirmMobileNumber').focus();
                         count = 1;
@@ -482,13 +482,13 @@
                     if (MobileNumber != ConfirmMobileNumber) {
                       //  document.getElementById("ValidateMobileNumber").innerHTML = "";
                         //document.getElementById("ValidateConfirmMobileNumber").innerHTML = "";
-                        document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Enter same Mobile Number.";
+                        document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Mobile Number and Confirm Mobile Number should be same.";
                         $('#ValidateConfirmMobileNumber').addClass('validation');
                         $('#ConfirmMobileNumber').focus();
                         count = 1;
                     }
                     if (Createcycle == "0") {
-                        document.getElementById("ValidateCreatecycle").innerHTML = "Please select Create cycle permission.";
+                        document.getElementById("ValidateCreatecycle").innerHTML = "Please select Create Cycle permission.";
                         $('#ValidateCreatecycle').addClass('validation');
                         $('#Createcycle').focus();
                         count = 1;

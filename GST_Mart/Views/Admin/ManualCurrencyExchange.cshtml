@@ -110,21 +110,21 @@
                                     <tr>
                                         <td class="add-tax">Description :  </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.Description, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                            @Html.TextBoxFor(m => m.Description, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}", placeholder = "Description" })
                                             <p id="ValidateDescription" style="color: white"></p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="add-tax">Conversion Rate :  </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.ConversionRate, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                            @Html.TextBoxFor(m => m.ConversionRate, new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}", placeholder = "Conversion Rate" })
                                             <p id="ValidateConversionRate" style="color: white"></p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="add-tax">Date :  </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.CreatedDate, new { @id = "CreatedDate", @onclick = "ValidationRefresh(this.id)" })
+                                            @Html.TextBoxFor(m => m.CreatedDate, new { @id = "CreatedDate", @onclick = "ValidationRefresh(this.id)", placeholder = "Date" })
                                             <p id="ValidateCreatedDate" style="color: white"></p>
                                         </td>
                                     </tr>
@@ -376,7 +376,7 @@
 <div class="pagination-footer">
     <div class="container-fluid">
         <div class="col-md-4 item-par">
-            <form action="" id="PageingForm" method="get">
+            <form action="" id="PageingForm" class="serch" method="get">
                 <table width="100%" cellspacing="0" cellpadding="0">
                     <tr>
                         <td>
