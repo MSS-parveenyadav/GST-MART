@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="CSVPurchas"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{143A2D41-6279-4125-90CC-ECAB71160779}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{7582AD38-ED6B-4E7F-8ECF-FADE63857BBE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
       <DTS:PropertyExpression
         DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
       <DTS:PropertyExpression
-        DTS:Name="ServerName">@[User::DataSource]</DTS:PropertyExpression>
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
       <DTS:PropertyExpression
         DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
@@ -36,7 +36,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADBLo/WUx/hpueUjn7HZmKlYz2IounvX55BZmnlGSQDCwAAAAAOgAAAAAIAACAAAAD3JwY83L6UDh+juPVUYzlIPs9tTdfvkmdgi+ulKJqVTiAAAABvBKygTG8s0qpt8gM6mvNA1AcH+p0roSOQ2/toYervxUAAAAD4YbtB5omYVPC25HntFMnmyJZytBYqaXO6jwLnrgXqL0Y4iX4R5J6sjBDf8P1A+itSnf5WmICxDoG2QiWyoNHQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA22R83LS0kTVrSnqO45izK5c+QaTLVo+3d4rhPCyDELAAAAAAOgAAAAAIAACAAAADnKLs5zQy7zLKsKDMPhJ7g5VxpalaraMl+2dbneMqXsiAAAADDL7boiE2LYhculpxHKTYTqexq1x63j2mEwkuXWn3jVUAAAACCJYbtDwRBi82jaA2wkeajrJYim3OGRagk6t5At0B3ts/qfx/aGzPGlEokA8lHAGSWFNDWnIKXF9pf3AtsH93/</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -45,6 +45,8 @@
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{27C46CD6-2F62-4861-A546-19AD07A40C11}"
       DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::CsvFile]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -54,7 +56,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="F:\csv file\csv file\NewPurcase.csv">
+          DTS:ConnectionString="ABCDEFGHUIJKLMNOPQRSTUVWXYZASDFGH">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -203,6 +205,15 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{345A5681-34D8-473B-9B20-80F0D6170211}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CsvFile">
+      <DTS:VariableValue
+        DTS:DataType="8">ABCDEFGHUIJKLMNOPQRSTUVWXYZASDFGH</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{A626C548-E6EB-479B-95F3-113B410F448C}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
@@ -215,7 +226,7 @@
       DTS:DTSID="{7B5D7633-7585-4866-BA78-F01BFFA330AF}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="DataSource">
+      DTS:ObjectName="Datasource">
       <DTS:VariableValue
         DTS:DataType="8">192.168.0.143</DTS:VariableValue>
     </DTS:Variable>

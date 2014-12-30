@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DeleteData"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{E74F588F-38F0-4B48-8E29-CB900D444446}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{1BC65B65-BAAC-4534-8D76-2647D11F5A42}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,7 +26,7 @@
       <DTS:PropertyExpression
         DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
       <DTS:PropertyExpression
-        DTS:Name="ServerName">@[User::DataSource]</DTS:PropertyExpression>
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
       <DTS:PropertyExpression
         DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
@@ -35,7 +35,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB1jV+hza+T7syu3jcswD/XiCCwMH1KADySjlQzJYHMCwAAAAAOgAAAAAIAACAAAADKTrFKn3DdXjHmpPN0zpFTR4p+BgEihhXNYvZRuUIoiiAAAABJUxgIAYOliuV3HOrcOlOKBT2kJCHVilFOc85uyXv87kAAAAAORe4OTaV+Rt/PgITPftDIP9wbF/R4iwAXOtuBwqTwyXsQcU+0uLaVEufsQOH7q8Held+ZxBuS4RUjtxhOR/Gw</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADuyhVvXDW9N6/dRR8gJEFaKlOER011tk5bcFx1heLPrgAAAAAOgAAAAAIAACAAAAAhRHDI7B5YWro2IH0OqvuWulo1LPy+9cOnnFyce0fo5yAAAAAHrGTJ8oseMXbkGjuWmZWp0oFgIKmxHK4qDucFmVqSP0AAAAD1+4GgFZEWUtncspKxC6IIDSqyhXWwizUZXIAL789nJHiL2toB3YX0c1pfhBs/QN5HvfZkPaN+Octv1OCZqhZJ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -44,6 +44,8 @@
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{F4234BEF-6337-40AE-A892-3E6B47D19955}"
       DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::CsvFile]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -53,7 +55,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="F:\csv file\csv file\ledger.csv">
+          DTS:ConnectionString="abcdefghijklmnopqrstuvwxyzsahjvdshavfs">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -207,6 +209,15 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{7E32E581-519B-4DB4-BA74-66F4D05B3B77}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CsvFile">
+      <DTS:VariableValue
+        DTS:DataType="8">abcdefghijklmnopqrstuvwxyzsahjvdshavfs</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{2B8E81CD-EAE5-4337-AB0A-BB7A5B87BEFC}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
@@ -219,7 +230,7 @@
       DTS:DTSID="{9048ECFA-53B8-461D-A1E5-C079D820FD5E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="DataSource">
+      DTS:ObjectName="Datasource">
       <DTS:VariableValue
         DTS:DataType="8">192.168.0.143</DTS:VariableValue>
     </DTS:Variable>
@@ -12321,174 +12332,174 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
               startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Derived Column Output16]"
-              endId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 16.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output15]"
-              endId="Package\Data Flow Task\OLE DB Command-Delete Missing Compnay.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 15.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output14]"
-              endId="Package\Data Flow Task\OLE DB Command-Delete Company.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 14.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output13]"
-              endId="Package\Data Flow Task\OLE DB Command-Delete Footer Error.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 13.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output12]"
-              endId="Package\Data Flow Task\OLE DB Command-Delete Company Error.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 12.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output11]"
-              endId="Package\Data Flow Task\OLE DB Command-Delete Supply Error.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 11.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output10]"
-              endId="Package\Data Flow Task\OLE DB Command-Delete Purchase Error.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 10.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output9]"
-              endId="Package\Data Flow Task\OLE DB Command 1-missing supply.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 4.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output17]"
-              endId="Package\Data Flow Task\OLE DB Command-delete Ledger Error.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 9.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output7]"
-              endId="Package\Data Flow Task\OLE DB Command2-Delete missing purchase.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 8.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output6]"
-              endId="Package\Data Flow Task\OLE DB Command 1-Delete Duplicate Purchase.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 7.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output5]"
-              endId="Package\Data Flow Task\OLE DB Command-delete purchase.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 6.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output4]"
-              endId="Package\Data Flow Task\OLE DB Command-tbl_duplicate supply.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 5.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
-              endId="Package\Data Flow Task\OLE DB Command-tbl_supply.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
-              endId="Package\Data Flow Task\OLE DB Command-Delete Missing Field table.Inputs[OLE DB Command Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
               endId="Package\Data Flow Task\OLE DB Commnd-Delete Duplicate table.Inputs[OLE DB Command Input]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output8]"
+              refId="Package\Data Flow Task.Paths[Derived Column Output15]"
+              endId="Package\Data Flow Task\OLE DB Command-Delete Missing Field table.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output14]"
+              endId="Package\Data Flow Task\OLE DB Command-tbl_supply.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output13]"
+              endId="Package\Data Flow Task\OLE DB Command-tbl_duplicate supply.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 5.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output12]"
+              endId="Package\Data Flow Task\OLE DB Command-delete purchase.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 6.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output11]"
+              endId="Package\Data Flow Task\OLE DB Command 1-Delete Duplicate Purchase.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 7.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output10]"
+              endId="Package\Data Flow Task\OLE DB Command2-Delete missing purchase.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 8.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output9]"
+              endId="Package\Data Flow Task\OLE DB Command-delete Ledger Error.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 9.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output17]"
               endId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Derived Column 17.Outputs[Derived Column Output]" />
             <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output7]"
+              endId="Package\Data Flow Task\OLE DB Command-Delete Purchase Error.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 10.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output6]"
+              endId="Package\Data Flow Task\OLE DB Command-Delete Supply Error.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 11.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output5]"
+              endId="Package\Data Flow Task\OLE DB Command-Delete Company Error.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 12.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output4]"
+              endId="Package\Data Flow Task\OLE DB Command-Delete Footer Error.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 13.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              endId="Package\Data Flow Task\OLE DB Command-Delete Company.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 14.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
+              endId="Package\Data Flow Task\OLE DB Command-Delete Missing Compnay.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 15.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 16.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output8]"
+              endId="Package\Data Flow Task\OLE DB Command 1-missing supply.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 4.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Data Flow Task.Paths[Flat File Source Output15]"
-              endId="Package\Data Flow Task\Derived Column 6.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source-purchase.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output14]"
-              endId="Package\Data Flow Task\Derived Column 7.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source2-Dup Purchase.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output13]"
-              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source-Ledger.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output12]"
-              endId="Package\Data Flow Task\Derived Column 10.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output11]"
-              endId="Package\Data Flow Task\Derived Column 4.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source2-Supply.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output10]"
-              endId="Package\Data Flow Task\Derived Column 12.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source 3.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output9]"
-              endId="Package\Data Flow Task\Derived Column 11.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source 2.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output8]"
-              endId="Package\Data Flow Task\Derived Column 16.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source 7.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output4]"
-              endId="Package\Data Flow Task\Derived Column 5.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source 1.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output6]"
-              endId="Package\Data Flow Task\Derived Column 17.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source 8.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output5]"
-              endId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source1-Ledger.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output3]"
-              endId="Package\Data Flow Task\Derived Column 9.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source-Errors.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output2]"
-              endId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source-Supply.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output1]"
-              endId="Package\Data Flow Task\Derived Column 13.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source 4.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
-              endId="Package\Data Flow Task\Derived Column 14.Inputs[Derived Column Input]"
-              name="Flat File Source Output"
-              startId="Package\Data Flow Task\Flat File Source 5.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output16]"
               endId="Package\Data Flow Task\Derived Column 15.Inputs[Derived Column Input]"
               name="Flat File Source Output"
               startId="Package\Data Flow Task\Flat File Source 6.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output7]"
+              refId="Package\Data Flow Task.Paths[Flat File Source Output14]"
+              endId="Package\Data Flow Task\Derived Column 14.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source 5.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output13]"
+              endId="Package\Data Flow Task\Derived Column 13.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source 4.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output12]"
+              endId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source-Supply.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output11]"
+              endId="Package\Data Flow Task\Derived Column 9.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source-Errors.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output10]"
+              endId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source1-Ledger.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output9]"
+              endId="Package\Data Flow Task\Derived Column 17.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source 8.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output8]"
+              endId="Package\Data Flow Task\Derived Column 5.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source 1.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output4]"
+              endId="Package\Data Flow Task\Derived Column 4.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source2-Supply.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output6]"
+              endId="Package\Data Flow Task\Derived Column 11.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source 2.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output5]"
+              endId="Package\Data Flow Task\Derived Column 12.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source 3.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output3]"
+              endId="Package\Data Flow Task\Derived Column 10.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output2]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source-Ledger.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output1]"
+              endId="Package\Data Flow Task\Derived Column 7.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source2-Dup Purchase.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task\Derived Column 6.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source-purchase.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output16]"
               endId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
               name="Flat File Source Output"
               startId="Package\Data Flow Task\Flat File Source2-Ledger.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output7]"
+              endId="Package\Data Flow Task\Derived Column 16.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Flat File Source 7.Outputs[Flat File Source Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Flat File Source Output17]"
               endId="Package\Data Flow Task\Derived Column 8.Inputs[Derived Column Input]"
@@ -12740,7 +12751,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="139.5,120.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output14]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
           TopLeft="842.696351395599,496">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12762,7 +12773,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output13]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output4]"
           TopLeft="1136.5,1125">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12796,7 +12807,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output12]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output5]"
           TopLeft="877.5,1136">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12818,7 +12829,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output11]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output6]"
           TopLeft="672.5,1139">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12840,7 +12851,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output10]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output7]"
           TopLeft="455.5,1147">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12862,7 +12873,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output9]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output8]"
           TopLeft="373.75,502">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12884,7 +12895,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output8]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output17]"
           TopLeft="1442,493">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12906,7 +12917,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output7]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output10]"
           TopLeft="1282.5,159">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12940,7 +12951,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output6]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output11]"
           TopLeft="1049.5,154">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12962,7 +12973,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output5]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output12]"
           TopLeft="822.5,158">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -12984,7 +12995,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output4]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output13]"
           TopLeft="644.25,498">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13006,7 +13017,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output14]"
           TopLeft="110.5,510">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13040,7 +13051,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output15]"
           TopLeft="602.5,158">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13074,7 +13085,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output16]"
           TopLeft="416.25,155">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13152,7 +13163,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output16]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output15]"
           TopLeft="1034,403">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13186,7 +13197,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output15]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
           TopLeft="852.5,57">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13220,7 +13231,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output14]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output1]"
           TopLeft="1060.5,59">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13254,7 +13265,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output13]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output2]"
           TopLeft="240.5,60">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13288,7 +13299,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output12]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output3]"
           TopLeft="453,1059">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13310,7 +13321,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output11]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output4]"
           TopLeft="367,403">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13344,7 +13355,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output10]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output5]"
           TopLeft="870,1057">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13378,7 +13389,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output9]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output6]"
           TopLeft="669.25,1059">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13400,7 +13411,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output8]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output7]"
           TopLeft="1230,404">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13434,7 +13445,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output7]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output16]"
           TopLeft="661.5,61">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13468,7 +13479,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output6]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output9]"
           TopLeft="1438.75,404">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13490,7 +13501,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output5]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output10]"
           TopLeft="443.5,61">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13524,7 +13535,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output4]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output8]"
           TopLeft="641.25,413">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13546,7 +13557,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output3]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output11]"
           TopLeft="225.5,1055">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13580,7 +13591,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output2]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output12]"
           TopLeft="107.25,399">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13602,7 +13613,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output1]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output13]"
           TopLeft="1125,1046">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13636,7 +13647,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          Id="Package\Data Flow Task.Paths[Flat File Source Output14]"
           TopLeft="835.75,406">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13658,7 +13669,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output17]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output9]"
           TopLeft="239,1150">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13680,7 +13691,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output16]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
           TopLeft="1246.25,489">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13702,7 +13713,7 @@ delete from tbl_GSTMissingPurchase  where Cycle_ID=? and CompanyID=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output15]"
+          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
           TopLeft="1042.4463513956,490">
           <EdgeLayout.Curve>
             <mssgle:Curve

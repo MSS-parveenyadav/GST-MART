@@ -22,7 +22,7 @@ using System.Collections.ObjectModel;
 using GST_BLL.SendMail;
 using System.Web.UI.WebControls;
 using System.Web.UI;
-using System.Configuration;
+
 
 namespace GST_Mart.Controllers
 {
@@ -34,11 +34,21 @@ namespace GST_Mart.Controllers
         string originalConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["GSTMARTEntities"].ConnectionString;
         AuthorizedUser user = new AuthorizedUser();
         AdminUser adminuser = new AdminUser();
-        string ms_email = ConfigurationManager.AppSettings["master_email"].ToString();
-        string smtp_port = ConfigurationManager.AppSettings["SMTP_PORT"].ToString();
-        string Smtp_Password = ConfigurationManager.AppSettings["Smtp_Password"].ToString();
-        string Smtp_Host = ConfigurationManager.AppSettings["SMTP_HOST"].ToString();
-        string URL = ConfigurationManager.AppSettings["URL"].ToString();
+
+        readonly string ms_email = ConfigurationManager.AppSettings["master_email"].ToString();
+        readonly string smtp_port = ConfigurationManager.AppSettings["SMTP_PORT"].ToString();
+        readonly string Smtp_Password = ConfigurationManager.AppSettings["Smtp_Password"].ToString();
+        readonly string Smtp_Host = ConfigurationManager.AppSettings["SMTP_HOST"].ToString();
+        readonly string URL = ConfigurationManager.AppSettings["URL"].ToString();
+
+        readonly string DataSource = ConfigurationManager.AppSettings["DataSource"].ToString();
+        readonly string Catalog = ConfigurationManager.AppSettings["Catalog"].ToString();
+        readonly string Password = ConfigurationManager.AppSettings["Password"].ToString();
+        readonly string Username = ConfigurationManager.AppSettings["Username"].ToString();
+        readonly string DestCatalog = ConfigurationManager.AppSettings["DestCatalog"].ToString();
+
+
+
         List<Companylist> ob = new List<Companylist>();
         AuditLogModel AuditLog = new AuditLogModel();
         string ErrorMessage = "";
@@ -61,21 +71,21 @@ namespace GST_Mart.Controllers
             return View();
         }
         [HttpPost]
-        
+
         public ActionResult Login(AdminUserModel model, string companylist)
         {
             IPAddress IP = adminuser.getipaddress();
             try
             {
                 Session["dbname"] = "Gst" + companylist.Replace(" ", string.Empty);
-                Session["CompanyName"] =companylist.ToString();
+                Session["CompanyName"] = companylist.ToString();
 
-                
+
                 TempData["IP"] = IP;
                 string IpStatus = adminuser.CkeckIpAddress(IP);
                 if (IpStatus == "IpNotFound")
                 {
-                    string ReturnValue = adminuser.auditLog(DateTime.Now, IP.ToString(), "Ip Not Recognised", model.UserId,"","Fail");
+                    string ReturnValue = adminuser.auditLog(DateTime.Now, IP.ToString(), "Ip Not Recognised", model.UserId, "", "Fail");
                     TempData["Loginerror"] = "Your Ip is Not Recognised";
                     return RedirectToAction("Login");
                 }
@@ -89,13 +99,13 @@ namespace GST_Mart.Controllers
                     Session["UserLoginStatus"] = "LoggedIn";
                     Session["AuthorisedUserName"] = UserName;
                     Session["LoginTime"] = DateTime.Now.ToString("dd MMM yyyy,  HH:MM tt");
-                    string ReturnValue = adminuser.auditLog(DateTime.Now, IP.ToString(), Message, UserId, UserName,"Success");
+                    string ReturnValue = adminuser.auditLog(DateTime.Now, IP.ToString(), Message, UserId, UserName, "Success");
                     // FormsAuthentication.SetAuthCookie(model.UserId, false);
                     return RedirectToAction("ValidateImport");
                 }
                 else
                 {
-                    string ReturnValue = adminuser.auditLog(DateTime.Now, IP.ToString(), Message, model.UserId, UserName,"Fail");
+                    string ReturnValue = adminuser.auditLog(DateTime.Now, IP.ToString(), Message, model.UserId, UserName, "Fail");
                     string emailto = user.GetemailbyUserId(model.UserId, originalConnectionString, Session["dbname"].ToString());
                     if (!string.IsNullOrEmpty(emailto))
                     {
@@ -141,14 +151,14 @@ namespace GST_Mart.Controllers
                 {
                     TempData["Loginerror"] = ex.Message;
                 }
-                string ReturnValue = adminuser.auditLog(DateTime.Now, IP.ToString(), ex.Message, model.UserId, "","Fail");
+                string ReturnValue = adminuser.auditLog(DateTime.Now, IP.ToString(), ex.Message, model.UserId, "", "Fail");
                 return RedirectToAction("Login");
             }
             return View();
         }
-        
 
-       // [Authorize(Roles = "Normal User")]
+
+        // [Authorize(Roles = "Normal User")]
         public ActionResult CreateCycle()
         {
             if (Session["UserLoginStatus"] == "LoggedIn")
@@ -158,9 +168,9 @@ namespace GST_Mart.Controllers
                 var Userpermissions = user.GetPermission_ToUser(UserId);
                 if (Userpermissions.isCreatecycle != "Deny")
                 {
-                string companyid = Session["CompanyName"].ToString();
-                ViewBag.SystemList = user.GetSystemID(companyid);
-                return View();
+                    string companyid = Session["CompanyName"].ToString();
+                    ViewBag.SystemList = user.GetSystemID(companyid);
+                    return View();
                 }
                 else
                 {
@@ -179,260 +189,117 @@ namespace GST_Mart.Controllers
             if (Session["UserLoginStatus"] == "LoggedIn")
             {
 
-            try
-            {
-                string companyid = Session["CompanyName"].ToString();
-                ViewBag.SystemList = user.GetSystemID(companyid);
-
-                // Handling Attachments -
-
-                int count = 0;
-                if (
-
-
-                    (fileUpload[0].FileName.Contains(".xlsx") || fileUpload[0].FileName.Contains(".txt") || fileUpload[0].FileName.Contains(".csv"))
-                    &&
-                    (fileUpload[1].FileName.Contains(".xlsx") || fileUpload[1].FileName.Contains(".txt") || fileUpload[1].FileName.Contains(".csv"))
-                    &&
-                    (fileUpload[2].FileName.Contains(".xlsx") || fileUpload[2].FileName.Contains(".txt") || fileUpload[2].FileName.Contains(".csv"))
-                    &&
-                    (fileUpload[3].FileName.Contains(".xlsx") || fileUpload[3].FileName.Contains(".txt") || fileUpload[3].FileName.Contains(".csv"))
-                    &&
-                    (fileUpload[4].FileName.Contains(".xlsx") || fileUpload[4].FileName.Contains(".txt") || fileUpload[4].FileName.Contains(".csv"))
-                   )
-
-
+                try
                 {
+                    string companyid = Session["CompanyName"].ToString();
+                    ViewBag.SystemList = user.GetSystemID(companyid);
 
-                    model.SystemId = systemlist;
-                    var countCycle = user.GetLstCycleNumber(originalConnectionString, Session["dbname"].ToString());
+                    // Handling Attachments -
 
-                    countCycle = countCycle + 1;
+                    int count = 0;
+                    if (
 
 
-                    model.CycleID = countCycle.ToString();
-
-                    string AdminPath = adminuser.getAdminPath();
-                    if (string.IsNullOrEmpty(AdminPath))
+                        (fileUpload[0].FileName.Contains(".xlsx") || fileUpload[0].FileName.Contains(".txt") || fileUpload[0].FileName.Contains(".csv"))
+                        &&
+                        (fileUpload[1].FileName.Contains(".xlsx") || fileUpload[1].FileName.Contains(".txt") || fileUpload[1].FileName.Contains(".csv"))
+                        &&
+                        (fileUpload[2].FileName.Contains(".xlsx") || fileUpload[2].FileName.Contains(".txt") || fileUpload[2].FileName.Contains(".csv"))
+                        &&
+                        (fileUpload[3].FileName.Contains(".xlsx") || fileUpload[3].FileName.Contains(".txt") || fileUpload[3].FileName.Contains(".csv"))
+                        &&
+                        (fileUpload[4].FileName.Contains(".xlsx") || fileUpload[4].FileName.Contains(".txt") || fileUpload[4].FileName.Contains(".csv"))
+                       )
                     {
-                        TempData["ErrorMessage"] = "Please contact your Administrator to Set path";
-                        return View();
-                    }
-                    var companyPath = AdminPath + @"\Import\FilestoImport\" + Session["dbname"].ToString() + "/" + model.CycleID;
+
+                        model.SystemId = systemlist;
+                        var countCycle = user.GetLstCycleNumber(originalConnectionString, Session["dbname"].ToString());
+
+                        countCycle = countCycle + 1;
 
 
+                        model.CycleID = countCycle.ToString();
 
-                    foreach (HttpPostedFileBase item in fileUpload)
-                    {
-
-                        string path = "";
-
-                        count = count + 1;
-                        if (count == 1)
+                        string AdminPath = adminuser.getAdminPath();
+                        if (string.IsNullOrEmpty(AdminPath))
                         {
-                            if (item.FileName.Contains(".csv"))
-                            {
-                                model.CPath = EnumClass.ImportFamily.Company + "-" + DateTime.Now.ToString("yyyyMMdd")+".csv";
-                            }
-                            else if (item.FileName.Contains(".xlsx"))
-                            {
-                                model.CPath = EnumClass.ImportFamily.Company + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
-                            }
-                            else if (item.FileName.Contains(".txt"))
-                            {
-                                model.CPath = EnumClass.ImportFamily.Company + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
-                            }
-                            if (item.FileName.Contains(".sql"))
-                            {
-                                model.CPath = EnumClass.ImportFamily.Company + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
-                            }
-
-                            path = model.CPath;
-
-                            if (!Directory.Exists(companyPath))
-                            {
-                                Directory.CreateDirectory(companyPath);
-                            }
-                            var finalPath = companyPath + "/" + path;
-
-
-                            var length = item.ContentLength;
-                            item.SaveAs(finalPath);
-
-                            bool Status = Importer(1, finalPath, Session["CompanyName"].ToString(), model.CycleID);
-                            if (Status == false)
-                            {
-                                TempData["ErrorMessage"] = ErrorMessage;
-                                return RedirectToAction("CreateCycle");
-                            }
-                          
-
+                            TempData["ErrorMessage"] = "Please contact your Administrator to Set path";
+                            return View();
                         }
-                        else if (count == 2)
-                        {
-                           
-
-                            if (item.FileName.Contains(".csv"))
-                            {
-                                model.Lpath = EnumClass.ImportFamily.Ledger + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
-                            }
-                            else if (item.FileName.Contains(".xlsx"))
-                            {
-                                model.Lpath = EnumClass.ImportFamily.Ledger + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
-                            }
-                            else if (item.FileName.Contains(".txt"))
-                            {
-                                model.Lpath = EnumClass.ImportFamily.Ledger + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
-                            }
-                            if (item.FileName.Contains(".sql"))
-                            {
-                                model.Lpath = EnumClass.ImportFamily.Ledger + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
-                            }
+                        var companyPath = AdminPath + @"\Import\FilestoImport\" + Session["dbname"].ToString() + "/" + model.CycleID;
 
 
 
-                            path = model.Lpath;
-
-                            if (!Directory.Exists(companyPath))
-                            {
-                                Directory.CreateDirectory(companyPath);
-                            }
-                            var finalPath = companyPath + "/" + path;
-
-
-
-                            item.SaveAs(finalPath);
-
-
-                            bool Status = Importer(2, finalPath, Session["CompanyName"].ToString(), model.CycleID);
-                            if (Status == false)
-                            {
-                                TempData["ErrorMessage"] = ErrorMessage;
-                                return RedirectToAction("CreateCycle");
-                            }
-                            
-
-                        }
-                        else if (count == 3)
-                        {
-                           
-
-                            if (item.FileName.Contains(".csv"))
-                            {
-                                model.Spath = EnumClass.ImportFamily.Supply + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
-                            }
-                            else if (item.FileName.Contains(".xlsx"))
-                            {
-                                model.Spath = EnumClass.ImportFamily.Supply + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
-                            }
-                            else if (item.FileName.Contains(".txt"))
-                            {
-                                model.Spath = EnumClass.ImportFamily.Supply + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
-                            }
-                            else if (item.FileName.Contains(".sql"))
-                            {
-                                model.Spath = EnumClass.ImportFamily.Supply + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
-                            }
-
-
-
-
-
-
-
-
-                            path = model.Spath;
-
-                            if (!Directory.Exists(companyPath))
-                            {
-                                Directory.CreateDirectory(companyPath);
-                            }
-                            var finalPath = companyPath + "/" + path;
-
-
-
-                            item.SaveAs(finalPath);
-
-                            bool Status = Importer(3, finalPath, Session["CompanyName"].ToString(), model.CycleID);
-                            if (Status == false)
-                            {
-                                TempData["ErrorMessage"] = ErrorMessage;
-                                return RedirectToAction("CreateCycle");
-                            }
-                          
-
-                        }
-                        else if (count == 4)
+                        foreach (HttpPostedFileBase item in fileUpload)
                         {
 
-                            if (item.FileName.Contains(".csv"))
+                            string path = "";
+
+                            count = count + 1;
+                            if (count == 1)
                             {
-                                model.Ppath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
+                                if (item.FileName.Contains(".csv"))
+                                {
+                                    model.CPath = EnumClass.ImportFamily.Company + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
+                                }
+                                else if (item.FileName.Contains(".xlsx"))
+                                {
+                                    model.CPath = EnumClass.ImportFamily.Company + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
+                                }
+                                else if (item.FileName.Contains(".txt"))
+                                {
+                                    model.CPath = EnumClass.ImportFamily.Company + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+                                }
+                                if (item.FileName.Contains(".sql"))
+                                {
+                                    model.CPath = EnumClass.ImportFamily.Company + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
+                                }
+
+                                path = model.CPath;
+
+                                if (!Directory.Exists(companyPath))
+                                {
+                                    Directory.CreateDirectory(companyPath);
+                                }
+                                var finalPath = companyPath + "/" + path;
+
+
+                                var length = item.ContentLength;
+                                item.SaveAs(finalPath);
+
+                                bool Status = Importer(1, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                if (Status == false)
+                                {
+                                    TempData["ErrorMessage"] = ErrorMessage;
+                                    return RedirectToAction("CreateCycle");
+                                }
+
+
                             }
-                            else if (item.FileName.Contains(".xlsx"))
+                            else if (count == 2)
                             {
-                                model.Ppath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
-                            }
-                            else if (item.FileName.Contains(".txt"))
-                            {
-                                model.Ppath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
-                            }
-                            else if (item.FileName.Contains(".sql"))
-                            {
-                                model.Ppath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
-                            }
-
-                            path = model.Ppath;
-
-                            if (!Directory.Exists(companyPath))
-                            {
-                                Directory.CreateDirectory(companyPath);
-                            }
-                            var finalPath = companyPath + "/" + path;
 
 
-
-                            item.SaveAs(finalPath);
-
-                            bool Status = Importer(4, finalPath, Session["CompanyName"].ToString(), model.CycleID);
-                            if (Status == false)
-                            {
-                                TempData["ErrorMessage"] = ErrorMessage;
-                                return RedirectToAction("CreateCycle");
-                            }
-                   
-                        }
-                        else if (count == 5)
-                        {
-
-
-                            if (item.FileName.Contains(".csv"))
-                            {
-                                model.FPath = EnumClass.ImportFamily.Footer + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
-                            }
-                            else if (item.FileName.Contains(".xlsx"))
-                            {
-                                model.FPath = EnumClass.ImportFamily.Footer + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
-                            }
-                            else if (item.FileName.Contains(".txt"))
-                            {
-                                model.FPath = EnumClass.ImportFamily.Footer + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
-                            }
-                            else if (item.FileName.Contains(".sql"))
-                            {
-                                model.FPath = EnumClass.ImportFamily.Footer + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
-                            }
+                                if (item.FileName.Contains(".csv"))
+                                {
+                                    model.Lpath = EnumClass.ImportFamily.Ledger + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
+                                }
+                                else if (item.FileName.Contains(".xlsx"))
+                                {
+                                    model.Lpath = EnumClass.ImportFamily.Ledger + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
+                                }
+                                else if (item.FileName.Contains(".txt"))
+                                {
+                                    model.Lpath = EnumClass.ImportFamily.Ledger + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+                                }
+                                if (item.FileName.Contains(".sql"))
+                                {
+                                    model.Lpath = EnumClass.ImportFamily.Ledger + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
+                                }
 
 
 
-
-                            path = model.CPath;
-
-
-                            if (!Directory.Exists(companyPath))
-                            {
-                                model.FPath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd");
-                                path = model.FPath;
+                                path = model.Lpath;
 
                                 if (!Directory.Exists(companyPath))
                                 {
@@ -445,52 +312,172 @@ namespace GST_Mart.Controllers
                                 item.SaveAs(finalPath);
 
 
-                                bool Status = Importer(5, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                bool Status = Importer(2, finalPath, Session["CompanyName"].ToString(), model.CycleID);
                                 if (Status == false)
                                 {
                                     TempData["ErrorMessage"] = ErrorMessage;
                                     return RedirectToAction("CreateCycle");
                                 }
-                          
+
+
                             }
+                            else if (count == 3)
+                            {
 
+
+                                if (item.FileName.Contains(".csv"))
+                                {
+                                    model.Spath = EnumClass.ImportFamily.Supply + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
+                                }
+                                else if (item.FileName.Contains(".xlsx"))
+                                {
+                                    model.Spath = EnumClass.ImportFamily.Supply + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
+                                }
+                                else if (item.FileName.Contains(".txt"))
+                                {
+                                    model.Spath = EnumClass.ImportFamily.Supply + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+                                }
+                                else if (item.FileName.Contains(".sql"))
+                                {
+                                    model.Spath = EnumClass.ImportFamily.Supply + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
+                                }
+
+                                path = model.Spath;
+
+                                if (!Directory.Exists(companyPath))
+                                {
+                                    Directory.CreateDirectory(companyPath);
+                                }
+                                var finalPath = companyPath + "/" + path;
+
+
+
+                                item.SaveAs(finalPath);
+
+                                bool Status = Importer(3, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                if (Status == false)
+                                {
+                                    TempData["ErrorMessage"] = ErrorMessage;
+                                    return RedirectToAction("CreateCycle");
+                                }
+
+
+                            }
+                            else if (count == 4)
+                            {
+
+                                if (item.FileName.Contains(".csv"))
+                                {
+                                    model.Ppath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
+                                }
+                                else if (item.FileName.Contains(".xlsx"))
+                                {
+                                    model.Ppath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
+                                }
+                                else if (item.FileName.Contains(".txt"))
+                                {
+                                    model.Ppath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+                                }
+                                else if (item.FileName.Contains(".sql"))
+                                {
+                                    model.Ppath = EnumClass.ImportFamily.Purchase + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
+                                }
+
+                                path = model.Ppath;
+
+                                if (!Directory.Exists(companyPath))
+                                {
+                                    Directory.CreateDirectory(companyPath);
+                                }
+                                var finalPath = companyPath + "/" + path;
+
+
+
+                                item.SaveAs(finalPath);
+
+                                bool Status = Importer(4, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                if (Status == false)
+                                {
+                                    TempData["ErrorMessage"] = ErrorMessage;
+                                    return RedirectToAction("CreateCycle");
+                                }
+
+                            }
+                            else if (count == 5)
+                            {
+
+
+                                if (item.FileName.Contains(".csv"))
+                                {
+                                    model.FPath = EnumClass.ImportFamily.Footer + "-" + DateTime.Now.ToString("yyyyMMdd") + ".csv";
+                                }
+                                else if (item.FileName.Contains(".xlsx"))
+                                {
+                                    model.FPath = EnumClass.ImportFamily.Footer + "-" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx";
+                                }
+                                else if (item.FileName.Contains(".txt"))
+                                {
+                                    model.FPath = EnumClass.ImportFamily.Footer + "-" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+                                }
+                                else if (item.FileName.Contains(".sql"))
+                                {
+                                    model.FPath = EnumClass.ImportFamily.Footer + "-" + DateTime.Now.ToString("yyyyMMdd") + ".sql";
+                                }
+                                    path = model.FPath;
+                                    if (!Directory.Exists(companyPath))
+                                    {
+                                        Directory.CreateDirectory(companyPath);
+                                    }
+                                    var finalPath = companyPath + "/" + path;
+
+                                    item.SaveAs(finalPath);
+
+
+                                    bool Status = Importer(5, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                    if (Status == false)
+                                    {
+                                        TempData["ErrorMessage"] = ErrorMessage;
+                                        return RedirectToAction("CreateCycle");
+                                    }
+
+
+                            }
                         }
-                    }
 
-                    var result = user.AddCycle(model, originalConnectionString, Session["dbname"].ToString(), Session["UserId"].ToString());
+                        var result = user.AddCycle(model, originalConnectionString, Session["dbname"].ToString(), Session["UserId"].ToString());
 
                         if (result)
                         {
                             TempData["SuccessMessage"] = "Cycle Created Successfully";
                             model.Description = "";
-                            
+
                         }
                         else
                         {
                             TempData["ErrorMessage"] = "Error Occured";
                         }
 
-                
 
 
 
+
+                    }
+                    else
+                    {
+
+                        TempData["ErrorMessage"] = "it only Supports .txt,.sql and .csv";
+                        return View();
+                    }
                 }
-                else
+
+                catch (Exception ex)
                 {
-
-                    TempData["ErrorMessage"] = "it only Supports .txt,.sql and .csv";
-                    return View();
+                    TempData["ErrorMessage"] = ex.Message;
                 }
-            }
 
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = ex.Message;
-            }
+                //return RedirectToAction("CreateCycle");
 
-            //return RedirectToAction("CreateCycle");
-
-            return View();
+                return View();
             }
             else
             {
@@ -556,7 +543,7 @@ namespace GST_Mart.Controllers
             UserModel UserData = user.FindUserByEmail(Email, Guid, out message);
             if (message == EnumClass.MessageFamily.Error.ToString())
             {
-                return RedirectToAction("INvalidLInk","Admin");
+                return RedirectToAction("INvalidLInk", "Admin");
             }
             return View(UserData);
         }
@@ -577,7 +564,7 @@ namespace GST_Mart.Controllers
             }
             string Email = "";
             string Username = "";
-            Int32 Returnvalue = user.UpdatePassword(Data,out Email,out Username);
+            Int32 Returnvalue = user.UpdatePassword(Data, out Email, out Username);
             if (Returnvalue == 2)
             {
                 TempData["ErrorMessage"] = "User Does not exist";
@@ -588,7 +575,7 @@ namespace GST_Mart.Controllers
                 if (Email != "")
                 {
                     string body = "Dear : " + Username + "<br/><br/>Your Updated Password is : " + Data.Password + "";
-                    MailMessage.SendMail(Email, ms_email, smtp_port, Smtp_Password, Smtp_Host, "Your New Password is :",body);
+                    MailMessage.SendMail(Email, ms_email, smtp_port, Smtp_Password, Smtp_Host, "Your New Password is :", body);
                 }
             }
             return RedirectToAction("Login");
@@ -596,25 +583,25 @@ namespace GST_Mart.Controllers
 
 
 
-        public bool Importer(int fileIndex,string finalPath,string CompanyID,string CycleID)
-
+        public bool Importer(int fileIndex, string finalPath, string CompanyID, string CycleID)
         {
 
             #region To Import Files
             try
             {
-                         
+
                 Application app = new Application();
 
                 Package package = null;
                 Variables SSISvar;
                 //app.PackagePassword = "Admin123#";
 
-               
-              
+
+
 
 
                 #region .xlsx File
+                string excelFile = "";
                 if (finalPath.Contains(".xlsx"))
                 {
                     switch (fileIndex)
@@ -622,30 +609,34 @@ namespace GST_Mart.Controllers
 
                         case 1:
                             {
-
-                               package = app.LoadPackage(ConfigurationManager.AppSettings["Excel_company_Path"], null);
-                                break;                                
+                                excelFile = ConfigurationManager.AppSettings["xlsx_company"].ToString();
+                                package = app.LoadPackage(ConfigurationManager.AppSettings["Excel_company_Path"], null);
+                                break;
                             }
                         case 2:
                             {
-                                //package = app.LoadPackage(ConfigurationManager.AppSettings["Excel_ledger_Path"], null);
-                                //break;
-                                return true;
+                               
+                                excelFile = ConfigurationManager.AppSettings["xlsx_ledger"].ToString();
+                                package = app.LoadPackage(ConfigurationManager.AppSettings["Excel_ledger_Path"], null);
+                                break;
                             }
                         case 3:
                             {
+                                excelFile = ConfigurationManager.AppSettings["xlsx_supply"].ToString();
                                 package = app.LoadPackage(ConfigurationManager.AppSettings["Excel_supply_Path"], null);
                                 break;
-                               // return true;
+                              
                             }
                         case 4:
                             {
-                                //package = app.LoadPackage(ConfigurationManager.AppSettings["Excel_purchase_Path"], null);
-                                //break;
-                                return true;
+                                excelFile = ConfigurationManager.AppSettings["xlsx_purchase"].ToString();
+                                package = app.LoadPackage(ConfigurationManager.AppSettings["Excel_purchase_Path"], null);
+                                break;
+                              
                             }
                         case 5:
                             {
+                                excelFile = ConfigurationManager.AppSettings["xlsx_footer"].ToString();
                                 package = app.LoadPackage(ConfigurationManager.AppSettings["Excel_footter_Path"], null);
                                 break;
 
@@ -658,47 +649,50 @@ namespace GST_Mart.Controllers
                 #endregion
 
                 #region .csv File and txt files
+                
+                    string csvFile = "";
                 if (finalPath.Contains(".csv") || finalPath.Contains(".txt"))
                 {
+
                     switch (fileIndex)
                     {
 
                         case 1:
                             {
 
-
+                                csvFile = ConfigurationManager.AppSettings["csv_company"].ToString();
                                 package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_company_Path"], null);
                                 break;
-                             
+
 
                             }
                         case 2:
                             {
-
-                                // package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_ledger_Path"], null);
-                                return true;
-                                //  break;
+                                csvFile = ConfigurationManager.AppSettings["csv_ledger"].ToString();
+                                package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_ledger_Path"], null);
+                                break;
 
                             }
                         case 3:
                             {
-                               // return true;
+                                csvFile = ConfigurationManager.AppSettings["csv_supply"].ToString();
                                 package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_supply_Path"], null);
                                 break;
                             }
                         case 4:
                             {
-                               // return true;
+                                csvFile = ConfigurationManager.AppSettings["csv_purchase"].ToString();
                                 package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_purchase_Path"], null);
                                 break;
                             }
-                        //case 5:
-                        //    {
-                        //        package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_footter_Path"], null);
-                        //        break;
-                             
+                        case 5:
+                            {
+                                csvFile = ConfigurationManager.AppSettings["csv_footer"].ToString();
+                                package = app.LoadPackage(ConfigurationManager.AppSettings["CSV_footter_Path"], null);
+                                break;
 
-                        //    }
+
+                            }
 
 
 
@@ -710,29 +704,32 @@ namespace GST_Mart.Controllers
                 SSISvar = package.Variables;
                 SSISvar["CycleID"].Value = CycleID;
                 SSISvar["CompanyID"].Value = CompanyID;
-                SSISvar["Catalog"].Value = "STAGEDBGSTMASRT";
-                SSISvar["DataSource"].Value = "192.168.0.143";
-                SSISvar["Password"].Value = "Admin123#";
-                SSISvar["Username"].Value = "sa";
+                SSISvar["Catalog"].Value = Catalog;
+                SSISvar["Datasource"].Value = DataSource;
+                SSISvar["Password"].Value = Password;
+                SSISvar["Username"].Value = Username;
+              
                 #endregion
 
                 #region Execute Package
                 string connString = "";
                 if (finalPath.Contains(".xlsx"))
                 {
-                     connString = "provider=Microsoft.ACE.OLEDB.12.0;data source=" + finalPath + ";Extended Properties=Excel 12.0 Xml;HDR=Yes;IMEX=1;";
-                     package.Connections["SourceConnectionExcel"].ConnectionString = connString;
+                    SSISvar["ExcelFilePath"].Value = excelFile; 
+                    connString = "provider=Microsoft.ACE.OLEDB.12.0;data source=" + finalPath + ";Extended Properties=Excel 12.0 Xml;HDR=Yes;IMEX=1;";
+                    package.Connections["SourceConnectionExcel"].ConnectionString = connString;
                 }
                 else if (finalPath.Contains(".csv"))
-               {
-                     var splitPath=finalPath.Replace("/","\\");
-                     connString = @splitPath;
+                {
+                    SSISvar["CsvFile"].Value = csvFile; 
+                    var splitPath = finalPath.Replace("/", "\\");
+                    connString = @splitPath;
                     package.Connections["SourceConnectionFlatFile"].ConnectionString = connString;
                 }
                 else if (finalPath.Contains(".txt"))
-                { 
-                
-                }              
+                {
+
+                }
                 //Excute Package
                 Microsoft.SqlServer.Dts.Runtime.DTSExecResult results = package.Execute(null, SSISvar, null, null, null);
 
@@ -746,13 +743,15 @@ namespace GST_Mart.Controllers
                         return false;
                     }
                 }
+
+
                 #endregion
             }
             catch (DtsException ex)
             {
-             
-                 ErrorMessage= ex.Message.ToString();
-                 return false;
+
+                ErrorMessage = ex.Message.ToString();
+                return false;
             }
 
             return true;
@@ -779,17 +778,16 @@ namespace GST_Mart.Controllers
             return result;
         }
 
-      
+
         public ActionResult DownloadUserData()
-           
         {
-             var userid = Session["UserId"].ToString();
-             UserModel model = user.FindUserbyUserid(userid);
+            var userid = Session["UserId"].ToString();
+            UserModel model = user.FindUserbyUserid(userid);
 
             string securitycode = Alphanumrical(6, random);
             Session["Securitycode"] = securitycode;
             mail.Sendsecuritycode(model.Email, securitycode, model.Name, ms_email, smtp_port, Smtp_Password, Smtp_Host, "Security Code for Download");
-           return View("Securitycodeaccess");
+            return View("Securitycodeaccess");
         }
         [HttpPost]
         public ActionResult DownloadUserData(string SecurityCode)
@@ -797,46 +795,31 @@ namespace GST_Mart.Controllers
             UserModel model = new UserModel();
 
             String securitycode = Session["Securitycode"].ToString();
-          
+
             if (securitycode == SecurityCode)
             {
                 var userid = Session["UserId"].ToString();
-                      var companyid    =  Session["CompanyName"].ToString();
-                      string error = "";
-                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(),out error);
+                var companyid = Session["CompanyName"].ToString();
+                string error = "";
+                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(), out error);
+
                 
-                //string systemsdata = "";
-                //string industrydata = "";
                 foreach (var item in result)
                 {
                     cyclemodel.SystemId = item.SystemId;
-                   // cyclemodel.id = companyid;
                     cyclemodel.CycleErrors = item.CycleErrors;
-
-
-
                 }
-                ////foreach (var industry in model.Company.industrymodel)
-                ////{
-                ////    industrydata = industrydata + industry.Industrycode + ",";
-                ////}
+              
 
                 var products = new System.Data.DataTable("teste");
                 products.Columns.Add("Id", typeof(int));
-              //  products.Columns.Add("Cycle id", typeof(string));
-                ////products.Columns.Add("ComapnyId", typeof(string));
-
-                ////products.Columns.Add("Description", typeof(string));
-                ////products.Columns.Add("Remarks", typeof(string));
                 products.Columns.Add("System id", typeof(string));
                 products.Columns.Add("Error", typeof(string));
                 products.Columns.Add("Duplicates ", typeof(string));
-                ////products.Columns.Add("Admin id", typeof(string));
-                ////products.Columns.Add("Admin Name", typeof(string));
+              
 
 
-
-                products.Rows.Add(1,cyclemodel.SystemId,cyclemodel.CycleErrors,"45" );
+                products.Rows.Add(1, cyclemodel.SystemId, cyclemodel.CycleErrors, "45");
 
 
 
@@ -865,7 +848,7 @@ namespace GST_Mart.Controllers
 
 
         [HttpGet]
-        public ActionResult ValidateImport(int? page,int pagesize=0,string DDlPagingsize="5")
+        public ActionResult ValidateImport(int? page, int pagesize = 0, string DDlPagingsize = "5")
         {
             if (Session["UserLoginStatus"] == "LoggedIn")
             {
@@ -878,16 +861,16 @@ namespace GST_Mart.Controllers
                     pagesize = Convert.ToInt32(DDlPagingsize);
                 }
                 string error = "";
-                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(),out error);
+                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(), out error);
 
 
                 if (error.Contains("error"))
-                    {
-                        TempData["Loginerror"] = "Your Database is not Found in GST System";
+                {
+                    TempData["Loginerror"] = "Your Database is not Found in GST System";
 
-                        return RedirectToAction("Login");
-                    }
-              
+                    return RedirectToAction("Login");
+                }
+
 
 
                 if (result != null)
@@ -896,7 +879,7 @@ namespace GST_Mart.Controllers
                     int pageNumber = (page ?? 1);
 
                     TempData["pagesize"] = pagesize;
-                    return View(result.ToPagedList(pageNumber,pagesize));
+                    return View(result.ToPagedList(pageNumber, pagesize));
                 }
             }
             else
@@ -904,29 +887,29 @@ namespace GST_Mart.Controllers
                 return RedirectToAction("Login");
             }
             return View();
-        
+
         }
 
 
         [HttpPost]
         public ActionResult ValidateImport(string SecurityCode, string ValidateSecurityCode)
         {
-              String securitycode = Session["Securitycode"].ToString();
-      
+            String securitycode = Session["Securitycode"].ToString();
+
             if (securitycode == SecurityCode)
             {
-                
-               // SecurityCode.
+
+                // SecurityCode.
                 var userid = Session["UserId"].ToString();
                 var companyid = Session["CompanyName"].ToString();
                 string error = "";
-                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(),out error);
+                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(), out error);
 
-        
+
                 foreach (var item in result)
                 {
                     cyclemodel.SystemId = item.SystemId;
-              
+
                     cyclemodel.CycleErrors = item.CycleErrors;
 
 
@@ -937,7 +920,7 @@ namespace GST_Mart.Controllers
                 #region Print Errors Reports
                 var products = new System.Data.DataTable("teste");
                 products.Columns.Add("Id", typeof(int));
-              
+
                 products.Columns.Add("System id", typeof(string));
                 products.Columns.Add("Error", typeof(string));
                 products.Columns.Add("Duplicates ", typeof(string));
@@ -969,7 +952,7 @@ namespace GST_Mart.Controllers
                 TempData["CodeError"] = "Invalid Code";
                 return View("Securitycodeaccess");
             }
-            return RedirectToAction("ValidateImport",companymodel);
+            return RedirectToAction("ValidateImport", companymodel);
         }
 
         public ActionResult DeleteProcess(int id, string CycleId)
@@ -993,11 +976,12 @@ namespace GST_Mart.Controllers
                 SSISvar = package.Variables;
                 SSISvar["CycleID"].Value = CycleId;
                 SSISvar["CompanyID"].Value = Session["CompanyName"].ToString();
-                SSISvar["Catalog"].Value = "STAGEDBGSTMASRT";
-                SSISvar["DataSource"].Value = "192.168.0.143";
-                SSISvar["Password"].Value = "Admin123#";
-                SSISvar["Username"].Value = "sa";
-                SSISvar["DestCatalog"].Value = "GSTReport";
+                SSISvar["Catalog"].Value = Catalog;
+                SSISvar["Datasource"].Value = DataSource;
+                SSISvar["Password"].Value = Password;
+                SSISvar["Username"].Value = Username;
+                SSISvar["CsvFile"].Value = ConfigurationManager.AppSettings["LedgerStaticFile_Path"];
+                
 
                 //Excute Package
                 Microsoft.SqlServer.Dts.Runtime.DTSExecResult results = package.Execute(null, SSISvar, null, null, null);
@@ -1021,7 +1005,7 @@ namespace GST_Mart.Controllers
 
 
                     return RedirectToAction("ValidateImport");
-                 
+
                 }
             }
             else
@@ -1032,7 +1016,7 @@ namespace GST_Mart.Controllers
 
         }
 
-        public ActionResult ImportTODb(int id,string CycleId)
+        public ActionResult ImportTODb(int id, string CycleId)
         {
             if (Session["UserLoginStatus"] == "LoggedIn")
             {
@@ -1043,16 +1027,16 @@ namespace GST_Mart.Controllers
 
                 Variables SSISvar;
 
-              
-               
+
+
                 for (var i = 1; i <= 5; i++)
                 {
 
-                    if(i==1)
+                    if (i == 1)
                     {
                         package = app.LoadPackage(ConfigurationManager.AppSettings["Importer_ledger_Path"], null);
                     }
-                    else if(i==2)
+                    else if (i == 2)
                     {
                         package = app.LoadPackage(ConfigurationManager.AppSettings["Importer_supply_Path"], null);
                     }
@@ -1069,17 +1053,17 @@ namespace GST_Mart.Controllers
                         package = app.LoadPackage(ConfigurationManager.AppSettings["Importer_footter_Path"], null);
                     }
 
-                 
+
 
                     #region Package level variable
                     SSISvar = package.Variables;
                     SSISvar["CycleID"].Value = CycleId;
                     SSISvar["CycleIDDelete"].Value = CycleId;
-                    SSISvar["Catalog"].Value = "STAGEDBGSTMASRT";
-                    SSISvar["DataSource"].Value = "192.168.0.143";
-                    SSISvar["Password"].Value = "Admin123#";
-                    SSISvar["Username"].Value = "sa";
-                    SSISvar["DestCatalog"].Value = "GSTReport";
+                    SSISvar["Catalog"].Value = Catalog;
+                    SSISvar["Datasource"].Value = DataSource;
+                    SSISvar["Password"].Value = Password;
+                    SSISvar["Username"].Value = Username;
+                    SSISvar["DestCatalog"].Value = DestCatalog;
 
 
 
@@ -1099,11 +1083,11 @@ namespace GST_Mart.Controllers
                     }
 
                 }
-                var result = user.TempDeleteCycle(originalConnectionString, Session["dbname"].ToString(), id,"Imported");
+                var result = user.TempDeleteCycle(originalConnectionString, Session["dbname"].ToString(), id, "Imported");
                 TempData["SuccessMessage"] = "Data Importing Completed";
 
                 return RedirectToAction("ValidateImport");
-               
+
             }
             else
             {

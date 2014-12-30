@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ExcelFooter"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{CA9053FB-6986-4448-A333-FDA7088E7A12}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{8DD2929C-0F8D-45BD-9477-A2A7E8329005}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -36,7 +36,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABXcshQ5dcXIpJRsRZ1EYHZbyT9YKA3YfJBGtjnLzj9zwAAAAAOgAAAAAIAACAAAAC186tBEs+7lXkQeDrZulkXUpXXP54mmX8EGbV5OWCjKSAAAACIb7IlZT7QDBsC4RhiqA1tp9SArib5iCPY0cWFvXiusUAAAAAuhx8na2nA15lDQI46IQkU7RHiFCKBHqI2o+pCHDnkmHy1dlsIekdG4s4HZBEXB2/4HS9I6nf0oMWfAI5lk8SL</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACDuPZYZv6HtHGnoHYtK/Q1Vkz/w2gXlzkw6Lrs2RMdmAAAAAAOgAAAAAIAACAAAABIXuD5Uo/DR3Z7R9WZIBns17DiDkE4LP5Z01Jik9BG2SAAAACBxhrux9qFIoY5O9v+K3hHHBtp/IX6fmRZNoaIezy0FEAAAABBq/B1vlYdyB88tZj/OkC7+uFZ4Z1yokyn1hfmyltXwzGW4Jh+RM0C3ln2hVe88IOoPSzl9a2toEsPl0eTJkuD</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -45,9 +45,11 @@
       DTS:CreationName="EXCEL"
       DTS:DTSID="{5871EC9D-947B-4F59-A0A9-AE63F3B63D5A}"
       DTS:ObjectName="SourceConnectionExcel">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::ExcelFilePath]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=F:\xlsx\new\Footer.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ABCDEFGHIJKLMNOPQRSTUVWXYZASDSFSDFLNSDKFNDSFKNSJDKFSDBFSKDJB;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -68,7 +70,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CompanyID">
       <DTS:VariableValue
-        DTS:DataType="8">10</DTS:VariableValue>
+        DTS:DataType="8">10000000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -77,7 +79,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CycleID">
       <DTS:VariableValue
-        DTS:DataType="8">10</DTS:VariableValue>
+        DTS:DataType="8">1000000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -87,6 +89,15 @@
       DTS:ObjectName="Datasource">
       <DTS:VariableValue
         DTS:DataType="8">192.168.0.143</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E8114EA9-CA3F-4E83-8559-82998B3383CE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExcelFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">ABCDEFGHIJKLMNOPQRSTUVWXYZASDSFSDFLNSDKFNDSFKNSJDKFSDBFSKDJB</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""

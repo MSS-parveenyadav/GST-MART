@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ExcelSupply"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{1A14AFC6-497B-4940-B7A8-C4BCF80D9074}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{7B64EAEF-C230-4C3B-8D68-CED5F1AF0F7B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
       <DTS:PropertyExpression
         DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
       <DTS:PropertyExpression
-        DTS:Name="ServerName">@[User::DataSource]</DTS:PropertyExpression>
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
       <DTS:PropertyExpression
         DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
@@ -36,7 +36,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADuVzI5P80180+z5N+MIq0lz6DQhd10aRRW7atlu8VKRgAAAAAOgAAAAAIAACAAAAA6eVu55HOWojK+xEt35A8s4cz3DZ1tblf4V7oJoesVMiAAAAAE2s8mf1M1HvVctrhErnsRecBUQMognotG852NG3taKkAAAAB57v7NoJW+goe8QTaJkHlfuXiftN8EdU0YX6Wb0yWBSaXUGTtoSThKHjhs68RY1ZGgc2OmzF9y4W7wA5m4AKkq</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACBmu3sYveSSZqCjYQ0vJwJKuU/b0lysnRIsVLU+0kDtwAAAAAOgAAAAAIAACAAAABY7gLiHz7RF6Glwczmo4VcvcdWOlLSYVrBJSWqW6t5tSAAAACTG7Olx4I05+s3vrCwQxVffsssewqwGtAZimte3LhWkEAAAADril/Kzu2pcuUPhdFJkKoNK/INO7j740lwcbSaTKQdogL7f0YB56Hxdr3q4smmyjq5JONE82cjJKTWcVmlBCUf</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -45,9 +45,11 @@
       DTS:CreationName="EXCEL"
       DTS:DTSID="{B62988F0-6A31-4D60-86E4-E0A97B897408}"
       DTS:ObjectName="SourceConnectionExcel">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::ExcelFilePath]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=F:\xlsx\new\Supply.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ABCDEFGHIJKLMNOPQRSTUVWXYZASDSFSDFLNSDKFNDSFKNSJDKFSDBFSKDJB;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -84,9 +86,18 @@
       DTS:DTSID="{5DF0EA83-2F93-4499-8014-95C7483236D6}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="DataSource">
+      DTS:ObjectName="Datasource">
       <DTS:VariableValue
         DTS:DataType="8">192.168.0.143</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F4974F19-9F51-440E-B6AC-BB3487419C3A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExcelFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">ABCDEFGHIJKLMNOPQRSTUVWXYZASDSFSDFLNSDKFNDSFKNSJDKFSDBFSKDJB</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""

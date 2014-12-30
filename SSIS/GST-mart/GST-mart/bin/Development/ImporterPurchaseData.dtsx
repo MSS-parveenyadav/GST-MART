@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImporterPurchaseData"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{A66A8BF7-591F-4ED5-9A6F-54DF5491937A}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{6850A729-F247-4EDA-BB0C-8035F7F3DD6F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -36,7 +36,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAwmHnuGNL0fUylkf0cYzn/eNbwdENAcOHJJpKujyeRQwAAAAAOgAAAAAIAACAAAAAblO3Eh40RUiOTsqO6vvvPSzb8vBJR3udNanTp3TNM4CAAAAD9HFCrgoouiwEreu8E4etZBkWm/yjTlTB44pPmqtOEfEAAAADMP71uBVqAyZF0GfLqVhwax/O76WgQvVRyYod2L43ob21FBEsEJjg3ZVUEhpZ6w5WgNlI8JiN9snmwl2oIumQe</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAzMl/GrcOoOV7fXgvpbMBYoyGR2pujiF5y/rbN9ktgzwAAAAAOgAAAAAIAACAAAAD4pjpsRtjtItzmfmHqER0YWPIJVlnmIxvEN9vf9YdAtiAAAADKVo5EkGiClg/y0WorUOeBCzs4dqnSoXrq8DtI+qv2X0AAAAD99Sq0TZGEa+f9PLw8nFFMhFYNwD4aJUzT8n5vHVs6cDb4dq7/X3d+pAXe3+xRck+XbtKrEuvG8WMAtNrdjxlK</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -59,7 +59,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACe0Fc19bOmLBi5ne1pHHrSNQLyRy3X9ZBd2amxeYmAQQAAAAAOgAAAAAIAACAAAADPp1YTGKwMZfqbTEDI0Yklg0TN0GgyKdacWbaqaMfmdyAAAACTeLZebfAg/UmLQZ0TfRykPxlFiMb0S1QXOlF4+6clYkAAAABMl7AYxXjaHxi3uK17dqDx8l7UGp2eVkSo+rxApKyzdodclZaWJkSs7m5nEuDepParqkRxwa4nWH0QZVA+jmXn</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABdijjYzlIhvF3vejgwJzJtfBn2P9jYvmhBLk81f08T8QAAAAAOgAAAAAIAACAAAABeNz+G5LrujcFvCHjsPDOJSBvx9bndrsl0xaRwIGKZuiAAAADlsnC8nnwy9kf4k/VY3mAaQhvgiCl4nmQW5RWljdpc1kAAAACMxcdA/lKvfhanFXsdrny8clF6X0/QNZIb9skad/TBe/Zcqa4YKzkSeDWVJECxffaziM6YbsCAJ9eKUxHqQ+ya</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -81,7 +81,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CycleID">
       <DTS:VariableValue
-        DTS:DataType="20">6</DTS:VariableValue>
+        DTS:DataType="20">6000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -90,7 +90,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CycleIDDelete">
       <DTS:VariableValue
-        DTS:DataType="20">6</DTS:VariableValue>
+        DTS:DataType="20">60000</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
