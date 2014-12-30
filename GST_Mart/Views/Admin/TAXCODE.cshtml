@@ -83,7 +83,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="add-tax">Select Customs Code : </td>
+                                            <td class="add-tax">Select Custom Code : </td>
                                             <td>
                                                 @Html.DropDownListFor(m => m.CustomCode, ViewBag.customcodelist as List<SelectListItem>, new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
                                                 <img id="imgcustomcode" data-toggle="modal" data-target="#reqmod" onclick="showCodeModal();" style="width:46px;" src="~/Content/images/add.png" />
@@ -235,7 +235,7 @@
                 <div class="modal-content" >
                     <div class="modal-header">
                         <button id="ClosePopup" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <center> <h4 class="modal-title" id="myModalLabel">Add New Customs Code</h4></center>
+                        <center> <h4 class="modal-title" id="myModalLabel">Add New Custom Code</h4></center>
                         <asp:Label ID="Success_Msg" runat="server" Text=""></asp:Label>
 
                         <p id="P1" style="color: green"></p>
