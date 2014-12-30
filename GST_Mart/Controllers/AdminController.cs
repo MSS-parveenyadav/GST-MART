@@ -879,42 +879,42 @@ namespace GST_Mart.Controllers
             var Unit = new SchedularModel();
             Unit.CompanyUnit = "HOURS";
             CompanyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.CompanyUnit = "DAYS";
-            CompanyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.CompanyUnit = "WEEK";
-            CompanyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.CompanyUnit = "MONTH";
-            CompanyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.CompanyUnit = "DAYS";
+            //CompanyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.CompanyUnit = "WEEK";
+            //CompanyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.CompanyUnit = "MONTH";
+            //CompanyUnitList.Add(Unit);
 
             // Supply Unit List
             Unit = new SchedularModel();
             Unit.SupplyUnit = "HOURS";
             SupplyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.SupplyUnit = "DAYS";
-            SupplyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.SupplyUnit = "WEEK";
-            SupplyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.SupplyUnit = "MONTH";
-            SupplyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.SupplyUnit = "DAYS";
+            //SupplyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.SupplyUnit = "WEEK";
+            //SupplyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.SupplyUnit = "MONTH";
+            //SupplyUnitList.Add(Unit);
 
             // Footer Unit List
             Unit = new SchedularModel();
             Unit.FooterUnit = "HOURS";
             FooterUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.FooterUnit = "DAYS";
-            FooterUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.FooterUnit = "WEEK";
-            FooterUnitList.Add(Unit);
-            Unit.FooterUnit = "MONTH";
-            FooterUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.FooterUnit = "DAYS";
+            //FooterUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.FooterUnit = "WEEK";
+            //FooterUnitList.Add(Unit);
+            //Unit.FooterUnit = "MONTH";
+            //FooterUnitList.Add(Unit);
 
 
 
@@ -922,30 +922,30 @@ namespace GST_Mart.Controllers
             Unit = new SchedularModel();
             Unit.LedgerUnit = "HOURS";
             LedgerUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.LedgerUnit = "DAYS";
-            LedgerUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.LedgerUnit = "WEEK";
-            LedgerUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.LedgerUnit = "MONTH";
-            LedgerUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.LedgerUnit = "DAYS";
+            //LedgerUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.LedgerUnit = "WEEK";
+            //LedgerUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.LedgerUnit = "MONTH";
+            //LedgerUnitList.Add(Unit);
 
 
             // Purchase Unit List
             Unit = new SchedularModel();
             Unit.PurchaseUnit = "HOURS";
             PurchaseUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.PurchaseUnit = "DAYS";
-            PurchaseUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.PurchaseUnit = "WEEK";
-            PurchaseUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.PurchaseUnit = "MONTH";
-            PurchaseUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.PurchaseUnit = "DAYS";
+            //PurchaseUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.PurchaseUnit = "WEEK";
+            //PurchaseUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.PurchaseUnit = "MONTH";
+            //PurchaseUnitList.Add(Unit);
 
 
             ViewBag.CompanyUnitListFrequency = CompanyUnitList;

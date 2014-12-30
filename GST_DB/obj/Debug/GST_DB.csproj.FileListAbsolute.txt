@@ -61,3 +61,14 @@ F:\Projects\gst-mart\GST_DB\bin\Debug\TrackableEntities.EF.5.xml
 F:\Projects\gst-mart\GST_DB\obj\Debug\GST_DB.dll
 F:\Projects\gst-mart\GST_DB\obj\Debug\GST_DB.pdb
 F:\Projects\gst-mart\GST_DB\obj\Debug\GST_DB.csprojResolveAssemblyReference.cache
+D:\Code\Git\gst-mart\GST_DB\bin\Debug\GST_DB.dll.config
+D:\Code\Git\gst-mart\GST_DB\bin\Debug\GST_DB.dll
+D:\Code\Git\gst-mart\GST_DB\bin\Debug\GST_DB.pdb
+D:\Code\Git\gst-mart\GST_DB\bin\Debug\EntityFramework.dll
+D:\Code\Git\gst-mart\GST_DB\bin\Debug\TrackableEntities.EF.5.dll
+D:\Code\Git\gst-mart\GST_DB\bin\Debug\EntityFramework.xml
+D:\Code\Git\gst-mart\GST_DB\bin\Debug\TrackableEntities.EF.5.pdb
+D:\Code\Git\gst-mart\GST_DB\bin\Debug\TrackableEntities.EF.5.xml
+D:\Code\Git\gst-mart\GST_DB\obj\Debug\GST_DB.csprojResolveAssemblyReference.cache
+D:\Code\Git\gst-mart\GST_DB\obj\Debug\GST_DB.dll
+D:\Code\Git\gst-mart\GST_DB\obj\Debug\GST_DB.pdb
