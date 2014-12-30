@@ -1362,3 +1362,9 @@ color: white;
 .DDlPageing{
     width:55px;
 }
+.ErrorMessage{
+    color: red; text-align: center;font-size:larger;
+}
+.SuccessMessage{
+    color: green; text-align: center;font-size:larger;
+}

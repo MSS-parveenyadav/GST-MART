@@ -22,9 +22,15 @@
             cursor: pointer;
         }
     </style>
+    <script>
+        function HideMessage() {
+            $("#ErrorMessages").hide();
+            $("#SuccessMessages").hide();
+        }
+    </script>
 
 </head>
-<body>
+<body onclick="HideMessage();">
     <div id="wrapper" class="clearfix">
         <!--[header]-->
         <div id="header">
@@ -62,7 +68,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/User/ValidateImport"><i class="glyphicon glyphicon-home"></i>User Dashboard</a></li>
                         @*<li><a href="javascript:void(0)"><i class="fa fa-file-archive-o"></i>GAF File</a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-cog"></i>Settings</a></li>*@
+                            <li><a href="javascript:void(0)"><i class="fa fa-cog"></i>Settings</a></li>*@
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
@@ -74,7 +80,7 @@
                                         GST_DB.GSTMARTEntities gstmart = new GST_DB.GSTMARTEntities();
                                         List<SelectListItem> List = new List<SelectListItem>();
                                         var UserId = Session["UserId"];
-                                        var Data = (from p in gstmart.CompanyUsers where p.UID==UserId select new { p.CID }).ToList();
+                                        var Data = (from p in gstmart.CompanyUsers where p.UID == UserId select new { p.CID }).ToList();
                                         List.Add(new SelectListItem { Text = "Select Company", Value = "0" });
                                         foreach (var item in Data)
                                         {
@@ -86,8 +92,8 @@
                                 </li>
 
                                 @*<li>
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </li>*@
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </li>*@
                             </ol>
                         </div>
                         @*<a href="javascript:void(0)" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>*@
@@ -101,10 +107,10 @@
         <div class="data-feed">
             <ul class="nav nav-tabs">
                 @*<li><a href="#home" role="tab" data-toggle="tab">Tax Code</a></li>
-            <li><a href="#profile" role="tab" data-toggle="tab">Currency Exchange</a></li>
-            <li><a href="#profile" role="tab" data-toggle="tab">Rules Engine</a></li>
-            <li><a href="#profile" role="tab" data-toggle="tab">Data Import</a></li>
-            <li><a href="#profile" role="tab" data-toggle="tab">Security</a></li>*@
+                    <li><a href="#profile" role="tab" data-toggle="tab">Currency Exchange</a></li>
+                    <li><a href="#profile" role="tab" data-toggle="tab">Rules Engine</a></li>
+                    <li><a href="#profile" role="tab" data-toggle="tab">Data Import</a></li>
+                    <li><a href="#profile" role="tab" data-toggle="tab">Security</a></li>*@
                 @*<li class="active"><a href="/User/CreateCycle" role="tab" data-toggle="tab">Create Cycle</a></li>*@
             </ul>
         </div>

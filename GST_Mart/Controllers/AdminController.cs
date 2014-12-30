@@ -407,6 +407,7 @@ namespace GST_Mart.Controllers
                 var result = adminuser.DeleteUser(id);
                 if (result == true)
                 {
+                    TempData["ErrorMessage"] = "User Deleted Successfully.";
                     return RedirectToAction("CreateUser");
                 }
                 return RedirectToAction("CreateUser");
@@ -519,7 +520,7 @@ namespace GST_Mart.Controllers
                 if (Data.Id != 0)
                 {
                     int Returnvalue =adminuser.EditIpAddress(Data);
-                    TempData["Status"] = "Data Updated";
+                    TempData["SuccessMessage"] = "Ip Address Successfully updated.";
                 }
                 else
                 {
@@ -530,9 +531,9 @@ namespace GST_Mart.Controllers
                         return RedirectToAction("IpAddress");
                     }
                     Int32 returnintvalue = adminuser.SaveIpAddress(Data);
-                    TempData["Status"] = "Data Saved";
+                    TempData["SuccessMessage"] = "Ip Address Successfully inserted.";
                 }
-                return RedirectToAction("IpAddress");
+                return RedirectToAction("IpAddress", new {ID=0 });
             }
             else
             {
@@ -545,6 +546,7 @@ namespace GST_Mart.Controllers
             if (Session["AdminLoginStatus"] == "LoggedIn")
             {
                 Int32 returnintvalue = adminuser.DeleteIp(ID);
+                TempData["ErrorMessage"] = "Ip Address Successfully deleted.";
                 return RedirectToAction("IpAddress");
             }
             else
@@ -587,11 +589,11 @@ namespace GST_Mart.Controllers
                 Int32 returnintvalue = adminuser.UpdateAdminPath(Data);
                 if (returnintvalue == 1)
                 {
-                    TempData["Status"] = "Path Updated";
+                    TempData["SuccessMessage"] = "Path Successfully Updated.";
                 }
                 else
                 {
-                    TempData["Error"] = "Some Error Occured Try Again";
+                    TempData["ErrorMessage"] = "Some Error Occured Try Again";
                 }
                 return RedirectToAction("AdminPath");
             }
@@ -666,7 +668,7 @@ namespace GST_Mart.Controllers
             {
               
                 schedularObj.UpdateSchedular(model);
-                TempData["MessageCompany"] = "Company Schedular Updated";
+                TempData["MessageCompany"] = "Schedular Updated successfully.";
                 return RedirectToAction("SaveSchedualr", new { id=0});
             }
 
@@ -1046,7 +1048,7 @@ namespace GST_Mart.Controllers
                 var result = adminuser.DeleteLDAPUser(id);
                 if (result == true)
                 {
-                    TempData["Sucess"] = "User Deleted Successfully";
+                    TempData["Error"] = "User Deleted Successfully";
                     return RedirectToAction("CreateLDAPUser");
                 }
                 else
@@ -1187,14 +1189,29 @@ namespace GST_Mart.Controllers
                 if (model.Id != 0)
                 {
                     string returnvalue = adminuser.UpdateCurrencyExchange(model, CompanyId);
-                    TempData["Message"] = returnvalue;
+                    if (returnvalue == "Updated")
+                    {
+                        TempData["Message"] = "Currency Exchange successfully updated.";
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = returnvalue;
+                    }
+                    
                     return RedirectToAction("CurrencyExchange", new { Id = 0 });
 
                 }
                 else
                 {
                     string returnvalue = adminuser.InsertCurrencyExchange(model, CompanyId);
-                    TempData["Message"] = returnvalue;
+                    if (returnvalue == "Inserted")
+                    {
+                        TempData["Message"] = "Currency Exchange successfully inserted.";
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = returnvalue;
+                    }
                     return RedirectToAction("CurrencyExchange", new { Id = 0 });
                 }
             }
@@ -1266,7 +1283,7 @@ namespace GST_Mart.Controllers
             if (Session["AdminLoginStatus"] == "LoggedIn")
             {
                 string ReturnValue = adminuser.DeleteCurrencyExchange(Id);
-                TempData["Message"] = ReturnValue;
+                TempData["ErrorMessage"] = ReturnValue;
                 return RedirectToAction("CurrencyExchange", new { Id = 0 });
             }
             else
@@ -1319,13 +1336,27 @@ namespace GST_Mart.Controllers
             if (model.Id == 0)
             {
                 string ReturnValue = adminuser.CreateCurrencyGroup(model);
-                TempData["Message"] = ReturnValue;
+                if (ReturnValue == "Inserted")
+                {
+                    TempData["Message"] = "Currency Group successfully inserted.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = ReturnValue;
+                }
                 return RedirectToAction("CurrencyGroup", new { Id = 0 });
             }
             else
             {
                 string ReturnValue = adminuser.UpdateCurrencyGroup(model);
-                TempData["Message"] = ReturnValue;
+                if (ReturnValue == "Updated")
+                {
+                    TempData["Message"] = "Currency Group successfully inserted.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = ReturnValue;
+                }
                 return RedirectToAction("CurrencyGroup", new { Id = 0 });
             }
         }
@@ -1335,7 +1366,7 @@ namespace GST_Mart.Controllers
             if (Session["AdminLoginStatus"] == "LoggedIn")
             {
                 string ReturnValue = adminuser.DeleteCurrencyGroup(Id);
-                TempData["Message"] = ReturnValue;
+                TempData["ErrorMessage"] = ReturnValue;
                 return RedirectToAction("CurrencyGroup", new { Id = 0 });
             }
             else
@@ -1394,14 +1425,28 @@ namespace GST_Mart.Controllers
                 if (model.Id != 0)
                 {
                     string returnvalue = adminuser.UpdateManualCurrencyExchange(model, CompanyId);
-                    TempData["Message"] = returnvalue;
+                    if (returnvalue == "Updated")
+                    {
+                        TempData["Message"] = "Currency Exchange successfully updated.";
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = returnvalue;
+                    }
                     return RedirectToAction("ManualCurrencyExchange", new { Id = 0 });
 
                 }
                 else
                 {
                     string returnvalue = adminuser.InsertManualCurrencyExchange(model, CompanyId);
-                    TempData["Message"] = returnvalue;
+                    if (returnvalue == "Inserted")
+                    {
+                        TempData["Message"] = "Currency Exchange successfully updated.";
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = returnvalue;
+                    }
                     return RedirectToAction("ManualCurrencyExchange", new { Id = 0 });
                 }
             }
@@ -1417,7 +1462,7 @@ namespace GST_Mart.Controllers
             if (Session["AdminLoginStatus"] == "LoggedIn")
             {
                 string ReturnValue = adminuser.DeleteCurrencyExchange(Id);
-                TempData["Message"] = ReturnValue;
+                TempData["ErrorMessage"] = ReturnValue;
                 return RedirectToAction("ManualCurrencyExchange", new { Id = 0 });
             }
             else
@@ -1447,7 +1492,7 @@ namespace GST_Mart.Controllers
                 var res = adminuser.DeleteTaxModel(id);
                 if (res == true)
                 {
-                    TempData["Sucess"] = "Tax Code Delete Successfully.";
+                    TempData["Error"] = "Tax Code Delete Successfully.";
                     return RedirectToAction("TAXCODE");
                 }
                 else
@@ -1582,7 +1627,7 @@ namespace GST_Mart.Controllers
             if (Session["AdminLoginStatus"] == "LoggedIn")
             {
                 string ReturnValue = adminuser.DeleteAuditLog(Id);
-                TempData["Message"] = ReturnValue;
+                TempData["ErrorMessage"] = ReturnValue;
                 return RedirectToAction("AuditLog");
             }
             else
@@ -1874,7 +1919,7 @@ namespace GST_Mart.Controllers
             if (Session["AdminLoginStatus"] == "LoggedIn")
             {
                 var result = user.TempDeleteCycle(originalConnectionString, Session["CompanyDB"].ToString(), Id, "Audit Deleted");
-                TempData["Message"] = "Cycle Deleted";
+                TempData["ErrorMessage"] = "Cycle Deleted successfully.";
                 return RedirectToAction("AuditLog");
             }
             else

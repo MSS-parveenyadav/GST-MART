@@ -23,9 +23,8 @@
     @Html.Partial("~/Views/_Partial/_Setting.cshtml")
 }
 
-
-<div class="container-fluid" id="ErrorMessages" style="color: red;"></div><div id="SuccessMessages" class="container-fluid" style="color: green; ">@TempData["Message"]</div>
 <div class="container-fluid">
+    <div id="ErrorMessages" class="ErrorMessage">@TempData["ErrorMessage"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["Message"]</div>
     <div class="container-fluid">
         <div class="tab-content">
             <div class="tab-pane active tab-conentmain" id="home">

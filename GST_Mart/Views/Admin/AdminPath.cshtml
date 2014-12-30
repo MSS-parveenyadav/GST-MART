@@ -15,6 +15,7 @@
 
     @Html.ValidationSummary(true)
     <div class="container-fluid">
+        <div id="ErrorMessages" class="ErrorMessage">@TempData["ErrorMessage"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["SuccessMessage"]</div>
         <div class="tab-pane active" id="home">
             <div class="tab-conentmain">
                 <div class="tab-pane active" id="home">

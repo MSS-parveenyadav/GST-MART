@@ -5,13 +5,8 @@
 }
 @using (Html.BeginForm("CreateCycle", "User", FormMethod.Post, new { enctype = "multipart/form-data",id = "submitForm" }))
 {
-    <div style="color:Red">
-        @TempData["ErrorMessage"] 
-    </div>
-    <div style="color:green">
-        @TempData["SuccessMessage"] 
-    </div>
 <div class="container-fluid">
+    <div id="ErrorMessages" class="ErrorMessage">@TempData["ErrorMessage"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["SuccessMessage"] </div>
     <div class="serch">
         <div class="tab-content">
             <div class="tab-pane active" id="home">

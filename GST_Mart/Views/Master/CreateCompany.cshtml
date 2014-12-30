@@ -14,8 +14,8 @@
     <form class="serch" oncontextmenu="return false" onselectstart="    return false" ondragstart="    return false" onclick="HideMessages();">
         <div class="container-fluid">
             <div id="centre-coloum" >
-                <div id="ErrorMessages" style="color: red;text-align:center;font-size:x-large">@TempData["DeleteSucess"]</div>
-                <div id="SuccessMessages" style="color: green; text-align: center; font-size: x-large">@TempData["SuccessStatus"]</div>
+                <div id="ErrorMessages" style="color: red; text-align: center; font-size: larger">@TempData["DeleteSucess"]</div>
+                <div id="SuccessMessages" style="color: green; text-align: center; font-size: larger">@TempData["SuccessStatus"]</div>
             </div>
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
@@ -600,13 +600,13 @@
         //}
         
         if (Mobile == "") {
-            document.getElementById("validateMobile").innerHTML = "Mobile No. is required.";
+            document.getElementById("validateMobile").innerHTML = "Mobile Number is required.";
             $('#validateMobile').addClass('validation');
             $('#txtMobile').focus();
             count = parseInt(count) + 1;
         }
         if (Mobile.length <=9) {
-            document.getElementById("validateMobile").innerHTML = "Minimum 10 Number is required.  ";
+            document.getElementById("validateMobile").innerHTML = "Minimum 10 Numbers required.  ";
             $('#validateMobile').addClass('validation');
             $('#txtMobile').focus();
             count = parseInt(count) + 1;

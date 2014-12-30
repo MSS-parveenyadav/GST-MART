@@ -825,7 +825,7 @@ namespace GST_BLL.AdminUser
              
                 gstmart.CurrencyExchanges.Add(currencyExchange);
                 gstmart.SaveChanges();
-                return "Currency Exchange Inserted";
+                return "Inserted";
             }
             catch(Exception Ex)
             {
@@ -990,7 +990,7 @@ namespace GST_BLL.AdminUser
                 CurrencyExchange.CreatedDate = DateTime.Now.ToString();
                 gstmart.Entry(CurrencyExchange).State = System.Data.EntityState.Modified;
                 gstmart.SaveChanges();
-                return "Currency Exchange Updated";
+                return "Updated";
             }
             catch (Exception Ex)
             {
@@ -1004,7 +1004,7 @@ namespace GST_BLL.AdminUser
             var currencyexchange = (from p in gstmart.CurrencyExchanges where p.Id == id select p).FirstOrDefault();
             gstmart.Entry(currencyexchange).State = System.Data.EntityState.Deleted;
             gstmart.SaveChanges();
-            return "Deleted";
+            return "Currency Exchange deleted successfully.";
         }
 
         public List<CurrencyExchange> GetCurrencyExchangeList()
@@ -1069,7 +1069,7 @@ namespace GST_BLL.AdminUser
                 currencygroup.TaxCode = model.TaxCode;
                 gstmart.CurrencyGroups.Add(currencygroup);
                 gstmart.SaveChanges();
-                return "Currency Group Inserted";
+                return "Inserted";
             }
             catch(Exception Ex)
             {
@@ -1092,7 +1092,7 @@ namespace GST_BLL.AdminUser
                 currencygroup.TaxCode = model.TaxCode;
                 gstmart.Entry(currencygroup).State = System.Data.EntityState.Modified;
                 gstmart.SaveChanges();
-                return "Currency Group Updated";
+                return "Updated";
             }
             catch (Exception Ex)
             {
@@ -1118,7 +1118,7 @@ namespace GST_BLL.AdminUser
             var currencygroup = (from p in gstmart.CurrencyGroups where p.Id == id select p).FirstOrDefault();
             gstmart.Entry(currencygroup).State = System.Data.EntityState.Deleted;
             gstmart.SaveChanges();
-            return "Currency Group Deleted";
+            return "Currency Group Deleted successfully.";
         }
 
         public List<CurrencyGroupModel> GetCurrencyGroupList()
@@ -1320,7 +1320,7 @@ namespace GST_BLL.AdminUser
                 CurrencyExchange.Discription = model.Description;
                 gstmart.Entry(CurrencyExchange).State = System.Data.EntityState.Modified;
                 gstmart.SaveChanges();
-                return "Currency Exchange Updated";
+                return "Updated";
             }
             catch (Exception Ex)
             {
@@ -1342,7 +1342,7 @@ namespace GST_BLL.AdminUser
                 currencyExchange.Discription = model.Description;
                 gstmart.CurrencyExchanges.Add(currencyExchange);
                 gstmart.SaveChanges();
-                return "Currency Exchange Inserted";
+                return "Inserted";
             }
             catch (Exception Ex)
             {
@@ -1467,7 +1467,7 @@ namespace GST_BLL.AdminUser
             var AuditLog = (from p in gstmart.AuditLogs where p.Id == id select p).FirstOrDefault();
             gstmart.Entry(AuditLog).State = System.Data.EntityState.Deleted;
             gstmart.SaveChanges();
-            return "Deleted";
+            return "AuditLog Deleted successfully.";
         }
 
         public AuditLogModel FindAuditLogById(int id)

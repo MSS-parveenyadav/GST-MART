@@ -83,8 +83,8 @@
         </div>
 
     </div>
-    <div class="container-fluid" id="ErrorMessages" style="color: red;"></div><div id="SuccessMessages" class="container-fluid" style="color: green; ">@TempData["Message"]</div>
     <div class="container-fluid" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+        <div id="ErrorMessages" class="ErrorMessage">@TempData["ErrorMessage"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["Message"]</div>
         <div class="tab-conentmain">
             <div class="tab-pane active" id="home">
                 <div class="data-table">
@@ -364,7 +364,8 @@
         //For only Numeric
     var specialKeys = new Array();
     specialKeys.push(8);
-    specialKeys.push(9);
+    specialKeys.push(46);
+    specialKeys.push(37);
     function IsNumeric(e) {
         var keyCode = e.which ? e.which : e.keyCode
         var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);

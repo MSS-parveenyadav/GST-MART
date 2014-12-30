@@ -54,6 +54,7 @@
 
     <div class="container-fluid" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
         <div class="container-fluid">
+            <div id="ErrorMessages" class="ErrorMessage">@TempData["Error"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["Sucess"]</div>
             <div class="tab-content">
                 <div class="tab-pane active tab-conentmain" id="home">
                     <div class="data-table">
@@ -156,8 +157,6 @@
                         </div>
 
                     </div>
-                    <div id="sucess" style="color:green;font:14px arial" align="center"> @TempData["Sucess"]</div>
-                    <div id="error" style="color:red;font:14px arial" align="center"> @TempData["Error"]</div>
                 </div>
             </div>
 
