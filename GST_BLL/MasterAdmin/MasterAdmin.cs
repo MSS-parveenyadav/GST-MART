@@ -66,7 +66,8 @@ namespace GST_BLL.MasterAdmin
                 company.Permission = "Admin";
                 company.Description = Description;
                 company.Remarks = Remarks;
-                Gstmart.Companies.Add(company);         
+                company.CreatedDate = DateTime.Now.ToString();
+                Gstmart.Companies.Add(company);
                 Gstmart.SaveChanges();
 
                 var Id = (from p in Gstmart.Companies where p.CompanyID == CompaneyId && p.CompanyName == CompneyName select p.Id).FirstOrDefault();
@@ -354,6 +355,9 @@ namespace GST_BLL.MasterAdmin
                 model.Company.Permission = item.c.Permission;
                 model.Company.Username = adminuser.Name;
                 model.Company.CompanyId = item.c.CompanyID.ToString();
+                string createddate = item.c.CreatedDate;
+                string[] DateTime = createddate.Split(' ');
+                model.Company.CreatedDate = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
                 model.Company.id = item.c.Id;
 
                 model.Company.systemModel = new List<SystemModel>();
@@ -374,8 +378,6 @@ namespace GST_BLL.MasterAdmin
                 model.Company.userModel = new UserModel();
 
                 model.Company.userModel.AdminID = adminuser.AdminID;
-                model.Company.userModel.MobileNumber = adminuser.Mobilenumber;
-                model.Company.userModel.Createddate = adminuser.Createdate.ToString();
                 model.Company.userModel.id = adminuser.Id;
 
 

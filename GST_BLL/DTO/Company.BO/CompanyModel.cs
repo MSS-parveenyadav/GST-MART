@@ -56,6 +56,12 @@ namespace GST_BLL.DTO
             set;
 
         }
+        public string CreatedDate
+        {
+            get;
+            set;
+
+        }
 
         public string companylist { get; set; }
 

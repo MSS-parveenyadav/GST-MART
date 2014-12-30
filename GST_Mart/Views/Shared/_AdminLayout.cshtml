@@ -8,16 +8,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="~/scripts/jquery.validate.min.js"></script>
-    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
-
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-    <!-- Bootstrap -->
+     <!-- Bootstrap -->
     <link href="~/Content/css/style.css" rel="stylesheet">
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/css/font-awesome.css" rel="stylesheet">
@@ -26,8 +20,54 @@
         .validation {
             color: red !important;
         }
-    </style>
+        #searchtable tr td:last-child {
+            width: inherit;
+        }
+            #searchtable tr td:last-child  ul.action-button{width:100%;}
+                #searchtable tr td:last-child ul.action-button li a {
+                    background-color: green !important;
+                    border: medium none !important;
+                    border-radius: 3px;
+                    color: white;
+                    display: block;
+                    font-family: "OpenSansBold";
+                    font-size: 11.5px;
+                    margin-right: 10px;
+                    padding: 5px 6px;
+                    text-align: center;
+                    width: 95px;
+                }
 
+        .navbar-form.navbar-left.pull-right {
+            margin: 0;
+        }
+
+        .navbar-form .form-group {
+            background: none repeat scroll 0 0 #fff;
+            border-radius: 0;
+            display: inline-block;
+            height: 55px;
+            margin-bottom: 0;
+            margin-top: 0;
+            vertical-align: middle;
+        }
+        
+        /*.active {
+            background: url("/content"/images/hover.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+            color: #f8faff;
+        }*/
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
 </head>
 <body>
     <div id="wrapper" class="clearfix">
@@ -63,52 +103,61 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <div class="collapse navbar-collapse bs-navbar-collapse pull-left">
+
+
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/Admin/CreateUser"><i class="glyphicon glyphicon-home"></i>Dashboard</a></li>
+                        <li><a href="/Admin/CreateUser"><i class="glyphicon glyphicon-home"></i>Dashboard</a></li>
                         <li><a href="~/Reports/ReportViewers/13-TVO_SGGR.aspx"><i class="fa fa-line-chart"></i>Reports</a></li>
+                        <li><a href="/Admin/CurrencyExchange"><i class="fa fa-dollar"></i>Currency</a></li>
+                        <li><a href="/Admin/TAXCODE"><i class="fa fa-tags"></i>Tax Code</a></li>
                         <li><a href="/Admin/IpAddress"><i class="fa fa-cog"></i>Settings</a></li>
-                        @*<li><a href="/Admin/CurrencyExchange"><i class="fa fa-cog"></i>Currency Exchange</a></li>*@
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-
-                            <ol>
-                                <p id="validateCompaney" style="color: red"></p>
-                                <li>
-                                    @{
-                                        GST_DB.GSTMARTEntities gstmart = new GST_DB.GSTMARTEntities();
-                                        List<SelectListItem> List = new List<SelectListItem>();
-                                        var Data = (from p in gstmart.Companies select new { p.CompanyID }).ToList();
-                                        List.Add(new SelectListItem { Text = "Select Company", Value = "0" });
-                                        foreach (var item in Data)
-                                        {
-                                            List.Add(new SelectListItem { Text = item.CompanyID, Value = item.CompanyID });
-                                        }
-
-                                        @Html.DropDownList("CompneyList", List as List<SelectListItem>);
-                                    }
-                                </li>
-
-                                @*<li>
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </li>*@
-                            </ol>
-                        </div>
-                        @*<a href="#" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>*@
-                    </form>
                 </div>
-            </nav>
+
+                <form class="navbar-form navbar-left  pull-right" role="search">
+                    <div class="form-group">
+
+                        <ol>
+                            @*<p id="validateCompaney" style="color: red"></p>*@
+                            <li>
+
+                                @RenderSection("CompanyList", false)
+                                @*@{
+                            GST_DB.GSTMARTEntities gstmart = new GST_DB.GSTMARTEntities();
+                            List<SelectListItem> List = new List<SelectListItem>();
+                            var Data = (from p in gstmart.Companies select new { p.CompanyID }).ToList();
+                            List.Add(new SelectListItem { Text = "Select Company", Value = "0" });
+                            foreach (var item in Data)
+                            {
+                                List.Add(new SelectListItem { Text = item.CompanyID, Value = item.CompanyID });
+                            }
+
+                            @Html.DropDownList("CompneyList", List as List<SelectListItem>);
+                        }*@
+                            </li>
+
+                            @*<li>
+                        <input type="text" class="form-control" placeholder="Search">
+                    </li>*@
+                        </ol>
+                    </div>
+                    @*<a href="#" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>*@
+                </form>
+                </div>
+            
             <!--[/nav-bar]-->
         </div>
         <!--[/header]-->
         <!--[]-->
         <div class="data-feed">
-            <ul class="nav nav-tabs">
+            @RenderSection("Submenu",false)
+
+            @*<ul class="nav nav-tabs">
+
                 <li>@Html.ActionLink("Ip Address", "IpAddress", "Admin")</li>
-                <li>@Html.ActionLink("Admin Path", "AdminPath", "Admin")</li>
-                @*<li><a href="#profile" role="tab" data-toggle="tab"> Data Import</a></li>
-                <li><a href="#profile" role="tab" data-toggle="tab"> Security</a></li>*@
+                <li>@Html.ActionLink("File Location", "AdminPath", "Admin")</li>
                 <li><a href="/Admin/CreateUser">Create User</a></li>
                 <li><a href="/Admin/CreateLDAPUser">Create LDAP User</a></li>
                 <li><a href="/Admin/TAXCODE">TAX CODE</a></li>
@@ -117,18 +166,19 @@
                 <li><a href="/Admin/AuditLog">Audit Log</a></li>
                 <li><a href="/Admin/Configuration">Configuration</a></li>
                
-            </ul>
+            </ul>*@
         </div>
-        @RenderSection("featured", required: false)
+
+      
         @RenderBody()
 
         <div id="footer">
             <p>copyright 2013.All Right reserved.</p>
         </div>
-    </div>
+  
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
+  
     <script>
         $('#myTab a').click(function (e) {
             e.preventDefault()
@@ -147,6 +197,27 @@
                 }
             });
         }
+
+     
+
+        //To add Active class in Anchor tag
+        var url = window.location;
+        // Will only work if string in href matches with location
+        $('ul.nav a[href="' + url + '"]').parent().addClass('active');
+
+        // Will also work for relative and absolute hrefs
+        $('ul.nav a').filter(function () {
+            return this.href == url;
+        }).parent().addClass('active');
+        
+        
+        
+   
+
     </script>
+
+   
+
+
 </body>
 </html>

@@ -5,6 +5,16 @@
     ViewBag.Title = "CurrencyExchange";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+@section Submenu
+{
+
+    @Html.Partial("~/Views/_Partial/_Currency.cshtml")
+}
+
+
+
+
 @using (Html.BeginForm("CurrencyExchange", "Admin", FormMethod.Post, new { id = "submitForm" }))
 { 
 
@@ -14,7 +24,7 @@
         <div class="col-lg-12 top-heading2">
             <ul>
                 <li><a href="/Admin/CurrencyExchange" class="select">Auto Feed</a></li>
-                <li><a href="/Admin/ManualCurrencyExchange" >Mannual</a></li>
+                <li><a href="/Admin/ManualCurrencyExchange" >Manual</a></li>
                 <li><a href="/Admin/CurrencyGroup">Currency Group</a></li>
             </ul>
         </div>
@@ -41,7 +51,7 @@
                                             <td class="add-tax"> Feed Url :  </td>
                                             <td>
                                                 @Html.HiddenFor(m => m.Id)
-                                                @Html.TextBoxFor(m => m.FeedUrl, new { @onclick = "ValidationRefresh(this.id)" })
+                                                @Html.TextBoxFor(m => m.FeedUrl, new { @onclick = "ValidationRefresh(this.id)", placeholder = "http://www.bnm.gov.my/index.php?tpl=fxrates.tsl" })
                                                 <p id="ValidateFeedUrl" style="color: white"></p>
                                             </td>
                                         </tr>
@@ -121,7 +131,7 @@
 <div class="pagination-footer">
     <div class="container-fluid">
         <div class="col-md-4 item-par">
-            <form action="" id="PageingForm" method="get">
+            <form action="" id="PageingForm" class="serch" method="get">
                 <table width="100%" cellspacing="0" cellpadding="0">
                     <tr>
                         <td>

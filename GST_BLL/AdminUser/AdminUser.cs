@@ -167,7 +167,9 @@ namespace GST_BLL.AdminUser
                     {
                         var model = new UserPermissionModel();
                         model.Id = item.Id;
-                        model.Date = item.Createdate;
+                        string createddate = item.Createdate;
+                        string[] DateTime = createddate.Split(' ');
+                        model.Date  = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
                         model.Status = item.Status;
                         model.LastLoginDate = item.LastLoginDate;
                         model.Name = item.Name;
@@ -536,10 +538,21 @@ namespace GST_BLL.AdminUser
             }
         }
 
-        public List<IpAddress> GetIpAddressList()
+        public List<IpAddressModel> GetIpAddressList()
         {
             var query=(from p in gstmart.IpAddresses select p).OrderByDescending(ip=>ip.Id).ToList();
-            return query;
+            List<IpAddressModel> List = new List<IpAddressModel>();
+            foreach(var item in query)
+            {
+                var Ip = new IpAddressModel();
+                Ip.Id = item.Id;
+                Ip.IP = item.IP;
+                string createddate = item.CreatedDate.ToString();
+                string[] DateTime = createddate.Split(' ');
+                Ip.CreatedDate = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
+                List.Add(Ip);
+            }
+            return List;
         }
 
         public int DeleteIp( int ID)
@@ -1108,10 +1121,23 @@ namespace GST_BLL.AdminUser
             return "Currency Group Deleted";
         }
 
-        public List<CurrencyGroup> GetCurrencyGroupList()
+        public List<CurrencyGroupModel> GetCurrencyGroupList()
         {
             var currencyList = (from p in gstmart.CurrencyGroups select p).OrderByDescending(m=>m.Id).ToList();
-                return currencyList;
+            List<CurrencyGroupModel> List = new List<CurrencyGroupModel>();
+            foreach(var item in currencyList)
+            {
+                var Currencymodel = new CurrencyGroupModel();
+                Currencymodel.Id = item.Id;
+                Currencymodel.CurrencyGroupName = item.CurrencyGroupName;
+                Currencymodel.CurrencyType = item.CurrencyType;
+                Currencymodel.TaxCode = item.TaxCode;
+                string createddate = item.CreatedDate;
+                string[] DateTime = createddate.Split(' ');
+                Currencymodel.CreatedDate = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
+                List.Add(Currencymodel);
+            }
+            return List;
         }
 
  
@@ -1344,7 +1370,9 @@ namespace GST_BLL.AdminUser
                 {
                     var model = new UserPermissionModel();
                     model.Id = item.Id;
-                    model.Date = item.Createdate;
+                    string createddate = item.Createdate;
+                    string[] DateTime = createddate.Split(' ');
+                    model.Date = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
                     model.Status = item.Status;
                     model.LastLoginDate = item.LastLoginDate;
                     model.Name = item.Name;
@@ -1371,7 +1399,9 @@ namespace GST_BLL.AdminUser
                 {
                     var model = new UserPermissionModel();
                     model.Id = item.Id;
-                    model.Date = item.Createdate;
+                    string createddate = item.Createdate;
+                    string[] DateTime = createddate.Split(' ');
+                    model.Date = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
                     model.Status = item.Status;
                     model.LastLoginDate = item.LastLoginDate;
                     model.Name = item.Name;
@@ -1410,10 +1440,26 @@ namespace GST_BLL.AdminUser
             }
         }
 
-        public List<AuditLog> GetAuditLogList()
+        public List<AuditLogModel> GetAuditLogList()
         {
+
             var Audits = (from p in gstmart.AuditLogs select p).OrderByDescending(m=>m.Id).ToList();
-            return Audits;
+            List<AuditLogModel> List = new List<AuditLogModel>();
+            foreach(var item in Audits)
+            {
+                var auditlog = new AuditLogModel();
+                auditlog.Id = item.Id;
+                string createddate = item.CreatedDate.ToString();
+                string[] DateTime = createddate.Split(' ');
+                auditlog.CreatedDate = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
+                auditlog.IpAddress = item.IpAddress;
+                auditlog.Message = item.Message;
+                auditlog.Name = item.Name;
+                auditlog.Status = item.Status;
+                auditlog.UserId = item.UserId;
+                List.Add(auditlog);
+            }
+            return List;
         }
 
         public string DeleteAuditLog(int id)
@@ -1504,7 +1550,9 @@ namespace GST_BLL.AdminUser
             foreach (var item in Audits)
             {
                 var auditmodel = new AuditLogModel();
-                auditmodel.CreatedDate = item.CreatedDate.ToString();
+                string createddate = item.CreatedDate.ToString();
+                string[] DateTime = createddate.Split(' ');
+                auditmodel.CreatedDate = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
                 auditmodel.Id = item.Id;
                 auditmodel.IpAddress = item.IpAddress;
                 auditmodel.Message = item.Message;
@@ -1558,7 +1606,9 @@ namespace GST_BLL.AdminUser
             foreach (var item in Audits)
             {
                 var auditmodel = new AuditLogModel();
-                auditmodel.CreatedDate = item.CreatedDate.ToString();
+                string createddate = item.CreatedDate.ToString();
+                string[] DateTime = createddate.Split(' ');
+                auditmodel.CreatedDate = DateTime[0] + ", " + DateTime[1] + " " + DateTime[2];
                 auditmodel.Id = item.Id;
                 auditmodel.IpAddress = item.IpAddress;
                 auditmodel.Message = item.Message;

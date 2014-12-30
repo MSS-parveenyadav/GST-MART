@@ -13,9 +13,9 @@
 <div id="container">
     <form class="serch" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
         <div class="container-fluid">
-            <div id="centre-coloum">
-                <div id="ErrorMessages" style="color: red;">@TempData["DeleteSucess"]</div>
-                <div id="SuccessMessages" style="color: green;">@TempData["SuccessStatus"]</div>
+            <div id="centre-coloum" >
+                <div id="ErrorMessages" style="color: red;text-align:center;font-size:x-large">@TempData["DeleteSucess"]</div>
+                <div id="SuccessMessages" style="color: green; text-align: center; font-size: x-large">@TempData["SuccessStatus"]</div>
             </div>
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
@@ -26,25 +26,25 @@
                         <div class="col-md-6">
                             <label>Company Id :</label>
 
-                            @Html.TextBox("txtCompaneyId", "", new { placeholder = "Company ID :", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            @Html.TextBox("txtCompaneyId", "", new { placeholder = "Company Id", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
                             <p id="validateCompaneyId" style="color: white">.</p>
                         </div>
                         <div class="col-md-6">
                             <label>Company Name :</label>
                             @*@Html.DropDownList("userlist","",new SelectList(ViewBag.userlist, "Id", "Name"),"",new {  placeholder = "Company Name :" })*@
-                            @Html.TextBox("txtCompneyName", "", new { placeholder = "Company Name :", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            @Html.TextBox("txtCompneyName", "", new { placeholder = "Company Name", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
                             <p id="validateCompneyName" style="color: white">.</p>
                         </div>
                         <div class="col-md-6">
                             <label>Description :</label>
 
-                            @Html.TextBox("txtDescription", "", new { placeholder = "Description :", @onkeypress = "return IsSpecialcharacter_number(event)", @onclick = "ValidationRefresh(this.id)" })
+                            @Html.TextBox("txtDescription", "", new { placeholder = "Description", @onkeypress = "return IsSpecialcharacter_number(event)", @onclick = "ValidationRefresh(this.id)" })
                             <p id="validateDescription" style="color: white">.</p>
                         </div>
                         <div class="col-md-6">
                             <label>Remarks :</label>
                             @*@Html.DropDownList("userlist","",new SelectList(ViewBag.userlist, "Id", "Name"),"",new {  placeholder = "Company Name :" })*@
-                            @Html.TextBox("txtRemarks", "", new { placeholder = "Remarks :", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            @Html.TextBox("txtRemarks", "", new { placeholder = "Remarks", @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
                             <p id="validateRemarks" style="color: white">.</p>
                         </div>
                     </div>
@@ -54,17 +54,8 @@
                 <div class="tab-pane active" id="home">
                     <div class=" col-lg-12 sec-login">
                         <h1>Add Industry Code <span class="glyphicon glyphicon-question-sign"></span></h1>
-                    </div>
-                    <div id="centre-coloum">
-                        <div class="btn3">
-                            <input id="btnCreateIndustry" type="button" onclick="CreateIndustryrow(value1 = null);" value="More + " />
-                        </div>
-                        <div id="centre-coloum">
-                            <div class="col-md-4">
-                                <p id="validateIndustrycode" style="color: white"></p>
-                            </div>
-                        </div>
-                    </div>
+                    </div><br />
+                    
                     <table id="tblIndustry" style="width: 100%">
                         <tr>
                             <td>
@@ -72,50 +63,66 @@
                                     <div class="col-md-4">
 
                                         <label>Industry Code :</label>
-                                        <input type="text" class="idscode" id="txtIndustrycode" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
+                                        <input type="text" class="idscode" id="txtIndustrycode" placeholder="Industry Code" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
                                     </div>
                                 </div>
                             </td>
                         </tr>
                     </table>
+                    <div id="centre-coloum">
+                        <div class="col-md-4">
+                            <p id="validateIndustrycode" style="color: white"></p>
+                        </div>
+                    </div><br /><br />
+                    
+
+                    <div id="centre-coloum">
+                        <div class="btn3">
+                            <input id="btnCreateIndustry" type="button" onclick="CreateIndustryrow(value1 = null);" value="More + " />
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
                     <div class=" col-lg-12 sec-login">
                         <h1>Add System <span class="glyphicon glyphicon-question-sign"></span></h1>
-                    </div>
-                    <div id="centre-coloum">
-                        <div class="btn3">
-                            <input id="btnCreateSystem" type="button" onclick="CreateRow(value1=null,value2=null);" value="More + " />
-                        </div>
-                        <div id="centre-coloum">
-                            <div class="col-md-4">
-                                <p id="validateSystemId" style="color: white"></p>
-                            </div>
-                            <div class="col-md-4">
-                                <p id="validateSystemName" style="color: white"></p>
-                            </div>
-                        </div>
-                    </div>
+                    </div><br />
+                    
                     <table id="tblSystem" style="width: 100%">
                         <tr>
                             <td>
                                 <div id="centre-coloum">
                                     <div class="col-md-4">
-                                        <label>System ID :</label>
-                                        <input type="text" class="vik" id="txtSystemId" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
+                                        <label>System Id :</label>
+                                        <input type="text" class="vik" id="txtSystemId" placeholder="System Id" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
                                     </div>
                                     <div class="col-md-4">
                                         <label>System Name :</label>
-                                        <input type="text" id="txtSystemName" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
+                                        <input type="text" id="txtSystemName" placeholder="System Name" onkeypress="return IsSpecialcharacter(event)" onclick="AvoidPagedataShift(this.id)" />
                                     </div>
                                 </div>
                             </td>
                         </tr>
                     </table>
+                    <div id="centre-coloum">
+                        <div class="col-md-4">
+                            <p id="validateSystemId" style="color: white"></p>
+                        </div>
+                        <div class="col-md-4">
+                            <p id="validateSystemName" style="color: white"></p>
+                        </div>
+
+                    </div><br /><br />
+                    <div id="centre-coloum">
+                        <div class="btn3">
+                            <input id="btnCreateSystem" type="button" onclick="CreateRow(value1=null,value2=null);" value="More + " />
+                        </div>
+                    </div>
                 </div>
-                <div id="centre-coloum" class="btn3">
+                <br />
+                <br />
+                <div class="button">
                     <input type="button" id="btnSave" value="Submit Company" onclick="CreateCompany();" />
                 </div>
             </div>
@@ -127,13 +134,13 @@
                     </div>
                     <div id="centre-coloum">
                         <div class="col-md-6">
-                            <label>Admin ID :</label>
-                            @Html.TextBox("txtAdminID", "", new { @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            <label>Admin Id :</label>
+                            @Html.TextBox("txtAdminID", "", new { @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)", placeholder = "Admin Id" })
                             <p id="validateAdminID" style="color: white">.</p>
                         </div>
                         <div class="col-md-6">
                             <label>Admin Name :</label>
-                            @Html.TextBox("txtAdminName", "", new { @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)" })
+                            @Html.TextBox("txtAdminName", "", new { @onkeypress = "return IsSpecialcharacter(event)", @onclick = "ValidationRefresh(this.id)", placeholder = "Admin Name" })
                             <p id="validateAdminName" style="color: white">.</p>
 
                         </div>
@@ -142,12 +149,12 @@
                     <div id="centre-coloum">
                         <div class="col-md-6">
                             <label>Password :</label>
-                            @Html.Password("txtPassword", "", new { @onclick = "ValidationRefresh(this.id)" })
+                            @Html.Password("txtPassword", "", new { @onclick = "ValidationRefresh(this.id)", placeholder = "Password" })
                             <p id="validatePassword" style="color: white">.</p>
                         </div>
                         <div class="col-md-6">
                             <label>Re-enter Password :</label>
-                            @Html.Password("txtConfPassword", "", new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "psateprivent(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                            @Html.Password("txtConfPassword", "", new { @onclick = "ValidationRefresh(this.id)", @onkeypress = "psateprivent(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}", placeholder = "Re-enter Password" })
                             <p id="validateConfPassword" style="color: white">.</p>
                         </div>
                     </div>
@@ -155,12 +162,12 @@
                     <div id="centre-coloum">
                         <div class="col-md-6">
                             <label>Email Address :</label>
-                            @Html.TextBox("txtEmail", "", new { @onclick = "ValidationRefresh(this.id)" })
+                            @Html.TextBox("txtEmail", "", new { @onclick = "ValidationRefresh(this.id)", placeholder = "Email Address" })
                             <p id="validateEmail" style="color: white">.</p>
                         </div>
                         <div class="col-md-6">
-                            <label>Re enter Email Address :</label>
-                            @Html.TextBox("txtConfEmail", "", new { @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                            <label>Re-enter Email Address :</label>
+                            @Html.TextBox("txtConfEmail", "", new { @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}", placeholder = "Re-enter Email Address" })
                             <p id="validateConfEmail" style="color: white;">.</p>
                         </div>
                     </div>
@@ -168,17 +175,17 @@
                     <div id="centre-coloum">
                         <div class="col-md-6">
                             <label>Mobile Number :</label>
-                            @Html.TextBox("txtMobile", "", new { @onkeypress = "return IsNumeric(event)", @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                            @Html.TextBox("txtMobile", "", new { @onkeypress = "return IsNumeric(event)", @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}", placeholder = "Mobile Number" })
                             <p id="validateMobile" style="color: white">.</p>
                         </div>
                         <div class="col-md-6">
                             <label>Re-enter Mobile Number :</label>
-                            @Html.TextBox("txtConfMobile", "", new { @onkeypress = "return IsNumeric(event) ", @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                            @Html.TextBox("txtConfMobile", "", new { @onkeypress = "return IsNumeric(event) ", @onclick = "ValidationRefresh(this.id)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}", placeholder = "Re-enter Mobile Number" })
                             <p id="validateConfMobile" style="color: white;">.</p>
                         </div>
-                        <div class="btn3">
-                            <input type="button" id="btnSave" value="Submit Admin" onclick="CheckValidation()" />
-                        </div>
+                    </div>
+                    <div class="button">
+                        <input type="button" id="btnSave" value="Submit Admin" onclick="CheckValidation()" />
                     </div>
                 </div>
             </div>
@@ -188,11 +195,11 @@
             <div class="container-fluid">
 
                 <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
-                    @if (Model.Count == 0)
+                    @if (Model.Count== 0)
                     {
                         <thead>
                             <tr>
-                                <td>Please Add a Admin User</td>
+                                <td>Please Add a Admin User Either Company</td>
                             </tr>
                         </thead>
                     }
@@ -201,10 +208,10 @@
                         <thead>
                             <tr>
                                 <th>Date </th>
-                                <th>Company ID  </th>
-                                <th>System ID  </th>
-                                <th>Admin ID  </th>
-                                <th>Industry ID  </th>
+                                <th>Company Id  </th>
+                                <th>System Id  </th>
+                                <th>Admin Id  </th>
+                                <th>Industry Id  </th>
                                 <th class="remove">Action  </th>
                             </tr>
                         </thead>
@@ -212,7 +219,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Company.userModel.Createddate</td>
+                            <td>@item.Company.CreatedDate</td>
                             <td>@item.Company.CompanyId</td>
                             <td>
                                 @foreach (var system in item.Company.systemModel)
@@ -388,12 +395,13 @@
         var InnerDiv1 = document.createElement("div");
         InnerDiv1.className = 'col-md-4'
         var label = document.createElement("label");
-        label.appendChild(document.createTextNode("System ID :"));
+        label.appendChild(document.createTextNode("System Id :"));
         var TextBox = document.createElement("input");
         TextBox.type = "text"
         TextBox.id = "txtSystemId"
         TextBox.className = "vik"
         TextBox.value = Sysid
+        TextBox.placeholder = "System Id"
         TextBox.onclick = clearVal
         InnerDiv1.appendChild(label);
         InnerDiv1.appendChild(TextBox);
@@ -406,6 +414,7 @@
         TextBox1.type = "text"
         TextBox1.id = "txtSystemName"
         TextBox1.value = Sysnam
+        TextBox1.placeholder = "System Name"
         TextBox1.onclick = clearVal
         InnerDiv2.appendChild(label1);
         InnerDiv2.appendChild(TextBox1);
@@ -460,6 +469,7 @@
         TextBox.id = "txtIndustrycode"
         TextBox.className = "idscode"
         TextBox.value = induscode
+        TextBox.placeholder = "Industry code"
         TextBox.onclick = clearindusval
         InnerDiv1.appendChild(label);
         InnerDiv1.appendChild(TextBox);
@@ -528,37 +538,37 @@
 
 
         if (AdminID == "") {
-            document.getElementById("validateAdminID").innerHTML = "Admin Id is required";
+            document.getElementById("validateAdminID").innerHTML = "Admin Id is required.";
             $('#validateAdminID').addClass('validation');
             $('#txtAdminID').focus();
             count = parseInt(count) + 1;
         }
         if (AdminName == "") {
-            document.getElementById("validateAdminName").innerHTML = "Admin Name is required";
+            document.getElementById("validateAdminName").innerHTML = "Admin Name is required.";
             $('#validateAdminName').addClass('validation');
             $('#txtAdminName').focus();
             count = parseInt(count) + 1;
         }
         if (Password == "") {
-            document.getElementById("validatePassword").innerHTML = "Password is required";
+            document.getElementById("validatePassword").innerHTML = "Password is required.";
             $('#validatePassword').addClass('validation');
             $('#txtPassword').focus();
             count = parseInt(count) + 1;
         }
         if (Password.length < 8 || Password.length >= 12) {
-            document.getElementById("validatePassword").innerHTML = "Length between 8 to 12 Characters";
+            document.getElementById("validatePassword").innerHTML = "Password must be 8-12 Characters.";
             $('#validatePassword').addClass('validation');
             $('#txtPassword').focus();
             count = parseInt(count) + 1;
         }
         if (Password != ConfPassword) {
-            document.getElementById("validateConfPassword").innerHTML = "Password and Confirm Password does not match";
+            document.getElementById("validateConfPassword").innerHTML = "Password and Confirm Password should be same.";
             $('#validateConfPassword').addClass('validation');
             $('#txtConfPassword').focus();
             count = parseInt(count) + 1;
         }
         if (Email == "") {
-            document.getElementById("validateEmail").innerHTML = "Email is required";
+            document.getElementById("validateEmail").innerHTML = "Email is required.";
             $('#validateEmail').addClass('validation');
             $('#txtEmail').focus();
             count = parseInt(count) + 1;
@@ -568,14 +578,14 @@
             if (reg.test(Email)) {
             }
             else {
-                document.getElementById("validateEmail").innerHTML = "Invalid Email Address";
+                document.getElementById("validateEmail").innerHTML = "Invalid Email Address.";
                 $('#validateEmail').addClass('validation');
                 $('#txtEmail').focus();
                 count = parseInt(count) + 1;
             }
         }
         if (Email != ConfEmail) {
-            document.getElementById("validateConfEmail").innerHTML = "Email and Confirm Email does not match";
+            document.getElementById("validateConfEmail").innerHTML = "Email and Confirm Email should be same.";
             $('#validateConfEmail').addClass('validation');
             $('#txtConfEmail').focus();
             count = parseInt(count) + 1;
@@ -590,13 +600,13 @@
         //}
         
         if (Mobile == "") {
-            document.getElementById("validateMobile").innerHTML = "Mobile No. is required";
+            document.getElementById("validateMobile").innerHTML = "Mobile No. is required.";
             $('#validateMobile').addClass('validation');
             $('#txtMobile').focus();
             count = parseInt(count) + 1;
         }
         if (Mobile.length <=9) {
-            document.getElementById("validateMobile").innerHTML = "Minimum 10 Number  ";
+            document.getElementById("validateMobile").innerHTML = "Minimum 10 Number is required.  ";
             $('#validateMobile').addClass('validation');
             $('#txtMobile').focus();
             count = parseInt(count) + 1;
@@ -604,7 +614,7 @@
 
 
         if (Mobile != ConfMobile) {
-            document.getElementById("validateConfMobile").innerHTML = "Mobile and Confirm Mobile does not match";
+            document.getElementById("validateConfMobile").innerHTML = "Mobile Number and Confirm Mobile Number should be same.";
             $('#validateConfMobile').addClass('validation');
             $('#txtConfMobile').focus();
             count = parseInt(count) + 1;
@@ -761,7 +771,6 @@
 
                 }
                 for (var i = 0; i < response.Company.industrymodel.length; i++) {
-
                     // console.log(response.Company.industrymodel.length);
                     // console.log(response.Company.industrymodel[i]["Industrycode"]);
 
@@ -1148,7 +1157,7 @@
                 if (inputId == "txtSystemId") {
                     var inputvalue = inputs[i].value;
                     if (inputvalue == "") {
-                        document.getElementById("validateSystemId").innerHTML = "System Id is required";
+                        document.getElementById("validateSystemId").innerHTML = "System Id is required.";
                         $('#validateSystemId').addClass('validation');
                         count = parseInt(count) + 1;
                     }
@@ -1156,7 +1165,7 @@
                 if (inputId == "txtSystemName") {
                     var inputvalue = inputs[i].value;
                     if (inputvalue == "") {
-                        document.getElementById("validateSystemName").innerHTML = "System Name is required";
+                        document.getElementById("validateSystemName").innerHTML = "System Name is required.";
                         $('#validateSystemName').addClass('validation');
                         count = parseInt(count) + 1;
                     }
@@ -1183,7 +1192,7 @@
 
             // Required Filed Validation
             if (CompaneyId.length != 8) {
-                document.getElementById("validateCompaneyId").innerHTML = "Company id equal to 8 alphanumeric characters";
+                document.getElementById("validateCompaneyId").innerHTML = "Company Id must be 8 alphanumeric characters.";
                 $('#validateCompaneyId').addClass('validation');
                 $('#txtCompaneyId').focus();
                 count = parseInt(count) + 1;
@@ -1210,27 +1219,27 @@
             }
 
             if (CompaneyId == "") {
-                document.getElementById("validateCompaneyId").innerHTML = "Company Id is required";
+                document.getElementById("validateCompaneyId").innerHTML = "Company Id is required.";
                 $('#validateCompaneyId').addClass('validation');
                 $('#txtCompaneyId').focus();
                 count = parseInt(count) + 1;
             }
             if (CompneyName == "") {
-                document.getElementById("validateCompneyName").innerHTML = "Company Name is required";
+                document.getElementById("validateCompneyName").innerHTML = "Company Name is required.";
                 $('#validateCompneyName').addClass('validation');
                 $('#txtCompneyName').focus();
                 count = parseInt(count) + 1;
             }
 
             if (txtDescription == "") {
-                document.getElementById("validateDescription").innerHTML = "Description is required";
+                document.getElementById("validateDescription").innerHTML = "Description is required.";
                 $('#validateDescription').addClass('validation');
                 $('#txtDescription').focus();
                 count = parseInt(count) + 1;
             }
 
             if (txtRemarks == "") {
-                document.getElementById("validateRemarks").innerHTML = "Remarks is required";
+                document.getElementById("validateRemarks").innerHTML = "Remarks is required.";
                 $('#validateRemarks').addClass('validation');
                 $('#txtRemarks').focus();
                 count = parseInt(count) + 1;
@@ -1261,7 +1270,7 @@
 
                     if (response == "Fail") {
 
-                        document.getElementById("validateSystemId").innerHTML = "System duplicate not allowd";
+                        document.getElementById("validateSystemId").innerHTML = "System duplicate not allowd.";
                         $('#validateSystemId').addClass('validation');
                     }
 
@@ -1292,7 +1301,7 @@
                 success: function (response) {
                     if (response == "Fail") {
 
-                        document.getElementById("validateIndustrycode").innerHTML = "Industry duplicate not allowd";
+                        document.getElementById("validateIndustrycode").innerHTML = "Industry duplicate not allowd.";
                         $('#validateIndustrycode').addClass('validation');
                     }
 
@@ -1399,7 +1408,9 @@
                                     else {
                                         if (inputId == "txtIndustrycode") {
                                             var IndustryId = inputs[i].value;
-                                            SaveIndustryCode(ID, IndustryId);
+                                            if (IndustryId != "") {
+                                                SaveIndustryCode(ID, IndustryId);
+                                            }
                                         }
                                     }
                                 }
@@ -1474,7 +1485,7 @@
           
 
          
-            pp.document.writeln('<TABLE id="" border=1 width=100%><TR><TD>DateTime</TD><TD>CompanyId</td><td>SystemId</td><td>AdminId<td>IndustryId</td></tr>');
+            pp.document.writeln('<TABLE id="" border=1 width=100%><TR><TD>Date Time</TD><TD>Company Id</td><td>System Id</td><td>Admin Id<td>Industry Id</td></tr>');
            
           
 

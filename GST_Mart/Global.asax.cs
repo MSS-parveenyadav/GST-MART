@@ -8,8 +8,6 @@ using System.Web.Routing;
 using System.Web.Security;
 using GST_BLL;
 using GST_DB;
-using System.Web.Optimization;
-using GST_Mart.App_Start;
 
 
 namespace GST_Mart
@@ -25,7 +23,6 @@ namespace GST_Mart
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.registerbundle(BundleTable.Bundles);
         }
 
 
