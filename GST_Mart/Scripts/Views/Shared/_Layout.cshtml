@@ -1,0 +1,139 @@
+﻿@using System.Web.Optimization;
+@{
+    ViewBag.Title = "GST MART";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+    @Styles.Render("~/Content/css")
+    <!-- Bootstrap -->
+   
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+  
+    <style>
+        a:hover{
+            cursor:pointer;
+        }
+        .validation{
+            color:red !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="wrapper" class="clearfix">
+        <!--[header]-->
+        <div id="header">
+            <div class="container-fluid">
+                <div id="logo"><a href="#">
+                    <img src="/Content/images/logo.png" alt="logo"></a></div>
+                <div class="admin-login">
+                    <div class="admin-wel">
+                        <ul>
+                            <li>Welcome <a href="javascript:void(0)">@TempData["UserName"]</a> </li>
+                            <li> <strong>@TempData["TodaysDate"]</strong></li>
+                        </ul>
+                        <!--<span>Company ID </span> -->
+                    </div>
+                    @*  <div class="login">  </div>*@
+
+                    <div class="login">
+
+                        <a href="javascript:void(0)" onclick="Logout();">Logout <i class="fa fa-power-off"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!--[nav-bar]-->
+            <nav class="navbar navbar-default" role="navigation">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/Master/CreateCompany"><i class="glyphicon glyphicon-home"></i>Company Dashboard</a></li>
+                    </ul>
+                    @*<form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            
+                            <ol>
+                                
+                                <li>
+                                    <p id="validateCompaney" style="color: red"></p>
+                                    @{
+                                        GST_DB.GSTMARTEntities gstmart=new GST_DB.GSTMARTEntities();
+                                        List<SelectListItem> List = new List<SelectListItem>();
+                                        var Data = (from p in gstmart.Companies select new { p.CompanyID }).ToList();
+                                        List.Add(new SelectListItem { Text = "Select Company", Value = "0" });
+                                        foreach (var item in Data)
+                                        {
+                                            List.Add(new SelectListItem{ Text=item.CompanyID, Value = item.CompanyID });
+                                        }
+
+                                        @Html.DropDownList("CompneyList", List as List<SelectListItem>);
+                                    }
+                                </li>
+
+                                <li>
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </li>
+                            </ol>
+                        </div>
+                        <a href="javascript:void(0)" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>
+                    </form>*@
+                </div>
+            </nav>
+            <!--[/nav-bar]-->
+        </div>
+        <!--[/header]-->
+        <!--[]-->
+        <div class="data-feed">
+            <ul class="nav nav-tabs" role="tablist" id="myTab">
+                @*<li><a href="#home" role="tab" data-toggle="tab">Tax Code</a></li>
+                <li><a href="#profile" role="tab" data-toggle="tab">Currency Exchange</a></li>
+                <li><a href="#profile" role="tab" data-toggle="tab">Rules Engine</a></li>
+                <li><a href="#profile" role="tab" data-toggle="tab">Data Import</a></li>
+                <li><a href="#profile" role="tab" data-toggle="tab">Security</a></li>*@
+            </ul>
+        </div>
+
+        @RenderSection("featured", required: false)
+        @RenderBody()
+
+        <div id="footer">
+            <p>copyright 2013. All Right reserved.</p>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <script>
+        $('#myTab a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+        function Logout() {
+            $.ajax({
+                url: "/Master/Logout",
+                type: "POST",
+                success: function (response) {
+                    window.location.href = "/Master/Login";
+                },
+                error: function (error) {
+                    alert("error");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

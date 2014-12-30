@@ -45,11 +45,6 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Configuration";
 }
-@section Submenu
-{
-
-    @Html.Partial("~/Views/_Partial/_Setting.cshtml")
-}
 
 @using (Html.BeginForm("Configuration", "Admin", FormMethod.Post, new { enctype = "multipart/form-data",id = "submitForm" }))
 {

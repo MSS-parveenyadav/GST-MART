@@ -103,6 +103,7 @@
     <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CompanyId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CNBN" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Permissions">
     <Key>

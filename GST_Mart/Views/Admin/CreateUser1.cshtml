@@ -1,0 +1,449 @@
+﻿@model GST_BLL.DTO.AdminUserModel
+
+
+@{
+    ViewBag.Title = "CreateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+
+ 
+
+@using (Html.BeginForm("CreateUser", "Admin", FormMethod.Post, new { id = "submitForm" }))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="data-feed">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+            <li><a href="#home" role="tab" data-toggle="tab">Tax Code</a></li>
+            <li><a href="#profile" role="tab" data-toggle="tab"> Currency Exchange</a></li>
+            <li><a href="#profile" role="tab" data-toggle="tab"> Data Import</a></li>
+            <li><a href="#profile" role="tab" data-toggle="tab"> Security</a></li>
+            <li class="active"><a href="/Admin/CreateUser" role="tab" data-toggle="tab">Create User</a></li>
+
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <div id="ErrorMessages" style="color: red;">@TempData["ErrorMessage"]</div><div id="SuccessMessages" style="color: green; ">@TempData["SuccessMessage"]</div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class=" col-lg-12 sec-login">
+                    <h1>Create User <span class="glyphicon glyphicon-question-sign"></span></h1>
+                </div>
+
+                <form action="" method="get" class="serch">
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>User ID :</label>
+                            @Html.HiddenFor(model => model.Id, new { @class = "form-control" })
+                            @Html.TextBoxFor(model => model.UserId, new { @class = "form-control" })
+                            <p id="ValidateUserId" style="color:red"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Name :</label>
+                            @Html.TextBoxFor(model => model.Usename, new { @class = "form-control" })
+                            <p id="ValidateUserName" style="color:red"></p>
+                        </div>
+                    </div>
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>Password :</label>
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                            <p id="ValidatePassword" style="color:red"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Re-enter Password :</label>
+                            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                            <p id="ValidateConfirmPassword" style="color:red"></p>
+                        </div>
+                    </div>
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>Email Address :</label>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            <p id="ValidateEmail" style="color:red"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Re-enter Email Address :</label>
+                            @Html.TextBoxFor(model => model.ConfirmEmail, new { @class = "form-control" })
+                            <p id="ValidateConfirmEmail" style="color:red"></p>
+                        </div>
+                    </div>
+                    <div id="centre-coloum">
+                        <div class="col-md-6">
+                            <label>Mobile Number :</label>
+                            @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control", @onkeypress = "return IsNumeric(event); " })
+                            <p id="ValidateMobileNumber" style="color:red"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Re-enter Mobile Number :</label>
+                            @Html.TextBoxFor(model => model.ConfirmMobileNumber, new { @class = "form-control", @onkeypress = "return IsNumeric(event); " })
+                            <p id="ValidateConfirmMobileNumber" style="color:red"></p>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="tab-pane" id="profile">
+                <div class=" col-lg-12 sec-login">
+                    <h1>Security Code Access <span class="glyphicon glyphicon-question-sign"></span></h1>
+                </div>
+                <div class="security">
+                    <form action="" method="get">
+                        <div class="col-xs-8 security-form">
+                            <label>Security Code:</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class=" btn2">
+                            <input name="" type="button" value="enter">
+                        </div>
+                    </form>
+                    <div class="rest-pass"> <a href="#">Resend Security Code </a> </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class=" col-lg-12 sec-login">
+                    <h1>User Premission <span class="glyphicon glyphicon-question-sign"></span></h1>
+                </div>
+
+
+                <div id="centre-coloum">
+                    <div class="col-md-6">
+                        <label>Create Cycle :</label>
+                        @Html.DropDownList("Createcycle", new List<SelectListItem>
+
+                 {
+                    new SelectListItem{ Text="Please Select", Value = "0" },
+                    new SelectListItem{ Text="Allowed", Value = "Create Cycle" },
+                    new SelectListItem{ Text="Denied", Value = "Deny" }
+                 }, new { @class = "form-control" })
+                        <p id="ValidateCreatecycle" style="color:red"></p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Access Setting :</label>
+                        @Html.DropDownList("Accesssetting", new List<SelectListItem>
+
+                 {
+                     new SelectListItem{ Text="Please Select", Value = "0" },
+                    new SelectListItem{ Text="Allowed", Value = "Access Setting" },
+                    new SelectListItem{ Text="Denied", Value = "Deny" }
+                 }, new { @class = "form-control" })
+                        <p id="ValidateAccesssetting" style="color:red"></p>
+
+                    </div>
+                </div>
+                <div id="centre-coloum">
+                    <div class="col-md-6">
+                        <label>Download Data :</label>
+                        @Html.DropDownList("Downloaddata", new List<SelectListItem>
+
+                 {
+                     new SelectListItem{ Text="Please Select", Value = "0" },
+                    new SelectListItem{ Text="Allowed", Value = "Download Data" },
+                    new SelectListItem{ Text="Denied", Value = "Deny" }
+                 }, new { @class = "form-control" })
+                        <p id="ValidateDownloaddata" style="color:red"></p>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label>Print Report :</label>
+                        @Html.DropDownList("Printreport", new List<SelectListItem>
+
+                 {
+                     new SelectListItem{ Text="Please Select", Value = "0" },
+                    new SelectListItem{ Text="Allowed", Value = "Print Report" },
+                    new SelectListItem{ Text="Denied", Value = "Deny" }
+                 }, new { @class = "form-control" })
+                        <p id="ValidatePrintreport" style="color:red"></p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="tab-pane" id="profile">
+                <div class=" col-lg-12 sec-login">
+                    <h1>Security Code Access <span class="glyphicon glyphicon-question-sign"></span></h1>
+                </div>
+                <div class="security">
+                    <form action="" method="get">
+                        <div class="col-xs-8 security-form">
+                            <label>Security Code:</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class=" btn2">
+                            <input name="" type="button" value="enter">
+                        </div>
+                    </form>
+                    <div class="rest-pass"> <a href="#">Resend Security Code </a> </div>
+                </div>
+            </div>
+        </div>
+        <input id="CompaneyIdOfDDL" value="" type="hidden" />
+        <div class="button"><input type="submit" onclick="SubmitForm()" name="" value="Create"></div>
+        <br />
+        <br />
+        <div id="sucess" style="color:green;font:14px arial" align="center"> @TempData["Sucess"]</div>
+        <div id="error" style="color:red;font:14px arial" align="center"> @TempData["Error"]</div>
+
+    </div>
+
+    <div class="data-table">
+        <div class="container-fluid">
+
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Date </th>
+                        <th>User ID  </th>
+                        <th>Name  </th>
+                        <th>Premission  </th>
+                        <th>Action  </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.Userpermission != null)
+                    {
+                        foreach (var item in ViewBag.Userpermission)
+                        {
+                            <tr>
+                                <td>@item.Date</td>
+                                <td>@item.UserId</td>
+                                <td>@item.Name </td>
+                                <td>
+                                    @item.Permission
+                                </td>
+                                <td>
+                                    <ul class="action-button">
+                                        <li>
+                                            @Html.ActionLink("Edit", "EditUser", new { id = item.Id })
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id })
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </div>
+
+    <!--[]-->
+    <!--[pagination]-->
+    <div class="pagination-footer">
+        <div class="container-fluid">
+            <div class="col-md-4 item-par">
+                <form action="" method="get">
+                    <table width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <select name="">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                </select>
+                            </td>
+                            <td><span>Items Per Page</span></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-md-4 item-page">
+                <ul>
+                    @Html.PagedListPager((IPagedList)ViewBag.Userpermission, page => Url.Action("CreateUser", new { page }))
+                </ul>
+            </div>
+            <div class="col-md-3 item-of-page">
+                <p>1-10 of 344 items <a href="/Admin/CreateUser"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        var specialKeys = new Array();
+        specialKeys.push(8);
+        function IsNumeric(e) {
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+
+            return ret;
+        }
+
+
+
+
+        function SubmitForm() {
+            $('#submitForm').submit(function () {
+                document.getElementById("ValidateUserId").innerHTML = "";
+                document.getElementById("ValidateUserName").innerHTML = "";
+                document.getElementById("ValidatePassword").innerHTML = "";
+                document.getElementById("ValidateConfirmPassword").innerHTML = "";
+                document.getElementById("ValidateEmail").innerHTML = "";
+                document.getElementById("ValidateConfirmEmail").innerHTML = "";
+                document.getElementById("ValidateMobileNumber").innerHTML = "";
+                document.getElementById("ValidateConfirmMobileNumber").innerHTML = "";
+                document.getElementById("ValidatePrintreport").innerHTML = "";
+                document.getElementById("ValidateDownloaddata").innerHTML = "";
+                document.getElementById("ValidateAccesssetting").innerHTML = "";
+                document.getElementById("ValidateCreatecycle").innerHTML = "";
+                if (Checkvalidation() == false) {
+                    return false;
+                }
+            });
+        }
+
+        function Checkvalidation() {
+            var count = 0;
+            var CompaneyIdfrmDDl = document.getElementById("CompneyList").value;
+            alert(CompaneyIdfrmDDl);
+            var UserId = document.getElementById("UserId").value;
+            var Usename = document.getElementById("Usename").value;
+            var Password = document.getElementById("Password").value;
+            var ConfirmPassword = document.getElementById("ConfirmPassword").value;
+            var Email = document.getElementById("Email").value;
+            var ConfirmEmail = document.getElementById("ConfirmEmail").value;
+            var MobileNumber = document.getElementById("MobileNumber").value;
+            var ConfirmMobileNumber = document.getElementById("ConfirmMobileNumber").value;
+            var Createcycle = document.getElementById("Createcycle").value;
+            var Accesssetting = document.getElementById("Accesssetting").value;
+            var Downloaddata = document.getElementById("Downloaddata").value;
+            var Printreport = document.getElementById("Printreport").value;
+            document.getElementById("CompaneyIdOfDDL").value = CompaneyIdfrmDDl;
+            var a = document.getElementById("CompaneyIdOfDDL").value;
+            alert(a);
+            if (CompaneyIdfrmDDl=="0")
+            {
+            document.getElementById("validateCompaney").innerHTML = "Please Select Company";
+            count = 1;
+                
+            }
+            if (UserId == "") {
+                document.getElementById("ValidateUserId").innerHTML = "Please Enter UserId";
+                count = 1;
+            }
+            if (Usename == "") {
+
+                document.getElementById("ValidateUserName").innerHTML = "Please Enter Username.";
+                count = 1;
+            }
+            if (Password == "") {
+
+                document.getElementById("ValidatePassword").innerHTML = "Please Enter Password.";
+                count = 1;
+            }
+            if (ConfirmPassword == "") {
+
+                document.getElementById("ValidateConfirmPassword").innerHTML = "Please Enter Confirm Password.";
+                count = 1;
+            }
+            if (Password != ConfirmPassword) {
+
+                document.getElementById("ValidateConfirmPassword").innerHTML = "Enter same Password.";
+                count = 1;
+            }
+            if (Email == "") {
+
+                document.getElementById("ValidateEmail").innerHTML = "Please Enter email.";
+                count = 1;
+            }
+            if (ConfirmEmail == "") {
+
+                document.getElementById("ValidateConfirmEmail").innerHTML = "Please Re-enter email.";
+                count = 1;
+            }
+            if (Email != ConfirmEmail) {
+
+                document.getElementById("ValidateConfirmEmail").innerHTML = "Enter same email.";
+                count = 1;
+            }
+            if (MobileNumber == "") {
+
+                document.getElementById("ValidateMobileNumber").innerHTML = "Please Enter mobile number.";
+                count = 1;
+            }
+            if (ConfirmMobileNumber == "") {
+
+                document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Please Re-enter mobile number.";
+                count = 1;
+            }
+            if (MobileNumber != ConfirmMobileNumber) {
+                document.getElementById("ValidateMobileNumber").innerHTML = "";
+                document.getElementById("ValidateConfirmPassword").innerHTML = "Enter same Mobile Number.";
+                count = 1;
+            }
+            if (Createcycle == "0") {
+                document.getElementById("ValidateCreatecycle").innerHTML = "Please select Create cycle permission.";
+                count = 1;
+            }
+            if (Accesssetting == "0") {
+                document.getElementById("ValidateAccesssetting").innerHTML = "Please select Access Setting permission.";
+                count = 1;
+            }
+            if (Downloaddata == "0") {
+                document.getElementById("ValidateDownloaddata").innerHTML = "Please select Download Data permission.";
+                count = 1;
+            }
+            if (Printreport == "0") {
+                document.getElementById("ValidatePrintreport").innerHTML = "Please select Print Report permission.";
+                count = 1;
+            }
+
+            if (Email != "") {
+
+                var reg = /^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                if (reg.test(Email)) {
+
+                }
+                else {
+                    document.getElementById("ValidateEmail").innerHTML = "Invalid Email Address";
+                    count = 1;
+                }
+            }
+            if (ConfirmEmail != "") {
+
+                var reg = /^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                if (reg.test(ConfirmEmail)) {
+
+                }
+                else {
+                    document.getElementById("ValidateConfirmEmail").innerHTML = "Invalid Email Address";
+                    count = 1;
+                }
+            }
+            if (count == 1) {
+                return false;
+            }
+        }
+
+    </script>
+
+
+}

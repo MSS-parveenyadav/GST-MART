@@ -10,16 +10,20 @@
 
     </style>
 }
-
-
-@section Submenu
-{
-
-    @Html.Partial("~/Views/_Partial/_Setting.cshtml")
-}
-
-
-
+<p style="color:green;">
+@TempData["MessageCompany"]<br />
+@TempData["MessageLedger"]<br />
+@TempData["MessageSupply"]<br />
+@TempData["MessageFooter"]<br />
+@TempData["MessagePurchase"]
+</p>
+<p style="color:green;">
+    @TempData["ErrorCompany"]<br />
+    @TempData["ErrorLedger"]<br />
+    @TempData["ErrorSupply"]<br />
+    @TempData["ErrorFooter"]<br />
+    @TempData["ErrorPurchase"]
+</p>
 @using (Html.BeginForm("SaveSchedualr", "Admin", FormMethod.Post, new { id = "submitForm" }))
            {
 <div class="tab-conentmain">
@@ -168,27 +172,16 @@
     </div>
 </div>
 }
-      <p style="color:green;">
-    @TempData["MessageCompany"]<br />
-    @TempData["MessageLedger"]<br />
-    @TempData["MessageSupply"]<br />
-    @TempData["MessageFooter"]<br />
-    @TempData["MessagePurchase"]
-</p>
-<p style="color:green;">
-    @TempData["ErrorCompany"]<br />
-    @TempData["ErrorLedger"]<br />
-    @TempData["ErrorSupply"]<br />
-    @TempData["ErrorFooter"]<br />
-    @TempData["ErrorPurchase"]
-</p> 
+        </div>
+      </div>
 <div class="tab-pane" id="profile">
     <div class=" col-lg-12 sec-login">
       
     </div>
     
 </div>
-   
+    </div>
+  </div>
 <div class="system-feed">
     <div class="container-fluid">
         <div class="col-lg-6 Feed">

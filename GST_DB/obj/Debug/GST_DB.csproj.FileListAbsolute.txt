@@ -50,3 +50,13 @@ D:\Code\GST_Mart\dev\GST_DB\bin\Debug\TrackableEntities.EF.5.pdb
 D:\Code\GST_Mart\dev\GST_DB\bin\Debug\TrackableEntities.EF.5.xml
 D:\Code\GST_Mart\dev\GST_DB\obj\Debug\GST_DB.dll
 D:\Code\GST_Mart\dev\GST_DB\obj\Debug\GST_DB.pdb
+D:\GStmart\gst-mart\GST_DB\bin\Debug\GST_DB.dll.config
+D:\GStmart\gst-mart\GST_DB\bin\Debug\GST_DB.dll
+D:\GStmart\gst-mart\GST_DB\bin\Debug\GST_DB.pdb
+D:\GStmart\gst-mart\GST_DB\bin\Debug\EntityFramework.dll
+D:\GStmart\gst-mart\GST_DB\bin\Debug\TrackableEntities.EF.5.dll
+D:\GStmart\gst-mart\GST_DB\bin\Debug\EntityFramework.xml
+D:\GStmart\gst-mart\GST_DB\bin\Debug\TrackableEntities.EF.5.pdb
+D:\GStmart\gst-mart\GST_DB\bin\Debug\TrackableEntities.EF.5.xml
+D:\GStmart\gst-mart\GST_DB\obj\Debug\GST_DB.dll
+D:\GStmart\gst-mart\GST_DB\obj\Debug\GST_DB.pdb
