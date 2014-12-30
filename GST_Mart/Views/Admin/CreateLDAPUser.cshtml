@@ -28,6 +28,7 @@
                 <div class="data-table">
 
                     <div class="container-fluid">
+                        <div id="ErrorMessages" class="ErrorMessage">@TempData["Error"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["Sucess"]</div>
                         <div class="w-bg">
 
                             <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
@@ -38,7 +39,7 @@
                                         <td class="col-md-2 cmg">
                                             @Html.HiddenFor(model => model.Id, new { @class = "form-control" })
                                             @Html.TextBoxFor(model => model.ComapanyId, new { placeholder = "Category Id", @onchange = "ValidationRefresh(this.id)" })
-                                            <p id="ValidateCategoryId" style="color:red"></p>
+                                            <p id="ValidateComapanyId" style="color:red"></p>
                                         </td>
                                     </tr>
 
@@ -57,7 +58,7 @@
                                         <td class="col-md-1" align="right"><label>Port Number :</label></td>
                                         <td class="col-md-2 cmg">
                                             @Html.TextBoxFor(model => model.Portnumber, new { @onkeypress = "return IsNumeric(event);", placeholder = "Port Number", @onchange = "ValidationRefresh(this.id)" })
-                                            <p id="ValidatePortNumber" style="color:red"></p>
+                                            <p id="ValidatePortnumber" style="color:red"></p>
                                         </td>
                                     </tr>
 
@@ -75,15 +76,15 @@
                                         <td class="col-md-1" align="right"><label>Password :</label></td>
                                         <td class="col-md-2 cmg">
                                             @Html.TextBoxFor(model => model.password, new { @onkeypress = "return IsSpecialcharacter(event);", placeholder = "Password", @onchange = "ValidationRefresh(this.id)" })
-                                            <p id="ValidatePassword" style="color:red"></p>
+                                            <p id="Validatepassword" style="color:red"></p>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td class="col-md-1" align="right"><label>CN/BN :</label></td>
                                         <td class="col-md-2 cmg">
-                                            @Html.TextBoxFor(model => model.cnbn, new { placeholder = "CN/BN"})
-                                            <p id="ValidateCnbn" style="color:red"></p>
+                                            @Html.TextBoxFor(model => model.cnbn, new { placeholder = "CN/BN", @onchange = "ValidationRefresh(this.id)" })
+                                            <p id="Validatecnbn" style="color:red"></p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -94,13 +95,6 @@
                         </div>
                     </div>
                 </div>
-
-       
-
-                        
-
-                    <div id="sucess" style="color:green;font:14px arial" align="center"> @TempData["Sucess"]</div>
-                    <div id="error" style="color:red;font:14px arial" align="center"> @TempData["Error"]</div>
              
 
 
@@ -170,12 +164,12 @@
             function SubmitForm() {
                 $('#submitForm').submit(function () {
                    
-                    document.getElementById("ValidateCategoryId").innerHTML = "";
+                    document.getElementById("ValidateComapanyId").innerHTML = "";
                     document.getElementById("ValidateDomainname").innerHTML = "";
-                    document.getElementById("ValidatePortNumber").innerHTML = "";
+                    document.getElementById("ValidatePortnumber").innerHTML = "";
                     document.getElementById("ValidateUserId").innerHTML = "";
-                    document.getElementById("ValidatePassword").innerHTML = "";
-                    document.getElementById("ValidateCnbn").innerHTML = "";
+                    document.getElementById("Validatepassword").innerHTML = "";
+                    document.getElementById("Validatecnbn").innerHTML = "";
 
                     if (Checkvalidation() == false) {
                         return false;
@@ -194,7 +188,7 @@
                 var cnbn = document.getElementById("cnbn").value;
 
                 if (CategoryId == "") {
-                    document.getElementById("ValidateCategoryId").innerHTML = "Please Enter Category Id.";
+                    document.getElementById("ValidateComapanyId").innerHTML = "Please Enter Category Id.";
                     $('#ComapanyId').focus();
                     count = 1;
                 }
@@ -205,7 +199,7 @@
                 }
                 if (Portnumber == "") {
 
-                    document.getElementById("ValidatePortNumber").innerHTML = "Please Enter Port Number.";
+                    document.getElementById("ValidatePortnumber").innerHTML = "Please Enter Port Number.";
                     $('#Portnumber').focus();
                     count = 1;
                 }
@@ -221,13 +215,13 @@
                 }
                 if (password == "") {
 
-                    document.getElementById("ValidatePassword").innerHTML = "Please Enter Password.";
+                    document.getElementById("Validatepassword").innerHTML = "Please Enter Password.";
                     $('#Password').focus();
                     count = 1;
                 }
                 if (cnbn=="")
                 {
-                  document.getElementById("ValidateCnbn").innerHTML = "Please Enter CN/BN.";
+                  document.getElementById("Validatecnbn").innerHTML = "Please Enter CN/BN.";
                   $('#cnbn').focus();
                   count = 1;
                 }

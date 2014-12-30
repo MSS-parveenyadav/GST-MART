@@ -23,6 +23,7 @@
 @using (Html.BeginForm("SaveSchedualr", "Admin", FormMethod.Post, new { id = "submitForm" }))
            {
 <div class="tab-conentmain">
+    <div id="ErrorMessages" class="ErrorMessage">@TempData["ErrorMessage"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["SuccessMessage"]</div>
     <div class="tab-pane active" id="home">
         <div class="col-lg-12" id="top">
             <div class=" col-lg-12 sec-login2">
