@@ -45,7 +45,7 @@ namespace GST_MARTService
         {
             // Set up a timer to trigger every minute.
 
-            timer.Interval = (1 * 60 * 1000); // 1 minutes
+            timer.Interval = (20 * 60 * 1000); // 20 minutes
             timer.Elapsed += new System.Timers.ElapsedEventHandler(this.OnTimer);
             timer.Start();
             Cancel = false;

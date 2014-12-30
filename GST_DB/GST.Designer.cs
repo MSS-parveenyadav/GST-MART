@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Git Repository\gst-mart\GST_DB\GST.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Code\Git\gst-mart\GST_DB\GST.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
