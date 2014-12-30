@@ -96,67 +96,74 @@ namespace GST_MARTService
 
 
 
-
-
+                string csvFile = "";
+                string excelFile = "";
                 if (finalPath.Contains(".csv"))
                 {
 
 
                     if (moduleName.Contains("company"))
                     {
+                        csvFile = ConfigurationManager.AppSettings["csv_company"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["CSV_company_Path"], null);
                     }
                     else if (moduleName.Contains("ledger"))
                     {
-
+                        csvFile = ConfigurationManager.AppSettings["csv_ledger"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["CSV_ledger_Path"], null);
                     }
                     else if (moduleName.Contains("supply"))
                     {
-
+                        csvFile = ConfigurationManager.AppSettings["csv_supply"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["CSV_supply_Path"], null);
 
                     }
                     else if (moduleName.Contains("purchase"))
                     {
-
+                        csvFile = ConfigurationManager.AppSettings["csv_purchase"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["CSV_purchase_Path"], null);
 
 
                     }
                     else if (moduleName.Contains("footer"))
                     {
+                        csvFile = ConfigurationManager.AppSettings["csv_footer"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["CSV_purchase_Path"], null);
-                        return false;
 
                     }
+
                 }
                 #region XLSX file
+                    
                 else if (finalPath.Contains(".xlsx"))
                 {
 
                     if (moduleName.Contains("company"))
                     {
+                        excelFile = ConfigurationManager.AppSettings["xlsx_company"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["Excel_company_Path"], null);
                     }
                     else if (moduleName.Contains("ledger"))
                     {
-
+                        excelFile = ConfigurationManager.AppSettings["xlsx_ledger"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["Excel_ledger_Path"], null);
                     }
                     else if (moduleName.Contains("supply"))
                     {
+                        excelFile = ConfigurationManager.AppSettings["xlsx_supply"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["Excel_supply_Path"], null);
 
                     }
                     else if (moduleName.Contains("purchase"))
                     {
+                        excelFile = ConfigurationManager.AppSettings["xlsx_purchase"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["Excel_purchase_Path"], null);
 
 
                     }
                     else if (moduleName.Contains("footer"))
                     {
+                        excelFile = ConfigurationManager.AppSettings["xlsx_footer"].ToString();
                         package = app.LoadPackage(@ConfigurationManager.AppSettings["Excel_footter_Path"], null);
 
                     }
@@ -166,23 +173,30 @@ namespace GST_MARTService
 
 
                 string connString = "";
-                if (finalPath.Contains(".csv"))
+               
+                SSISvar = package.Variables;
+                SSISvar["CycleID"].Value = cycleID;
+                SSISvar["CompanyID"].Value = companyID;
+                SSISvar["Catalog"].Value = ConfigurationManager.AppSettings["Catalog"].ToString();
+                SSISvar["Datasource"].Value = ConfigurationManager.AppSettings["DataSource"].ToString();
+                SSISvar["Password"].Value = ConfigurationManager.AppSettings["Password"].ToString();
+                SSISvar["Username"].Value = ConfigurationManager.AppSettings["Username"].ToString();
+
+
+                if (finalPath.Contains(".csv") || finalPath.Contains(".txt"))
                 {
+                    SSISvar["CsvFile"].Value = csvFile;
                     var splitPath = finalPath.Replace("/", "\\");
                     connString = @splitPath;
-                    
+
                     package.Connections["SourceConnectionFlatFile"].ConnectionString = connString;
                 }
                 else if (finalPath.Contains(".xlsx"))
                 {
+                    SSISvar["ExcelFilePath"].Value = excelFile;
                     connString = "provider=Microsoft.ACE.OLEDB.12.0;data source=" + finalPath + ";Extended Properties=Excel 12.0 Xml;HDR=Yes;IMEX=1;";
                     package.Connections["SourceConnectionExcel"].ConnectionString = connString;
                 }
-
-                SSISvar = package.Variables;
-                SSISvar["CycleID"].Value = cycleID;
-               SSISvar["CompanyID"].Value = companyID;
-
 
                 //Excute Package
                Microsoft.SqlServer.Dts.Runtime.DTSExecResult results = package.Execute(null, SSISvar, null, null, null);
@@ -191,7 +205,7 @@ namespace GST_MARTService
                 {
                     foreach (Microsoft.SqlServer.Dts.Runtime.DtsError local_DtsError in package.Errors)
                     {
-
+                        
                         Console.WriteLine("Package Execution results: {0}", local_DtsError.Description.ToString());
                        // Logger.Write(local_DtsError.Description.ToString() + "------");
                         return false;
@@ -580,10 +594,10 @@ namespace GST_MARTService
         {
 
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "192.168.0.106";
-            builder.InitialCatalog = "GSTMARTTEST";
-            builder.UserID = "sa";
-            builder.Password = "Admin123#";
+            builder.DataSource = ConfigurationManager.AppSettings["Data-Source"].ToString();
+            builder.InitialCatalog = ConfigurationManager.AppSettings["DB"].ToString();
+            builder.UserID = ConfigurationManager.AppSettings["Username-DB"].ToString();
+            builder.Password = ConfigurationManager.AppSettings["PasswordDB"].ToString();
 
             #region Start DB "USING"
             using (var conn = new SqlConnection(builder.ToString()))

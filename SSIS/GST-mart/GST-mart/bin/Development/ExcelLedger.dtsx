@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ExcelLedger"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{68568A7F-E5E2-4547-B90B-FDC174C54CE6}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{9C2FB510-AA6F-4077-B97F-A1B8AB2E645E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -36,7 +36,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAxBDchOvmwG83HEsBP0DlaT5NXcKxQqh7MtPuesSMUZwAAAAAOgAAAAAIAACAAAADbV4GhsSBjdZgothJwJ0WC4/RzEqpxcZAZdw2aV7epLiAAAAAVyfdNp7dm5P+P1axwgUA6MLxUrfLJD0Zx6XjWZ77G3kAAAAA+F/Nt54FLziUtj4NeWX1aLZDCdASr0/8o8CXLa9g8/5Kv5ueDDFtlX8SI1Evxyrs3zuV5J5IPp/EN9dRjqf2v</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACyBgJX36b++dp7u+dxuRublx5NLm2kg1kfXZGTAT7nGgAAAAAOgAAAAAIAACAAAAB9HGwo5d+CjeyM+ahV3mV2WVKV9eoDgNy8m3Gz7Dz8VSAAAAA7N4/eqeL5agWTFUw5idS1MFNlPEQNrlkiDPoUBAqjqkAAAAAjdKY6frCxXAErqCN45ynN5r+wBHggyBUXd+aix0zqYzeCae38ZF/VcExkmrm9Zf98mudtl9n5CHibghOXDgs1</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>

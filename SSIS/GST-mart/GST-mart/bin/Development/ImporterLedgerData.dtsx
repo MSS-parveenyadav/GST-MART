@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ImporterLedgerData"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{6C8BC4A6-A0DA-4A51-9B4C-858C0586D23F}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{C111498D-0CFC-4E96-9983-5036397AFCB6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -36,7 +36,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAYjMPV4UWqXftfw3JQ+o7pjnXWLZmpYSeUECaXxE8CjQAAAAAOgAAAAAIAACAAAAD+ZtzF+k3adPQrGbHdPgJgddjAcNKwhRfml1M6r7p+fyAAAADpyzXZOeWuYpcPaaviIk+6BAwHOogW86oaLsnpYRVrbEAAAADhztzwN8NdMqoQgWxrUSolhgzkgI1nkq2ZnRZtvckcNS5sUgeP9c2r0Tvhf5+B+dJyHt0ucGndBzH5q4VBPSK2</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACW/ENP0yvyzfrOtq+3+1yYwlQPc7uD9SlRJBJHTFdZdQAAAAAOgAAAAAIAACAAAAB9kWu30d+4rpOGQbo0zj/yyHAgHIr7qwm8fX+H6UmhQSAAAAAVdNRF2Gtb6ZmsJYUbXOGphkICA0GRzHbsVcnghQwvq0AAAABEyLOGIrMyW1l3vt7fr4SyTsCfkxvBcFrgxFZ722gFLCJ7jhI1I7MZB6CMuJLnqZ+ZzGNNJcr278SMZA412uCi</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -59,7 +59,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/q0ngPe+OEiLjF+Ib0O2qAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABekBz3/t3A9miPFbhdrgUKEjmAYS/BwgyM6m30osoF8gAAAAAOgAAAAAIAACAAAACUav0g7QNFfGzZrCgEa1K/y5KJaZsqDyv2q6Ta3dSTWyAAAACBmD1v2MMqBpHhueavy9St+3cutr3WNFfsBwfQH2wT0EAAAABzyAVUsTTDvsRGmXue0PS6tXPG9lzdCh2m+gXNiP4c7xwPVNhhOJ07KD/QMHQ0YPgY/DywUCxaOa8v2a/XWEIV</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACfKogzgy3hPqsWBWyV522174AoPolIq33MiOx0U5iCrwAAAAAOgAAAAAIAACAAAACJLgWHl+W1/LOwvM3dxZKlc8lomj9sApJ57NAw3Rt/fiAAAABYSCTgtCc7PGQC/aX5AW2DkUTJaJbxjHBStjp9E162aUAAAAAvfGLE5g1qTk9WCRJKPq5hXd6lCaUd01qBv0UGbSjfDT6ejfz6bUyuQJxUHd4aVbdGp3Hq443hKxCu2bCDVbtw</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -81,7 +81,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CycleID">
       <DTS:VariableValue
-        DTS:DataType="8">0</DTS:VariableValue>
+        DTS:DataType="8">gbdfjgbdfjgbdfjgbdfjgbdfjgbdjg</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""

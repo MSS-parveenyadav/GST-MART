@@ -54,11 +54,6 @@
           <References />
         </DtsPackage>
         <DtsPackage FormatVersion="8">
-          <Name>CSVFooter.dtsx</Name>
-          <FullPath>CSVFooter.dtsx</FullPath>
-          <References />
-        </DtsPackage>
-        <DtsPackage FormatVersion="8">
           <Name>CSVCompany.dtsx</Name>
           <FullPath>CSVCompany.dtsx</FullPath>
           <References />
@@ -81,6 +76,21 @@
         <DtsPackage FormatVersion="8">
           <Name>DeleteData.dtsx</Name>
           <FullPath>DeleteData.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="0">
+          <Name>CSVFooter.dtsx</Name>
+          <FullPath>CSVFooter.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="0">
+          <Name>ExcelLedger.dtsx</Name>
+          <FullPath>ExcelLedger.dtsx</FullPath>
+          <References />
+        </DtsPackage>
+        <DtsPackage FormatVersion="0">
+          <Name>ExcelPurchase.dtsx</Name>
+          <FullPath>ExcelPurchase.dtsx</FullPath>
           <References />
         </DtsPackage>
       </DTSPackages>

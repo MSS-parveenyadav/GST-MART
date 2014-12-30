@@ -6,62 +6,89 @@
   DTS:CreatorComputerName="VIKASYADAV"
   DTS:CreatorName="vikasyadav\vikas yadav mss"
   DTS:Description="DTS Wizard-generated package"
-  DTS:DTSID="{4D188747-16B0-42F6-B626-79645AFF27E9}"
+  DTS:DTSID="{6AE9F0CC-A4F3-4F72-8A51-BCBD18B4550C}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="12.0.2430.0"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="ExcelPurchase"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{F7B9C397-928F-403C-93A6-E577EE3DA828}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{D8D5E42B-2348-4832-8BAB-9936FE1EF82A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{288E53CE-63DD-427A-A262-285636AF6B78}"
+      DTS:DTSID="{CBAB9CD6-EE3D-4F11-A559-400E68958421}"
       DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::Catalog]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=192.168.0.143;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQD1qRKr9REKoMr4QVEQeDgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADBJAxspffAUIatVPjlSu1OkhcuKywIF74t+yD2esK9EQAAAAAOgAAAAAIAACAAAADrU38l0zD5jF/QSWalrcWQcJf2KNwPXWqlhEJ5tkY3miAAAAD2XtEndYup+efCWkkjOQmWpA3x+i7OvM78WnRZ0cDO+0AAAAD9npNKZ2rE4rpHgMurAMbt+NI02Hyd8E6hKJvnIXP6KHNuE0TaJBsmLIqaAU/jzPMJgqp2oFyhUE8AzZ7Cfqi5</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACxz2rrt/1sH1kOUtbo4qrnE1CxfJJ7nInIZ29sCCg4xwAAAAAOgAAAAAIAACAAAAC8NmqzS4QvsRRGmxRRG20YPHqfuyHHzWQ9pHBjsAG4DSAAAAD3MKVGBVU4A7tB6TzhHT09uXbvopkYS1Vm6btbtBu5BkAAAABg8BaNdE5E5X8gFmoILX4Z49R0b1iazNJseO7Ezqcky4/11CT8HhfYICDWYLfrVY/lh44qZ/BJLIEIRArpdZp5</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB 1]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{AEB8388A-D5FC-4FC4-81A6-E9D3DC29A855}"
+      DTS:DTSID="{20BAAFB3-F1F2-4091-96D1-85E8B35D09F6}"
       DTS:ObjectName="DestinationConnectionOLEDB 1">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::Catalog]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::Datasource]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::Username]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=192.168.0.106;User ID=sa;Initial Catalog=master;Provider=SQLNCLI11;Auto Translate=false;">
+          DTS:ConnectionString="Data Source=192.168.0.143;User ID=sa;Initial Catalog=STAGEDBGSTMASRT;Provider=SQLNCLI11;Auto Translate=false;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQD1qRKr9REKoMr4QVEQeDgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAsliH1LSvitCqOaP5vENksz5LaWK5ircNeGQ/8IOG8ygAAAAAOgAAAAAIAACAAAACU0br+PRFzT4wgFlj3jZHm08GTsEMfROni2jVJ3YgMESAAAADO5fHcLaty45t5y1h4TG4aW/0P982zQ616CNKeoAtrkEAAAABJedyr4KuD1dcNGrmqtjpg02NWRX4IhHs3ZxG/wBSfpwhWdSnZG2V1auBNcQ0tHp9I5HBvvsBsvR8A9DsZ9P+8</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa+UohFUNDEO5FLp3iHHzvgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABKk+bGMzb5Cd4eDrgnvBHxK16jXfspsF9DV9eIgiYv7QAAAAAOgAAAAAIAACAAAAAFB3brA762ztNNt7qApEE3IO95kqeBDoQEu45+AaNHhiAAAACLX/rwOmZOAFh4nrSYqWqQc5DRiU+oxHbi+6T6wAk1+0AAAABQrZ4FStokpbtmMUvDU1ucV4JZkPw2ZB53mNGOq1pGlNoF6l/IWwoZox4pGvkxw+g0LcgFsy2MeD0YQvCfCQNI</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{0A80407F-42F0-4D55-9E4B-A869F6CC49C6}"
+      DTS:DTSID="{EF54CC80-C2FE-4641-B897-9ACDC65AE9AC}"
       DTS:ObjectName="SourceConnectionExcel">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::ExcelFilePath]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Excel\Purchase.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ABCDEFGHIJKLMNOPQRSTUVWXYZASDSFSDFLNSDKFNDSFKNSJDKFSDBFSKDJB;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F488795E-CA2F-4A5A-8090-E3FA80316909}"
+      DTS:DTSID="{9F429090-8A1A-4D7E-A548-AB4CC52C9E54}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Catalog">
+      <DTS:VariableValue
+        DTS:DataType="8">STAGEDBGSTMASRT</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0DBCC340-CE3A-429B-A6DF-0AC5F993EF17}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CompanyID">
@@ -70,19 +97,55 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{6F3A5A92-DA94-454B-8840-262AC0C61B21}"
+      DTS:DTSID="{DE5DF921-9017-4A5C-9466-4CB1D6917B7E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="CycleID">
       <DTS:VariableValue
         DTS:DataType="8">abcdefghijklmnopqrstuvwxyz</DTS:VariableValue>
     </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2AACFF0E-DBD9-4C1D-BB14-0FAF11E9C274}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Datasource">
+      <DTS:VariableValue
+        DTS:DataType="8">192.168.0.143</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D2967B77-BEB7-4D84-A7A2-63713CE62783}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExcelFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">ABCDEFGHIJKLMNOPQRSTUVWXYZASDSFSDFLNSDKFNDSFKNSJDKFSDBFSKDJB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E1756107-4148-46F7-8AF3-6F55B978F64E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Password">
+      <DTS:VariableValue
+        DTS:DataType="8">Admin123#</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{56716F98-4230-4477-A7CC-AD144F55650C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Username">
+      <DTS:VariableValue
+        DTS:DataType="8">sa</DTS:VariableValue>
+    </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Data Flow Task 1"
       DTS:CreationName="Microsoft.Pipeline"
-      DTS:DTSID="{2EF3A1E6-BD1D-460C-9936-A4CFA4AD06A4}"
+      DTS:DTSID="{7E9359F7-38F2-461F-A15F-0D8FF44077E1}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:FailPackageOnFailure="True"
       DTS:LocaleID="-1"
@@ -5471,13 +5534,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="174,42"
+          Id="Package\Data Flow Task 1\Script Component 1"
+          TopLeft="194.444444444444,334.444444444444" />
+        <NodeLayout
           Size="182,42"
           Id="Package\Data Flow Task 1\OLE DB Destination 2"
           TopLeft="1081.5,342.5" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Data Flow Task 1\Derived Column 2"
-          TopLeft="936.166666666667,138.166666666667" />
         <NodeLayout
           Size="192,42"
           Id="Package\Data Flow Task 1\Destination - Sheet1$ 1 1"
@@ -5503,6 +5566,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Data Flow Task 1\Sort"
           TopLeft="96.5000000000001,279.166666666667" />
         <NodeLayout
+          Size="165,42"
+          Id="Package\Data Flow Task 1\Derived Column 2"
+          TopLeft="936.166666666667,138.166666666667" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Data Flow Task 1\OLE DB Destination"
+          TopLeft="689,352" />
+        <NodeLayout
           Size="156,42"
           Id="Package\Data Flow Task 1\Derived Column"
           TopLeft="634.388888888889,219.833333333333" />
@@ -5510,10 +5581,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="192,42"
           Id="Package\Data Flow Task 1\Destination - Sheet1$ 1"
           TopLeft="46.1111111111111,403.888888888889" />
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Data Flow Task 1\Script Component 1"
-          TopLeft="194.444444444444,334.444444444444" />
         <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task 1\Conditional Split"
@@ -5723,6 +5790,40 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Derived Column Output2]"
+          TopLeft="712.388888888889,261.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.111111111111,90.166666666667"
+              Start="0,0"
+              End="63.111111111111,82.666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.0833333333335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.0833333333335"
+                    Point2="0,45.0833333333335"
+                    Point3="4,45.0833333333335" />
+                  <mssgle:LineSegment
+                    End="59.111111111111,45.0833333333335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59.111111111111,45.0833333333335"
+                    Point2="63.111111111111,45.0833333333335"
+                    Point3="63.111111111111,49.0833333333335" />
+                  <mssgle:LineSegment
+                    End="63.111111111111,82.666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[Derived Column Output1]"
           TopLeft="1018.66666666667,180.166666666667">
           <EdgeLayout.Curve>
@@ -5884,44 +5985,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Data Flow Task 1\OLE DB Destination"
-          TopLeft="689,352" />
-        <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[Derived Column Output2]"
-          TopLeft="712.388888888889,261.833333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="63.111111111111,90.166666666667"
-              Start="0,0"
-              End="63.111111111111,82.666666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.0833333333335" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.0833333333335"
-                    Point2="0,45.0833333333335"
-                    Point3="4,45.0833333333335" />
-                  <mssgle:LineSegment
-                    End="59.111111111111,45.0833333333335" />
-                  <mssgle:CubicBezierSegment
-                    Point1="59.111111111111,45.0833333333335"
-                    Point2="63.111111111111,45.0833333333335"
-                    Point3="63.111111111111,49.0833333333335" />
-                  <mssgle:LineSegment
-                    End="63.111111111111,82.666666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5952,7 +6015,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task 1\Destination - Sheet1$ 1">
+    design-time-name="Package\Data Flow Task 1\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5965,7 +6028,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task 1\OLE DB Destination">
+    design-time-name="Package\Data Flow Task 1\Destination - Sheet1$ 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
