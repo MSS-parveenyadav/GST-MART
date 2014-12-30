@@ -50,15 +50,15 @@
                                     <tr class="hg90">
                                         <td>
                                             <div style="width:auto; display:inline-block; margin-right:5px;">
-                                                <input type="text" id="Txtsearch" style="width:auto" />
+                                                <input type="text" id="Txtsearch" style="width:auto" placeholder="User Id / Ip Address" />
                                             </div>
                                             <div style="display:inline-block;" class="btn3"><input type="button" onclick="SearchByIP()" value="Search" /></div>
                                         </td>
                                         <td>
                                             <div style="width:100%">
-                                                <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker", @style = "width:150px;" })</div>
+                                                <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker", @style = "width:150px;", placeholder = "Start Period" })</div>
                                                 <div style="width: auto; display: inline-block; margin-right: 5px;">
-                                                    @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker", @style = "width:150px;" })
+                                                    @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker", @style = "width:150px;", placeholder = "End Period" })
                                             </div>
                                             <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchByDate()" value="Search" /></div>
 
@@ -88,9 +88,9 @@
                                     <td></td>
                                     <td>
                                         <div style="width:100%">
-                                            <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker1", @style = "width:150px;" })</div>
+                                            <div style="width:auto; display:inline-block; margin-right:5px;">@Html.TextBox("Datepicker", "", new { @id = "txtstartdatepicker1", @style = "width:150px;", placeholder = "Start Date" })</div>
                                             <div style="width: auto; display: inline-block; margin-right: 5px;">
-                                                @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker1", @style = "width:150px;" })
+                                                @Html.TextBox("Datepicker", "", new { @id = "txtenddatepicker1", @style = "width:150px;", placeholder = "End Date" })
                                             </div>
                                             <div style="display:inline-block;" class="btn4"><input type="button" onclick="SearchCycleByDate()" value="Search" /></div>
 
@@ -484,8 +484,9 @@
                     document.getElementById("EmptyMessage").innerHTML = "";
                     for (var i = 0; i < response.length; i++) {
                         var data = response[i];
+                        var Date = ToJavaScriptDate(data.CreatedDate);
                         var Id = data.CycleID;
-                        target.append("<tr><td>" + data.CreatedDate + "</td><td>"
+                        target.append("<tr><td>" + Date + "</td><td>"
                         + data.CycleID + "</td><td>"
                         + data.Status + "</td><td><ul class='action-button'><li>"
                         + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
@@ -526,7 +527,10 @@
                     for (var i = 0; i < response.length; i++) {
                         var data = response[i];
                         var Id = data.CycleID;
-                        target.append("<tr><td>" +data.CreatedDate + "</td><td>"
+
+                        var Date=ToJavaScriptDate(data.CreatedDate);
+                        
+                        target.append("<tr><td>" + Date + "</td><td>"
                         + data.CycleID + "</td><td>"
                         + data.Status + "</td><td><ul class='action-button'><li>"
                         + "<a href='/Admin/ExportDataofCycle/" + data.Id + "'>Export</a>"
@@ -616,6 +620,13 @@
         document.getElementById("cycleruntable").hidden = true;
         document.getElementById("AdminChangesTable").hidden = true;
     });
+
+    function ToJavaScriptDate(value) {
+        var pattern = /Date\(([^)]+)\)/;
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+    }
 </script>
 <style>
     .activeclass {

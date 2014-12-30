@@ -64,7 +64,7 @@ namespace GST_Mart.Controllers
 
                     Session["MasterUserName"] = Username;
 
-                    Session["LoginTime"] = DateTime.Now.ToString("dd MMM yyyy  HH:MM tt");
+                    Session["LoginTime"] = DateTime.Now.ToString("dd MMM yyyy, HH:MM tt");
 
                     Session["MasterLoginStatus"] = "LoggedIn";
 
@@ -144,7 +144,7 @@ namespace GST_Mart.Controllers
         //var list = masteradmin.getcompanydetails();
            var model = masteradmin.Findcompany(id);
 
-            var date = model.Company.userModel.Createddate;
+            var date = model.Company.CreatedDate;
        
             string systems = "";
 
@@ -257,7 +257,7 @@ namespace GST_Mart.Controllers
                 if (compid != "")
                 {
                     result = masteradmin.UpdateCompany(CompaneyId, CompneyName, compid, Description, Remarks);
-                    DataStatus = "Data Updated Successfully";
+                    DataStatus = "Company details updated successfully";
                 }
                 else
                 {
@@ -284,7 +284,7 @@ namespace GST_Mart.Controllers
                                 {
                                     return Json(Exception, JsonRequestBehavior.AllowGet);
                                 }
-                                DataStatus = "Data Inserted Successfully";
+                                DataStatus = "Company details inserted successfully";
                             }
                         }
                         else
@@ -463,7 +463,7 @@ namespace GST_Mart.Controllers
                 {
                     result = masteradmin.UpdateAdmin(AdminID, AdminName, Password, Email, Mobile, query.Id);
                     DataStatus = result;
-                    if(DataStatus=="Admin Data Updated Successfully")
+                    if(DataStatus=="Admin details updated successfully")
                     {
                         Mail Mailmessage = new Mail();
                         string body = "Dear : " + AdminName + "<br/><br/>Your Updated Password is : " + Password + "";
@@ -486,7 +486,7 @@ namespace GST_Mart.Controllers
                             {
                                 result = masteradmin.CreateAdmin(AdminID, AdminName, Password, Email, Mobile);
                                 DataStatus = result;
-                                if (DataStatus == "Admin Data Inserted Successfully")
+                                if (DataStatus == "Admin details Inserted successfully")
                                 {
                                     Mail Mailmessage = new Mail();
                                     string body = "Dear : " + AdminName + "<br/><br/>Your Updated Password is : " + Password + "";

@@ -13,6 +13,7 @@
 	src: url('../fonts/opensans-semibold.eot');
 	src: url('../fonts/opensans-semibold.eot') format('embedded-opentype'), url('../fonts/opensans-semibold.woff2') format('woff2'), url('../fonts/opensans-semibold.woff') format('woff'), url('../fonts/opensans-semibold.ttf') format('truetype'), url('../fonts/opensans-semibold.svg#OpenSansSemibold') format('svg');
 }
+
 #wrapper {
 	width: 100%;
 }
@@ -644,7 +645,7 @@ input[type="file"] {
 	background: url(../images/log-out.png) repeat-x !important;
 	height: auto !important;
     width:150px !important;
-    margin-left: 19px !important; 
+    margin-left: 15px !important; 
     margin-bottom: 10px !important;
     margin-bottom: 10px !important;
     margin-top: 10px !important;
@@ -709,7 +710,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3201e', end
 .serch select {
 	width: 100%;
 	font-size: 14px;
-	color: #7a7a7a !important;
+	color: #Black !important;
 	background: url(../images/input-bg.jpg) repeat-x;
 	border: 1px solid #cccccc;
 	padding: 10px 5px;
@@ -890,7 +891,7 @@ ul.action-button li a {
 	font-size: 8.64pt;
 	border-radius: 3px;
 	font-family: "OpenSansBold";
-    background-color:green !important;
+    background-color:#2E71C1 !important;
 
 }
 ul.action-button li:first-child a {
@@ -1340,7 +1341,7 @@ color: white;
 }
 #imgtransactiontype
 {
-    width:47px !important;
+    width:47px ;
    cursor:pointer;
 }
 
@@ -1357,4 +1358,7 @@ color: white;
 .w-bg .button {
     float: none;
     width: 388px;
+}
+.DDlPageing{
+    width:55px;
 }

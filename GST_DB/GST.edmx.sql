@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/25/2014 18:50:15
--- Generated from EDMX file: F:\Projects\gst-mart\GST_DB\GST.edmx
+-- Date Created: 12/29/2014 15:47:40
+-- Generated from EDMX file: D:\Git Repository\gst-mart\GST_DB\GST.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -118,7 +118,8 @@ CREATE TABLE [dbo].[Companies] (
     [CompanyID] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
     [Remarks] nvarchar(max)  NOT NULL,
-    [CurrencySchedularId] int  NULL
+    [CurrencySchedularId] int  NULL,
+    [CreatedDate] nvarchar(max)  NULL
 );
 GO
 

@@ -63,6 +63,7 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CurrencySchedularId" Type="int" Nullable="true" />
+    <Property Name="CreatedDate" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Cycles">
     <Key>
@@ -275,6 +276,10 @@
     <Property Name="FrequencyUnit" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Time" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="NextRunDate" Type="datetime" Nullable="false" />
+    <Property Name="NextRunTime" Type="time" Nullable="false" />
+    <Property Name="LastRun" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Company_Id" Type="int" Nullable="true" />
   </EntityType>
   <Association Name="FK_CompanyGstSystem">
@@ -390,6 +395,7 @@
           <NavigationProperty Name="Industries" Relationship="GSTMARTModel.FK_CompanyIndustry" FromRole="Company" ToRole="Industry" />
           <Property Name="CurrencySchedularId" Type="Int32" Nullable="true" />
           <NavigationProperty Name="CurrencySchedulars" Relationship="GSTMARTModel.CompanyCurrencySchedular" FromRole="Company" ToRole="CurrencySchedular" />
+          <Property Name="CreatedDate" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="Cycle">
           <Key>
@@ -643,6 +649,10 @@
           <Property Name="Time" Type="String" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Company" Relationship="GSTMARTModel.CompanyCurrencySchedular" FromRole="CurrencySchedular" ToRole="Company" />
+          <Property Name="NextRunDate" Type="DateTime" Nullable="false" />
+          <Property Name="NextRunTime" Type="Time" Nullable="false" />
+          <Property Name="LastRun" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="CompanyCurrencySchedular">
           <End Type="GSTMARTModel.CurrencySchedular" Role="CurrencySchedular" Multiplicity="*" />
@@ -673,6 +683,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="CurrencySchedularId" ColumnName="CurrencySchedularId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -904,6 +915,10 @@
           <ScalarProperty Name="FrequencyUnit" ColumnName="FrequencyUnit" />
           <ScalarProperty Name="Time" ColumnName="Time" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="NextRunDate" ColumnName="NextRunDate" />
+          <ScalarProperty Name="NextRunTime" ColumnName="NextRunTime" />
+          <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
