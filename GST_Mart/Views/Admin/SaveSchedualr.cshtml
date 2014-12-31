@@ -50,7 +50,7 @@
                         <td class="col-sm-3" align="right"><label>Company :</label></td>
                         <td class="col-sm-3 ">
                             @Html.HiddenFor(m=>m.Companyid)
-                            @Html.TextBoxFor(m => m.CompanyFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "var/Company" })
+                            @Html.TextBoxFor(m => m.CompanyFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "D:/Company" })
                          
                             <p id="ValidateCompanyFilePath" style="color:red"></p>
 
@@ -75,7 +75,7 @@
                         <td class="col-sm-3 " align="right"><label>Ledger :</label></td>
                         <td class="col-sm-3 ">
                             @Html.HiddenFor(m => m.Ledgerid)
-                            @Html.TextBoxFor(m => m.LedgerFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "var/Ledger" })
+                            @Html.TextBoxFor(m => m.LedgerFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "D:/Ledger" })
                             <p id="ValidateLedgerFilePath" style="color:red"></p>
                         </td>
                         <td class="col-sm-3 ">
@@ -95,7 +95,7 @@
                         <td class="col-sm-3 " align="right"><label>Footer :</label></td>
                         <td class= class="col-sm-3 ">
                             @Html.HiddenFor(m => m.Footerid)
-                            @Html.TextBoxFor(m => m.FooterFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "var/Footer" })
+                            @Html.TextBoxFor(m => m.FooterFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "D:/Footer" })
                             <p id="ValidateFooterFilePath" style="color:red"></p>
                         </td>
                         <td class="col-sm-3 ">
@@ -121,7 +121,7 @@
                         <td class="col-sm-3" align="right"><label>Supply  :</label></td>
                         <td class="col-sm-3 ">
                             @Html.HiddenFor(m => m.Supplyid)
-                            @Html.TextBoxFor(m => m.SupplyFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "var/Supply" })
+                            @Html.TextBoxFor(m => m.SupplyFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "D:/Supply" })
                             <p id="ValidateSupplyFilePath" style="color:red"></p>
 
                         </td>
@@ -142,7 +142,7 @@
                         <td class="col-sm-3 " align="right"><label>Purchase  :</label></td>
                         <td class="col-sm-3 ">
                             @Html.HiddenFor(m => m.Purchaseid)
-                            @Html.TextBoxFor(m => m.PurchaseFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "var/Purchase" })
+                            @Html.TextBoxFor(m => m.PurchaseFilePath, new { @onclick = "ValidationRefresh(this.id)", placeholder = "D:/Purchase" })
                             <p id="ValidatePurchaseFilePath" style="color:red"></p>
                         </td>
                         <td class="col-sm-3 ">

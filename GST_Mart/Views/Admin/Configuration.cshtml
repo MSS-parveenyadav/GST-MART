@@ -116,7 +116,7 @@
                         <td class="add-tax">Database Password </td>
                         <td>
 
-                            @Html.TextBoxFor(model => model.databasepassword, "", new { placeholder = "Database Password", @onchange = "ValidationRefresh(this.id)" })
+                            @Html.TextBoxFor(model => model.databasepassword, "", new { placeholder = "Database Password", @onchange = "ValidationRefresh(this.id)",@Type="Password" })
                             <p id="Validatedatabasepassword" style="color:red"></p>
 
                         </td>

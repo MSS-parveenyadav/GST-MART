@@ -48,7 +48,7 @@
     @Html.ValidationSummary(true)
     @section  Submenu
                  {
-    @Html.Partial("~/Views/_Partial/_TaxCode.cshtml")
+    @Html.Partial("~/Views/_Partial/_Setting.cshtml")
     }
     
 
@@ -122,14 +122,14 @@
                                         <tr>
                                             <td class="add-tax">Reference Number :  </td>
                                             <td>
-                                                @Html.TextBoxFor(m => m.RefernceNumber, "", new { placeholder = "RefernceNumber", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                @Html.TextBoxFor(m => m.RefernceNumber, "", new { placeholder = "Reference Number", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
                                                 <p id="ValidateRefernceNumber" style="color: red"></p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="add-tax">GST03 Field : </td>
                                             <td>
-                                                @Html.TextBoxFor(m => m.GST03Fields, "", new { placeholder = "GST03Fields", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                @Html.TextBoxFor(m => m.GST03Fields, "", new { placeholder = "GST03 Field", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsSpecialcharacter(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
                                                 <p id="ValidateGST03Fields" style="color: red"></p>
                                             </td>
                                         </tr>
@@ -619,6 +619,7 @@
     specialKeys.push(46);
     specialKeys.push(37);
     function IsNumeric(e) {
+
         var keyCode = e.which ? e.which : e.keyCode
         var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
 

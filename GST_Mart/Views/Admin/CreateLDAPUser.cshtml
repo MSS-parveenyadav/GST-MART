@@ -75,7 +75,7 @@
                                     <tr>
                                         <td class="col-md-1" align="right"><label>Password :</label></td>
                                         <td class="col-md-2 cmg">
-                                            @Html.TextBoxFor(model => model.password, new { @onkeypress = "return IsSpecialcharacter(event);", placeholder = "Password", @onchange = "ValidationRefresh(this.id)" })
+                                            @Html.TextBoxFor(model => model.password, new { @onkeypress = "return IsSpecialcharacter(event);", placeholder = "Password", @onchange = "ValidationRefresh(this.id)", @Type="Password" })
                                             <p id="Validatepassword" style="color:red"></p>
                                         </td>
                                     </tr>
