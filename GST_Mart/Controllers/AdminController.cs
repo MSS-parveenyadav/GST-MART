@@ -1189,7 +1189,13 @@ namespace GST_Mart.Controllers
             var res = adminuser.Getsystembycompanyid(id);
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        [WebMethod]
+        public JsonResult GetSystemId(int Id)
+        {
+            var res = adminuser.Getsystemid(Id);
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+        
         #region Currency
         [HttpPost]
         public ActionResult CurrencyExchange(CurrencyExchangeModel model)

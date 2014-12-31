@@ -96,6 +96,11 @@ namespace GST_Mart.Controllers
                 if (result == true)
                 {
                     Session["UserId"] = UserId;
+
+                    //User Settings permission
+                    var Userpermissions = user.GetPermission_ToUser(UserId);
+                    Session["Settings"] = Userpermissions.isAccessSetting;
+
                     Session["UserLoginStatus"] = "LoggedIn";
                     Session["AuthorisedUserName"] = UserName;
                     Session["LoginTime"] = DateTime.Now.ToString("dd MMM yyyy,  HH:MM tt");
@@ -475,9 +480,9 @@ namespace GST_Mart.Controllers
                     TempData["ErrorMessage"] = ex.Message;
                 }
 
-                //return RedirectToAction("CreateCycle");
+                return RedirectToAction("CreateCycle");
 
-                return View();
+                //return View();
             }
             else
             {
@@ -781,6 +786,8 @@ namespace GST_Mart.Controllers
 
         public ActionResult DownloadUserData()
         {
+            if (Session["UserLoginStatus"] == "LoggedIn")
+            {
             var userid = Session["UserId"].ToString();
             UserModel model = user.FindUserbyUserid(userid);
 
@@ -788,6 +795,11 @@ namespace GST_Mart.Controllers
             Session["Securitycode"] = securitycode;
             mail.Sendsecuritycode(model.Email, securitycode, model.Name, ms_email, smtp_port, Smtp_Password, Smtp_Host, "Security Code for Download");
             return View("Securitycodeaccess");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
         [HttpPost]
         public ActionResult DownloadUserData(string SecurityCode)
@@ -1093,13 +1105,14 @@ namespace GST_Mart.Controllers
             {
                 return RedirectToAction("Login");
             }
-            return View();
 
         }
 
         [HttpGet]
         public ActionResult CycleErrors(string CycleId)
         {
+            if (Session["UserLoginStatus"] == "LoggedIn")
+            {
 
             //To get Data Type Conversion Errors
             var data = user.ReadRrrors(CycleId, Session["CompanyName"].ToString());
@@ -1122,7 +1135,11 @@ namespace GST_Mart.Controllers
 
 
             return View(data);
-
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
     }
