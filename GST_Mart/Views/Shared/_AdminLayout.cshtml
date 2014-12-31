@@ -88,8 +88,16 @@
                 <div class="admin-login">
                     <div class="admin-wel">
                         <ul>
+                            @if (null != Session["AdminUserName"])
+                            { 
                             <li>Welcome <a href="#">@Session["AdminUserName"].ToString()</a> </li>
                             <li><strong>@Session["LoginTime"].ToString()</strong></li>
+                            }
+                            else
+                            {
+                                <li>Welcome <a href="#">@Session["AuthorisedUserName"].ToString()</a> </li>
+                                <li><strong>@Session["LoginTime"].ToString()</strong></li>
+                            }
                         </ul>
                         <!--<span>Company ID </span> -->
                     </div>

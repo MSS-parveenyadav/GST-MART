@@ -922,6 +922,11 @@ namespace GST_BLL.AdminUser
             var CompanayId = (from p in gstmart.Companies where p.CompanyID == id select p).FirstOrDefault();
             var query = (from p in Gstmart.GstSystems where p.CompanyId == CompanayId.Id select new { Id = p.Id, Systemid = p.SystemID, Systemname = p.SystemName }).ToList();
             var list = new List<SystemModel>();
+            var PleaseSelect = new SystemModel();
+            PleaseSelect.Id = 0;
+            PleaseSelect.SystemId = "Please Select";
+            PleaseSelect.SystemName = "Please Select";
+            list.Add(PleaseSelect);
             foreach (var item in query)
             {
                 var model = new SystemModel();
@@ -932,8 +937,14 @@ namespace GST_BLL.AdminUser
             }
             return list;
         }
+        public string Getsystemid(int id)
+        {
+            var Gstmart = new GSTMARTEntities();
+            var SystemId = (from p in gstmart.TaxCodes where p.Id == id select p.SystemId).FirstOrDefault();
+            return SystemId;
+        }
 
-
+        
        public bool CreateTaxcode(TaxCodeModel model, string systemlist)
         {
             var Gstmart = new GSTMARTEntities();
