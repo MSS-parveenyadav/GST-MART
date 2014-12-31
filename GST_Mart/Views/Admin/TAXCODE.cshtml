@@ -78,7 +78,7 @@
                                         <tr>
                                             <td class="add-tax">System id : </td>
                                             <td>
-                                                @Html.DropDownList("systemlist", new SelectList(string.Empty, "Id", "CompanyId"), "Please select", new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
+                                                @Html.DropDownList("systemlist", new SelectList(string.Empty, "Id", "CompanyId"), "Please Select", new { @class = "valid", @onchange = "ValidationRefresh(this.id)" })
                                                 <p id="Validatesystemlist" style="color: red"></p>
                                             </td>
                                         </tr>
@@ -408,6 +408,9 @@
                 });
                 return false;
             }
+            else {
+                BindEmptySystemlist();
+            }
         })
     }
 
@@ -459,7 +462,7 @@
             count = 1;
         }
 
-        if (systemlist == "Please select") {
+        if (systemlist == "Please Select") {
             document.getElementById("Validatesystemlist").innerHTML = "Please select SystemId.";
             $('#systemlist').focus();
             count = 1;
@@ -533,25 +536,67 @@
         {
             BindDDlSystemlist_OnEdit();
         }
+        else {
+            BindEmptySystemlist();
+        }
     });
+    function BindEmptySystemlist() {
+        $("#systemlist").empty();
+        $("#systemlist").append('<option value="Please Select">Please Select</option>');
+    }
+
     function BindDDlSystemlist_OnEdit()
     {
+        debugger
+        var SystemId="Please Select";
+        var Id = $("#Id").val();
+        if (Id != null)
+        {
+            SystemId = GetSystemId(Id);
+        }
         $("#systemlist").empty();
         $.ajax({
             type: 'POST',
             url: "/Admin/GetStateId",
             dataType: 'json',
             data: { id: $("#CompanyId").val() },
+            async: false,
             success: function (systemids) {
                 $.each(systemids, function (i, systemid) {
-                    $("#systemlist").append('<option value="' + systemid.SystemId + '">' +
-                         systemid.SystemId + '</option>');
+                    if(systemid.SystemId==SystemId)
+                    {
+                        $("#systemlist").append('<option value="' + systemid.SystemId + '" selected="selected">' +
+                             systemid.SystemId + '</option>');
+                    }
+                    else{
+                        $("#systemlist").append('<option value="' + systemid.SystemId + '">' +
+                             systemid.SystemId + '</option>');
+                    }
                 });
             },
             error: function (ex) {
                 $("#systemlist").empty();
             }
         });
+    }
+
+    function GetSystemId(Id)
+    {
+        var SystemId = "";
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/GetSystemId",
+            dataType: 'json',
+            data: { Id: Id },
+            async: false,
+            success: function (response) {
+                SystemId = response;
+            },
+            error: function (ex) {
+                SystemId = "Please Select";
+            }
+        });
+        return SystemId;
     }
 
 
