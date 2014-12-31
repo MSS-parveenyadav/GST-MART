@@ -1928,5 +1928,10 @@ namespace GST_Mart.Controllers
             }
         }
 
+        public JsonResult SearchDublicateUserId(string UserId, int Id)
+        {
+            var result = adminuser.SearchDublicateUserId(UserId, Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

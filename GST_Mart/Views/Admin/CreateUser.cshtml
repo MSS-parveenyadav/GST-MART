@@ -363,7 +363,7 @@
 
         function IsSpecialcharacter(e) {
             var keyCode = e.which ? e.which : e.keyCode
-            var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode > 123);
+            var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode >= 123);
             if (ret == true) {
                 return false;
             }
@@ -419,6 +419,15 @@
                 $('#ValidateUserId').addClass('validation');
                 $('#UserId').focus();
                 count = 1;
+            }
+            if (UserId != "") {
+                var Result = DublicateUserId();
+                if (Result.responseJSON == "Yes") {
+                    document.getElementById("ValidateUserId").innerHTML = "This User Id is Already Exist !";
+                    $('#ValidateUserId').addClass('validation');
+                    $('#UserId').focus();
+                    count = 1;
+                }
             }
             if (Usename == "") {
 
@@ -720,7 +729,36 @@
 
     }
 
+    function DublicateUserId() {
+        var Result = "";
+        var UserId = $("#UserId").val();
+        var Id = $("#Id").val();
+        var response = $.ajax({
+            type: 'POST',
+            url: "/Admin/SearchDublicateUserId",
+            async: false,
+            dataType: 'json',
+            data: "{'UserId':'" + UserId + "','Id':'" + Id + "'}",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response == "Yes") {
+                    Result = "Yes";
+                    //return Result;
+                }
+                else {
+                    Result = "No";
+                    //return Result;
+                }
+            },
+            error: function (error) {
+                Result = "No";
 
+            }
+        });
+
+        return response;
+
+    }
 
         </script>
  
