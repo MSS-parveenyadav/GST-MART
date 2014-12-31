@@ -163,9 +163,8 @@ namespace GST_Mart.Controllers
 
 
 
-          //systems = systems.Remove(systems.Length - 1);
-          // industrys = industrys.Remove(industrys.Length - 1);
-
+              systems = systems.TrimEnd(',');
+              industrys = industrys.TrimEnd(','); 
             
             var products = new System.Data.DataTable("teste");
             products.Columns.Add("Id", typeof(int));

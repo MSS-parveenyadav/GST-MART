@@ -47,11 +47,3 @@ F:\Projects\gst-mart\GST_BLL\bin\Debug\GST_DB.pdb
 F:\Projects\gst-mart\GST_BLL\obj\Debug\GST_BLL.csprojResolveAssemblyReference.cache
 F:\Projects\gst-mart\GST_BLL\obj\Debug\GST_BLL.dll
 F:\Projects\gst-mart\GST_BLL\obj\Debug\GST_BLL.pdb
-D:\Code\Git\gst-mart\GST_BLL\bin\Debug\GST_BLL.dll.config
-D:\Code\Git\gst-mart\GST_BLL\bin\Debug\GST_BLL.dll
-D:\Code\Git\gst-mart\GST_BLL\bin\Debug\GST_BLL.pdb
-D:\Code\Git\gst-mart\GST_BLL\bin\Debug\GST_DB.dll
-D:\Code\Git\gst-mart\GST_BLL\bin\Debug\GST_DB.pdb
-D:\Code\Git\gst-mart\GST_BLL\obj\Debug\GST_BLL.csprojResolveAssemblyReference.cache
-D:\Code\Git\gst-mart\GST_BLL\obj\Debug\GST_BLL.dll
-D:\Code\Git\gst-mart\GST_BLL\obj\Debug\GST_BLL.pdb
