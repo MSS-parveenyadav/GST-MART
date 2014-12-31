@@ -663,12 +663,15 @@ namespace GST_Mart.Controllers
         [HttpPost]
         public ActionResult SaveSchedualr(SchedularModel model)
         {
+            string SuccessMessage = "";
+            string ErrorMessage = "";
+            string ExceptionMessage = "";
             model.CmpnyID = Session["Companey"].ToString();
             if (model.Companyid != 0 && model.Footerid != 0)
             {
               
                 schedularObj.UpdateSchedular(model);
-                TempData["MessageCompany"] = "Schedular Updated successfully.";
+                TempData["SuccessMessage"] = "Schedular Updated successfully.";
                 return RedirectToAction("SaveSchedualr", new { id=0});
             }
 
@@ -680,21 +683,16 @@ namespace GST_Mart.Controllers
                var responseCompany = schedularObj.CreateCompnaySchedular(model);
                if (responseCompany != EnumClass.MessageFamily.Success.ToString())
                {
-                   TempData["MessageCompany"] = responseCompany;
+                   ExceptionMessage = responseCompany;
                }
                 else
                {
-                   TempData["MessageCompany"] = "Company Schedular Created";
-
+                   SuccessMessage = SuccessMessage + "Company";
                }
             }
             else
             {
-
-           
-               TempData["MessagePurchase"] = "Company Schedulars is allready Added";
-           
-           
+                ErrorMessage =ErrorMessage+ "Company";
             }
 
             var checkExistingLedger = schedularObj.CheckExtingSchedular(GST_BLL.Enum.EnumClass.ImportFamily.Ledger.ToString(), model.CmpnyID);
@@ -704,16 +702,16 @@ namespace GST_Mart.Controllers
                 var responseLedger = schedularObj.CreateLedgerSchedular(model);
                 if (responseLedger != EnumClass.MessageFamily.Success.ToString())
                 {
-                    TempData["MessageLedger"] = responseLedger;
+                    ExceptionMessage =ExceptionMessage+" "+ responseLedger;
                 }
                 else
                 {
-                    TempData["MessageLedger"] = "Ledger Schedulars created";
+                    SuccessMessage = SuccessMessage +" "+"Ledger";
                 }
             }
             else
             {
-                TempData["MessageLedger"] = "Ledger Schedulars is allready Added";
+                ErrorMessage = ErrorMessage +" "+ "Ledger";
             }
 
 
@@ -724,16 +722,16 @@ namespace GST_Mart.Controllers
                  var responseSupply = schedularObj.CreateSupplySchedular(model);
                  if (responseSupply != EnumClass.MessageFamily.Success.ToString())
                  {
-                     TempData["MessageSupply"] = responseSupply;
+                     ExceptionMessage = ExceptionMessage + " " + responseSupply;
                  }
                  else
                  {
-                     TempData["MessageSupply"] = "Supply Schedulars created";
+                     SuccessMessage = SuccessMessage + " " + "Supply";
                  }
              }
             else
              {
-                 TempData["MessageSupply"] = "Supply Schedulars is allready Added";
+                 ErrorMessage = ErrorMessage + " " + "Supply";
              }
 
 
@@ -743,17 +741,16 @@ namespace GST_Mart.Controllers
                  var responseFooter = schedularObj.CreateFooterSchedular(model);
                  if (responseFooter != EnumClass.MessageFamily.Success.ToString())
                  {
-                     TempData["MessageFooter"] = responseFooter;
+                     ExceptionMessage = ExceptionMessage + " " + responseFooter;
                  }
                  else
                  {
-                     TempData["MessageFooter"] = "Footer Schedular Created";
+                     SuccessMessage = SuccessMessage + " " + "Footer";
                  }
              }
             else
              {
-
-                 TempData["MessageSupply"] = "Footer Schedulars is allready Added";
+                 ErrorMessage = ErrorMessage + " " + "Footer";
              }
 
              var checkExistingPurchase = schedularObj.CheckExtingSchedular(GST_BLL.Enum.EnumClass.ImportFamily.Purchase.ToString(), model.CmpnyID);
@@ -762,23 +759,37 @@ namespace GST_Mart.Controllers
                  var responsePurchase = schedularObj.CreatePurchaseSchedular(model);
                  if (responsePurchase != EnumClass.MessageFamily.Success.ToString())
                  {
-                     TempData["MessagePurchase"] = responsePurchase;
+                     ExceptionMessage = ExceptionMessage + " " + responsePurchase;
                  }
                  else
                  {
-                     TempData["MessagePurchase"] = "Purchase Schedular Created";
-
+                     SuccessMessage = SuccessMessage + " " + "Purchase";
                  }
              }
              else
              {
-
-                 TempData["MessagePurchase"] = "Purchase Schedulars is allready Added";
+                 ErrorMessage = ErrorMessage + " " + "Purchase";
              }
       
           
                GetDDlist();
-
+               if (SuccessMessage != "")
+               {
+                   SuccessMessage = SuccessMessage + " " + "Schedulars Created.";
+                   TempData["SuccessMessage"] = SuccessMessage;
+               }
+               if (ErrorMessage != "")
+               {
+                   ErrorMessage = ErrorMessage + " Schedulars allready Added.";
+                   TempData["ErrorMessage"] = ErrorMessage;
+               }
+               if (ExceptionMessage != "")
+               {
+                   ErrorMessage = ErrorMessage +" And "+ExceptionMessage+" Schedulars have Exceptions.";
+                   TempData["ErrorMessage"] = ErrorMessage;
+               }
+               
+               
                return RedirectToAction("SaveSchedualr", new {id=0});
 
         }
@@ -868,42 +879,42 @@ namespace GST_Mart.Controllers
             var Unit = new SchedularModel();
             Unit.CompanyUnit = "HOURS";
             CompanyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.CompanyUnit = "DAYS";
-            CompanyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.CompanyUnit = "WEEK";
-            CompanyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.CompanyUnit = "MONTH";
-            CompanyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.CompanyUnit = "DAYS";
+            //CompanyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.CompanyUnit = "WEEK";
+            //CompanyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.CompanyUnit = "MONTH";
+            //CompanyUnitList.Add(Unit);
 
             // Supply Unit List
             Unit = new SchedularModel();
             Unit.SupplyUnit = "HOURS";
             SupplyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.SupplyUnit = "DAYS";
-            SupplyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.SupplyUnit = "WEEK";
-            SupplyUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.SupplyUnit = "MONTH";
-            SupplyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.SupplyUnit = "DAYS";
+            //SupplyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.SupplyUnit = "WEEK";
+            //SupplyUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.SupplyUnit = "MONTH";
+            //SupplyUnitList.Add(Unit);
 
             // Footer Unit List
             Unit = new SchedularModel();
             Unit.FooterUnit = "HOURS";
             FooterUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.FooterUnit = "DAYS";
-            FooterUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.FooterUnit = "WEEK";
-            FooterUnitList.Add(Unit);
-            Unit.FooterUnit = "MONTH";
-            FooterUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.FooterUnit = "DAYS";
+            //FooterUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.FooterUnit = "WEEK";
+            //FooterUnitList.Add(Unit);
+            //Unit.FooterUnit = "MONTH";
+            //FooterUnitList.Add(Unit);
 
 
 
@@ -911,30 +922,30 @@ namespace GST_Mart.Controllers
             Unit = new SchedularModel();
             Unit.LedgerUnit = "HOURS";
             LedgerUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.LedgerUnit = "DAYS";
-            LedgerUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.LedgerUnit = "WEEK";
-            LedgerUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.LedgerUnit = "MONTH";
-            LedgerUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.LedgerUnit = "DAYS";
+            //LedgerUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.LedgerUnit = "WEEK";
+            //LedgerUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.LedgerUnit = "MONTH";
+            //LedgerUnitList.Add(Unit);
 
 
             // Purchase Unit List
             Unit = new SchedularModel();
             Unit.PurchaseUnit = "HOURS";
             PurchaseUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.PurchaseUnit = "DAYS";
-            PurchaseUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.PurchaseUnit = "WEEK";
-            PurchaseUnitList.Add(Unit);
-            Unit = new SchedularModel();
-            Unit.PurchaseUnit = "MONTH";
-            PurchaseUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.PurchaseUnit = "DAYS";
+            //PurchaseUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.PurchaseUnit = "WEEK";
+            //PurchaseUnitList.Add(Unit);
+            //Unit = new SchedularModel();
+            //Unit.PurchaseUnit = "MONTH";
+            //PurchaseUnitList.Add(Unit);
 
 
             ViewBag.CompanyUnitListFrequency = CompanyUnitList;
@@ -1791,7 +1802,12 @@ namespace GST_Mart.Controllers
             var result = adminuser.SearchDublicateEmail(Email,Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult SearchDublicateUserId(string UserId, int Id)
+        {
+            var result = adminuser.SearchDublicateUserId(UserId, Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        
         public JsonResult SearchCycleByCycleId(string id)
         {
             var res = adminuser.SearchCycleId(id, originalConnectionString, Session["CompanyDB"].ToString());

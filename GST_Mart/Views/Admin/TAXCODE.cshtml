@@ -571,6 +571,8 @@
     var specialKeys = new Array();
     specialKeys.push(8);
     specialKeys.push(9);
+    specialKeys.push(46);
+    specialKeys.push(37);
     function IsNumeric(e) {
         var keyCode = e.which ? e.which : e.keyCode
         var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);

@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GSTMARTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GSTMARTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminPaths" EntityType="GSTMARTModel.AdminPath" />
+    <EntitySet Name="Companies" EntityType="GSTMARTModel.Company" />
+    <EntitySet Name="Cycles" EntityType="GSTMARTModel.Cycle" />
+    <EntitySet Name="GstSystems" EntityType="GSTMARTModel.GstSystem" />
+    <EntitySet Name="IpAddresses" EntityType="GSTMARTModel.IpAddress" />
+    <EntitySet Name="LDAPs" EntityType="GSTMARTModel.LDAP" />
+    <EntitySet Name="Permissions" EntityType="GSTMARTModel.Permission" />
+    <EntitySet Name="Users" EntityType="GSTMARTModel.User" />
+    <AssociationSet Name="FK_CompanyGstSystem" Association="GSTMARTModel.FK_CompanyGstSystem">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="GstSystem" EntitySet="GstSystems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermissionUser" Association="GSTMARTModel.FK_PermissionUser">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Permission" EntitySet="Permissions" />
+    </AssociationSet>
+    <EntitySet Name="CompanyUsers" EntityType="GSTMARTModel.CompanyUser" />
+    <EntitySet Name="Schedulars" EntityType="GSTMARTModel.Schedular" />
+    <EntitySet Name="Industries" EntityType="GSTMARTModel.Industry" />
+    <AssociationSet Name="FK_CompanyIndustry" Association="GSTMARTModel.FK_CompanyIndustry">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Industry" EntitySet="Industries" />
+    </AssociationSet>
+    <EntitySet Name="TaxCodes" EntityType="GSTMARTModel.TaxCode" />
+    <EntitySet Name="CustomCodes" EntityType="GSTMARTModel.CustomCode" />
+    <EntitySet Name="TransactionTypes" EntityType="GSTMARTModel.TransactionType" />
+    <EntitySet Name="CurrencyExchanges" EntityType="GSTMARTModel.CurrencyExchange" />
+    <EntitySet Name="OriginalCodeTaxes" EntityType="GSTMARTModel.OriginalCodeTax" />
+    <EntitySet Name="CurrencyTypes" EntityType="GSTMARTModel.CurrencyType" />
+    <EntitySet Name="CurrencyGroups" EntityType="GSTMARTModel.CurrencyGroup" />
+    <EntitySet Name="AuditLogs" EntityType="GSTMARTModel.AuditLog" />
+    <EntitySet Name="Configurations" EntityType="GSTMARTModel.Configuration" />
+    <EntitySet Name="CurrencySchedulars" EntityType="GSTMARTModel.CurrencySchedular" />
+    <AssociationSet Name="CompanyCurrencySchedular" Association="GSTMARTModel.CompanyCurrencySchedular">
+      <End Role="CurrencySchedular" EntitySet="CurrencySchedulars" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AdminPath">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminpath1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" Nullable="true" />
+    <Property Name="Permission" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GstSystems" Relationship="GSTMARTModel.FK_CompanyGstSystem" FromRole="Company" ToRole="GstSystem" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Industries" Relationship="GSTMARTModel.FK_CompanyIndustry" FromRole="Company" ToRole="Industry" />
+    <Property Name="CurrencySchedularId" Type="Int32" Nullable="true" />
+    <NavigationProperty Name="CurrencySchedulars" Relationship="GSTMARTModel.CompanyCurrencySchedular" FromRole="Company" ToRole="CurrencySchedular" />
+    <Property Name="CreatedDate" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Cycle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SystemId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Supply" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Purchase" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ledger" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Footer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Company" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CycleID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="GstSystem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SystemName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SystemID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="GSTMARTModel.FK_CompanyGstSystem" FromRole="GstSystem" ToRole="Company" />
+  </EntityType>
+  <EntityType Name="IpAddress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IP" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="LDAP">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DomianName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PortNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CompanyId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CNBN" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateCycle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AccessSetting" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DownloadData" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PrintReport" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="User_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="GSTMARTModel.FK_PermissionUser" FromRole="Permission" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Usertype" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Createdate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mobilenumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdminID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
+    <NavigationProperty Name="Permissions" Relationship="GSTMARTModel.FK_PermissionUser" FromRole="User" ToRole="Permission" />
+    <Property Name="LastLoginDate" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Guid" Type="String" Nullable="true" />
+  </EntityType>
+  <Association Name="FK_CompanyGstSystem">
+    <End Type="GSTMARTModel.Company" Role="Company" Multiplicity="1" />
+    <End Type="GSTMARTModel.GstSystem" Role="GstSystem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GstSystem">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermissionUser">
+    <End Type="GSTMARTModel.User" Role="User" Multiplicity="1" />
+    <End Type="GSTMARTModel.Permission" Role="Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permission">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CompanyUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Schedular">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Module" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Path" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Frequency" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Unit" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="STime" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="LastRun" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NextRun" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompanyID" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Industry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="GSTMARTModel.FK_CompanyIndustry" FromRole="Industry" ToRole="Company" />
+  </EntityType>
+  <Association Name="FK_CompanyIndustry">
+    <End Type="GSTMARTModel.Company" Role="Company" Multiplicity="1" />
+    <End Type="GSTMARTModel.Industry" Role="Industry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Industry">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TaxCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SystemId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CustomCode" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="OriginalCode" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="TaxRate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ReferenceNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="GST03Fields" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DateType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="CustomCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customcode" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Transactiontype" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="CurrencyExchange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CurrencyCode" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Discription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ConversionRate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CompanyId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CurrencyDate" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OriginalCodeTax">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OriginalCode" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="TaxRate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="CurrencyType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="currencytype" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="currencycode" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrencyGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyGroupName" Type="String" Nullable="false" />
+    <Property Name="CurrencyType" Type="String" Nullable="false" />
+    <Property Name="TaxCode" Type="String" Nullable="false" />
+    <Property Name="CreatedDate" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+    <Property Name="Message" Type="String" Nullable="false" />
+    <Property Name="IpAddress" Type="String" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="true" />
+    <Property Name="Status" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Configuration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="logoname" Type="String" Nullable="false" />
+    <Property Name="dateformat" Type="String" Nullable="false" />
+    <Property Name="timeformat" Type="String" Nullable="false" />
+    <Property Name="dbaddress" Type="String" Nullable="false" />
+    <Property Name="dbname" Type="String" Nullable="false" />
+    <Property Name="dbuserid" Type="String" Nullable="false" />
+    <Property Name="dbpwd" Type="String" Nullable="false" />
+    <Property Name="directorypath" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrencySchedular">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FeedUrl" Type="String" Nullable="false" />
+    <Property Name="FrequencyUnit" Type="String" Nullable="false" />
+    <Property Name="Time" Type="String" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="GSTMARTModel.CompanyCurrencySchedular" FromRole="CurrencySchedular" ToRole="Company" />
+    <Property Name="NextRunDate" Type="DateTime" Nullable="false" />
+    <Property Name="NextRunTime" Type="Time" Nullable="false" />
+    <Property Name="LastRun" Type="DateTime" Nullable="false" />
+    <Property Name="Status" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="CompanyCurrencySchedular">
+    <End Type="GSTMARTModel.CurrencySchedular" Role="CurrencySchedular" Multiplicity="*" />
+    <End Type="GSTMARTModel.Company" Role="Company" Multiplicity="0..1" />
+  </Association>
+</Schema>
