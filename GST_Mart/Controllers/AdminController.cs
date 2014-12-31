@@ -1802,7 +1802,12 @@ namespace GST_Mart.Controllers
             var result = adminuser.SearchDublicateEmail(Email,Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult SearchDublicateUserId(string UserId, int Id)
+        {
+            var result = adminuser.SearchDublicateUserId(UserId, Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        
         public JsonResult SearchCycleByCycleId(string id)
         {
             var res = adminuser.SearchCycleId(id, originalConnectionString, Session["CompanyDB"].ToString());

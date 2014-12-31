@@ -420,6 +420,15 @@
                         $('#UserId').focus();
                         count = 1;
                     }
+                    if (UserId != "") {
+                        var Result = DublicateUserId();
+                        if (Result.responseJSON == "Yes") {
+                            document.getElementById("ValidateUserId").innerHTML = "This User Id is Already Exist !";
+                            $('#ValidateUserId').addClass('validation');
+                            $('#UserId').focus();
+                            count = 1;
+                        }
+                    }
                     if (Usename == "") {
 
                         document.getElementById("ValidateUsename").innerHTML = "Please Enter User Name.";
@@ -719,6 +728,36 @@
 
     }
 
+    function DublicateUserId() {
+        var Result = "";
+        var UserId = $("#UserId").val();
+        var Id = $("#Id").val();
+        var response = $.ajax({
+            type: 'POST',
+            url: "/Admin/SearchDublicateUserId",
+            async: false,
+            dataType: 'json',
+            data: "{'UserId':'" + UserId + "','Id':'" + Id + "'}",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response == "Yes") {
+                    Result = "Yes";
+                    //return Result;
+                }
+                else {
+                    Result = "No";
+                    //return Result;
+                }
+            },
+            error: function (error) {
+                Result = "No";
+
+            }
+        });
+
+        return response;
+
+    }
 
 
         </script>
