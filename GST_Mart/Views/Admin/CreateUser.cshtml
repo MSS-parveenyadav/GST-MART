@@ -430,44 +430,13 @@
                 }
             }
             if (Usename == "") {
+                document.getElementById("ValidateUsename").innerHTML = "Please Enter User Name.";
+                $('#ValidateUsename').addClass('validation');
+                $('#Usename').focus();
+                count = 1;
 
-                function Checkvalidation() {
-                    var count = 0;
-                    var Companies = document.getElementById("Companies").value;
-                    var UserId = document.getElementById("UserId").value; 
-                    var Usename = document.getElementById("Usename").value;
-                    var Password = document.getElementById("Password").value;
-                    var ConfirmPassword = document.getElementById("ConfirmPassword").value;
-                    var Email = document.getElementById("Email").value;
-                    var ConfirmEmail = document.getElementById("ConfirmEmail").value;
-                    var MobileNumber = document.getElementById("MobileNumber").value;
-                    var ConfirmMobileNumber = document.getElementById("ConfirmMobileNumber").value;
-                    var Createcycle = document.getElementById("Createcycle").value;
-                    var AccessSetting = document.getElementById("AccessSetting").value;
-                    var DownloadData = document.getElementById("DownloadData").value;
-                    var PrintReport = document.getElementById("PrintReport").value;
-                    if (Companies == "") {
-                        document.getElementById("ValidateCompanies").innerHTML = "Please select atleast One Company.";
-                        $('#ValidateCompanies').addClass('validation');
-                        $('#Companies').focus();
-                        count = 1;
-                    }
-                    if (UserId == "") {
-                        document.getElementById("ValidateUserId").innerHTML = "Please Enter User Id.";
-                        $('#ValidateUserId').addClass('validation');
-                        $('#UserId').focus();
-                        count = 1;
-                    }
-                    if (UserId != "") {
-                        var Result = DublicateUserId();
-                        if (Result.responseJSON == "Yes") {
-                            document.getElementById("ValidateUserId").innerHTML = "This User Id is Already Exist !";
-                            $('#ValidateUserId').addClass('validation');
-                            $('#UserId').focus();
-                            count = 1;
-                        }
-                    }
-                    if (Usename == "") {
+            }
+                if (Password == "") {
 
                 document.getElementById("ValidatePassword").innerHTML = "Please Enter Password.";
                 $('#ValidatePassword').addClass('validation');
