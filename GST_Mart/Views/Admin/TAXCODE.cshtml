@@ -122,7 +122,7 @@
                                         <tr>
                                             <td class="add-tax">Reference Number :  </td>
                                             <td>
-                                                @Html.TextBoxFor(m => m.RefernceNumber, "", new { placeholder = "RefernceNumber", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                                @Html.TextBoxFor(m => m.RefernceNumber, "", new { placeholder = "Reference Number", @onchange = "ValidationRefresh(this.id)", @onkeypress = "return IsNumeric(event)", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
                                                 <p id="ValidateRefernceNumber" style="color: red"></p>
                                             </td>
                                         </tr>

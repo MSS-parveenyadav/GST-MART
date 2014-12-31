@@ -793,6 +793,7 @@ th:last-child {
 .data-table th {
 	padding: 8px 9px !important;
 	text-align: left !important;
+     white-space: nowrap;
 }
 .icone {
  
