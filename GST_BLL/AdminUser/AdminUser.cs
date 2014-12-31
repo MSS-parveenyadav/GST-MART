@@ -1889,7 +1889,27 @@ namespace GST_BLL.AdminUser
             }
             return Adminuser;
         }
-       
 
+        public string SearchDublicateUserId(string UserId, int Id)
+        {
+            var result = new User();
+            if (Id == 0)
+            {
+                result = (from p in gstmart.Users where p.UserId == UserId && p.Usertype != "Admin" select p).FirstOrDefault();
+            }
+            else
+            {
+                result = (from p in gstmart.Users where p.UserId == UserId && p.Usertype != "Admin" && p.Id != Id select p).FirstOrDefault();
+            }
+
+            if (result == null)
+            {
+                return "No";
+            }
+            else
+            {
+                return "Yes";
+            }
+        }
     }
 }

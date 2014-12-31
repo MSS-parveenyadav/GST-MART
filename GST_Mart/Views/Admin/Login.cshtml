@@ -75,7 +75,7 @@
 
     function IsSpecialcharacter(e) {
         var keyCode = e.which ? e.which : e.keyCode
-        var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode > 123);
+        var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode >= 123);
 
         if (ret == true) {
             return false;
