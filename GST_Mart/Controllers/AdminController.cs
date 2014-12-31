@@ -70,7 +70,7 @@ namespace GST_Mart.Controllers
             IPAddress IP = adminuser.getipaddress();
             TempData["IP"] = IP;
        
-            Session["CompanyDB"] ="Gst"+ companylist.Replace(" ", string.Empty);
+            Session["dbname"] ="Gst"+ companylist.Replace(" ", string.Empty);
             Session["Companey"] = companylist;
 
 
@@ -329,7 +329,7 @@ namespace GST_Mart.Controllers
                     pagesize = Convert.ToInt32(DDlPageingsize);
                 }
                 var companyid = Session["Companey"].ToString();
-                var list = adminuser.GetUserPermissionList(originalConnectionString, Session["CompanyDB"].ToString(),companyid);
+                var list = adminuser.GetUserPermissionList(originalConnectionString, Session["dbname"].ToString(),companyid);
                 var pageNumber = page ?? 1;
                 TempData["pagesize"] = pagesize;
                 var List = list.ToPagedList(pageNumber, pagesize);
@@ -363,7 +363,7 @@ namespace GST_Mart.Controllers
                     adminusermodel.Password = model.Password;
                     adminusermodel.Email = model.Email;
                     adminusermodel.MobileNumber = model.MobileNumber;
-                    adminuser.UpdateAdminUser(adminusermodel, Createcycle, Accesssetting, Downloaddata, Printreport, id, Companies, originalConnectionString, Session["CompanyDB"].ToString());
+                    adminuser.UpdateAdminUser(adminusermodel, Createcycle, Accesssetting, Downloaddata, Printreport, id, Companies, originalConnectionString, Session["dbname"].ToString());
                     TempData["SuccessMessage"] = "User Successfully Updated";
                     string body = "Dear : " + model.Usename + "<br/><br/>Your Updated Password is : " + model.Password + "";
                     string Result= MailMessage.SendMail(model.Email,ms_email, smtp_port, Smtp_Password, Smtp_Host,"Update Password Mail",body);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
@@ -388,7 +388,7 @@ namespace GST_Mart.Controllers
                     }
                 }
                 var companyid = Session["Companey"].ToString();
-                var list = adminuser.GetUserPermissionList(originalConnectionString, Session["CompanyDB"].ToString(),companyid);
+                var list = adminuser.GetUserPermissionList(originalConnectionString, Session["dbname"].ToString(),companyid);
                 var pageNumber = page ?? 1;
                 var List = list.ToPagedList(pageNumber, 1);
                 ViewBag.Userpermission = List;
@@ -461,7 +461,7 @@ namespace GST_Mart.Controllers
                     ViewBag.Create = ob.Createcycle;
                 }
                 var companyid = Session["Companey"].ToString();
-                var list = adminuser.GetUserPermissionList(originalConnectionString, Session["CompanyDB"].ToString(),companyid);
+                var list = adminuser.GetUserPermissionList(originalConnectionString, Session["dbname"].ToString(),companyid);
                 var pageNumber = page ?? 1;
                 TempData["pagesize"] = pagesize;
                 int size = Convert.ToInt32(pagesize);
@@ -477,7 +477,7 @@ namespace GST_Mart.Controllers
 
         public ActionResult IpAddress(int ID = 0)
         {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
                 if (ID == 0)
                 {
@@ -510,7 +510,7 @@ namespace GST_Mart.Controllers
         [HttpPost]
         public ActionResult IpAddress(IpAddressModel Data)
         {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
                 if (Data.IP == null)
                 {
@@ -543,7 +543,7 @@ namespace GST_Mart.Controllers
 
         public ActionResult DeleteIpAddress(int ID)
         {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
                 Int32 returnintvalue = adminuser.DeleteIp(ID);
                 TempData["ErrorMessage"] = "Ip Address Successfully deleted.";
@@ -565,7 +565,7 @@ namespace GST_Mart.Controllers
 
         public ActionResult AdminPath()
         {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
                 var adminpath = adminuser.GetAdminPath();
                 TempData["AdminPath"] = adminpath.AdminPath;
@@ -579,7 +579,7 @@ namespace GST_Mart.Controllers
         [HttpPost]
         public ActionResult AdminPath(AdminPathModel Data)
         {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
                 if (Data.AdminPath == null)
                 {
@@ -620,49 +620,64 @@ namespace GST_Mart.Controllers
         [HttpGet]
         public ActionResult SaveSchedualr(int id=0)
         {
-
-            GetDDlist();
-            DataSchedular DataObj = new DataSchedular();
-            var List = DataObj.GetSchedular(id, Session["Companey"].ToString());
-            ViewBag.SchedularList = List;
-            if (id == 0)
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
-                TempData["id"] = 0;
-                TempData["Companey"] =0;
-                TempData["Ledger"] = 0;
-                TempData["Supply"] = 0;
-                TempData["Footer"] = 0;
-                TempData["Purchase"] =0;
-                return View();
+                GetDDlist();
+                DataSchedular DataObj = new DataSchedular();
+                var List = DataObj.GetSchedular(id, Session["Companey"].ToString());
+                ViewBag.SchedularList = List;
+                if (id == 0)
+                {
+                    TempData["id"] = 0;
+                    TempData["Companey"] = 0;
+                    TempData["Ledger"] = 0;
+                    TempData["Supply"] = 0;
+                    TempData["Footer"] = 0;
+                    TempData["Purchase"] = 0;
+                    return View();
+                }
+                else
+                {
+                    TempData["id"] = id;
+                    SchedularModel result = DataObj.FindSchedularById(id, Session["Companey"].ToString());
+                    TempData["id"] = id;
+                    TempData["Companey"] = result.Companyid;
+                    TempData["Ledger"] = result.Ledgerid;
+                    TempData["Supply"] = result.Supplyid;
+                    TempData["Footer"] = result.Footerid;
+                    TempData["Purchase"] = result.Purchaseid;
+                    return View(result);
+                }
             }
             else
             {
-                TempData["id"] = id;
-                SchedularModel result = DataObj.FindSchedularById(id, Session["Companey"].ToString());
-                TempData["id"] = id;
-                TempData["Companey"] = result.Companyid;
-                TempData["Ledger"] = result.Ledgerid;
-                TempData["Supply"] = result.Supplyid;
-                TempData["Footer"] = result.Footerid;
-                TempData["Purchase"] = result.Purchaseid;
-                return View(result);
+                return RedirectToAction("Login");
             }
         
         }
 
         public ActionResult EditSchedularStatus(int id = 0)
         {
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
+            { 
             if(id!=0)
             {
                 DataSchedular DataObj = new DataSchedular();
                 int result = DataObj.EditSchedularStatus(id);
             }
             return RedirectToAction("SaveSchedualr");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         [HttpPost]
         public ActionResult SaveSchedualr(SchedularModel model)
         {
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
+            { 
             string SuccessMessage = "";
             string ErrorMessage = "";
             string ExceptionMessage = "";
@@ -791,6 +806,11 @@ namespace GST_Mart.Controllers
                
                
                return RedirectToAction("SaveSchedualr", new {id=0});
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
 
         }
 
@@ -1609,7 +1629,7 @@ namespace GST_Mart.Controllers
 
         public ActionResult AuditLog(int? page, int pagesize = 0, string DDlPageingsize = "5")
         {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
 
                 //********Pageing*****//
@@ -1623,10 +1643,10 @@ namespace GST_Mart.Controllers
                 var List = list.ToPagedList(pageNumber, pagesize);
                 ViewBag.AuditLog = List;
                 //********Pageing End*****//
-                List<SelectListItem> CycleIdList = adminuser.CycleIDList(originalConnectionString, Session["CompanyDB"].ToString());
+                List<SelectListItem> CycleIdList = adminuser.CycleIDList(originalConnectionString, Session["dbname"].ToString());
                 ViewBag.CycleIdList = CycleIdList;
 
-                List<Cycle> CycleList = adminuser.CycleList(originalConnectionString, Session["CompanyDB"].ToString());
+                List<Cycle> CycleList = adminuser.CycleList(originalConnectionString, Session["dbname"].ToString());
                 var ListofCycle = CycleList.ToPagedList(pageNumber, pagesize);
                 ViewBag.CycleList = ListofCycle;
 
@@ -1641,7 +1661,7 @@ namespace GST_Mart.Controllers
 
         public ActionResult DeleteAuditLog(int Id)
         {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
                 string ReturnValue = adminuser.DeleteAuditLog(Id);
                 TempData["ErrorMessage"] = ReturnValue;
@@ -1710,6 +1730,8 @@ namespace GST_Mart.Controllers
 
         public ActionResult Configuration()
         {
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
+            { 
             List<SelectListItem> DateFormat = new List<SelectListItem>();
             List<SelectListItem> TimeFormat = new List<SelectListItem>();
 
@@ -1718,12 +1740,17 @@ namespace GST_Mart.Controllers
             ViewBag.DateFormat = DateFormat;
             ViewBag.TimeFormat = TimeFormat;
             return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         [HttpPost]
         public ActionResult Configuration(ConfigurationModel model, HttpPostedFileBase fileUpload)
         {
-            if (Session["AdminLoginStatus"] == "LoggedIn")
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
             {
                 List<SelectListItem> DateFormat = new List<SelectListItem>();
                 List<SelectListItem> TimeFormat = new List<SelectListItem>();
@@ -1816,20 +1843,20 @@ namespace GST_Mart.Controllers
         
         public JsonResult SearchCycleByCycleId(string id)
         {
-            var res = adminuser.SearchCycleId(id, originalConnectionString, Session["CompanyDB"].ToString());
+            var res = adminuser.SearchCycleId(id, originalConnectionString, Session["dbname"].ToString());
 
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SearchCycleByDate(string StartDate, string EndDate)
         {
-            var res = adminuser.SearchCycleByDate(StartDate, EndDate, originalConnectionString, Session["CompanyDB"].ToString());
+            var res = adminuser.SearchCycleByDate(StartDate, EndDate, originalConnectionString, Session["dbname"].ToString());
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ExportDataofCycle(int Id)
         {
-            Cycle Cycle = adminuser.FindCycleById(Id, originalConnectionString, Session["CompanyDB"].ToString());
+            Cycle Cycle = adminuser.FindCycleById(Id, originalConnectionString, Session["dbname"].ToString());
 
 
             var products = new System.Data.DataTable("teste");
@@ -1870,7 +1897,8 @@ namespace GST_Mart.Controllers
         [HttpGet]
         public ActionResult CycleErrors(int Id)
         {
-
+            if (Session["AdminLoginStatus"] == "LoggedIn" || Session["Settings"].ToString().Trim() == "Access Setting".Trim())
+            {
             //To get Data Type Conversion Errors
             var data = user.ReadRrrors(Id.ToString(), Session["Companey"].ToString());
             ViewBag.purchaseError = user.ReadPurchaseRrrors(Id.ToString(), Session["Companey"].ToString());
@@ -1892,7 +1920,11 @@ namespace GST_Mart.Controllers
 
 
             return View(data);
-
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         public string Alphanumrical(int length, Random random)
@@ -1940,7 +1972,7 @@ namespace GST_Mart.Controllers
         {
             if (Session["AdminLoginStatus"] == "LoggedIn")
             {
-                var result = user.TempDeleteCycle(originalConnectionString, Session["CompanyDB"].ToString(), Id, "Audit Deleted");
+                var result = user.TempDeleteCycle(originalConnectionString, Session["dbname"].ToString(), Id, "Audit Deleted");
                 TempData["ErrorMessage"] = "Cycle Deleted successfully.";
                 return RedirectToAction("AuditLog");
             }

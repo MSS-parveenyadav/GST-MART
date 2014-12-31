@@ -78,7 +78,7 @@ namespace GST_Mart.Controllers
             try
             {
                 Session["dbname"] = "Gst" + companylist.Replace(" ", string.Empty);
-                Session["CompanyName"] = companylist.ToString();
+                Session["Companey"] = companylist.ToString();
 
 
                 TempData["IP"] = IP;
@@ -173,7 +173,7 @@ namespace GST_Mart.Controllers
                 var Userpermissions = user.GetPermission_ToUser(UserId);
                 if (Userpermissions.isCreatecycle != "Deny")
                 {
-                    string companyid = Session["CompanyName"].ToString();
+                    string companyid = Session["Companey"].ToString();
                     ViewBag.SystemList = user.GetSystemID(companyid);
                     return View();
                 }
@@ -196,7 +196,7 @@ namespace GST_Mart.Controllers
 
                 try
                 {
-                    string companyid = Session["CompanyName"].ToString();
+                    string companyid = Session["Companey"].ToString();
                     ViewBag.SystemList = user.GetSystemID(companyid);
 
                     // Handling Attachments -
@@ -272,7 +272,7 @@ namespace GST_Mart.Controllers
                                 var length = item.ContentLength;
                                 item.SaveAs(finalPath);
 
-                                bool Status = Importer(1, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                bool Status = Importer(1, finalPath, Session["Companey"].ToString(), model.CycleID);
                                 if (Status == false)
                                 {
                                     TempData["ErrorMessage"] = ErrorMessage;
@@ -317,7 +317,7 @@ namespace GST_Mart.Controllers
                                 item.SaveAs(finalPath);
 
 
-                                bool Status = Importer(2, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                bool Status = Importer(2, finalPath, Session["Companey"].ToString(), model.CycleID);
                                 if (Status == false)
                                 {
                                     TempData["ErrorMessage"] = ErrorMessage;
@@ -359,7 +359,7 @@ namespace GST_Mart.Controllers
 
                                 item.SaveAs(finalPath);
 
-                                bool Status = Importer(3, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                bool Status = Importer(3, finalPath, Session["Companey"].ToString(), model.CycleID);
                                 if (Status == false)
                                 {
                                     TempData["ErrorMessage"] = ErrorMessage;
@@ -400,7 +400,7 @@ namespace GST_Mart.Controllers
 
                                 item.SaveAs(finalPath);
 
-                                bool Status = Importer(4, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                bool Status = Importer(4, finalPath, Session["Companey"].ToString(), model.CycleID);
                                 if (Status == false)
                                 {
                                     TempData["ErrorMessage"] = ErrorMessage;
@@ -438,7 +438,7 @@ namespace GST_Mart.Controllers
                                     item.SaveAs(finalPath);
 
 
-                                    bool Status = Importer(5, finalPath, Session["CompanyName"].ToString(), model.CycleID);
+                                    bool Status = Importer(5, finalPath, Session["Companey"].ToString(), model.CycleID);
                                     if (Status == false)
                                     {
                                         TempData["ErrorMessage"] = ErrorMessage;
@@ -811,9 +811,9 @@ namespace GST_Mart.Controllers
             if (securitycode == SecurityCode)
             {
                 var userid = Session["UserId"].ToString();
-                var companyid = Session["CompanyName"].ToString();
+                var companyid = Session["Companey"].ToString();
                 string error = "";
-                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(), out error);
+                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["Companey"].ToString(), out error);
 
                 
                 foreach (var item in result)
@@ -873,7 +873,7 @@ namespace GST_Mart.Controllers
                     pagesize = Convert.ToInt32(DDlPagingsize);
                 }
                 string error = "";
-                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(), out error);
+                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["Companey"].ToString(), out error);
 
 
                 if (error.Contains("error"))
@@ -913,9 +913,9 @@ namespace GST_Mart.Controllers
 
                 // SecurityCode.
                 var userid = Session["UserId"].ToString();
-                var companyid = Session["CompanyName"].ToString();
+                var companyid = Session["Companey"].ToString();
                 string error = "";
-                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["CompanyName"].ToString(), out error);
+                var result = user.GetImportProcess(originalConnectionString, Session["dbname"].ToString(), Session["Companey"].ToString(), out error);
 
 
                 foreach (var item in result)
@@ -987,7 +987,7 @@ namespace GST_Mart.Controllers
 
                 SSISvar = package.Variables;
                 SSISvar["CycleID"].Value = CycleId;
-                SSISvar["CompanyID"].Value = Session["CompanyName"].ToString();
+                SSISvar["CompanyID"].Value = Session["Companey"].ToString();
                 SSISvar["Catalog"].Value = Catalog;
                 SSISvar["Datasource"].Value = DataSource;
                 SSISvar["Password"].Value = Password;
@@ -1115,23 +1115,23 @@ namespace GST_Mart.Controllers
             {
 
             //To get Data Type Conversion Errors
-            var data = user.ReadRrrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.purchaseError = user.ReadPurchaseRrrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.supplyError = user.ReadSupplyRrrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.companyError = user.ReadCompanyRrrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.footerError = user.ReadFooterRrrors(CycleId, Session["CompanyName"].ToString());
+            var data = user.ReadRrrors(CycleId, Session["Companey"].ToString());
+            ViewBag.purchaseError = user.ReadPurchaseRrrors(CycleId, Session["Companey"].ToString());
+            ViewBag.supplyError = user.ReadSupplyRrrors(CycleId, Session["Companey"].ToString());
+            ViewBag.companyError = user.ReadCompanyRrrors(CycleId, Session["Companey"].ToString());
+            ViewBag.footerError = user.ReadFooterRrrors(CycleId, Session["Companey"].ToString());
             //To get duplicate records
-            ViewBag.purchase = user.ReadPurchaseDuplicateErrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.supply = user.ReadSupplyDuplicateErrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.ledger = user.ReadDuplicateLedgerErrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.comopany = user.ReadCompanyDuplicateErrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.footer = user.ReadFooterDuplicateErrors(CycleId, Session["CompanyName"].ToString());
+            ViewBag.purchase = user.ReadPurchaseDuplicateErrors(CycleId, Session["Companey"].ToString());
+            ViewBag.supply = user.ReadSupplyDuplicateErrors(CycleId, Session["Companey"].ToString());
+            ViewBag.ledger = user.ReadDuplicateLedgerErrors(CycleId, Session["Companey"].ToString());
+            ViewBag.comopany = user.ReadCompanyDuplicateErrors(CycleId, Session["Companey"].ToString());
+            ViewBag.footer = user.ReadFooterDuplicateErrors(CycleId, Session["Companey"].ToString());
             //To get missing(Required Filed Validation Failed) records
-            ViewBag.MissingPurchase = user.ReadPurchaseMissingErrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.MissingLedger = user.ReadMissingLedgerErrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.MissingSupply = user.ReadSupplyMissingErrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.MissingCompany = user.ReadCompanyMissingErrors(CycleId, Session["CompanyName"].ToString());
-            ViewBag.MissingFooter = user.ReadFooterMissingErrors(CycleId, Session["CompanyName"].ToString());
+            ViewBag.MissingPurchase = user.ReadPurchaseMissingErrors(CycleId, Session["Companey"].ToString());
+            ViewBag.MissingLedger = user.ReadMissingLedgerErrors(CycleId, Session["Companey"].ToString());
+            ViewBag.MissingSupply = user.ReadSupplyMissingErrors(CycleId, Session["Companey"].ToString());
+            ViewBag.MissingCompany = user.ReadCompanyMissingErrors(CycleId, Session["Companey"].ToString());
+            ViewBag.MissingFooter = user.ReadFooterMissingErrors(CycleId, Session["Companey"].ToString());
 
 
             return View(data);
