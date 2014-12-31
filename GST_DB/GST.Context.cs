@@ -19,7 +19,7 @@ namespace GST_DB
             : base("name=GSTMARTEntities")
         {
         }
-        public GSTMARTEntities(string con)
+        public GSTMARTEntities(string con )
             : base(con)
         {
         }

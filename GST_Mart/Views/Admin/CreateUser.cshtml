@@ -32,161 +32,161 @@
 
 
 
-        <div id="wrapper" class="clearfix">
-@using (Html.BeginForm("CreateUser", "Admin", FormMethod.Post, new { id = "submitForm" }))
-{
-    
-    @*@Html.AntiForgeryToken()*@
-    @Html.ValidationSummary(true)
+        <div id="wrapper" class="clearfix" oncontextmenu="return false" onselectstart="    return false" ondragstart="    return false">
+    @using (Html.BeginForm("CreateUser", "Admin", FormMethod.Post, new { id = "submitForm" }))
+    {
 
-         <div id="companyIdList">
-        @Html.ListBoxFor(m => m.Companies, Model.listcompaney, new { size = 2, @onclick = "ValidationRefresh(this.id)" })
-        <p id="ValidateCompanies" style="color: gray"></p>
-    </div>
-     
-            <div class="container-fluid">
-                <div class="serch">
-                    <div id="ErrorMessages" class="ErrorMessage">@TempData["ErrorMessage"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["SuccessMessage"]</div>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="home">
-                            <div class=" col-lg-12 sec-login">
-                                <h1>Create User <span class="glyphicon glyphicon-question-sign"></span></h1>
-                            </div>
+        @*@Html.AntiForgeryToken()*@
+        @Html.ValidationSummary(true)
 
-                            <form action="" method="get" class="serch">
-                                <div id="centre-coloum">
-                                    <div class="col-md-6">
-                                        <label>User Id:</label>
-                                        @Html.HiddenFor(model => model.Id, new { @class = "form-control" })
-                                        @Html.TextBoxFor(model => model.UserId, new { @onkeypress = "return IsSpecialcharacter(event);", @onclick = "ValidationRefresh(this.id)", placeholder = "User Id" })
-                                        <p id="ValidateUserId" style="color: white">.</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Name :</label>
-                                        @Html.TextBoxFor(model => model.Usename, new { @onkeypress = "return IsSpecialcharacter(event);", @onclick = "ValidationRefresh(this.id)", placeholder = "Name" })
-                                        <p id="ValidateUsename" style="color: white">.</p>
-                                    </div>
-                                </div>
-                                <div id="centre-coloum">
-                                    <div class="col-md-6">
-                                        <label>Password :</label>
-                                        @Html.TextBoxFor(model => model.Password, new { @onclick = "ValidationRefresh(this.id)", @type = "password", placeholder = "Password" })
-                                        <p id="ValidatePassword" style="color: white">.</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Re-enter Password :</label>
-                                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @onclick = "ValidationRefresh(this.id)", @type = "password", placeholder = "Re-enter Password" })
-                                        <p id="ValidateConfirmPassword" style="color: white">.</p>
-                                    </div>
-                                </div>
-                                <div id="centre-coloum">
-                                    <div class="col-md-6">
-                                        <label>Email Address :</label>
-                                        @Html.TextBoxFor(model => model.Email, new { @onclick = "ValidationRefresh(this.id)", placeholder = "Email Address" })
-                                        <p id="ValidateEmail" style="color: white">.</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Re-enter Email Address :</label>
-                                        @Html.TextBoxFor(model => model.ConfirmEmail, new { @onclick = "ValidationRefresh(this.id)", placeholder = "Re-enter Email Address" })
-                                        <p id="ValidateConfirmEmail" style="color: white">.</p>
-                                    </div>
-                                </div>
-                                <div id="centre-coloum">
-                                    <div class="col-md-6">
-                                        <label>Mobile Number :</label>
-                                        @Html.TextBoxFor(model => model.MobileNumber, new { @onkeypress = "return IsNumeric(event); ", @onclick = "ValidationRefresh(this.id)", placeholder = "Mobile Number" })
-                                        <p id="ValidateMobileNumber" style="color: white">.</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Re-enter Mobile Number :</label>
-                                        @Html.TextBoxFor(model => model.ConfirmMobileNumber, new { @onkeypress = "return IsNumeric(event); ", @onclick = "ValidationRefresh(this.id)", placeholder = "Re-enter Mobile Number" })
-                                        <p id="ValidateConfirmMobileNumber" style="color: white">.</p>
-                                    </div>
-                                </div>
-                            </form>
+        <div id="companyIdList">
+            @Html.ListBoxFor(m => m.Companies, Model.listcompaney, new { size = 2, @onclick = "ValidationRefresh(this.id)" })
+            <p id="ValidateCompanies" style="color: gray"></p>
+        </div>
 
+        <div class="container-fluid">
+            <div class="serch">
+                <div id="ErrorMessages" class="ErrorMessage">@TempData["ErrorMessage"]</div><div id="SuccessMessages" class="SuccessMessage">@TempData["SuccessMessage"]</div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <div class=" col-lg-12 sec-login">
+                            <h1>Create User <span class="glyphicon glyphicon-question-sign"></span></h1>
                         </div>
 
-                        <div class="tab-pane" id="profile">
-                            <div class=" col-lg-12 sec-login">
-                                <h1>Security Code Access <span class="glyphicon glyphicon-question-sign"></span></h1>
-                            </div>
-                            <div class="security">
-                                <form action="" method="get">
-                                    <div class="col-xs-8 security-form">
-                                        <label>Security Code:</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class=" btn2">
-                                        <input name="" type="button" value="enter">
-                                    </div>
-                                </form>
-                                <div class="rest-pass"> <a href="#">Resend Security Code </a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="home">
-                            <div class=" col-lg-12 sec-login">
-                                <h1>User Permission <span class="glyphicon glyphicon-question-sign"></span></h1>
-                            </div>
-
-
+                        <form action="" method="get" class="serch">
                             <div id="centre-coloum">
                                 <div class="col-md-6">
-                                    <label>Create Cycle :</label>
-                                    @Html.DropDownListFor(m=>m.Createcycle, new List<SelectListItem>
+                                    <label>User Id:</label>
+                                    @Html.HiddenFor(model => model.Id, new { @class = "form-control" })
+                                    @Html.TextBoxFor(model => model.UserId, new { @onkeypress = "return IsSpecialcharacter(event);", @onclick = "ValidationRefresh(this.id)", placeholder = "User Id" })
+                                    <p id="ValidateUserId" style="color: white">.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Name :</label>
+                                    @Html.TextBoxFor(model => model.Usename, new { @onkeypress = "return IsSpecialcharacter(event);", @onclick = "ValidationRefresh(this.id)", placeholder = "Name" })
+                                    <p id="ValidateUsename" style="color: white">.</p>
+                                </div>
+                            </div>
+                            <div id="centre-coloum">
+                                <div class="col-md-6">
+                                    <label>Password :</label>
+                                    @Html.TextBoxFor(model => model.Password, new { @onclick = "ValidationRefresh(this.id)", @type = "password", placeholder = "Password" })
+                                    <p id="ValidatePassword" style="color: white">.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Re-enter Password :</label>
+                                    @Html.TextBoxFor(model => model.ConfirmPassword, new { @onclick = "ValidationRefresh(this.id)", @type = "password", placeholder = "Re-enter Password", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                    <p id="ValidateConfirmPassword" style="color: white">.</p>
+                                </div>
+                            </div>
+                            <div id="centre-coloum">
+                                <div class="col-md-6">
+                                    <label>Email Address :</label>
+                                    @Html.TextBoxFor(model => model.Email, new { @onclick = "ValidationRefresh(this.id)", placeholder = "Email Address" })
+                                    <p id="ValidateEmail" style="color: white">.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Re-enter Email Address :</label>
+                                    @Html.TextBoxFor(model => model.ConfirmEmail, new { @onclick = "ValidationRefresh(this.id)", placeholder = "Re-enter Email Address", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                    <p id="ValidateConfirmEmail" style="color: white">.</p>
+                                </div>
+                            </div>
+                            <div id="centre-coloum">
+                                <div class="col-md-6">
+                                    <label>Mobile Number :</label>
+                                    @Html.TextBoxFor(model => model.MobileNumber, new { @onkeypress = "return IsNumeric(event); ", @onclick = "ValidationRefresh(this.id)", placeholder = "Mobile Number" })
+                                    <p id="ValidateMobileNumber" style="color: white">.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Re-enter Mobile Number :</label>
+                                    @Html.TextBoxFor(model => model.ConfirmMobileNumber, new { @onkeypress = "return IsNumeric(event); ", @onclick = "ValidationRefresh(this.id)", placeholder = "Re-enter Mobile Number", @onkeydown = "if(event.ctrlKey && event.keyCode==86){return false;}" })
+                                    <p id="ValidateConfirmMobileNumber" style="color: white">.</p>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="tab-pane" id="profile">
+                        <div class=" col-lg-12 sec-login">
+                            <h1>Security Code Access <span class="glyphicon glyphicon-question-sign"></span></h1>
+                        </div>
+                        <div class="security">
+                            <form action="" method="get">
+                                <div class="col-xs-8 security-form">
+                                    <label>Security Code:</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class=" btn2">
+                                    <input name="" type="button" value="enter">
+                                </div>
+                            </form>
+                            <div class="rest-pass"> <a href="#">Resend Security Code </a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <div class=" col-lg-12 sec-login">
+                            <h1>User Permission <span class="glyphicon glyphicon-question-sign"></span></h1>
+                        </div>
+
+
+                        <div id="centre-coloum">
+                            <div class="col-md-6">
+                                <label>Create Cycle :</label>
+                                @Html.DropDownListFor(m => m.Createcycle, new List<SelectListItem>
 
                  {
                     new SelectListItem{ Text="Please Select Cycle Permission", Value = "0" },
                     new SelectListItem{ Text="Allowed", Value = "Create Cycle" },
                     new SelectListItem{ Text="Denied", Value = "Deny" }
-                 }, new {  @onclick = "ValidationRefresh(this.id)" })
-                                    <p id="ValidateCreatecycle" style="color: white">.</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Access Setting :</label>
-                                    @Html.DropDownListFor(m=>m.AccessSetting, new List<SelectListItem>
+                 }, new { @onclick = "ValidationRefresh(this.id)" })
+                                <p id="ValidateCreatecycle" style="color: white">.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Access Setting :</label>
+                                @Html.DropDownListFor(m => m.AccessSetting, new List<SelectListItem>
 
                  {
                      new SelectListItem{ Text="Please Select Access Permission", Value = "0" },
                     new SelectListItem{ Text="Allowed", Value = "Access Setting" },
                     new SelectListItem{ Text="Denied", Value = "Deny" }
-                 }, new {  @onclick = "ValidationRefresh(this.id)" })
-                                    <p id="ValidateAccessSetting" style="color: white">.</p>
+                 }, new { @onclick = "ValidationRefresh(this.id)" })
+                                <p id="ValidateAccessSetting" style="color: white">.</p>
 
-                                </div>
                             </div>
-                            <div id="centre-coloum">
-                                <div class="col-md-6">
-                                    <label>Download Data :</label>
-                                    @Html.DropDownListFor(m=>m.DownloadData, new List<SelectListItem>
+                        </div>
+                        <div id="centre-coloum">
+                            <div class="col-md-6">
+                                <label>Download Data :</label>
+                                @Html.DropDownListFor(m => m.DownloadData, new List<SelectListItem>
 
                  {
                      new SelectListItem{ Text="Please Select Download Permission", Value = "0" },
                     new SelectListItem{ Text="Allowed", Value = "Download Data" },
                     new SelectListItem{ Text="Denied", Value = "Deny" }
-                 }, new {  @onclick = "ValidationRefresh(this.id)" })
-                                    <p id="ValidateDownloadData" style="color: white">.</p>
+                 }, new { @onclick = "ValidationRefresh(this.id)" })
+                                <p id="ValidateDownloadData" style="color: white">.</p>
 
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Print Report :</label>
-                                    @Html.DropDownListFor(m=>m.PrintReport, new List<SelectListItem>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Print Report :</label>
+                                @Html.DropDownListFor(m => m.PrintReport, new List<SelectListItem>
 
                  {
                      new SelectListItem{ Text="Please Select Print Permission", Value = "0" },
                     new SelectListItem{ Text="Allowed", Value = "Print Report" },
                     new SelectListItem{ Text="Denied", Value = "Deny" }
-                 }, new {  @onclick = "ValidationRefresh(this.id)" })
-                                    <p id="ValidatePrintReport" style="color: white">.</p>
-                                </div>
+                 }, new { @onclick = "ValidationRefresh(this.id)" })
+                                <p id="ValidatePrintReport" style="color: white">.</p>
                             </div>
-
-                            <div class="button"><input type="submit" onclick="SubmitForm()" name="" value="Submit"></div>
                         </div>
 
-                        @*<div class="tab-pane" id="profile">
+                        <div class="button"><input type="submit" onclick="SubmitForm()" name="" value="Submit"></div>
+                    </div>
+
+                    @*<div class="tab-pane" id="profile">
                             <div class=" col-lg-12 sec-login">
                                 <h1>Security Code Access <span class="glyphicon glyphicon-question-sign"></span></h1>
                             </div>
@@ -203,378 +203,379 @@
                                 <div class="rest-pass"> <a href="#">Resend Security Code </a> </div>
                             </div>
                         </div>*@
-                    </div>
-                    <input id="CompaneyIdOfDDL" value="" type="hidden" />
-                    
-                    <br />
-                    <br />
-                    <div id="sucess" style="color:green;font:14px arial" align="center"> @TempData["Sucess"]</div>
-                    <div id="error" style="color:red;font:14px arial" align="center"> @TempData["Error"]</div>
                 </div>
+                <input id="CompaneyIdOfDDL" value="" type="hidden" />
+
+                <br />
+                <br />
+                <div id="sucess" style="color:green;font:14px arial" align="center"> @TempData["Sucess"]</div>
+                <div id="error" style="color:red;font:14px arial" align="center"> @TempData["Error"]</div>
             </div>
-}
+        </div>
+    }
 
-            <div id="EmptyMessage" style="color:red;text-align:center"></div>
-            <div class="data-table">
-                <div class="container-fluid">
+    <div id="EmptyMessage" style="color:red;text-align:center"></div>
+    <div class="data-table">
+        <div class="container-fluid">
 
-                    <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
-                        <thead>
+            <table id="example" class="table table-striped table-bordered " width="100%" cellspacing="0">
+                <thead>
 
-                            <tr>
-                                <td><label>Search User</label></td>
-                                <td colspan="4">
+                    <tr>
+                        <td><label>Search User</label></td>
+                        <td colspan="4">
 
 
-                                 
 
-                                    <input type="text" id="Txtsearch" placeholder="Filter by Email or User Id" />
-                                </td>
-                                <td style="text-align:right"><label>Filter User</label></td>
-                                <td>
-                                    @Html.DropDownList("FilterUser", new List<SelectListItem>
+
+                            <input type="text" id="Txtsearch" placeholder="Filter by Email or User Id" />
+                        </td>
+                        <td style="text-align:right"><label>Filter User</label></td>
+                        <td>
+                            @Html.DropDownList("FilterUser", new List<SelectListItem>
 
                  {
                     new SelectListItem{ Text="All", Value = "All" },
                     new SelectListItem{ Text="Active", Value = "Active" },
                     new SelectListItem{ Text="Deny", Value = "Deny" }
                  }, new { @onclick = "ValidationRefresh(this.id)" })
-                                </td>
+                        </td>
 
-                            </tr>
+                    </tr>
+                    <tr>
+                        <th>Date </th>
+                        <th>User ID  </th>
+                        <th>Name  </th>
+                        <th>Status </th>
+                        <th>Last Login Date </th>
+                        <th>Permission  </th>
+                        <th>Action  </th>
+
+                    </tr>
+                </thead>
+                <tbody id="searchtable">
+                    @if (ViewBag.Userpermission != null)
+                    {
+                        foreach (var item in ViewBag.Userpermission)
+                        {
                             <tr>
-                                <th>Date </th>
-                                <th>User ID  </th>
-                                <th>Name  </th>
-                                <th>Status </th>
-                                <th>Last Login Date </th>
-                                <th>Permission  </th>
-                                <th>Action  </th>
-
-                            </tr>
-                        </thead>
-                        <tbody id="searchtable">
-                            @if (ViewBag.Userpermission != null)
-                            {
-                                foreach (var item in ViewBag.Userpermission)
+                                <td>@item.Date</td>
+                                <td>@item.UserId</td>
+                                <td>@item.Name </td>
+                                <td>@item.Status </td>
+                                @if (item.LastLoginDate == null)
                                 {
-                                    <tr>
-                                        <td>@item.Date</td>
-                                        <td>@item.UserId</td>
-                                        <td>@item.Name </td>
-                                        <td>@item.Status </td>
-                                        @if(item.LastLoginDate==null)
-                                        {
-                                        <td>Not Login Yet </td>
-                                        }
-                                        else
-                                        {
-                                        
-                                        <td>@item.LastLoginDate </td>
-                                        }
-                                       
-                                        <td>
-                                            @item.Permission
-                                        </td>
-                                        <td>
-                                            <ul class="action-button">
-                                                <li>
-                                                    @Html.ActionLink("Edit", "EditUser", new { id = item.Id, pagesize = TempData["pagesize"] })
-                                                </li>
-                                                <li>
-                                                    @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this User?');" })
-
-                                                </li>
-                                                <li>
-
-                                                    @Html.ActionLink("Change status", "SuspendUser", new { id = item.Id, @style = "color:blue" })
-                                                </li>
-                                                
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                    <td>Not Login Yet </td>
                                 }
-                            }
-                        </tbody>
-                    </table>
+                                else
+                                {
 
+                                    <td>@item.LastLoginDate </td>
+                                }
 
-                </div>
+                                <td>
+                                    @item.Permission
+                                </td>
+                                <td>
+                                    <ul class="action-button">
+                                        <li>
+                                            @Html.ActionLink("Edit", "EditUser", new { id = item.Id, pagesize = TempData["pagesize"] })
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this User?');" })
 
-            </div>
+                                        </li>
+                                        <li>
 
-            <!--[]-->
-            <!--[pagination]-->
-            <div id="pageing">
-                <div class="pagination-footer">
-                    <div class="container-fluid">
-                        <div class="col-md-4 item-par">
-                            <form action="/Admin/CreateUser" class="serch" method="get">
-                                <table width="100%" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td>
-                                            @{
-                                            List<SelectListItem> ddPagination = new List<SelectListItem>();
-                                            for (int i = 1; i <= 10; i++)
-                                            {
-                                                int j = i * 5;
-                                                int pagesize = Convert.ToInt32(TempData["pagesize"]);
-                                                if (pagesize == j)
-                                                {
-                                                    ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
-                                                }
-                                                else
-                                                {
-                                                    ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
-                                                }
-                                            }
+                                            @Html.ActionLink("Change status", "SuspendUser", new { id = item.Id, @style = "color:blue" })
+                                        </li>
 
-                                            @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();"});
-                                            }
-                                        </td>
-                                        <td><span>Items Per Page</span></td>
-                                    </tr>
-                                </table>
-                            </form>
-                        </div>
-                        <div class="col-md-4 item-page">
-                            <ul>
-                                @Html.PagedListPager((IPagedList)ViewBag.Userpermission, page => Url.Action("CreateUser", new { page, pagesize = TempData["pagesize"] }))
-                            </ul>
-                        </div>
-                        <div class="col-md-3 item-of-page">
-                            <p>@(ViewBag.Userpermission.PageCount < ViewBag.Userpermission.PageNumber ? 0 : ViewBag.Userpermission.PageNumber) of @ViewBag.Userpermission.PageCount items <a href="/Admin/CreateUser"><span class="glyphicon glyphicon-repeat"></span></a> </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script>
-
-
-                var specialKeys = new Array();
-                specialKeys.push(8);
-                specialKeys.push(9);
-                function IsNumeric(e) {
-                    var keyCode = e.which ? e.which : e.keyCode
-                    var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
-
-                    return ret;
-                }
-
-                function IsSpecialcharacter(e) {
-                    var keyCode = e.which ? e.which : e.keyCode
-                    var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode > 123);
-                    if (ret == true) {
-                        return false;
-                    }
-                    else {
-                        return true;
-                    }
-                    return ret;
-                }
-
-                function SubmitForm() {
-                    $('#submitForm').submit(function () {
-                        document.getElementById("ValidateUserId").innerHTML = ".";
-                        document.getElementById("ValidateUsename").innerHTML = ".";
-                        document.getElementById("ValidatePassword").innerHTML = ".";
-                        document.getElementById("ValidateConfirmPassword").innerHTML = ".";
-                        document.getElementById("ValidateEmail").innerHTML = ".";
-                        document.getElementById("ValidateConfirmEmail").innerHTML = ".";
-                        document.getElementById("ValidateMobileNumber").innerHTML = ".";
-                        document.getElementById("ValidateConfirmMobileNumber").innerHTML = ".";
-                        document.getElementById("ValidatePrintReport").innerHTML = ".";
-                        document.getElementById("ValidateDownloadData").innerHTML = ".";
-                        document.getElementById("ValidateAccessSetting").innerHTML = ".";
-                        document.getElementById("ValidateCreatecycle").innerHTML = ".";
-                        if (Checkvalidation() == false) {
-                            return false;
-                        }
-                    });
-                }
-
-                function Checkvalidation() {
-                    var count = 0;
-                    var Companies = document.getElementById("Companies").value;
-                    var UserId = document.getElementById("UserId").value; 
-                    var Usename = document.getElementById("Usename").value;
-                    var Password = document.getElementById("Password").value;
-                    var ConfirmPassword = document.getElementById("ConfirmPassword").value;
-                    var Email = document.getElementById("Email").value;
-                    var ConfirmEmail = document.getElementById("ConfirmEmail").value;
-                    var MobileNumber = document.getElementById("MobileNumber").value;
-                    var ConfirmMobileNumber = document.getElementById("ConfirmMobileNumber").value;
-                    var Createcycle = document.getElementById("Createcycle").value;
-                    var AccessSetting = document.getElementById("AccessSetting").value;
-                    var DownloadData = document.getElementById("DownloadData").value;
-                    var PrintReport = document.getElementById("PrintReport").value;
-                    if (Companies == "") {
-                        document.getElementById("ValidateCompanies").innerHTML = "Please select atleast One Company.";
-                        $('#ValidateCompanies').addClass('validation');
-                        $('#Companies').focus();
-                        count = 1;
-                    }
-                    if (UserId == "") {
-                        document.getElementById("ValidateUserId").innerHTML = "Please Enter User Id.";
-                        $('#ValidateUserId').addClass('validation');
-                        $('#UserId').focus();
-                        count = 1;
-                    }
-                    if (Usename == "") {
-
-                        document.getElementById("ValidateUsename").innerHTML = "Please Enter User Name.";
-                        $('#ValidateUsename').addClass('validation');
-                        $('#Usename').focus();
-                        count = 1;
-                    }
-                    if (Password == "") {
-
-                        document.getElementById("ValidatePassword").innerHTML = "Please Enter Password.";
-                        $('#ValidatePassword').addClass('validation');
-                        $('#Password').focus();
-                        count = 1;
-                    }
-                    if (Password.length < 8 || Password.length >= 13) {
-                        document.getElementById("ValidatePassword").innerHTML = "Password must be 8-12 Characters.";
-                        $('#ValidatePassword').addClass('validation');
-                        $('#Password').focus();
-                        count = 1;
-                    }
-                    if (ConfirmPassword == "") {
-
-                        document.getElementById("ValidateConfirmPassword").innerHTML = "Please Re-Enter Password.";
-                        $('#ValidateConfirmPassword').addClass('validation');
-                        $('#ConfirmPassword').focus();
-                        count = 1;
-                    }
-                    if (Password != ConfirmPassword) {
-
-                        document.getElementById("ValidateConfirmPassword").innerHTML = "Password and Confirm Password should be same.";
-                        $('#ValidateConfirmPassword').addClass('validation');
-                        $('#ConfirmPassword').focus();
-                        count = 1;
-                    }
-                    if (Email == "") {
-                        
-                        document.getElementById("ValidateEmail").innerHTML = "Please Enter Email.";
-                        $('#ValidateEmail').addClass('validation');
-                        $('#Email').focus();
-                        count = 1;
-                    }
-                    if (ConfirmEmail == "") {
-
-                        document.getElementById("ValidateConfirmEmail").innerHTML = "Please Re-enter Email.";
-                        $('#ValidateConfirmEmail').addClass('validation');
-                        $('#ConfirmEmail').focus();
-                        count = 1;
-                    }
-                    if (Email != ConfirmEmail) {
-
-                        document.getElementById("ValidateConfirmEmail").innerHTML = "Email and Confirm Email should be same.";
-                        $('#ValidateConfirmEmail').addClass('validation');
-                        $('#ConfirmEmail').focus();
-                        count = 1;
-                    }
-                    if (MobileNumber == "") {
-                      //  document.getElementById("ValidateConfirmMobileNumber").innerHTML = "";
-                        document.getElementById("ValidateMobileNumber").innerHTML = "Please Enter Mobile Number.";
-                        $('#ValidateMobileNumber').addClass('validation');
-                        $('#MobileNumber').focus();
-                        count = 1;
-                    }
-                    if (ConfirmMobileNumber == "") {
-
-                        document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Please Re-enter Mobile Number.";
-                        $('#ValidateConfirmMobileNumber').addClass('validation');
-                        $('#ConfirmMobileNumber').focus();
-                        count = 1;
-                    }
-                    if (MobileNumber != ConfirmMobileNumber) {
-                      //  document.getElementById("ValidateMobileNumber").innerHTML = "";
-                        //document.getElementById("ValidateConfirmMobileNumber").innerHTML = "";
-                        document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Mobile Number and Confirm Mobile Number should be same.";
-                        $('#ValidateConfirmMobileNumber').addClass('validation');
-                        $('#ConfirmMobileNumber').focus();
-                        count = 1;
-                    }
-                    if (Createcycle == "0") {
-                        document.getElementById("ValidateCreatecycle").innerHTML = "Please select Create Cycle permission.";
-                        $('#ValidateCreatecycle').addClass('validation');
-                        $('#Createcycle').focus();
-                        count = 1;
-                    }
-                    if (AccessSetting == "0") {
-                        document.getElementById("ValidateAccessSetting").innerHTML = "Please select Access Setting permission.";
-                        $('#ValidateAccessSetting').addClass('validation');
-                        $('#AccessSetting').focus();
-                        count = 1;
-                    }
-                    if (DownloadData == "0") {
-                        document.getElementById("ValidateDownloadData").innerHTML = "Please select Download Data permission.";
-                        $('#ValidateDownloadData').addClass('validation');
-                        $('#DownloadData').focus();
-                        count = 1;
-                    }
-                    if (PrintReport == "0") {
-                        document.getElementById("ValidatePrintReport").innerHTML = "Please select Print Report permission.";
-                        $('#ValidatePrintReport').addClass('validation');
-                        $('#PrintReport').focus();
-                        count = 1;
-                    }
-
-                    if (Email != "") {
-
-                        var reg = /^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-                        if (reg.test(Email)) {
-
-                        }
-                        else {
-                            document.getElementById("ValidateEmail").innerHTML = "Invalid Email Address";
-                            $('#ValidateEmail').addClass('validation');
-                            $('#Email').focus();
-                            count = 1;
+                                    </ul>
+                                </td>
+                            </tr>
                         }
                     }
-                    if (ConfirmEmail != "") {
-
-                        var reg = /^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-                        if (reg.test(ConfirmEmail)) {
-
-                        }
-                        else {
-                            document.getElementById("ValidateConfirmEmail").innerHTML = "Invalid Email Address";
-                            $('#ValidateConfirmEmail').addClass('validation');
-                            $('#ConfirmEmail').focus();
-                            count = 1;
-                        }
-                    }
-                    if (Email != "") {
-                        var Result = DublicateEmail();
-                        if (Result.responseJSON == "Yes") {
-                            document.getElementById("ValidateEmail").innerHTML = "This Email Id is Already Exist !";
-                            $('#ValidateEmail').addClass('validation');
-                            $('#Email').focus();
-                            count = 1;
-                        }
-                    }
-                    if (count == 1) {
-                        return false;
-                    }
-                }
-
-                function ValidationRefresh(id) {
-                    var validateid = "Validate" + id
-                    document.getElementById(validateid).innerHTML = ".";
-                    var control = document.getElementById(validateid);
-                    control.classList.remove('validation');
-                }
-
-            </script>
+                </tbody>
+            </table>
 
 
-
-      
         </div>
+
+    </div>
+
+    <!--[]-->
+    <!--[pagination]-->
+    <div id="pageing">
+        <div class="pagination-footer">
+            <div class="container-fluid">
+                <div class="col-md-4 item-par">
+                    <form action="/Admin/CreateUser" class="serch" method="get">
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    @{
+                                        List<SelectListItem> ddPagination = new List<SelectListItem>();
+                                        for (int i = 1; i <= 10; i++)
+                                        {
+                                            int j = i * 5;
+                                            int pagesize = Convert.ToInt32(TempData["pagesize"]);
+                                            if (pagesize == j)
+                                            {
+                                                ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString(), Selected = true });
+                                            }
+                                            else
+                                            {
+                                                ddPagination.Add(new SelectListItem { Value = j.ToString(), Text = j.ToString() });
+                                            }
+                                        }
+
+                                        @Html.DropDownList("DDlPageingsize", ddPagination as List<SelectListItem>, new { onchange = "this.form.submit();" });
+                                    }
+                                </td>
+                                <td><span>Items Per Page</span></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="col-md-4 item-page">
+                    <ul>
+                        @Html.PagedListPager((IPagedList)ViewBag.Userpermission, page => Url.Action("CreateUser", new { page, pagesize = TempData["pagesize"] }))
+                    </ul>
+                </div>
+                <div class="col-md-3 item-of-page">
+                    <p>@(ViewBag.Userpermission.PageCount < ViewBag.Userpermission.PageNumber ? 0 : ViewBag.Userpermission.PageNumber) of @ViewBag.Userpermission.PageCount items <a href="/Admin/CreateUser"><span class="glyphicon glyphicon-repeat"></span></a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        var specialKeys = new Array();
+        specialKeys.push(8);
+        specialKeys.push(9);
+        function IsNumeric(e) {
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+
+            return ret;
+        }
+
+        function IsSpecialcharacter(e) {
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = (keyCode >= 33 && keyCode <= 48 || keyCode >= 58 && keyCode <= 64 || keyCode >= 91 && keyCode <= 96 || keyCode > 123);
+            if (ret == true) {
+                return false;
+            }
+            else {
+                return true;
+            }
+            return ret;
+        }
+
+        function SubmitForm() {
+            $('#submitForm').submit(function () {
+                document.getElementById("ValidateUserId").innerHTML = ".";
+                document.getElementById("ValidateUsename").innerHTML = ".";
+                document.getElementById("ValidatePassword").innerHTML = ".";
+                document.getElementById("ValidateConfirmPassword").innerHTML = ".";
+                document.getElementById("ValidateEmail").innerHTML = ".";
+                document.getElementById("ValidateConfirmEmail").innerHTML = ".";
+                document.getElementById("ValidateMobileNumber").innerHTML = ".";
+                document.getElementById("ValidateConfirmMobileNumber").innerHTML = ".";
+                document.getElementById("ValidatePrintReport").innerHTML = ".";
+                document.getElementById("ValidateDownloadData").innerHTML = ".";
+                document.getElementById("ValidateAccessSetting").innerHTML = ".";
+                document.getElementById("ValidateCreatecycle").innerHTML = ".";
+                if (Checkvalidation() == false) {
+                    return false;
+                }
+            });
+        }
+
+        function Checkvalidation() {
+            var count = 0;
+            var Companies = document.getElementById("Companies").value;
+            var UserId = document.getElementById("UserId").value;
+            var Usename = document.getElementById("Usename").value;
+            var Password = document.getElementById("Password").value;
+            var ConfirmPassword = document.getElementById("ConfirmPassword").value;
+            var Email = document.getElementById("Email").value;
+            var ConfirmEmail = document.getElementById("ConfirmEmail").value;
+            var MobileNumber = document.getElementById("MobileNumber").value;
+            var ConfirmMobileNumber = document.getElementById("ConfirmMobileNumber").value;
+            var Createcycle = document.getElementById("Createcycle").value;
+            var AccessSetting = document.getElementById("AccessSetting").value;
+            var DownloadData = document.getElementById("DownloadData").value;
+            var PrintReport = document.getElementById("PrintReport").value;
+            if (Companies == "") {
+                document.getElementById("ValidateCompanies").innerHTML = "Please select atleast One Company.";
+                $('#ValidateCompanies').addClass('validation');
+                $('#Companies').focus();
+                count = 1;
+            }
+            if (UserId == "") {
+                document.getElementById("ValidateUserId").innerHTML = "Please Enter User Id.";
+                $('#ValidateUserId').addClass('validation');
+                $('#UserId').focus();
+                count = 1;
+            }
+            if (Usename == "") {
+
+                document.getElementById("ValidateUsename").innerHTML = "Please Enter User Name.";
+                $('#ValidateUsename').addClass('validation');
+                $('#Usename').focus();
+                count = 1;
+            }
+            if (Password == "") {
+
+                document.getElementById("ValidatePassword").innerHTML = "Please Enter Password.";
+                $('#ValidatePassword').addClass('validation');
+                $('#Password').focus();
+                count = 1;
+            }
+            if (Password.length < 8 || Password.length >= 13) {
+                document.getElementById("ValidatePassword").innerHTML = "Password must be 8-12 Characters.";
+                $('#ValidatePassword').addClass('validation');
+                $('#Password').focus();
+                count = 1;
+            }
+            if (ConfirmPassword == "") {
+
+                document.getElementById("ValidateConfirmPassword").innerHTML = "Please Re-Enter Password.";
+                $('#ValidateConfirmPassword').addClass('validation');
+                $('#ConfirmPassword').focus();
+                count = 1;
+            }
+            if (Password != ConfirmPassword) {
+
+                document.getElementById("ValidateConfirmPassword").innerHTML = "Password and Confirm Password should be same.";
+                $('#ValidateConfirmPassword').addClass('validation');
+                $('#ConfirmPassword').focus();
+                count = 1;
+            }
+            if (Email == "") {
+
+                document.getElementById("ValidateEmail").innerHTML = "Please Enter Email.";
+                $('#ValidateEmail').addClass('validation');
+                $('#Email').focus();
+                count = 1;
+            }
+            if (ConfirmEmail == "") {
+
+                document.getElementById("ValidateConfirmEmail").innerHTML = "Please Re-enter Email.";
+                $('#ValidateConfirmEmail').addClass('validation');
+                $('#ConfirmEmail').focus();
+                count = 1;
+            }
+            if (Email != ConfirmEmail) {
+
+                document.getElementById("ValidateConfirmEmail").innerHTML = "Email and Confirm Email should be same.";
+                $('#ValidateConfirmEmail').addClass('validation');
+                $('#ConfirmEmail').focus();
+                count = 1;
+            }
+            if (MobileNumber == "") {
+                //  document.getElementById("ValidateConfirmMobileNumber").innerHTML = "";
+                document.getElementById("ValidateMobileNumber").innerHTML = "Please Enter Mobile Number.";
+                $('#ValidateMobileNumber').addClass('validation');
+                $('#MobileNumber').focus();
+                count = 1;
+            }
+            if (ConfirmMobileNumber == "") {
+
+                document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Please Re-enter Mobile Number.";
+                $('#ValidateConfirmMobileNumber').addClass('validation');
+                $('#ConfirmMobileNumber').focus();
+                count = 1;
+            }
+            if (MobileNumber != ConfirmMobileNumber) {
+                //  document.getElementById("ValidateMobileNumber").innerHTML = "";
+                //document.getElementById("ValidateConfirmMobileNumber").innerHTML = "";
+                document.getElementById("ValidateConfirmMobileNumber").innerHTML = "Mobile Number and Confirm Mobile Number should be same.";
+                $('#ValidateConfirmMobileNumber').addClass('validation');
+                $('#ConfirmMobileNumber').focus();
+                count = 1;
+            }
+            if (Createcycle == "0") {
+                document.getElementById("ValidateCreatecycle").innerHTML = "Please select Create Cycle permission.";
+                $('#ValidateCreatecycle').addClass('validation');
+                $('#Createcycle').focus();
+                count = 1;
+            }
+            if (AccessSetting == "0") {
+                document.getElementById("ValidateAccessSetting").innerHTML = "Please select Access Setting permission.";
+                $('#ValidateAccessSetting').addClass('validation');
+                $('#AccessSetting').focus();
+                count = 1;
+            }
+            if (DownloadData == "0") {
+                document.getElementById("ValidateDownloadData").innerHTML = "Please select Download Data permission.";
+                $('#ValidateDownloadData').addClass('validation');
+                $('#DownloadData').focus();
+                count = 1;
+            }
+            if (PrintReport == "0") {
+                document.getElementById("ValidatePrintReport").innerHTML = "Please select Print Report permission.";
+                $('#ValidatePrintReport').addClass('validation');
+                $('#PrintReport').focus();
+                count = 1;
+            }
+
+            if (Email != "") {
+
+                var reg = /^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                if (reg.test(Email)) {
+
+                }
+                else {
+                    document.getElementById("ValidateEmail").innerHTML = "Invalid Email Address";
+                    $('#ValidateEmail').addClass('validation');
+                    $('#Email').focus();
+                    count = 1;
+                }
+            }
+            if (ConfirmEmail != "") {
+
+                var reg = /^\w+([-+.']\w+)*@@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                if (reg.test(ConfirmEmail)) {
+
+                }
+                else {
+                    document.getElementById("ValidateConfirmEmail").innerHTML = "Invalid Email Address";
+                    $('#ValidateConfirmEmail').addClass('validation');
+                    $('#ConfirmEmail').focus();
+                    count = 1;
+                }
+            }
+            if (Email != "") {
+                var Result = DublicateEmail();
+                if (Result.responseJSON == "Yes") {
+                    document.getElementById("ValidateEmail").innerHTML = "This Email Id is Already Exist !";
+                    $('#ValidateEmail').addClass('validation');
+                    $('#Email').focus();
+                    count = 1;
+                }
+            }
+            if (count == 1) {
+                return false;
+            }
+        }
+
+        function ValidationRefresh(id) {
+            var validateid = "Validate" + id
+            document.getElementById(validateid).innerHTML = ".";
+            var control = document.getElementById(validateid);
+            control.classList.remove('validation');
+        }
+
+    </script>
+
+
+
+
+</div>
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
         <script>
