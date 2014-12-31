@@ -475,9 +475,9 @@ namespace GST_Mart.Controllers
                     TempData["ErrorMessage"] = ex.Message;
                 }
 
-                //return RedirectToAction("CreateCycle");
+                return RedirectToAction("CreateCycle");
 
-                return View();
+               // return View();
             }
             else
             {
