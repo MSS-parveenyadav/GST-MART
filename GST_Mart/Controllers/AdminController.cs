@@ -558,7 +558,7 @@ namespace GST_Mart.Controllers
         [WebMethod]
         public void Logout()
         {
-            Session["AdminUserName"]="";
+            Session["AdminUserName"] = "";
             Session["LoginTime"] = "";
             Session["AdminLoginStatus"] = "LoggedOut";
         }

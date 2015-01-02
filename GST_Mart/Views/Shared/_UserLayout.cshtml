@@ -67,12 +67,11 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/User/ValidateImport"><i class="glyphicon glyphicon-home"></i>User Dashboard</a></li>
-                        @*<li><a href="javascript:void(0)"><i class="fa fa-file-archive-o"></i>GAF File</a></li>
-                            *@
-                        @*@if("Deny"!=Session["Settings"].ToString())
+                         
+                        @if("Deny"!=Session["Settings"].ToString())
                         { 
                             <li><a href="/Admin/IpAddress"><i class="fa fa-cog"></i>Settings</a></li>
-                        }*@
+                        }
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
@@ -95,12 +94,9 @@
                                     }
                                 </li>
 
-                                @*<li>
-                                        <input type="text" class="form-control" placeholder="Search">
-                                    </li>*@
                             </ol>
                         </div>
-                        @*<a href="javascript:void(0)" class="grup"><span class="glyphicon glyphicon-align-justify"></span></a>*@
+                      
                     </form>
                 </div>
             </nav>
@@ -110,12 +106,7 @@
         <!--[]-->
         <div class="data-feed">
             <ul class="nav nav-tabs">
-                @*<li><a href="#home" role="tab" data-toggle="tab">Tax Code</a></li>
-                    <li><a href="#profile" role="tab" data-toggle="tab">Currency Exchange</a></li>
-                    <li><a href="#profile" role="tab" data-toggle="tab">Rules Engine</a></li>
-                    <li><a href="#profile" role="tab" data-toggle="tab">Data Import</a></li>
-                    <li><a href="#profile" role="tab" data-toggle="tab">Security</a></li>*@
-                @*<li class="active"><a href="/User/CreateCycle" role="tab" data-toggle="tab">Create Cycle</a></li>*@
+             
             </ul>
         </div>
         @RenderSection("featured", required: false)
