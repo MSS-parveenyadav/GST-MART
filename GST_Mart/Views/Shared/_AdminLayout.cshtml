@@ -122,7 +122,14 @@
 
 
                     <ul class="nav navbar-nav">
-                        <li><a href="/Admin/CreateUser"><i class="glyphicon glyphicon-home"></i>Dashboard</a></li>
+                            @if ("LoggedIn" ==Session["AdminLoginStatus"].ToString())
+                            {
+                                <li><a href="/Admin/CreateUser"><i class="glyphicon glyphicon-home"></i>Dashboard</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/User/ValidateImport"><i class="glyphicon glyphicon-home"></i>User Dashboard</a></li>
+                            }
                         @*<li><a href="~/Reports/ReportViewers/13-TVO_SGGR.aspx"><i class="fa fa-line-chart"></i>Reports</a></li>*@
                         <li><a href="/Admin/IpAddress"><i class="fa fa-cog"></i>Settings</a></li>
                     </ul>
